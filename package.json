@@ -1,0 +1,38 @@
+{
+  "name": "songbook",
+  "version": "1.0.0",
+  "description": "or `how not too forget how to be a musician`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "start-client": "react-scripts start",
+    "dev": "nodemon index",
+    "version": "heroku --version; git --version",
+    "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy\"; git push;",
+    "deploy": "heroku git:remote -a songbook-cvs; git push heroku main",
+    "log": "heroku logs --tail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanStaen/songbook.git"
+  },
+  "author": "cvanstaen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanStaen/songboook/issues"
+  },
+  "homepage": "https://github.com/vanStaen/songbook#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "lint": "^0.7.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.1"
+  }
+}
