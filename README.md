@@ -12,4 +12,7 @@ App available under songbook-cvs.herokuapp.com/
 - tags : Array [char var]
 - title : char var
 - done : boollean
-- pic : var char
+- picUrl : var char
+- id : primary key int
+
+Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`

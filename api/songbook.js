@@ -19,8 +19,8 @@ client.connect(err => {
 // GET all data from watchlist
 router.get("/", async (req, res) => {
   try {
-    const watchlist = await client.query('SELECT * FROM watchlist ORDER BY done ASC, id ASC;');
-    res.status(201).json(watchlist.rows);
+    const songbook = await client.query('SELECT * FROM songbook ORDER BY done ASC, id ASC;');
+    res.status(201).json(songbook.rows);
   } catch (err) {
     res.status(400).json({
       error: `${err})`,
@@ -31,9 +31,9 @@ router.get("/", async (req, res) => {
 // GET single data from watchlist (based on id)
 router.get("/:id", async (req, res) => {
   try {
-    const watchlist = await client.query('SELECT * FROM watchlist WHERE id=' + req.params.id);
-    if (watchlist.rows.length > 0) {
-      res.status(201).json(watchlist.rows);
+    const songbook = await client.query('SELECT * FROM songbook WHERE id=' + req.params.id);
+    if (songbook.rows.length > 0) {
+      res.status(201).json(songbook.rows);
     } else {
       res.status(400).json({
         error: `No data found with id#${req.params.id}`,
@@ -49,7 +49,7 @@ router.get("/:id", async (req, res) => {
 // DELETE single data from watchlist (based on id)
 router.delete("/:id", async (req, res) => {
   try {
-    const watchlist = await client.query('DELETE FROM watchlist WHERE id=' + req.params.id);
+    const songbook = await client.query('DELETE FROM songbook WHERE id=' + req.params.id);
     res.status(200).json({
       success: `Entry #${req.params.id} has been deleted.`,
     });
@@ -60,7 +60,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// PATCH single data from watchlist (based on id)
+/* PATCH single data from watchlist (based on id)
 router.patch("/:id", async (req, res) => {
 
   let updateField = '';
@@ -84,7 +84,7 @@ router.patch("/:id", async (req, res) => {
   }
 
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
-  const updateQuery = 'UPDATE watchlist SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
+  const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
 
   try {
     const watchlist = await client.query(updateQuery);
@@ -103,9 +103,9 @@ router.patch("/:id", async (req, res) => {
     });
   }
 
-});
+}); */
 
-// POST add to watchlist
+// POST add to songbook
 router.post("/", async (req, res) => {
 
   // Title and Link are Mandatory
@@ -113,16 +113,16 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least a Link to create a new entry.` });
   }
 
-  const youtubeVideoID = req.body.link.split('&')[0].split('=')[1];
-  const titleFromYoutube = await getTitleFromYoutubeVideo(youtubeVideoID);
   const link = req.body.link;
-  const title = req.body.title ? req.body.title : titleFromYoutube;
+  const title = req.body.title ? req.body.title : "Missing title";
+  const picurl = req.body.picurl ? req.body.picurl : "null";
   const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : "null";
   const done = req.body.done ? req.body.done : false;
-  const insertQuery = `INSERT INTO watchlist (title, link, tags, done) VALUES ('${title}', '${link}', ${tags}, ${done})`;
+  const active = req.body.active ? req.body.active : true;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active})`;
 
   try {
-    const watchlist = await client.query(insertQuery);
+    const songbook = await client.query(insertQuery);
     res.status(201).json({ success: "Success" });
   } catch (err) {
     res.status(400).json({
