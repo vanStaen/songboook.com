@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "075f7ab4-94df-409b-8442-ad5284f6d4ef",
+		"name": "Songbook - API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SONGBOOK: localhost:5002/songbook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5002/songbook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"songbook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/songbook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "songbook-cvs.herokuapp.com/songbook",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"songbook"
+					]
+				},
+				"description": "GET request : list of all users\nTo localserver on port 5000\n"
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: localhost:5002/songbook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5002/songbook/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"songbook",
+						"3"
+					]
+				},
+				"description": "delete user"
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/songbook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://songbook-cvs.herokuapp.com/songbook/2",
+					"protocol": "https",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"songbook",
+						"2"
+					]
+				},
+				"description": "delete user"
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: localhost:5002/songbook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"link\": \"https://tabs.ultimate-guitar.com/tab/radiohead/karma-police-chords-4130\",\n   \"title\": \"Radiohead - Karma Police\",\n   \"picurl\": \"https://www.readersdigest.co.uk/media/March%202019/ok%20computer%20radio%20head%20sara%20bareilles%20.jpg\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/songbook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"songbook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/songbook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"link\": \"https://www.youtube.com/watch?v=aqtSWrl1BJI\",\n   \"title\": \"Red Hot Chili Peppers Breaking the Girl Guitar Lesson + Tutorial\",\n   \"picurl\": \"https://img.youtube.com/vi/aqtSWrl1BJI/0.jpg\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "songbook-cvs.herokuapp.com/songbook",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"songbook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: localhost:5002/songbook",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"tags\": [\"karma\",\"police\",\"acoustic\",\"radiohead\"],\n\"rate\": 5\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/songbook/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"songbook",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/songbook",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"tags\": [\"change\", \"those\", \"tags\"]\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://songbook-cvs.herokuapp.com/songbook/3",
+					"protocol": "https",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"songbook",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
