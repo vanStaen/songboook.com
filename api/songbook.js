@@ -67,6 +67,9 @@ router.patch("/:id", async (req, res) => {
   if (req.body.done !== undefined) {
     updateField = updateField + "done='" + req.body.done + "',";
   }
+  if (req.body.bookmark !== undefined) {
+    updateField = updateField + "bookmark='" + req.body.bookmark + "',";
+  }
   if (req.body.link) {
     updateField = updateField + "link='" + req.body.link + "',";
   }
@@ -118,8 +121,9 @@ router.post("/", async (req, res) => {
   const picurl = req.body.picurl ? req.body.picurl : "null";
   const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : "null";
   const done = req.body.done ? req.body.done : false;
+  const bookmark = req.body.bookmark ? req.body.bookmark : false;
   const active = req.body.active ? req.body.active : true;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active})`;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active, bookmark) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active}, ${bookmark})`;
 
   try {
     const songbook = await client.query(insertQuery);
