@@ -13,6 +13,7 @@ App available under songbook-cvs.herokuapp.com/
 - title : char var
 - done : boollean
 - picUrl : var char
+- bookmark : boolean
 - id : primary key int
 
 Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`
