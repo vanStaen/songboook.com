@@ -1,0 +1,23 @@
+.book-loader {
+    height: 40vmin;
+    pointer-events: none;
+    border: 1px solid #333;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .book-loader {
+      animation: App-logo-spin infinite 5s linear;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

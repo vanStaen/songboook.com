@@ -2,7 +2,9 @@
 
 ## To-dos:
 
-- [ ] Initialise Project
-- [ ] Create Rest API
+- [ ] display entries rwo wise
 
 ## Completed ✓
+
+- [x] Create Rest API
+- [x] Create React App

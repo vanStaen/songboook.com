@@ -1,14 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import Book from './component/Book/Book'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://avatars0.githubusercontent.com/u/12551446" className="App-logo" alt="logo" />
-        <p>
-          Songbook
-        </p>
+        <Book />
       </header>
     </div>
   );

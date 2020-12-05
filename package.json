@@ -7,6 +7,7 @@
     "test": "test",
     "start": "node index.js",
     "start-client": "react-scripts start",
+    "devfr": "cd frontend/; npm start; cd ../;",
     "dev": "nodemon index",
     "version": "heroku --version; git --version",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
