@@ -6,7 +6,7 @@ App available under songbook-cvs.herokuapp.com/
 ## db
 
 - active : boolean
-- added : date
+- added : date (default now())
 - link : var char
 - rate : small int
 - tags : Array [char var]

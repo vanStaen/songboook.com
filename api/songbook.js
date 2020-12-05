@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET single data from watchlist (based on id)
+// GET single data from songbook (based on id)
 router.get("/:id", async (req, res) => {
   try {
     const songbook = await client.query('SELECT * FROM songbook WHERE id=' + req.params.id);
@@ -46,7 +46,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// DELETE single data from watchlist (based on id)
+// DELETE single data from songbook (based on id)
 router.delete("/:id", async (req, res) => {
   try {
     const songbook = await client.query('DELETE FROM songbook WHERE id=' + req.params.id);
@@ -60,38 +60,42 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-/* PATCH single data from watchlist (based on id)
+// PATCH single data from songbook(based on id)
 router.patch("/:id", async (req, res) => {
 
   let updateField = '';
-  if (req.body.done !== undefined) {
-    updateField = updateField + "done='" + req.body.done + "',";
-  }
-  if (req.body.bookmark !== undefined) {
-    updateField = updateField + "bookmark='" + req.body.bookmark + "',";
+
+  if (req.body.active !== undefined) {
+    updateField = updateField + "active=" + req.body.active + ",";
   }
   if (req.body.link) {
     updateField = updateField + "link='" + req.body.link + "',";
   }
-  if (req.body.active !== undefined) {
-    updateField = updateField + "active=" + req.body.active + ",";
+  if (req.body.rate !== undefined) {
+    updateField = updateField + "rate=" + req.body.rate + ",";
   }
   if (req.body.tags) {
     updateField = updateField + "tags= ARRAY ['" + req.body.tags.join("','") + "'],";
   }
-  if (req.body.rate !== undefined) {
-    updateField = updateField + "rate=" + req.body.rate + ",";
-  }
   if (req.body.title) {
     updateField = updateField + "title='" + req.body.title + "',";
+  }
+  if (req.body.done !== undefined) {
+    updateField = updateField + "done='" + req.body.done + "',";
+  }
+  if (req.body.picurl) {
+    updateField = updateField + "picurl='" + req.body.picurl + "',";
+  }
+  if (req.body.bookmark !== undefined) {
+    updateField = updateField + "bookmark='" + req.body.bookmark + "',";
   }
 
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
 
   try {
-    const watchlist = await client.query(updateQuery);
-    if (watchlist.rowCount > 0) {
+    const songbook = await client.query(updateQuery);
+    if (songbook.rowCount > 0) {
       res.status(200).json({
         success: `Entry #${req.params.id} has been updated.`,
       });
@@ -106,7 +110,7 @@ router.patch("/:id", async (req, res) => {
     });
   }
 
-}); */
+});
 
 // POST add to songbook
 router.post("/", async (req, res) => {
