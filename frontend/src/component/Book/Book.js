@@ -43,7 +43,10 @@ class Entries extends Component {
         const book = this.state.songbookPages.map(page => {
             return (
                 <div>
-                    {page.title}
+                    <a href={page.link} target="_blank">
+                        <img src={page.picurl} alt="upsi" width="300px"></img>
+                    </a>
+                    <p>{page.title}</p>
                 </div>);
         })
         return (
