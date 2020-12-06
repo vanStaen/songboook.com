@@ -4,8 +4,8 @@ import './Page.css'
 
 const Page = (props) => {
 
-    let title = props.page.title;
-    const howLongIsLong = 28;
+    let title = props.page.title.replace('-', '/').replace(/ /g, '');
+    const howLongIsLong = 25;
     const isLongTitle = title.length > howLongIsLong;
     title = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
 
