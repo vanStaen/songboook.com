@@ -1,0 +1,18 @@
+.Footer__Main {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #2B3131;
+    color: #ccc;
+    text-align: center;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #566262;
+  }
