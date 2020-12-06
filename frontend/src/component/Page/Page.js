@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Tooltip, Drawer, Divider } from 'antd';
 import { MenuUnfoldOutlined, } from '@ant-design/icons';
 
+import '../.././fonts/Dymo.ttf';
 import './Page.css'
 
 const Page = (props) => {

@@ -1,4 +1,8 @@
-@import url('http://fonts.cdnfonts.com/css/dymo');
+/* @import url('http://fonts.cdnfonts.com/css/dymo'); */
+@font-face {
+    font-family: 'Dymo';
+    src: local('Dymo'), url(../.././fonts/Dymo.ttf) format('truetype');
+  }
 
 .Page__main {
     width: 330px;
