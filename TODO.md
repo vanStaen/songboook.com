@@ -10,6 +10,7 @@
     - [x] Embed youtube video
 - [ ] Edit Tag feature
 - [ ] Edit title feature
+- [ ] Auto save db as Json (weekly?)
 
 ## Completed ✓
 

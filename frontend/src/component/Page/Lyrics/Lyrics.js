@@ -4,7 +4,7 @@ import { Tooltip, Drawer, Divider, Result } from 'antd';
 import { MenuUnfoldOutlined, } from '@ant-design/icons';
 
 const Lyrics = (props) => {
-    const [lyrics, setLyrics] = useState('Loading');
+    const [lyrics, setLyrics] = useState('Loading ...');
     const lyricsApiUrl = process.env.REACT_APP_LYRICS_API_URL + props.artist.replace(/ /g, "%20") + '/' + props.song.replace(/ /g, "%20") + '?apikey=' + process.env.REACT_APP_LYRICS_API_KEY;
 
     const loadLyrics = () => {
