@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import axios from 'axios';
-import { Tooltip, Drawer, Divider, Result } from 'antd';
-import { MenuUnfoldOutlined, } from '@ant-design/icons';
+import levenshtein from 'js-levenshtein';
 
 const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
@@ -17,12 +16,19 @@ const Lyrics = (props) => {
                 throw new Error("Error!");
             }
             const result = await response.data;
-            const resultLyrics = result.result.track.text;
+            const resultLyrics = result.result;
             return resultLyrics;
         }
         // fetch Entries
         fetchLyrics().then((resData) => {
-            setLyrics(resData);
+            const cleanedOriginalArtist = props.artist.toLowerCase().replace(/ /g, "");
+            const cleanFoundArtist = resData.artist.name.toLowerCase().replace(/ /g, "");
+            const sameArtist = levenshtein(cleanedOriginalArtist, cleanFoundArtist) < 2 ? true : false;
+            if (sameArtist && resData.similarity > 0.95) {
+                setLyrics(resData.track.text);
+            } else {
+                setLyrics('No lyrics found.');
+            }
         }
         ).catch(error => {
             setLyrics('No lyrics found.');
@@ -30,7 +36,9 @@ const Lyrics = (props) => {
         });
     };
 
-    loadLyrics();
+    if (lyrics == 'Loading ...') {
+        loadLyrics();
+    }
 
     return (
         <div style={{ whiteSpace: "pre-line" }}>

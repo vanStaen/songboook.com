@@ -28,12 +28,10 @@ const Page = (props) => {
         video = props.page.videourl.includes("youtube") ? `https://www.youtube.com/embed/${props.page.videourl.split('=')[1]}` : props.page.videourl;
     }
 
-
-
     return (
         <div className="Page__main">
-            <a href={props.page.link} target="_blank">
-                <img src={props.page.picurl} className="Page__artwork"></img>
+            <a href={props.page.link} target="_blank" rel="noopener noreferrer">
+                <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </a>
             <div className="Page__title">{titlePage}</div>
             <Tooltip title="Show text">
@@ -51,11 +49,9 @@ const Page = (props) => {
                 width="350"
             >
                 {props.page.videourl ?
-                    (<iframe width="300px" height="226px" src={video}></iframe>)
-                    : (<img src={props.page.picurl} className="Page-drawer__artwork"></img>)
+                    (<iframe width="300px" height="226px" src={video} title={`iframe_${props.page.id}`}></iframe>)
+                    : (<img src={props.page.picurl} className="Page-drawer__artwork" alt="pic_missing" ></img>)
                 }
-
-
                 <Divider orientation="left" plain>
                     <span className="Page-drawer__diviser">
                         Lyrics

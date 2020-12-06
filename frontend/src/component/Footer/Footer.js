@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
         <div className='Footer__Main'>
-            Songbook by <a href="http://www.clementvanstaen.com" target="_blank" >Clément van Staen</a>, 2020
+            Songbook by <a href="http://www.clementvanstaen.com" target="_blank" rel="noopener noreferrer">Clément van Staen</a>, 2020
         </div>
     )
 }
