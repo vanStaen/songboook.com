@@ -15,5 +15,12 @@ App available under songbook-cvs.herokuapp.com/
 - picUrl : var char
 - bookmark : boolean
 - id : primary key int
+- artist : var char
+- songname : var char
+- videourl : var char
 
 Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`
+
+## Lyrics API
+
+https://apiseeds.com/documentation/lyrics

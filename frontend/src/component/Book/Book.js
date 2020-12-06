@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Book.css';
 
-class Entries extends Component {
+class Book extends Component {
 
     state = {
         songbookPages: [],
@@ -42,7 +42,7 @@ class Entries extends Component {
     render() {
         const book = this.state.songbookPages.map(page => {
             return (
-                <div>
+                <div key={page.id}>
                     <Page page={page} />
                 </div>
             );
@@ -66,4 +66,4 @@ class Entries extends Component {
     }
 }
 
-export default Entries;
+export default Book;
