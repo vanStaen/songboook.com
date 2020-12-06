@@ -5,7 +5,8 @@
 - [ ] Show tags and lyrics
     - [ ] Create Drawer as separate component
     - [ ] Fetch lyrics from https://apiseeds.com/documentation/lyrics
-    - [ ] Create Tag omponent
+    - [ ] Create Tag component
+    - [ ] Create <3 component
 - [ ] Edit Tag feature
 - [ ] Edit title feature
 
