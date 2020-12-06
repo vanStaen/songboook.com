@@ -2,7 +2,7 @@
 
 ## To-dos:
 
-- [ ] display entries rwo wise
+- [ ] Display entries
 
 ## Completed ✓
 
