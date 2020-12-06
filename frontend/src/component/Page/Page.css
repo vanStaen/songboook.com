@@ -1,0 +1,41 @@
+@import url('http://fonts.cdnfonts.com/css/dymo');
+
+.Page__main {
+    width: 300px;
+    height: 330px;
+    background-color: white;
+    margin: 0px 15px 30px 15px;
+    font-size: 17px;
+    transform-style: preserve-3d;
+    text-transform: capitalize;
+    padding: 15px 15px 15px 15px;
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px #2B3131;
+}
+
+.Page__title {
+    font-family: 'Dymo', sans-serif;
+    position: fixed;
+    bottom: 7px;
+    width: 100%;
+    text-align: left;
+    font-size: 30px;
+    color: black;
+}
+
+.Page__artwork {
+    height: 300px;
+    width: 300px;
+}
+
+/*
+.Page__title_alternative {
+    background: black;
+    color:white;
+    display:inline;
+    font-family: courier;
+    padding:3px;
+    line-height:2em;
+    text-transform: uppercase;
+} 
+*/

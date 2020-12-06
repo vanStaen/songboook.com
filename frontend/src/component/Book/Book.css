@@ -21,3 +21,10 @@
       transform: rotate(360deg);
     }
   }
+
+.Book__main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+}

@@ -43,11 +43,9 @@ class Entries extends Component {
         const book = this.state.songbookPages.map(page => {
             return (
                 <div>
-                    <a href={page.link} target="_blank">
-                        <img src={page.picurl} alt="upsi" width="300px"></img>
-                    </a>
-                    <p>{page.title}</p>
-                </div>);
+                    <Page page={page} />
+                </div>
+            );
         })
         return (
             <div style={{ margin: 30 }}>
@@ -58,7 +56,7 @@ class Entries extends Component {
                         <div style={{ fontSize: 18 }}>Loading ... </div>
                     </div>
                     :
-                    (<div>
+                    (<div className="Book__main">
                         {book}
                     </div>)
                 }
