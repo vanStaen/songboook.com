@@ -1,8 +1,8 @@
 @import url('http://fonts.cdnfonts.com/css/dymo');
 
 .Page__main {
-    width: 300px;
-    height: 330px;
+    width: 330px;
+    height: 360px;
     background-color: white;
     margin: 0px 15px 30px 15px;
     font-size: 17px;
@@ -16,7 +16,7 @@
 .Page__title {
     font-family: 'Dymo', sans-serif;
     position: fixed;
-    bottom: 7px;
+    bottom: 0px;
     width: 100%;
     text-align: left;
     font-size: 30px;
@@ -27,6 +27,29 @@
     height: 300px;
     width: 300px;
 }
+
+.Page__actionicon {
+    position: fixed;
+    bottom: 10px;
+    right: 12px;
+    color: black;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.Page__drawer {
+    opacity: 0.95;
+}
+
+.Page-drawer__artwork{
+    width: 100%;
+}
+
+.Page-drawer__diviser{
+    font-size: 12px;
+    color: #999;
+}
+
 
 /*
 .Page__title_alternative {

@@ -3,7 +3,7 @@
   "name": "Songbook",
   "icons": [
     {
-      "src": "avatar.ico",
+      "src": "favicon.ico",
       "sizes": "127x127",
       "type": "image/x-icon"
     },
