@@ -55,18 +55,19 @@ const Page = (props) => {
                     : (<img src={props.page.picurl} className="Page-drawer__artwork"></img>)
                 }
 
-                <Divider orientation="left" plain>
-                    <span className="Page-drawer__diviser">
-                        Tags
-                    </span>
-                </Divider>
-                <p>{props.page.tags}</p>
+
                 <Divider orientation="left" plain>
                     <span className="Page-drawer__diviser">
                         Lyrics
                     </span>
                 </Divider>
                 <Lyrics artist={props.page.artist} song={props.page.song} />
+                <Divider orientation="left" plain>
+                    <span className="Page-drawer__diviser">
+                        Tags
+                    </span>
+                </Divider>
+                <p>{props.page.tags}</p>
             </Drawer>
         </div>
     );
