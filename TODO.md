@@ -5,6 +5,7 @@
 - [ ] Show tags and lyrics
     - [ ] Create Drawer as separate component
     - [x] Fetch lyrics from https://apiseeds.com/documentation/lyrics
+    - [ ] If lyrics api return nothingm scrap google
     - [ ] Create Tag component
     - [ ] Create <3 component
     - [x] Embed youtube video

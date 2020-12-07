@@ -23,10 +23,12 @@ const Lyrics = (props) => {
         fetchLyrics().then((resData) => {
             const cleanedOriginalArtist = props.artist.toLowerCase().replace(/ /g, "");
             const cleanFoundArtist = resData.artist.name.toLowerCase().replace(/ /g, "");
-            const sameArtist = levenshtein(cleanedOriginalArtist, cleanFoundArtist) < 2 ? true : false;
-            if (sameArtist && resData.similarity > 0.95) {
+            const sameArtist = levenshtein(cleanedOriginalArtist, cleanFoundArtist) < 5 ? true : false;
+            if (sameArtist && resData.similarity > 0.9) {
                 setLyrics(resData.track.text);
             } else {
+                console.log('levenshtein:', cleanedOriginalArtist, cleanFoundArtist, levenshtein(cleanedOriginalArtist, cleanFoundArtist))
+                console.log('similarity:', resData.similarity);
                 setLyrics('No lyrics found.');
             }
         }

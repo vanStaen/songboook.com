@@ -27,6 +27,26 @@
     color: black;
 }
 
+.Page__notab {
+    position: fixed;
+    height: 300px;
+    width: 300px;
+}
+
+.Page__notab-text{
+    margin-top: 125px;
+    color: #fff;
+    font-family: 'Dymo', sans-serif;
+    font-size: 35px;
+    z-index: 6;
+}
+
+.Page__notab-background{
+    background-color: #000;
+    opacity: 0.33;
+    z-index: 5;
+}
+
 .Page__artwork {
     height: 300px;
     width: 300px;

@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Tooltip, Drawer, Divider } from 'antd';
-import { MenuUnfoldOutlined, } from '@ant-design/icons';
+import { MenuUnfoldOutlined, LinkOutlined } from '@ant-design/icons';
 import Lyrics from './Lyrics/Lyrics';
 import Piano from './Piano/Piano';
 import Favorite from './Favorite/Favorite';
@@ -32,6 +32,16 @@ const Page = (props) => {
 
     return (
         <div className="Page__main">
+
+            {props.page.link === "null" &&
+                (<div className="PAge___notab_main">
+                    <div className="Page__notab Page__notab-text">
+                        TABS MISSING
+                </div>
+                    <div className="Page__notab Page__notab-background">
+                    </div>
+                </div>)}
+
             <a href={props.page.link} target="_blank" rel="noopener noreferrer">
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </a>
