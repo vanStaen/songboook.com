@@ -4,7 +4,7 @@
 
 - [ ] Show tags and lyrics
     - [ ] Create Drawer as separate component
-    - [ ] Fetch lyrics from https://apiseeds.com/documentation/lyrics
+    - [x] Fetch lyrics from https://apiseeds.com/documentation/lyrics
     - [ ] Create Tag component
     - [ ] Create <3 component
     - [x] Embed youtube video
