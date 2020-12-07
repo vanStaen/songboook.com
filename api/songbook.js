@@ -19,7 +19,7 @@ client.connect(err => {
 // GET all data from watchlist
 router.get("/", async (req, res) => {
   try {
-    const songbook = await client.query('SELECT * FROM songbook ORDER BY done ASC, id ASC;');
+    const songbook = await client.query('SELECT * FROM songbook ORDER BY artist ASC, id ASC;');
     res.status(201).json(songbook.rows);
   } catch (err) {
     res.status(400).json({
@@ -80,9 +80,6 @@ router.patch("/:id", async (req, res) => {
   if (req.body.title) {
     updateField = updateField + "title='" + req.body.title + "',";
   }
-  if (req.body.done !== undefined) {
-    updateField = updateField + "done='" + req.body.done + "',";
-  }
   if (req.body.picurl) {
     updateField = updateField + "picurl='" + req.body.picurl + "',";
   }
@@ -139,13 +136,12 @@ router.post("/", async (req, res) => {
   const title = req.body.title ? req.body.title : artist + '-' + song;
   const picurl = req.body.picurl ? req.body.picurl : "null";
   const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : "null";
-  const done = req.body.done ? req.body.done : false;
   const bookmark = req.body.bookmark ? req.body.bookmark : false;
   const active = req.body.active ? req.body.active : true;
   const videourl = req.body.videourl ? req.body.videourl : "null";
   const piano = req.body.piano ? req.body.piano : false;
   const favorite = req.body.favorite ? req.body.favorite : false;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite}))`;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite}))`;
 
   try {
     const songbook = await client.query(insertQuery);

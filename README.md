@@ -11,7 +11,6 @@ App available under songbook-cvs.herokuapp.com/
 - favorite : boolean
 - tags : Array [char var]
 - title : char var
-- done : boollean
 - picUrl : var char
 - bookmark : boolean
 - id : primary key int
