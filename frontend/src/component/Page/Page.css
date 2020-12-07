@@ -34,11 +34,12 @@
 }
 
 .Page__notab-text{
-    margin-top: 125px;
+    margin-top: 140px;
     color: #fff;
     font-family: 'Dymo', sans-serif;
     font-size: 35px;
     z-index: 6;
+    line-height: 0.8;
 }
 
 .Page__notab-background{

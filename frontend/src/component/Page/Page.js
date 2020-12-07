@@ -1,7 +1,7 @@
 import { React, useState } from "react";
-import { Tooltip, Drawer, Divider } from 'antd';
-import { MenuUnfoldOutlined, LinkOutlined } from '@ant-design/icons';
-import Lyrics from './Lyrics/Lyrics';
+import { Tooltip } from 'antd';
+import { MenuUnfoldOutlined } from '@ant-design/icons';
+import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Favorite from './Favorite/Favorite';
 
@@ -9,13 +9,18 @@ import '../.././fonts/Dymo.ttf';
 import './Page.css'
 
 const Page = (props) => {
-    const [visible, setVisible] = useState(false);
+    const [drawerVisible, setDrawerVisible] = useState(false);
+    const [tabsMissing, setTabsMissing] = useState(props.page.link === "null" ? true : false);
+    const [tagsMissing, setTagsMissing] = useState(props.page.tags === null ? true : false);
+    const [videoMissing, setVideoMissing] = useState(props.page.videourl === "null" ? true : false);
+    const [picMissing, setPicMissing] = useState(props.page.picurl === "null" ? true : false);
+    const [missing, setMissing] = useState((tabsMissing || tagsMissing || videoMissing || picMissing) ? true : false);
 
-    const showDrawer = () => {
-        setVisible(true);
+    const handlerOpenDrawer = () => {
+        setDrawerVisible(true);
     };
-    const onClose = () => {
-        setVisible(false);
+    const handlerCloseDrawer = () => {
+        setDrawerVisible(false);
     };
 
     const title = props.page.title.replace('-', '/').replace(/ /g, '');
@@ -25,19 +30,34 @@ const Page = (props) => {
     const artist = props.page.artist;
     const song = props.page.song.toUpperCase();
 
-    let video = '';
-    if (props.page.videourl) {
-        video = props.page.videourl.includes("youtube") ? `https://www.youtube.com/embed/${props.page.videourl.split('=')[1]}` : props.page.videourl;
+    let missingText = [];
+    if (missing) {
+        if (tabsMissing === true) {
+            missingText.push("TABS MISSING");
+        }
+        if (tagsMissing === true) {
+            missingText.push("HASHTAGS MISSING");
+        }
+        if (videoMissing === true) {
+            missingText.push("VIDEO MISSING");
+        }
+        if (picMissing === true) {
+            missingText.push("PICTURE MISSING");
+        }
     }
+
+    const missingTextFormated = missingText.map(text => {
+        return (<>{text} <br /></>)
+    });
 
     return (
         <div className="Page__main">
 
-            {props.page.link === "null" &&
+            { missing &&
                 (<div className="PAge___notab_main">
                     <div className="Page__notab Page__notab-text">
-                        TABS MISSING
-                </div>
+                        {missingTextFormated}
+                    </div>
                     <div className="Page__notab Page__notab-background">
                     </div>
                 </div>)}
@@ -54,36 +74,16 @@ const Page = (props) => {
 
             <Tooltip title="Show more">
                 <div className="Page__actionicon">
-                    <MenuUnfoldOutlined onClick={showDrawer} />
+                    <MenuUnfoldOutlined onClick={handlerOpenDrawer} />
                 </div>
             </Tooltip>
 
-            <Drawer
-                title={song}
-                placement="right"
-                closable={true}
-                onClose={onClose}
-                visible={visible}
-                className="Page__drawer"
-                width="350"
-            >
-                {props.page.videourl ?
-                    (<iframe width="300px" height="226px" src={video} title={`iframe_${props.page.id}`}></iframe>)
-                    : (<img src={props.page.picurl} className="Page-drawer__artwork" alt="pic_missing" ></img>)
-                }
-                <Divider orientation="left" plain>
-                    <span className="Page-drawer__diviser">
-                        Lyrics
-                    </span>
-                </Divider>
-                <Lyrics artist={props.page.artist} song={props.page.song} />
-                <Divider orientation="left" plain>
-                    <span className="Page-drawer__diviser">
-                        Tags
-                    </span>
-                </Divider>
-                <p>{props.page.tags}</p>
-            </Drawer>
+            <InfoDrawer
+                page={props.page}
+                handlerCloseDrawer={handlerCloseDrawer}
+                drawerVisible={drawerVisible}
+            />
+
 
         </div>
     );

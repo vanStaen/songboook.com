@@ -38,7 +38,7 @@ const Lyrics = (props) => {
         });
     };
 
-    if (lyrics == 'Loading ...') {
+    if (lyrics === 'Loading ...') {
         loadLyrics();
     }
 

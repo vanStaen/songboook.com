@@ -130,15 +130,15 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least an 'artist' name, and a 'song' name to create a new entry.` });
   }
 
-  const link = req.body.link ? req.body.link : "null";
   const artist = req.body.artist;
   const song = req.body.song;
+  const picurl = req.body.picurl ? req.body.picurl : null;
+  const link = req.body.link ? req.body.link : null;
   const title = req.body.title ? req.body.title : artist + '-' + song;
-  const picurl = req.body.picurl ? req.body.picurl : "null";
-  const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : "null";
+  const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : null;
   const bookmark = req.body.bookmark ? req.body.bookmark : false;
   const active = req.body.active ? req.body.active : true;
-  const videourl = req.body.videourl ? req.body.videourl : "null";
+  const videourl = req.body.videourl ? req.body.videourl : null;
   const piano = req.body.piano ? req.body.piano : false;
   const favorite = req.body.favorite ? req.body.favorite : false;
   const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite})`;
