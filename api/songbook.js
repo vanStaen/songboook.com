@@ -19,7 +19,7 @@ client.connect(err => {
 // GET all data from watchlist
 router.get("/", async (req, res) => {
   try {
-    const songbook = await client.query('SELECT * FROM songbook ORDER BY id ASC;');
+    const songbook = await client.query('SELECT * FROM songbook ORDER BY artist ASC;');
     res.status(201).json(songbook.rows);
   } catch (err) {
     res.status(400).json({
