@@ -98,6 +98,10 @@ router.patch("/:id", async (req, res) => {
   if (req.body.song) {
     updateField = updateField + "song='" + req.body.song + "',";
   }
+  if (req.body.piano !== undefined) {
+    updateField = updateField + "piano='" + req.body.piano + "',";
+  }
+
 
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
@@ -125,21 +129,22 @@ router.patch("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
 
   // Title and Link are Mandatory
-  if (!req.body.link || !req.body.artist || !req.body.song) {
-    return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least a 'link', an 'artist', and a 'song' name to create a new entry.` });
+  if (!req.body.artist || !req.body.song) {
+    return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least an 'artist' name, and a 'song' name to create a new entry.` });
   }
 
-  const link = req.body.link;
-  const artist = req.body.active;
-  const song = req.body.active;
+  const link = req.body.link ? req.body.link : "null";
+  const artist = req.body.artist;
+  const song = req.body.song;
   const title = req.body.title ? req.body.title : artist + '-' + song;
   const picurl = req.body.picurl ? req.body.picurl : "null";
   const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : "null";
   const done = req.body.done ? req.body.done : false;
   const bookmark = req.body.bookmark ? req.body.bookmark : false;
   const active = req.body.active ? req.body.active : true;
-  const videourl = req.body.videourl ? req.body.active : "null";
-  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active, bookmark, artist, song, videourl) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}')`;
+  const videourl = req.body.videourl ? req.body.videourl : "null";
+  const piano = req.body.piano ? req.body.piano : false;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, done, picurl, active, bookmark, artist, song, videourl, piano) VALUES ('${title}', '${link}', ${tags}, ${done}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano})`;
 
   try {
     const songbook = await client.query(insertQuery);
