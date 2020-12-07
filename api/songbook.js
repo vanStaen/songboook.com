@@ -19,7 +19,7 @@ client.connect(err => {
 // GET all data from watchlist
 router.get("/", async (req, res) => {
   try {
-    const songbook = await client.query('SELECT * FROM songbook ORDER BY artist ASC;');
+    const songbook = await client.query('SELECT * FROM songbook ORDER BY id ASC;');
     res.status(201).json(songbook.rows);
   } catch (err) {
     res.status(400).json({
@@ -141,7 +141,7 @@ router.post("/", async (req, res) => {
   const videourl = req.body.videourl ? req.body.videourl : "null";
   const piano = req.body.piano ? req.body.piano : false;
   const favorite = req.body.favorite ? req.body.favorite : false;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite}))`;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite})`;
 
   try {
     const songbook = await client.query(insertQuery);

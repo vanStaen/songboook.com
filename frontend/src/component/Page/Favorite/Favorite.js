@@ -18,13 +18,11 @@ const Favorite = props => {
         <div className="favorite" id="favorite">
             {front ?
                 (isFavorite &&
-                    (<Tooltip placement="bottomRight" title="Marked as fav'!">
-                        <img
-                            className="favorite__img"
-                            src={favorite}
-                            alt={favorite}>
-                        </img>
-                    </Tooltip>)
+                    (<img
+                        className="favorite__img"
+                        src={favorite}
+                        alt={favorite}>
+                    </img>)
                 )
                 :
                 (isFavorite ?
