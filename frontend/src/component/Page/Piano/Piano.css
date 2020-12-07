@@ -1,19 +1,17 @@
 .piano {
-    position: fixed;
-      z-index: 10;
-      right: 5px;
-      top: 5px;
-    }
+  border: 0px solid blue;
+}
   
-  .piano__img {
-    width: 30px;
-  }
+.piano__img {
+  width: 30px;
+  opacity: 0.95;
+}
   
-  .grey {
-    filter: grayscale(100%) opacity(50%);
-  }
+.grey {
+  filter: grayscale(100%) opacity(50%);
+}
   
-  .clickable {
-    cursor: pointer;
-  }
+.clickable {
+  cursor: pointer;
+}
   

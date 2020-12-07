@@ -32,6 +32,13 @@
     width: 300px;
 }
 
+.Page__icons {
+    position: fixed;
+    z-index: 10;
+    right: 5px;
+    top: 5px;
+}
+
 .Page__actionicon {
     position: fixed;
     bottom: 10px;

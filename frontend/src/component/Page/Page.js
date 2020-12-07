@@ -3,6 +3,7 @@ import { Tooltip, Drawer, Divider } from 'antd';
 import { MenuUnfoldOutlined, } from '@ant-design/icons';
 import Lyrics from './Lyrics/Lyrics';
 import Piano from './Piano/Piano';
+import Favorite from './Favorite/Favorite';
 
 import '../.././fonts/Dymo.ttf';
 import './Page.css'
@@ -35,7 +36,12 @@ const Page = (props) => {
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </a>
             <div className="Page__title">{titlePage}</div>
-            <Piano front={true} isPiano={props.page.piano} />
+
+            <div className="Page__icons">
+                <Piano front={true} isPiano={props.page.piano} />
+                <Favorite front={true} favorite={props.page.favorite} />
+            </div>
+
             <Tooltip title="Show more">
                 <div className="Page__actionicon">
                     <MenuUnfoldOutlined onClick={showDrawer} />

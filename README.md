@@ -8,7 +8,7 @@ App available under songbook-cvs.herokuapp.com/
 - active : boolean
 - added : date (default now())
 - link : var char
-- rate : small int
+- favorite : boolean
 - tags : Array [char var]
 - title : char var
 - done : boollean
