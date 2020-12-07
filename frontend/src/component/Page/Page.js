@@ -17,7 +17,7 @@ const Page = (props) => {
     };
 
     const title = props.page.title.replace('-', '/').replace(/ /g, '');
-    const howLongIsLong = 24;
+    const howLongIsLong = 23;
     const isLongTitle = title.length > howLongIsLong;
     const titlePage = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
     const artist = props.page.artist;
@@ -34,7 +34,7 @@ const Page = (props) => {
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </a>
             <div className="Page__title">{titlePage}</div>
-            <Tooltip title="Show text">
+            <Tooltip title="Show more">
                 <div className="Page__actionicon">
                     <MenuUnfoldOutlined onClick={showDrawer} />
                 </div>
