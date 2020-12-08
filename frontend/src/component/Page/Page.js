@@ -80,7 +80,7 @@ const Page = (props) => {
             </div>
 
             <div className="Page__actionicon">
-                <CheckAdd isVisitor={false} check={props.page.check} id={props.page.id} />
+                <CheckAdd isVisitor={false} checked={props.page.checked} id={props.page.id} />
             </div>
 
             <InfoDrawer

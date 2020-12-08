@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
@@ -7,16 +7,40 @@ import './CheckAdd.css';
 
 const CheckAdd = props => {
 
-    const isCheck = props.check;
+    const [isChecked, setIsChecked] = useState(props.checked);
     const isVisitor = props.isVisitor;
 
+    const patchCheck = (value) => {
+        async function patchEntry(value) {
+            const response = await axios({
+                url: process.env.REACT_APP_API_URL + '/' + props.id,
+                method: 'PATCH',
+                data: { 'checked': value }
+            });
+            if ((response.status !== 200) & (response.status !== 201)) {
+                throw new Error("Error!");
+            }
+            const patchResult = await response.data;
+            return patchResult;
+        }
+        // fetch Entries
+        patchEntry(value).then((resData) => {
+            const patchResult = resData;
+            //console.log("Sucess", patchResult);
+        }
+        ).catch(error => {
+            console.log("error", error.message);
+        });
+    }
+
     const handlerMarkAsChecked = (value) => {
-        console.log('click', value)
+        patchCheck(value);
+        setIsChecked(value);
     }
 
     return (
         <div className="CheckAdd" id="checkAdd">
-            {isCheck ?
+            {isChecked ?
                 (<Tooltip placement="top" title="Click to mark this song as unknown.">
                     <CheckOutlined
                         onClick={() => handlerMarkAsChecked(false)}
@@ -40,28 +64,6 @@ export default CheckAdd
 
 /*
 
- const patchBookmark = (value) => {
-        async function patchEntry(value) {
-            const response = await axios({
-                url: process.env.REACT_APP_API_URL + '/' + props.id,
-                method: 'PATCH',
-                data: { 'bookmark': value }
-            });
-            if ((response.status !== 200) & (response.status !== 201)) {
-                throw new Error("Error!");
-            }
-            const patchResult = await response.data;
-            return patchResult;
-        }
-        // fetch Entries
-        patchEntry(value).then((resData) => {
-            const patchResult = resData;
-            console.log("Sucess", patchResult);
-        }
-        ).catch(error => {
-            console.log("error", error.message);
-        });
-    }
 
 
     const handlerBookmarking = (value) => {
