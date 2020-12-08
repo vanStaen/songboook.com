@@ -1,6 +1,6 @@
 import { React } from 'react';
 import bookmark from './bookmark.png'
-import { Tooltip, notification } from 'antd';
+import { Tooltip } from 'antd';
 import axios from 'axios';
 
 import './Bookmark.css';
@@ -30,21 +30,9 @@ const Bookmark = props => {
         });
     }
 
-
     const handlerBookmarking = (value) => {
         props.setIsBookmarked(value);
         patchBookmark(value);
-
-        const messageTitle = value ? 'Bookmarked!' : 'Bookmarked deleted';
-        const messageText = value ? 'will appears with a bookmark from now on.' : 'is not bookmarked anymore';
-
-        notification.success({
-            message: messageTitle,
-            description:
-                `Songbook entry #${props.id} ${messageText}.`,
-            placement: "bottomRight",
-        });
-
     }
 
     const bookmarked = props.isBookmarked;
