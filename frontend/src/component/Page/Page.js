@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Tooltip } from 'antd';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import InfoDrawer from './InfoDrawer/InfoDrawer';
@@ -17,6 +17,11 @@ const Page = (props) => {
     const [picMissing, setPicMissing] = useState(props.page.picurl === "null" ? true : false);
     const [missing, setMissing] = useState((tabsMissing || tagsMissing || videoMissing || picMissing) ? true : false);
 
+    useEffect(() => {
+        setMissing((tabsMissing || tagsMissing || videoMissing || picMissing) ? true : false);
+    }, [tabsMissing, tagsMissing, videoMissing, picMissing])
+
+
     const handlerOpenDrawer = () => {
         setDrawerVisible(true);
     };
@@ -29,33 +34,35 @@ const Page = (props) => {
     const isLongTitle = title.length > howLongIsLong;
     const titlePage = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
 
-    let missingText = [];
-    if (missing) {
-        if (tabsMissing === true) {
-            missingText.push("TABS MISSING");
-        }
-        if (tagsMissing === true) {
-            missingText.push("HASHTAGS MISSING");
-        }
-        if (videoMissing === true) {
-            missingText.push("VIDEO MISSING");
-        }
-        if (picMissing === true) {
-            missingText.push("PICTURE MISSING");
+    const textForMissing = () => {
+        let missingText = [];
+        if (missing) {
+            if (tabsMissing === true) {
+                missingText.push("TABS MISSING");
+            }
+            if (tagsMissing === true) {
+                missingText.push("HASHTAGS MISSING");
+            }
+            if (videoMissing === true) {
+                missingText.push("VIDEO MISSING");
+            }
+            if (picMissing === true) {
+                missingText.push("PICTURE MISSING");
+            }
+            const missingTextFormated = missingText.map((text, index) => {
+                return (<div key={index} >{text} <br /></div>)
+            });
+            return missingTextFormated;
         }
     }
 
-    const missingTextFormated = missingText.map(text => {
-        return (<>{text} <br /></>)
-    });
-
     return (
-        <div className="Page__main">
+        <div className="Page__main" key={props.page.id}>
 
             { missing &&
-                (<div className="Page___notab_main">
-                    <div className="Page__notab Page__notab-text">
-                        {missingTextFormated}
+                (<div className="Page__notab" onClick={handlerOpenDrawer}>
+                    <div className="Page__notab-text">
+                        {textForMissing()}
                     </div>
                     <div className="Page__notab Page__notab-background">
                     </div>
@@ -64,6 +71,7 @@ const Page = (props) => {
             <a href={props.page.link} target="_blank" rel="noopener noreferrer">
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </a>
+
             <div className="Page__title">{titlePage}</div>
 
             <div className="Page__icons">

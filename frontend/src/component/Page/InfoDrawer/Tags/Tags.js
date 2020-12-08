@@ -39,12 +39,12 @@ const Tags = props => {
     const handlerDeleteTag = (deleteTagIndex) => {
         let oldTags = tags;
         oldTags.splice(deleteTagIndex, 1);
-        if (oldTags.length === 0) {
-            props.setTagsMissing(true);
-            patchTagsInDB("null");
-        } else {
-            patchTagsInDB(oldTags);
-        }
+        //if (oldTags.length === 0) {
+        //    props.setTagsMissing(true);
+        //    patchTagsInDB("null");
+        //} else {
+        //    patchTagsInDB(oldTags);
+        //}
         setTags(oldTags);
     }
 
@@ -92,6 +92,7 @@ const Tags = props => {
         setInputVisible(false);
         setEditInputIndex(-1)
         setEditInputValue('');
+        props.setTagsMissing(false);
     };
 
     const handleInputCancel = () => {

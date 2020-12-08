@@ -5,7 +5,6 @@
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Auto save db as Json (weekly?)
-- [ ] Handle "isMissing" state when handling missing link/Tag/video/pic
 - [ ] Pause youtube when exiting drawer.
 
 ## Completed ✓
@@ -21,3 +20,4 @@
     - [x] Embed youtube video
 - [x] Edit Tag feature
 - [x] Create Piano/Bass tag
+- [x] Handle "isMissing" state with userEffect.
