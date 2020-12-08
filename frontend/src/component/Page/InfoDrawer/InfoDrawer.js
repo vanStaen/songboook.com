@@ -1,9 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import YouTube from 'react-youtube';
 import { Drawer, Divider } from 'antd';
 import Tags from './Tags/Tags'
-import { LinkOutlined } from '@ant-design/icons';
-import Lyrics from '../Lyrics/Lyrics';
+import Lyrics from './Lyrics/Lyrics';
+import Links from './Links/Links';
 
 const cElement = null;
 
@@ -36,12 +36,25 @@ const InfoDrawer = (props) => {
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">
                     Tags
-                    </span>
+                </span>
             </Divider>
             <Tags
                 tags={props.page.tags}
                 id={props.page.id}
-                setTagsMissing={props.setTagsMissing} />
+                setTagsMissing={props.setTagsMissing}
+            />
+
+            <Divider />
+            <Links
+                tabs={props.page.link}
+                video={props.page.videourl}
+                pic={props.page.picurl}
+                id={props.page.id}
+                setTabsMissing={props.setTabsMissing}
+                setVideoMissing={props.setVideoMissing}
+                setPicMissing={props.setPicMissing}
+            />
+
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">
                     Lyrics
