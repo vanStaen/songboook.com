@@ -4,6 +4,8 @@
 
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
+- [ ] Edit Links feature
+- [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 
