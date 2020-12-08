@@ -3,9 +3,9 @@ import favorite from './favorite.png'
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
-import './Favorite.css';
+import './CheckAdd.css';
 
-const Favorite = props => {
+const CheckAdd = props => {
 
     const isFavorite = props.favorite;
     const front = props.front;
@@ -49,7 +49,7 @@ const Favorite = props => {
     )
 }
 
-export default Favorite
+export default CheckAdd
 
 
 /*

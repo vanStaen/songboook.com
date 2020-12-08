@@ -2,13 +2,19 @@
 
 ## To-dos:
 
+- [ ] Check button instead of favorite
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Edit Links feature
 - [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
-
+- [ ] User handling
+    - [ ] Auth feature
+    - [ ] Add userid to database songs
+    - [ ] Router to shoe songbook of user
+    - [ ] If visiting user, show CheckAdd as "add"
+ 
 ## Completed ✓
 
 - [x] Create Rest API

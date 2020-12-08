@@ -4,7 +4,7 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
-import Favorite from './Favorite/Favorite';
+import CheckAdd from './CheckAdd/CheckAdd';
 
 import '../.././fonts/Dymo.ttf';
 import './Page.css'
@@ -77,11 +77,11 @@ const Page = (props) => {
             <div className="Page__icons">
                 <Piano front={true} isPiano={props.page.piano} />
                 <Bass front={true} isBass={props.page.bass} />
-                <Favorite front={true} favorite={props.page.favorite} />
             </div>
 
             <Tooltip title="Show more">
                 <div className="Page__actionicon">
+                    {/*<CheckAdd front={true} favorite={props.page.favorite} /> */}
                     <MenuUnfoldOutlined onClick={handlerOpenDrawer} />
                 </div>
             </Tooltip>

@@ -71,8 +71,8 @@ router.patch("/:id", async (req, res) => {
   if (req.body.link) {
     updateField = updateField + "link='" + req.body.link + "',";
   }
-  if (req.body.favorite !== undefined) {
-    updateField = updateField + "favorite=" + req.body.favorite + ",";
+  if (req.body.check !== undefined) {
+    updateField = updateField + "check=" + req.body.check + ",";
   }
   if (req.body.tags) {
     updateField = updateField + "tags= ARRAY ['" + req.body.tags.join("','") + "'],";
@@ -144,8 +144,8 @@ router.post("/", async (req, res) => {
   const videourl = req.body.videourl ? req.body.videourl : null;
   const piano = req.body.piano ? req.body.piano : false;
   const bass = req.body.bass ? req.body.bass : false;
-  const favorite = req.body.favorite ? req.body.favorite : false;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite, bass) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite}, ${bass})`;
+  const check = req.body.check ? req.body.check : false;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, check, bass) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${check}, ${bass})`;
 
   try {
     const songbook = await client.query(insertQuery);
