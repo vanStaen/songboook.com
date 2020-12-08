@@ -1,0 +1,40 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    vertical-align: middle; 
+    padding: 0px 0px;
+    width: 100%;
+  }
+
+.tag-input {
+    margin: 4px;
+    background: #fff;
+    color: #333;
+    border-color: #333;
+    border-style: dashed;
+    padding-bottom: 2px;
+    width: 78px;
+    height: 22px;
+    font-size: 12px;
+  }
+  
+.ant-tag {
+    margin: 3.5px 3px;
+  }
+
+
+.site-tag-plus {
+    background: #333;
+    color: #fff;
+    border-style: dashed;
+    border-color: #333;
+  }
+
+.edit-tag {
+    color: #333;
+    border-color: #333;
+    user-select: none;
+    text-transform: capitalize;
+  }
+  

@@ -27,8 +27,6 @@ const Page = (props) => {
     const howLongIsLong = 23;
     const isLongTitle = title.length > howLongIsLong;
     const titlePage = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
-    const artist = props.page.artist;
-    const song = props.page.song.toUpperCase();
 
     let missingText = [];
     if (missing) {
@@ -82,6 +80,10 @@ const Page = (props) => {
                 page={props.page}
                 handlerCloseDrawer={handlerCloseDrawer}
                 drawerVisible={drawerVisible}
+                setTabsMissing={setTabsMissing}
+                setTagsMissing={setTagsMissing}
+                setVideoMissing={setVideoMissing}
+                setPicMissing={setPicMissing}
             />
 
 
