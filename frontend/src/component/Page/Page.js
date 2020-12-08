@@ -68,9 +68,9 @@ const Page = (props) => {
                     </div>
                 </div>)}
 
-            <a href={props.page.link} target="_blank" rel="noopener noreferrer">
+            <div className="Page__opendrawer" handlerOpenDrawer onClick={handlerOpenDrawer}>
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
-            </a>
+            </div>
 
             <div className="Page__title">{titlePage}</div>
 
@@ -79,12 +79,9 @@ const Page = (props) => {
                 <Bass front={true} isBass={props.page.bass} />
             </div>
 
-            <Tooltip title="Show more">
-                <div className="Page__actionicon">
-                    {/*<CheckAdd front={true} favorite={props.page.favorite} /> */}
-                    <MenuUnfoldOutlined onClick={handlerOpenDrawer} />
-                </div>
-            </Tooltip>
+            <div className="Page__actionicon">
+                <CheckAdd isVisitor={false} check={props.page.check} id={props.page.id} />
+            </div>
 
             <InfoDrawer
                 page={props.page}

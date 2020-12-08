@@ -1,11 +1,15 @@
-.favorite {
+.CheckAdd {
+  position: relative;
+  bottom: 0px;
+  right: -3px;
   border: 0px solid blue;
 }
   
-.favorite__img {
+.CheckAdd__ico {
   width: 27px;
   opacity: 0.85;
-  filter: saturate(5);
+  color: green;
+  filter: saturate(2) brightness(0.75);
 }
   
 .grey {

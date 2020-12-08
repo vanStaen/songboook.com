@@ -33,6 +33,10 @@
     height: 300px;
 }
 
+.Page__opendrawer {
+    cursor: pointer;
+}
+
 .Page__notab-text{
     position: relative;
     width: 300px;

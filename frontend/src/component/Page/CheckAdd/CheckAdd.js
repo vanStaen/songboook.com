@@ -1,5 +1,5 @@
 import { React } from 'react';
-import favorite from './favorite.png'
+import { CheckOutlined } from '@ant-design/icons';
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
@@ -7,43 +7,29 @@ import './CheckAdd.css';
 
 const CheckAdd = props => {
 
-    const isFavorite = props.favorite;
-    const front = props.front;
+    const isCheck = props.check;
+    const isVisitor = props.isVisitor;
 
-    const handlerMarkAsPIano = (value) => {
+    const handlerMarkAsChecked = (value) => {
         console.log('click', value)
     }
 
     return (
-        <div className="favorite" id="favorite">
-            {front ?
-                (isFavorite &&
-                    (<img
-                        className="favorite__img"
-                        src={favorite}
-                        alt={favorite}>
-                    </img>)
-                )
+        <div className="CheckAdd" id="checkAdd">
+            {isCheck ?
+                (<Tooltip placement="top" title="Click to mark this song as unknown.">
+                    <CheckOutlined
+                        onClick={() => handlerMarkAsChecked(false)}
+                        className="CheckAdd__ico clickable"
+                    />
+                </Tooltip>)
                 :
-                (isFavorite ?
-                    (<Tooltip placement="right" title="Mehhhhh ...">
-                        <img
-                            onClick={() => handlerMarkAsPIano(false)}
-                            className="piano__img clickable"
-                            src={favorite}
-                            alt={favorite}>
-                        </img>
-                    </Tooltip>)
-                    :
-                    (<Tooltip placement="right" title="I absolutely LOVE this!">
-                        <img
-                            onClick={() => handlerMarkAsPIano(true)}
-                            className="favorite__img clickable grey"
-                            src={favorite}
-                            alt={favorite}>
-                        </img>
-                    </Tooltip>)
-                )
+                (<Tooltip placement="top" title="Click to mark this song as known.">
+                    <CheckOutlined
+                        onClick={() => handlerMarkAsChecked(true)}
+                        className="CheckAdd__ico clickable grey"
+                    />
+                </Tooltip>)
             }
         </div >
     )
