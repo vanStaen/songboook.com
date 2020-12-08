@@ -110,7 +110,7 @@ const Tags = props => {
 
 
     const formattedTags = tags ? tags.map((tag, index) => {
-        const isLongTag = tag.length > 20;
+        const isLongTag = tag.length > 30;
         if (editInputIndex === index) {
             return (
                 <Input
@@ -139,7 +139,7 @@ const Tags = props => {
                         e.preventDefault();
                     }}
                 >
-                    {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                    {isLongTag ? `${tag.slice(0, 30)}...` : tag}
                 </span>
             </Tag>
         );
