@@ -11,8 +11,6 @@ const Links = props => {
     const [video, setVideo] = useState(props.video);
     const [pic, setPic] = useState(props.pic);
 
-    console.log(props.tabs)
-
     /*
     const [editInputValue, setEditInputValue] = useState('');
 

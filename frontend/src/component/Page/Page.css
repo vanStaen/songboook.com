@@ -29,19 +29,26 @@
 
 .Page__notab {
     position: fixed;
-    height: 300px;
     width: 300px;
+    height: 300px;
 }
 
 .Page__notab-text{
+    position: relative;
+    width: 300px;
+    height: 300px;
     color: #fff;
     font-family: 'Dymo', sans-serif;
     font-size: 35px;
     z-index: 6;
     line-height: 0.8;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .Page__notab-background{
+    position: absolute;
+    top:0px;
     background-color: #000;
     opacity: 0.20;
     z-index: 5;

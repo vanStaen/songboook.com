@@ -5,7 +5,7 @@
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Auto save db as Json (weekly?)
-- [ ] Handle "isMissing" state when handling hashtags
+- [ ] Handle "isMissing" state when handling missing link/Tag/video/pic
 - [ ] Pause youtube when exiting drawer.
 
 ## Completed ✓
