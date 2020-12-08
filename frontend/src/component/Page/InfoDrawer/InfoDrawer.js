@@ -20,7 +20,7 @@ const InfoDrawer = (props) => {
 
     return (
         <Drawer
-            title={props.page.song}
+            title={props.page.song.toUpperCase()}
             placement="right"
             closable={true}
             onClose={props.handlerCloseDrawer}

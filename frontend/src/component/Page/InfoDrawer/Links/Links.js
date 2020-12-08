@@ -124,7 +124,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {tabs.length > 30 ? `${tabs.slice(0, 30)}...` : tabs}
+                    {tabs.length > 35 ? `${tabs.slice(0, 30)}...` : tabs}
                     </span>
                 </Tag>
             </div>
@@ -139,7 +139,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {video.length > 30 ? `${video.slice(0, 30)}...` : video}
+                    {video.length > 35 ? `${video.slice(0, 30)}...` : video}
                     </span>
                 </Tag>
             </div>
@@ -154,7 +154,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {pic.length > 30 ? `${pic.slice(0, 30)}...` : pic}
+                    {pic.length > 35 ? `${pic.slice(0, 30)}...` : pic}
                     </span>
                 </Tag>
             </div>

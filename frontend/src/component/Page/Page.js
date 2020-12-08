@@ -3,6 +3,7 @@ import { Tooltip } from 'antd';
 import { MenuUnfoldOutlined } from '@ant-design/icons';
 import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
+import Bass from './Bass/Bass';
 import Favorite from './Favorite/Favorite';
 
 import '../.././fonts/Dymo.ttf';
@@ -52,7 +53,7 @@ const Page = (props) => {
         <div className="Page__main">
 
             { missing &&
-                (<div className="PAge___notab_main">
+                (<div className="Page___notab_main">
                     <div className="Page__notab Page__notab-text">
                         {missingTextFormated}
                     </div>
@@ -67,6 +68,7 @@ const Page = (props) => {
 
             <div className="Page__icons">
                 <Piano front={true} isPiano={props.page.piano} />
+                <Bass front={true} isBass={props.page.bass} />
                 <Favorite front={true} favorite={props.page.favorite} />
             </div>
 

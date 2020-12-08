@@ -98,6 +98,9 @@ router.patch("/:id", async (req, res) => {
   if (req.body.piano !== undefined) {
     updateField = updateField + "piano='" + req.body.piano + "',";
   }
+  if (req.body.bass !== undefined) {
+    updateField = updateField + "bass='" + req.body.bass + "',";
+  }
 
 
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
@@ -140,8 +143,9 @@ router.post("/", async (req, res) => {
   const active = req.body.active ? req.body.active : true;
   const videourl = req.body.videourl ? req.body.videourl : null;
   const piano = req.body.piano ? req.body.piano : false;
+  const bass = req.body.bass ? req.body.bass : false;
   const favorite = req.body.favorite ? req.body.favorite : false;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite})`;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, favorite, bass) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${favorite}, ${bass})`;
 
   try {
     const songbook = await client.query(insertQuery);
