@@ -104,8 +104,7 @@ router.patch("/:id", async (req, res) => {
 
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
-
-  console.log(updateQuery);
+  //console.log(updateQuery);
 
   try {
     const songbook = await client.query(updateQuery);
