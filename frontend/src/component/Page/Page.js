@@ -5,11 +5,13 @@ import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
 import CheckAdd from './CheckAdd/CheckAdd';
+import Bookmark from './Bookmark/Bookmark';
 
 import '../.././fonts/Dymo.ttf';
 import './Page.css'
 
 const Page = (props) => {
+    const [isBookmarked, setIsBookmarked] = useState(props.page.Bookmark)
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [tabsMissing, setTabsMissing] = useState(props.page.link === "null" ? true : false);
     const [tagsMissing, setTagsMissing] = useState(props.page.tags === null ? true : false);
@@ -20,7 +22,6 @@ const Page = (props) => {
     useEffect(() => {
         setMissing((tabsMissing || tagsMissing || videoMissing || picMissing) ? true : false);
     }, [tabsMissing, tagsMissing, videoMissing, picMissing])
-
 
     const handlerOpenDrawer = () => {
         setDrawerVisible(true);
@@ -71,6 +72,12 @@ const Page = (props) => {
             <div className="Page__opendrawer" handlerOpenDrawer onClick={handlerOpenDrawer}>
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </div>
+
+            <Bookmark
+                id={props.page.id}
+                setIsBookmarked={setIsBookmarked}
+                isBookmarked={isBookmarked}
+            />
 
             <div className="Page__title">{titlePage}</div>
 

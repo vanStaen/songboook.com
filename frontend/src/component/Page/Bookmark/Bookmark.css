@@ -1,0 +1,33 @@
+.bookmark {
+  position: fixed;
+    z-index: 10;
+    left: 20px;
+    top: -10px;
+  }
+
+.bookmark__img {
+  width: 30px;
+  height: 40px;;
+  filter: brightness(0.65);
+}
+
+.grey {
+  filter: grayscale(100%) opacity(33%) brightness(2);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+
+/*Filter styles*/
+.saturate { filter: saturate(3); }
+.grayscale { filter: grayscale(100%); }
+.contrast { filter: contrast(160%); }
+.brightness { filter: brightness(0.25); }
+.blur { filter: blur(3px); }
+.invert { filter: invert(100%); }
+.sepia { filter: sepia(100%); }
+.huerotate { filter: hue-rotate(180deg); }
+.rss.opacity { filter: opacity(50%); }
+  

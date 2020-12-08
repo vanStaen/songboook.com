@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Check button instead of favorite
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Edit Links feature
@@ -29,3 +28,5 @@
 - [x] Edit Tag feature
 - [x] Create Piano/Bass tag
 - [x] Handle "isMissing" state with userEffect.
+- [x] Check button instead of favorite
+- [x] Bookmark feature
