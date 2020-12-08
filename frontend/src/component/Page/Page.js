@@ -11,7 +11,7 @@ import '../.././fonts/Dymo.ttf';
 import './Page.css'
 
 const Page = (props) => {
-    const [isBookmarked, setIsBookmarked] = useState(props.page.Bookmark)
+    const [isBookmarked, setIsBookmarked] = useState(props.page.bookmark)
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [tabsMissing, setTabsMissing] = useState(props.page.link === "null" ? true : false);
     const [tagsMissing, setTagsMissing] = useState(props.page.tags === null ? true : false);
