@@ -6,10 +6,11 @@ import { PlusOutlined, LinkOutlined } from '@ant-design/icons';
 import './Links.css'
 
 const Links = props => {
-
     const [tabs, setTabs] = useState(props.tabs);
     const [video, setVideo] = useState(props.video);
     const [pic, setPic] = useState(props.pic);
+
+    const maxTextWidth = props.isDrawerFold ? 190 : 410;
 
     /*
     const [editInputValue, setEditInputValue] = useState('');
@@ -108,6 +109,31 @@ const Links = props => {
         );
     }*/
 
+    const returnCropedText = (text, threshold) => {
+
+        let howLongShouldItbe;
+        let cutAtChar;
+        let isLongText = false;
+
+        const getTextWidth = (inputText) => {
+            const font = "12px sans-serif";
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            context.font = font;
+            const width = context.measureText(inputText).width;
+            return width;
+        }
+
+        for (howLongShouldItbe = text.length; getTextWidth(text.slice(0, howLongShouldItbe)) > threshold; howLongShouldItbe--) {
+            cutAtChar = howLongShouldItbe;
+            isLongText = true;
+        }
+
+        const cropedText = isLongText ? `${text.slice(0, cutAtChar)}...` : text;
+        return cropedText;
+    }
+
+
 
     return (
         <div className='links'>
@@ -122,7 +148,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {tabs.length > 35 ? `${tabs.slice(0, 30)}...` : tabs}
+                    {returnCropedText(tabs, maxTextWidth)}
                     </span>
                 </Tag>
             </div>
@@ -137,7 +163,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {video.length > 35 ? `${video.slice(0, 30)}...` : video}
+                    {returnCropedText(video, maxTextWidth)}
                     </span>
                 </Tag>
             </div>
@@ -152,7 +178,7 @@ const Links = props => {
                         }}
                     >
                         <LinkOutlined />&nbsp;
-                    {pic.length > 35 ? `${pic.slice(0, 30)}...` : pic}
+                    {returnCropedText(pic, maxTextWidth)}
                     </span>
                 </Tag>
             </div>

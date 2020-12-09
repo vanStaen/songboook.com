@@ -18,6 +18,8 @@
     - [ ] Add userid to database songs
     - [ ] Router to shoe songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
+- [ ] Random song from pool-of-known
+- [ ] Random song from pool-of-unknown
  
 ## Completed ✓
 

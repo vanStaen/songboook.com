@@ -1,7 +1,6 @@
 import { React } from 'react';
 import piano from './piano.png'
-import { Tooltip, notification } from 'antd';
-import axios from 'axios';
+import { Tooltip } from 'antd';
 
 import './Piano.css';
 

@@ -78,6 +78,7 @@ const InfoDrawer = (props) => {
                 setTabsMissing={props.setTabsMissing}
                 setVideoMissing={props.setVideoMissing}
                 setPicMissing={props.setPicMissing}
+                isDrawerFold={isDrawerFold}
             />
 
             <Divider orientation="left" plain>
