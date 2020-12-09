@@ -6,6 +6,7 @@
     - [x] Button expending screen to 600 px
     - [ ] Then show artwork close to video
     - [ ] Link shown with more characters
+    - [ ] smoothen transition fold/unfold
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Edit Links feature
