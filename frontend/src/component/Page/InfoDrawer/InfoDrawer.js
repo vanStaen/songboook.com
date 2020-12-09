@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import YouTube from 'react-youtube';
 import { Drawer, Divider } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
@@ -9,7 +9,7 @@ import Links from './Links/Links';
 
 const InfoDrawer = (props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
-    const [isDrawerUnfold, setIsDrawerUnfold] = useState(true);
+    const [isDrawerFold, setIsDrawerFold] = useState(true);
 
     const videoID = props.page.videourl ? props.page.videourl.split('=')[1] : '';
     const videoOptions = {
@@ -20,26 +20,36 @@ const InfoDrawer = (props) => {
         },
     };
 
-    const handlerUnfoldDrawer = (value) => {
+    // Use effect to fold drwaaer after close
+    useEffect(() => {
+        handlerFoldDrawer(isDrawerFold);
+    }, [isDrawerFold]);
+
+    const handlerFoldDrawer = (value) => {
         value ? setWidthDrawer(350) : setWidthDrawer(600);
-        setIsDrawerUnfold(value);
+        setIsDrawerFold(value);
     }
+
+    const handlerCloseDrawer = () => {
+        setIsDrawerFold(true);
+        props.setDrawerVisible(false);
+    };
 
     return (
         <Drawer
             title={
                 <div>
-                    {isDrawerUnfold ?
-                        <MenuFoldOutlined onClick={() => handlerUnfoldDrawer(false)} />
+                    {isDrawerFold ?
+                        <MenuFoldOutlined onClick={() => handlerFoldDrawer(false)} />
                         :
-                        <MenuUnfoldOutlined onClick={() => handlerUnfoldDrawer(true)} />
+                        <MenuUnfoldOutlined onClick={() => handlerFoldDrawer(true)} />
                     }
                     &nbsp;&nbsp;{props.page.song.toUpperCase()}
                 </div>
             }
             placement="right"
             closable={true}
-            onClose={props.handlerCloseDrawer}
+            onClose={handlerCloseDrawer}
             visible={props.drawerVisible}
             width={widthDrawer}
         >

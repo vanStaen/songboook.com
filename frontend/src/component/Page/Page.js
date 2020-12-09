@@ -24,9 +24,6 @@ const Page = (props) => {
     const handlerOpenDrawer = () => {
         setDrawerVisible(true);
     };
-    const handlerCloseDrawer = () => {
-        setDrawerVisible(false);
-    };
 
     const title = props.page.title.replace('-', '/').replace(/ /g, '');
     const howLongIsLong = 23;
@@ -90,14 +87,13 @@ const Page = (props) => {
 
             <InfoDrawer
                 page={props.page}
-                handlerCloseDrawer={handlerCloseDrawer}
+                setDrawerVisible={setDrawerVisible}
                 drawerVisible={drawerVisible}
                 setTabsMissing={setTabsMissing}
                 setTagsMissing={setTagsMissing}
                 setVideoMissing={setVideoMissing}
                 setPicMissing={setPicMissing}
             />
-
 
         </div>
     );
