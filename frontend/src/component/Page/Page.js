@@ -1,6 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { Tooltip } from 'antd';
-import { MenuUnfoldOutlined } from '@ant-design/icons';
 import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
@@ -69,7 +67,7 @@ const Page = (props) => {
                     </div>
                 </div>)}
 
-            <div className="Page__opendrawer" handlerOpenDrawer onClick={handlerOpenDrawer}>
+            <div className="Page__opendrawer" onClick={handlerOpenDrawer}>
                 <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
             </div>
 

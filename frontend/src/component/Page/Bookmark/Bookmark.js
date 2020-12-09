@@ -36,7 +36,6 @@ const Bookmark = props => {
     }
 
     const bookmarked = props.isBookmarked;
-    const front = props.front;
 
     return (
         <div className="bookmark" id="bookmark">

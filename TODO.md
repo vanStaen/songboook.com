@@ -2,6 +2,10 @@
 
 ## To-dos:
 
+- [ ] Click to expend drawer to 50% of screen
+    - [x] Button expending screen to 600 px
+    - [ ] Then show artwork close to video
+    - [ ] Link shown with more characters
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Edit Links feature

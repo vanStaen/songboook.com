@@ -1,13 +1,15 @@
-import { React } from "react";
+import { React, useState } from "react";
 import YouTube from 'react-youtube';
 import { Drawer, Divider } from 'antd';
-import Tags from './Tags/Tags'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+
+import Tags from './Tags/Tags';
 import Lyrics from './Lyrics/Lyrics';
 import Links from './Links/Links';
 
-const cElement = null;
-
 const InfoDrawer = (props) => {
+    const [widthDrawer, setWidthDrawer] = useState(350);
+    const [isDrawerUnfold, setIsDrawerUnfold] = useState(true);
 
     const videoID = props.page.videourl ? props.page.videourl.split('=')[1] : '';
     const videoOptions = {
@@ -18,15 +20,28 @@ const InfoDrawer = (props) => {
         },
     };
 
+    const handlerUnfoldDrawer = (value) => {
+        value ? setWidthDrawer(350) : setWidthDrawer(600);
+        setIsDrawerUnfold(value);
+    }
+
     return (
         <Drawer
-            title={props.page.song.toUpperCase()}
+            title={
+                <div>
+                    {isDrawerUnfold ?
+                        <MenuFoldOutlined onClick={() => handlerUnfoldDrawer(false)} />
+                        :
+                        <MenuUnfoldOutlined onClick={() => handlerUnfoldDrawer(true)} />
+                    }
+                    &nbsp;&nbsp;{props.page.song.toUpperCase()}
+                </div>
+            }
             placement="right"
             closable={true}
             onClose={props.handlerCloseDrawer}
             visible={props.drawerVisible}
-            className="Page__drawer"
-            width="350"
+            width={widthDrawer}
         >
             {props.page.videourl ?
                 (<YouTube videoId={videoID} opts={videoOptions} />)
