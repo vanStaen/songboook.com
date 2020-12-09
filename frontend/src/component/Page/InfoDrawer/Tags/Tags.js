@@ -27,8 +27,7 @@ const Tags = props => {
         }
         // fetch Entries
         patchEntry(tags).then((resData) => {
-            //const patchResult = resData;
-            //console.log("Sucess", patchResult);
+            //console.log("Sucess", resData);
         }
         ).catch(error => {
             console.log("error", error.message);

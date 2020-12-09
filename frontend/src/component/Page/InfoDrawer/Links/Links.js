@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { Tag, Input } from 'antd';
 import axios from 'axios';
-import { PlusOutlined, LinkOutlined } from '@ant-design/icons';
+import { EditOutlined, LinkOutlined } from '@ant-design/icons';
 
 import './Links.css'
 
@@ -10,17 +10,21 @@ const Links = props => {
     const [video, setVideo] = useState(props.video);
     const [pic, setPic] = useState(props.pic);
 
-    const maxTextWidth = props.isDrawerFold ? 190 : 410;
+    const [isTabsEditMode, setIsTabsEditMode] = useState(false);
+    const [isVideoEditMode, setIsVideoEditMode] = useState(false);
+    const [isPicEditMode, setIsPicEditMode] = useState(false);
 
-    /*
     const [editInputValue, setEditInputValue] = useState('');
 
-    const patchTagsInDB = (tags) => {
-        async function patchEntry(tags) {
+    const maxTagWidth = props.isDrawerFold ? 165 : 400;
+    const maxInputWidth = props.isDrawerFold ? 230 : 480;
+
+    const patchLinkInDB = (data) => {
+        async function patchEntry(data) {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + '/' + props.id,
                 method: 'PATCH',
-                data: { 'tags': tags }
+                data: data,
             });
             if ((response.status !== 200) & (response.status !== 201)) {
                 throw new Error("Error!");
@@ -28,86 +32,60 @@ const Links = props => {
             const patchResult = await response.data;
             return patchResult;
         }
-        patchEntry(tags).then((resData) => {
+        patchEntry(data).then((resData) => {
+            //console.log("Success", resData)
         }
         ).catch(error => {
             console.log("error", error.message);
         });
     }
 
-
-    const handlerDeleteTag = (deleteTagIndex) => {
-        let oldTags = tags;
-        oldTags.splice(deleteTagIndex, 1);
-        if (oldTags.length === 0) {
-            props.setTagsMissing(true);
-            patchTagsInDB("null");
-        } else {
-            patchTagsInDB(oldTags);
-        }
-        setTags(oldTags);
-    }
-
-    const handleEditInputConfirm = e => {
-        tags[editInputIndex] = editInputValue.toLowerCase();
-        setTags(tags);
-        patchTagsInDB(tags);
-        setEditInputIndex(-1)
-        setEditInputValue('');
-        props.setTagsMissing(false);
-    };
-
-    const handleEditInputCancel = e => {
-        setEditInputIndex(-1)
-        setEditInputValue('');
-    };
-
-    const handleEditInputChange = e => {
+    const handleEditChange = e => {
         setEditInputValue(e.target.value);
     };
 
-    const handleInputConfirm = e => {
-        const inputValue = e.target.value.toLowerCase();
-        if (tags === undefined || tags === null) {
-            const newtags = [inputValue];
-            patchTagsInDB(newtags);
-            setTags(newtags);
-        }
-        else if (inputValue && tags.indexOf(inputValue) === -1) {
-            const newtags = [...tags, inputValue];
-            patchTagsInDB(newtags);
-            setTags(newtags);
-        }
-        setEditInputIndex(-1)
+    const handleEditCancel = () => {
+        isTabsEditMode && setIsTabsEditMode(false);
+        isVideoEditMode && setIsVideoEditMode(false);
+        isPicEditMode && setIsPicEditMode(false);
         setEditInputValue('');
-    };
-
-    const handleInputCancel = () => {
-        setEditInputIndex(-1)
+    }
+    const handleEditConfirm = () => {
+        if (isTabsEditMode) {
+            if (editInputValue.length > 0) {
+                patchLinkInDB({ 'link': editInputValue });
+                props.setTabsMissing(false);
+            } else {
+                patchLinkInDB({ 'link': 'null' });
+                props.setTabsMissing(true);
+            }
+            setTabs(editInputValue);
+            setIsTabsEditMode(false);
+        }
+        else if (isVideoEditMode) {
+            if (editInputValue.length > 0) {
+                patchLinkInDB({ 'videourl': editInputValue });
+                props.setVideoMissing(false);
+            } else {
+                patchLinkInDB({ 'videourl': 'null' });
+                props.setVideoMissing(true);
+            }
+            setVideo(editInputValue);
+            setIsVideoEditMode(false);
+        }
+        else if (isPicEditMode) {
+            if (editInputValue.length > 0) {
+                patchLinkInDB({ 'picurl': editInputValue });
+                props.setPicMissing(false);
+            } else {
+                patchLinkInDB({ 'picurl': 'null' });
+                props.setPicMissing(true);
+            }
+            setPic(editInputValue);
+            setIsPicEditMode(false);
+        };
         setEditInputValue('');
-    };
-
-    */
-
-
-
-    /*
-    const formattedTabs = () => {
-    const isLongTag = tag.length > 20;
-
-    if (editInputIndex === index) {
-        return (
-            <Input
-                key={index}
-                size="small"
-                className="tag-input"
-                value={editInputValue}
-                onChange={handleEditInputChange}
-                onBlur={handleEditInputCancel}
-                onPressEnter={handleEditInputConfirm}
-            />
-        );
-    }*/
+    }
 
     const returnCropedText = (text, threshold) => {
 
@@ -137,51 +115,85 @@ const Links = props => {
 
     return (
         <div className='links'>
+
             <div>
                 &nbsp;&nbsp;Tabs:
-                <Tag className="links__tag" key="tabs" >
-                    <span
-                        onDoubleClick={e => {
-                            //setEditInputIndex(index);
-                            //setEditInputValue(tag);
+                {isTabsEditMode ?
+                    (<Input
+                        key={`link_input_${props.id}`}
+                        size="small"
+                        style={{ width: maxInputWidth }}
+                        className="tag-input"
+                        value={editInputValue}
+                        onChange={handleEditChange}
+                        onBlur={handleEditCancel}
+                        onPressEnter={handleEditConfirm}
+                    />)
+                    :
+                    (<Tag className="links__tag" key="tabs" >
+                        <LinkOutlined />&nbsp;&nbsp;
+                        {returnCropedText(tabs, maxTagWidth)}
+                        <EditOutlined onClick={e => {
+                            setEditInputValue(tabs)
+                            setIsTabsEditMode(true);
                             e.preventDefault();
-                        }}
-                    >
-                        <LinkOutlined />&nbsp;
-                    {returnCropedText(tabs, maxTextWidth)}
-                    </span>
-                </Tag>
+                        }} />
+                    </Tag>)
+                }
             </div>
+
+
             <div>
                 Video:
-                 <Tag className="links__tag" key="video" >
-                    <span
-                        onDoubleClick={e => {
-                            //setEditInputIndex(index);
-                            //setEditInputValue(tag);
+                {isVideoEditMode ?
+                    (<Input
+                        key={`link_input_${props.id}`}
+                        size="small"
+                        style={{ width: maxInputWidth }}
+                        className="tag-input"
+                        value={editInputValue}
+                        onChange={handleEditChange}
+                        onBlur={handleEditCancel}
+                        onPressEnter={handleEditConfirm}
+                    />)
+                    :
+                    (<Tag className="links__tag" key="video" >
+                        <LinkOutlined />&nbsp;&nbsp;
+                        {returnCropedText(video, maxTagWidth)}
+                        <EditOutlined onClick={e => {
+                            setEditInputValue(video)
+                            setIsVideoEditMode(true);
                             e.preventDefault();
-                        }}
-                    >
-                        <LinkOutlined />&nbsp;
-                    {returnCropedText(video, maxTextWidth)}
-                    </span>
-                </Tag>
+                        }} />
+                    </Tag>)
+                }
             </div>
             <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pic:
-                 <Tag className="links__tag" key="pic" >
-                    <span
-                        onDoubleClick={e => {
-                            //setEditInputIndex(index);
-                            //setEditInputValue(tag);
+                &nbsp;&nbsp;&nbsp;&nbsp;Pic:
+                {isPicEditMode ?
+                    (<Input
+                        key={`link_input_${props.id}`}
+                        size="small"
+                        style={{ width: maxInputWidth }}
+                        className="tag-input"
+                        value={editInputValue}
+                        onChange={handleEditChange}
+                        onBlur={handleEditCancel}
+                        onPressEnter={handleEditConfirm}
+                    />)
+                    :
+                    (<Tag className="links__tag" key="pic" >
+                        <LinkOutlined />&nbsp;&nbsp;
+                        {returnCropedText(pic, maxTagWidth)}
+                        <EditOutlined onClick={e => {
+                            setEditInputValue(pic)
+                            setIsPicEditMode(true);
                             e.preventDefault();
-                        }}
-                    >
-                        <LinkOutlined />&nbsp;
-                    {returnCropedText(pic, maxTextWidth)}
-                    </span>
-                </Tag>
+                        }} />
+                    </Tag>)
+                }
             </div>
+
         </div>
     )
 }

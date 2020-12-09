@@ -3,13 +3,12 @@
 ## To-dos:
 
 - [ ] Click to expend drawer to 50% of screen
-    - [x] Button expending screen to 600 px
+    - [x] Button expending screen to 600px
     - [ ] Then show artwork close to video
     - [ ] Link shown with more characters
     - [ ] smoothen transition fold/unfold
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
-- [ ] Edit Links feature
 - [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -29,7 +28,7 @@
 - [x] Show tags and lyrics
     - [x] Create Drawer as separate component
     - [x] Fetch lyrics from https://apiseeds.com/documentation/lyrics
-       - [x] Create Tag component
+    - [x] Create Tag component
     - [x] Create <3 component
     - [x] Embed youtube video
 - [x] Edit Tag feature
@@ -37,3 +36,4 @@
 - [x] Handle "isMissing" state with userEffect.
 - [x] Check button instead of favorite
 - [x] Bookmark feature
+- [x] Edit Links feature
