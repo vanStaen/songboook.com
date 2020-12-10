@@ -130,15 +130,17 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<Tag className="links__tag" key="tabs" >
-                        <LinkOutlined />&nbsp;&nbsp;
+                    (<a href={tabs} target="_Blank" rel="noreferrer">
+                        <Tag className="links__tag" key="tabs">
+                            <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(tabs, maxTagWidth)}
-                        <EditOutlined onClick={e => {
-                            setEditInputValue(tabs)
-                            setIsTabsEditMode(true);
-                            e.preventDefault();
-                        }} />
-                    </Tag>)
+                            <EditOutlined onClick={e => {
+                                setEditInputValue(tabs)
+                                setIsTabsEditMode(true);
+                                e.preventDefault();
+                            }} />
+                        </Tag>
+                    </a>)
                 }
             </div>
 
@@ -157,15 +159,17 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<Tag className="links__tag" key="video" >
-                        <LinkOutlined />&nbsp;&nbsp;
+                    (<a href={tabs} target="_Blank" rel="noreferrer">
+                        <Tag className="links__tag" key="video" >
+                            <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(video, maxTagWidth)}
-                        <EditOutlined onClick={e => {
-                            setEditInputValue(video)
-                            setIsVideoEditMode(true);
-                            e.preventDefault();
-                        }} />
-                    </Tag>)
+                            <EditOutlined onClick={e => {
+                                setEditInputValue(video)
+                                setIsVideoEditMode(true);
+                                e.preventDefault();
+                            }} />
+                        </Tag>
+                    </a>)
                 }
             </div>
             <div>
@@ -182,15 +186,17 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<Tag className="links__tag" key="pic" >
-                        <LinkOutlined />&nbsp;&nbsp;
+                    (<a href={tabs} target="_Blank" rel="noreferrer">
+                        <Tag className="links__tag" key="pic" >
+                            <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(pic, maxTagWidth)}
-                        <EditOutlined onClick={e => {
-                            setEditInputValue(pic)
-                            setIsPicEditMode(true);
-                            e.preventDefault();
-                        }} />
-                    </Tag>)
+                            <EditOutlined onClick={e => {
+                                setEditInputValue(pic)
+                                setIsPicEditMode(true);
+                                e.preventDefault();
+                            }} />
+                        </Tag>
+                    </a>)
                 }
             </div>
 
