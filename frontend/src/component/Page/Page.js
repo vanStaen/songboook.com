@@ -79,7 +79,10 @@ const Page = (props) => {
                 <CheckAdd isVisitor={false} checked={props.page.checked} id={props.page.id} />
             </div>
 
-            <Title title={props.page.title} />
+            <Title
+                title={props.page.title}
+                id={props.page.id}
+            />
 
             <InfoDrawer
                 page={props.page}
