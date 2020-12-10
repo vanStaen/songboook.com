@@ -13,8 +13,8 @@ const InfoDrawer = (props) => {
 
     const videoID = props.page.videourl ? props.page.videourl.split('=')[1] : '';
     const videoOptions = {
-        height: '226',
-        width: '300',
+        height: widthDrawer - 124,
+        width: widthDrawer - 50,
         playerVars: {
             autoplay: 0,
         },

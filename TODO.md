@@ -2,11 +2,7 @@
 
 ## To-dos:
 
-- [ ] Click to expend drawer to 50% of screen
-    - [x] Button expending screen to 600px
-    - [ ] Then show artwork close to video
-    - [ ] Link shown with more characters
-    - [ ] smoothen transition fold/unfold
+
 - [ ] If lyrics api return nothing scrap google
 - [ ] Edit title feature
 - [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
@@ -19,6 +15,7 @@
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Random song from pool-of-known
 - [ ] Random song from pool-of-unknown
+- [ ] Smoothen drawer transition fold/unfold
  
 ## Completed ✓
 
@@ -37,3 +34,8 @@
 - [x] Check button instead of favorite
 - [x] Bookmark feature
 - [x] Edit Links feature
+- [x] Click to expend drawer to 50% of screen
+    - [x] Button expending screen to 600px
+    - [ ] ~~Then show artwork close to video~~
+    - [x] Video size adpt to drawer size
+    - [x] Link shown with more characters
