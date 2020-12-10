@@ -4,6 +4,7 @@ import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
 import CheckAdd from './CheckAdd/CheckAdd';
 import Bookmark from './Bookmark/Bookmark';
+import Title from './Title/Title';
 
 import '../.././fonts/Dymo.ttf';
 import './Page.css'
@@ -24,11 +25,6 @@ const Page = (props) => {
     const handlerOpenDrawer = () => {
         setDrawerVisible(true);
     };
-
-    const title = props.page.title.replace('-', '/').replace(/ /g, '');
-    const howLongIsLong = 23;
-    const isLongTitle = title.length > howLongIsLong;
-    const titlePage = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
 
     const textForMissing = () => {
         let missingText = [];
@@ -74,8 +70,6 @@ const Page = (props) => {
                 isBookmarked={isBookmarked}
             />
 
-            <div className="Page__title">{titlePage}</div>
-
             <div className="Page__icons">
                 <Piano front={true} isPiano={props.page.piano} />
                 <Bass front={true} isBass={props.page.bass} />
@@ -84,6 +78,8 @@ const Page = (props) => {
             <div className="Page__actionicon">
                 <CheckAdd isVisitor={false} checked={props.page.checked} id={props.page.id} />
             </div>
+
+            <Title title={props.page.title} />
 
             <InfoDrawer
                 page={props.page}

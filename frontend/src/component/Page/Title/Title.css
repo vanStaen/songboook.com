@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Dymo';
+    src: local('Dymo'), url(../../.././fonts/Dymo.ttf) format('truetype');
+  }
+
+.Page__title {
+    font-family: 'Dymo', sans-serif;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: left;
+    font-size: 30px;
+    color: black;
+}
