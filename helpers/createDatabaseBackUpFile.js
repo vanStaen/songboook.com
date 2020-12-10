@@ -46,6 +46,7 @@ const writeBackupFile = async () => {
 const excecuteScript = async () => {
     try {
         await writeBackupFile();
+        console.log("Backup Success!")
         client.end();
     } catch (err) {
         console.log({ error: `${err})`, });
