@@ -51,7 +51,7 @@ const CheckAdd = props => {
                 (<Tooltip placement="top" title="Click to mark this song as known.">
                     <CheckOutlined
                         onClick={() => handlerMarkAsChecked(true)}
-                        className="CheckAdd__ico clickable grey"
+                        className="CheckAdd__ico clickable grey_check"
                     />
                 </Tooltip>)
             }

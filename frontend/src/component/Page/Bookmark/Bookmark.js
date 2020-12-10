@@ -52,7 +52,7 @@ const Bookmark = props => {
                 (<Tooltip placement="right" title="Bookmark this.">
                     <img
                         onClick={() => handlerBookmarking(true)}
-                        className="bookmark__img clickable grey"
+                        className="bookmark__img clickable bookmark__grey"
                         src={bookmark}
                         alt={bookmark}>
                     </img>
