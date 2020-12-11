@@ -1,10 +1,34 @@
 import { React, useState } from "react";
 import { Input } from 'antd';
+import axios from 'axios';
 import './Title.css';
 
 const Title = (props) => {
+    const [title, setTitle] = useState(props.title.replace(/ /g, '').length > 23 ? `${props.title.replace('-', '/').replace(/ /g, '').slice(0, 25)}...` : props.title.replace('-', '/').replace(/ /g, ''));
     const [isEditMode, setIsEditmode] = useState(false);
-    const [editInputValue, setEditInputValue] = useState(props.title);
+    const [editInputValue, setEditInputValue] = useState(props.title.replace('-', '/'));
+
+    const patchTitleInDB = (title) => {
+        async function patchEntry(title) {
+            const response = await axios({
+                url: process.env.REACT_APP_API_URL + '/' + props.id,
+                method: 'PATCH',
+                data: { 'title': title }
+            });
+            if ((response.status !== 200) & (response.status !== 201)) {
+                throw new Error("Error!");
+            }
+            const patchResult = await response.data;
+            return patchResult;
+        }
+        // fetch Entries
+        patchEntry(title).then((resData) => {
+            console.log("Sucess", resData);
+        }
+        ).catch(error => {
+            console.log("error", error.message);
+        });
+    }
 
     const handleEditChange = e => {
         setEditInputValue(e.target.value);
@@ -12,18 +36,15 @@ const Title = (props) => {
 
     const handleEditCancel = () => {
         setIsEditmode(false);
-        setEditInputValue(props.title);
+        setEditInputValue(props.title.replace('-', '/'));
         console.log('cancel');
     };
 
     const handleEditConfirm = () => {
-        console.log(editInputValue);
+        patchTitleInDB(editInputValue.replace('/', '-'))
+        setTitle(editInputValue.replace(/ /g, '').length > 23 ? `${editInputValue.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : editInputValue.replace('-', '/').replace(/ /g, ''))
+        setIsEditmode(false);
     };
-
-    const title = props.title.replace('-', '/').replace(/ /g, '');
-    const howLongIsLong = 23;
-    const isLongTitle = title.length > howLongIsLong;
-    const titlePage = isLongTitle ? `${title.slice(0, howLongIsLong)}...` : title;
 
     return (
         <>
@@ -31,15 +52,14 @@ const Title = (props) => {
                 (<Input
                     key={`title_input_${props.id}`}
                     size="small"
-                    style={{ width: 250 }}
-                    className="tag-input"
+                    className="title__input"
                     value={editInputValue}
                     onChange={handleEditChange}
                     onBlur={handleEditCancel}
                     onPressEnter={handleEditConfirm}
                 />)
                 :
-                (<div className="Page__title" onDoubleClick={() => setIsEditmode(true)} >{titlePage}</div>)
+                (<div className="Page__title" onDoubleClick={() => setIsEditmode(true)} >{title}</div>)
             }
         </>
 

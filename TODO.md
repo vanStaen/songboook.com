@@ -4,7 +4,6 @@
 
 
 - [ ] If lyrics api return nothing scrap google
-- [ ] Edit title feature
 - [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -33,9 +32,10 @@
 - [x] Handle "isMissing" state with userEffect.
 - [x] Check button instead of favorite
 - [x] Bookmark feature
-- [x] Edit Links feature
 - [x] Click to expend drawer to 50% of screen
     - [x] Button expending screen to 600px
     - [ ] ~~Then show artwork close to video~~
     - [x] Video size adpt to drawer size
     - [x] Link shown with more characters
+- [x] Edit Links feature
+- [x] Edit title feature
