@@ -103,6 +103,8 @@ const InfoDrawer = (props) => {
                 setSong={setSong}
                 isDrawerFold={isDrawerFold}
                 id={props.page.id}
+                setIsPiano={props.setIsPiano}
+                setIsBass={props.setIsBass}
             />
 
             <Divider orientation="left" plain>

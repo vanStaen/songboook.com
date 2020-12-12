@@ -97,12 +97,18 @@ const Extras = (props) => {
     const onRadioChangeTabsType = e => {
         switch (e.target.value) {
             case "g":
+                props.setIsBass(false)
+                props.setIsPiano(false)
                 patchLinkInDB({ 'bass': false, 'piano': false, });
                 break;
             case "b":
+                props.setIsBass(true)
+                props.setIsPiano(false)
                 patchLinkInDB({ 'bass': true, 'piano': false, });
                 break;
             case "p":
+                props.setIsBass(false)
+                props.setIsPiano(true)
                 patchLinkInDB({ 'bass': false, 'piano': true, });
                 break;
         }
