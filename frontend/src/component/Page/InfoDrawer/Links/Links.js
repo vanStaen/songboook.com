@@ -115,7 +115,6 @@ const Links = props => {
 
     return (
         <div className='links'>
-
             <div>
                 &nbsp;&nbsp;Tabs:
                 {isTabsEditMode ?
@@ -159,7 +158,7 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<a href={tabs} target="_Blank" rel="noreferrer">
+                    (<a href={video} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="video" >
                             <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(video, maxTagWidth)}
@@ -186,7 +185,7 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<a href={tabs} target="_Blank" rel="noreferrer">
+                    (<a href={pic} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="pic" >
                             <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(pic, maxTagWidth)}

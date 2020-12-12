@@ -2,9 +2,7 @@
 
 ## To-dos:
 
-
 - [ ] If lyrics api return nothing scrap google
-- [ ] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 - [ ] User handling
@@ -39,3 +37,4 @@
     - [x] Link shown with more characters
 - [x] Edit Links feature
 - [x] Edit title feature
+- [x] Edit infos (bottom from drawer? artist/song/bass-Piano?)

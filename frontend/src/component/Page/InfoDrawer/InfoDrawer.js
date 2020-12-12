@@ -6,10 +6,13 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import Tags from './Tags/Tags';
 import Lyrics from './Lyrics/Lyrics';
 import Links from './Links/Links';
+import Extras from './Extras/Extras';
 
 const InfoDrawer = (props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
     const [isDrawerFold, setIsDrawerFold] = useState(true);
+    const [artist, setArtist] = useState(props.page.artist);
+    const [song, setSong] = useState(props.page.song);
 
     const videoID = props.page.videourl ? props.page.videourl.split('=')[1] : '';
     const videoOptions = {
@@ -44,7 +47,7 @@ const InfoDrawer = (props) => {
                         :
                         <MenuUnfoldOutlined onClick={() => handlerFoldDrawer(true)} />
                     }
-                    &nbsp;&nbsp;{props.page.song.toUpperCase()}
+                    &nbsp;&nbsp;{isDrawerFold ? song.toUpperCase() : (artist.toUpperCase() + " - " + song.toUpperCase())}
                 </div>
             }
             placement="right"
@@ -60,16 +63,10 @@ const InfoDrawer = (props) => {
 
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">
-                    Tags
+                    Links
                 </span>
             </Divider>
-            <Tags
-                tags={props.page.tags}
-                id={props.page.id}
-                setTagsMissing={props.setTagsMissing}
-            />
 
-            <Divider />
             <Links
                 tabs={props.page.link}
                 video={props.page.videourl}
@@ -83,10 +80,38 @@ const InfoDrawer = (props) => {
 
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">
+                    Tags
+                </span>
+            </Divider>
+            <Tags
+                tags={props.page.tags}
+                id={props.page.id}
+                setTagsMissing={props.setTagsMissing}
+            />
+
+            <Divider orientation="left" plain>
+                <span className="Page-drawer__diviser">
+                    Extras
+                    </span>
+            </Divider>
+            <Extras
+                artist={props.page.artist}
+                song={props.page.song}
+                piano={props.page.piano}
+                bass={props.page.bass}
+                setArtist={setArtist}
+                setSong={setSong}
+                isDrawerFold={isDrawerFold}
+                id={props.page.id}
+            />
+
+            <Divider orientation="left" plain>
+                <span className="Page-drawer__diviser">
                     Lyrics
                     </span>
             </Divider>
             <Lyrics artist={props.page.artist} song={props.page.song} />
+
         </Drawer>
     )
 

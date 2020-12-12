@@ -1,0 +1,40 @@
+.Extras__radioType {
+    text-align: center;
+    width: 100%;
+}
+
+.ant-radio-checked .ant-radio-inner{
+    border-color: #924B55 !important ;
+  }
+  
+  .ant-radio-checked .ant-radio-inner:after{
+    background-color: #924B55;
+  }
+  
+  .ant-radio:hover .ant-radio-inner {
+    border-color: #924B55 ;
+  }
+
+.Extras__artist {
+    color: #999;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.Extras__song {
+    color: #999;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.Extra__spacer {
+    height: 10px;
+    border: 0px solid red;
+}
+
+.Extras__input {
+    color: #999;
+    font-size: 12px;
+    width: 250px;
+    margin: 5px;
+}
