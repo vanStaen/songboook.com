@@ -11,6 +11,8 @@ import './Page.css'
 
 const Page = (props) => {
     const [isBookmarked, setIsBookmarked] = useState(props.page.bookmark)
+    const [isPiano, setIsPiano] = useState(props.page.piano)
+    const [isBass, setIsBass] = useState(props.page.bass)
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [tabsMissing, setTabsMissing] = useState(props.page.link === "null" ? true : false);
     const [tagsMissing, setTagsMissing] = useState(props.page.tags === null ? true : false);
@@ -71,8 +73,8 @@ const Page = (props) => {
             />
 
             <div className="Page__icons">
-                <Piano front={true} isPiano={props.page.piano} />
-                <Bass front={true} isBass={props.page.bass} />
+                <Piano isPiano={isPiano} />
+                <Bass isBass={isBass} />
             </div>
 
             <div className="Page__actionicon">
@@ -92,6 +94,8 @@ const Page = (props) => {
                 setTagsMissing={setTagsMissing}
                 setVideoMissing={setVideoMissing}
                 setPicMissing={setPicMissing}
+                setIsPiano={setIsPiano}
+                setIsBass={setIsBass}
             />
 
         </div>
