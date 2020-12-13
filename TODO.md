@@ -38,3 +38,4 @@
 - [x] Edit Links feature
 - [x] Edit title feature
 - [x] Edit infos (bottom from drawer? artist/song/bass-Piano?)
+- [x] Error shown on BackEnd connection error

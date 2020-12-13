@@ -1,11 +1,19 @@
-.book-loader {
+.Book__main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+}
+
+.loader {
     height: 40vmin;
     pointer-events: none;
     border: 1px solid #333;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .book-loader {
+    .loader {
       animation: App-logo-spin infinite 5s linear;
       border-radius: 50%;
       width: 100px;
@@ -22,10 +30,21 @@
     }
   }
 
-.Book__main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 30px;
+.error {
+pointer-events: none;
+border: 1px solid #333;
+border-radius: 50%;
+width: 100px;
+height: 100px;
+}
+
+.error__icon {
+position: fixed;
+width: 100px;
+height: 100px;
+padding-top: 15px;
+color: red;
+font-size: 75px;
+z-index: 1;
+opacity: 0.5;
 }
