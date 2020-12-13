@@ -1,9 +1,16 @@
+/* @import url('http://fonts.cdnfonts.com/css/dymo'); */
+@font-face {
+  font-family: 'Dymo';
+  src: local('Dymo'), url(../.././fonts/Dymo.ttf) format('truetype');
+}
+
 .Book__main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   padding: 30px;
+  margin-top: 30px;
 }
 
 .loader {
