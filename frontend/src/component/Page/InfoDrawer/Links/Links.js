@@ -159,7 +159,7 @@ const Links = props => {
                     />)
                     :
                     (<a href={video} target="_Blank" rel="noreferrer">
-                        <Tag className="links__tag" key="video" >
+                        <Tag className="links__tag" key="video">
                             <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(video, maxTagWidth)}
                             <EditOutlined onClick={e => {
@@ -185,17 +185,20 @@ const Links = props => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<a href={pic} target="_Blank" rel="noreferrer">
-                        <Tag className="links__tag" key="pic" >
-                            <LinkOutlined />&nbsp;&nbsp;
+                    (<Tag className="links__tag" key="pic"
+                        onDoubleClick={e => {
+                            setEditInputValue(pic)
+                            setIsPicEditMode(true);
+                            e.preventDefault();
+                        }}>
+                        <LinkOutlined />&nbsp;&nbsp;
                         {returnCropedText(pic, maxTagWidth)}
-                            <EditOutlined onClick={e => {
-                                setEditInputValue(pic)
-                                setIsPicEditMode(true);
-                                e.preventDefault();
-                            }} />
-                        </Tag>
-                    </a>)
+                        <EditOutlined onClick={e => {
+                            setEditInputValue(pic)
+                            setIsPicEditMode(true);
+                            e.preventDefault();
+                        }} />
+                    </Tag>)
                 }
             </div>
 
