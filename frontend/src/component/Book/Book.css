@@ -46,7 +46,7 @@ height: 100px;
 }
 
 .error__icon {
-position: fixed;
+position: absolute;
 width: 100px;
 height: 100px;
 padding-top: 15px;
