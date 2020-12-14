@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Title.css';
 
 const Title = (props) => {
-    const [title, setTitle] = useState(props.title.replace(/ /g, '').length > 23 ? `${props.title.replace('-', '/').replace(/ /g, '').slice(0, 25)}...` : props.title.replace('-', '/').replace(/ /g, ''));
+    const [title, setTitle] = useState(props.title.replace(/ /g, '').length > 23 ? `${props.title.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : props.title.replace('-', '/').replace(/ /g, ''));
     const [isEditMode, setIsEditmode] = useState(false);
     const [editInputValue, setEditInputValue] = useState(props.title.replace('-', '/'));
 

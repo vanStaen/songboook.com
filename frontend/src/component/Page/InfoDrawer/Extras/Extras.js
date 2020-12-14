@@ -144,6 +144,7 @@ const Extras = (props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(artist)
                             setIsArtistEditMode(true);
+                            setIsSongEditMode(false);
                             e.preventDefault();
                         }} />
                     </Tag>
@@ -169,6 +170,7 @@ const Extras = (props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(song)
                             setIsSongEditMode(true);
+                            setIsArtistEditMode(false);
                             e.preventDefault();
                         }} />
                     </Tag>)
