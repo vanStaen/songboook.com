@@ -142,7 +142,7 @@ const Extras = (props) => {
                         {returnCropedText(artist, maxTagWidth)}
                         &nbsp;&nbsp;
                         <EditOutlined onClick={e => {
-                            setEditInputValue(artist)
+                            setEditInputValue(artist);
                             setIsArtistEditMode(true);
                             setIsSongEditMode(false);
                             e.preventDefault();
