@@ -1,0 +1,43 @@
+.menu__main{
+    position: fixed;
+    height: 100vh;
+}
+
+.menu__items{
+    position: relative;
+    top: 75px;
+}
+
+.menu__item{
+    margin-bottom: 10px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.menu__item-cell{
+    width: 50px;
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inactive:hover {
+    opacity: 0.75;
+}
+
+.inactive {
+    border: 1px solid #333; 
+    border-left: transparent;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.5;
+}
+
+.active {
+    border: 1px solid #6E0F1C; 
+    border-left: transparent;
+    background: rgba(110, 15, 28, 0.5);
+    opacity: 1 !important;
+}
+
+.hidden {
+    display: none;
+}

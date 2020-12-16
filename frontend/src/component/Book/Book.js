@@ -46,12 +46,28 @@ class Book extends Component {
 
     render() {
         const book = this.state.songbookPages.map(page => {
-            return (
-                <div key={page.id}>
-                    <Page page={page} />
-                </div>
-            );
+
+            let belongsToFilter = true;
+
+            if (this.props.fitlerBass === true) {
+                belongsToFilter = page.bass;
+            }
+            else if (this.props.fitlerPiano === true) {
+                belongsToFilter = page.piano;
+            }
+
+            if (belongsToFilter) {
+                return (
+                    <div key={page.id}>
+                        <Page page={page} />
+                    </div>
+                );
+            } else {
+                return null
+            }
+
         })
+
         return (
             <div style={{ width: "100%" }}>
                 { this.state.isLoading ?

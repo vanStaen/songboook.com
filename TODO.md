@@ -8,7 +8,7 @@
 - [ ] User handling
     - [ ] Auth feature
     - [ ] Add userid to database songs
-    - [ ] Router to shoe songbook of user
+    - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Random song from pool-of-known
 - [ ] Random song from pool-of-unknown
@@ -39,3 +39,4 @@
 - [x] Edit title feature
 - [x] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [x] Error shown on BackEnd connection error
+- [x] Filter bass/piano from front page
