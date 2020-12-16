@@ -55,6 +55,9 @@ class Book extends Component {
             else if (this.props.fitlerPiano === true) {
                 belongsToFilter = page.piano;
             }
+            else if (this.props.fitlerBookmarked === true) {
+                belongsToFilter = page.bookmark;
+            }
 
             if (belongsToFilter) {
                 return (

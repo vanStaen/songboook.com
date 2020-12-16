@@ -8,6 +8,7 @@ import Footer from './component/Footer/Footer'
 function App() {
   const [fitlerBass, setFitlerBass] = useState(false);
   const [fitlerPiano, setFitlerPiano] = useState(false);
+  const [fitlerBookmarked, setFitlerBookmarked] = useState(false);
   const [fitlers, setFilter] = useState([]);
 
   return (
@@ -18,10 +19,13 @@ function App() {
           setFitlerBass={setFitlerBass}
           fitlerPiano={fitlerPiano}
           setFitlerPiano={setFitlerPiano}
+          fitlerBookmarked={fitlerBookmarked}
+          setFitlerBookmarked={setFitlerBookmarked}
         />
         <Book
           fitlerBass={fitlerBass}
           fitlerPiano={fitlerPiano}
+          fitlerBookmarked={fitlerBookmarked}
         />
       </header>
       <Footer />
