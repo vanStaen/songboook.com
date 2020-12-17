@@ -26,7 +26,6 @@ const CheckAdd = props => {
         // fetch Entries
         patchEntry(value).then((resData) => {
             const patchResult = resData;
-            //console.log("Sucess", patchResult);
         }
         ).catch(error => {
             console.log("error", error.message);

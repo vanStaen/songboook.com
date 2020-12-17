@@ -10,6 +10,7 @@ function App() {
   const [filterPiano, setFilterPiano] = useState(false);
   const [filterGuitar, setFilterGuitar] = useState(false);
   const [onlyBookmarked, setOnlyBookmarked] = useState(false);
+  const [onlyFlagKnown, setOnlyFlagKnown] = useState(0); // 0: all, 1: only unknown, 2: only known
   const [filters, setFilter] = useState([]);
 
   return (
@@ -24,11 +25,15 @@ function App() {
           setFilterGuitar={setFilterGuitar}
           onlyBookmarked={onlyBookmarked}
           setOnlyBookmarked={setOnlyBookmarked}
+          onlyFlagKnown={onlyFlagKnown}
+          setonlyFlagKnown={setOnlyFlagKnown}
+
         />
         <Book
           filterBass={filterBass}
           filterPiano={filterPiano}
           filterGuitar={filterGuitar}
+          onlyFlagKnown={onlyFlagKnown}
           onlyBookmarked={onlyBookmarked}
         />
       </header>

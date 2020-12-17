@@ -111,18 +111,30 @@
 
 .menu__favorite{
     position: relative;
+    right: 0px;
     top: -95px;
-    margin-right: 5px;
     text-align: right;
+}
 
+.menu__check {
+    position: relative;
+    top: -127px;
+    right: -13px;
+    width: 33px;
+    font-size: 20px;
+    opacity: 0.85;
+    color: green;
+    filter: saturate(2);
 }
 
 .inactive:hover {
     opacity: 0.5;
+    filter: grayscale(0%);
 }
 
 .inactive {
-    opacity: 0.25;
+    opacity: 0.33;
+    filter: grayscale(50%);
 }
 
 .active {
