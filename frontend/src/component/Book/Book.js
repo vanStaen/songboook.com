@@ -47,19 +47,22 @@ class Book extends Component {
     render() {
         const book = this.state.songbookPages.map(page => {
 
-            let belongsToFilter = true;
+            let shouldBeDisplayed = true;
 
-            if (this.props.fitlerBass === true) {
-                belongsToFilter = page.bass;
+            if (page.bass) {
+                shouldBeDisplayed = !this.props.filterBass;
             }
-            else if (this.props.fitlerPiano === true) {
-                belongsToFilter = page.piano;
+            if (page.piano) {
+                shouldBeDisplayed = !this.props.filterPiano;
             }
-            else if (this.props.fitlerBookmarked === true) {
-                belongsToFilter = page.bookmark;
+            if (!page.bass && !page.piano) {
+                shouldBeDisplayed = !this.props.filterGuitar;
+            }
+            if (!page.bookmark && this.props.onlyBookmarked) {
+                shouldBeDisplayed = false;
             }
 
-            if (belongsToFilter) {
+            if (shouldBeDisplayed) {
                 return (
                     <div key={page.id}>
                         <Page page={page} />

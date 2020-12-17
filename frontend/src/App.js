@@ -6,26 +6,30 @@ import Menu from './component/Menu/Menu'
 import Footer from './component/Footer/Footer'
 
 function App() {
-  const [fitlerBass, setFitlerBass] = useState(false);
-  const [fitlerPiano, setFitlerPiano] = useState(false);
-  const [fitlerBookmarked, setFitlerBookmarked] = useState(false);
-  const [fitlers, setFilter] = useState([]);
+  const [filterBass, setFilterBass] = useState(false);
+  const [filterPiano, setFilterPiano] = useState(false);
+  const [filterGuitar, setFilterGuitar] = useState(false);
+  const [onlyBookmarked, setOnlyBookmarked] = useState(false);
+  const [filters, setFilter] = useState([]);
 
   return (
     <div className="App">
       <header className="App-header">
         <Menu
-          fitlerBass={fitlerBass}
-          setFitlerBass={setFitlerBass}
-          fitlerPiano={fitlerPiano}
-          setFitlerPiano={setFitlerPiano}
-          fitlerBookmarked={fitlerBookmarked}
-          setFitlerBookmarked={setFitlerBookmarked}
+          filterBass={filterBass}
+          setFilterBass={setFilterBass}
+          filterPiano={filterPiano}
+          setFilterPiano={setFilterPiano}
+          filterGuitar={filterGuitar}
+          setFilterGuitar={setFilterGuitar}
+          onlyBookmarked={onlyBookmarked}
+          setOnlyBookmarked={setOnlyBookmarked}
         />
         <Book
-          fitlerBass={fitlerBass}
-          fitlerPiano={fitlerPiano}
-          fitlerBookmarked={fitlerBookmarked}
+          filterBass={filterBass}
+          filterPiano={filterPiano}
+          filterGuitar={filterGuitar}
+          onlyBookmarked={onlyBookmarked}
         />
       </header>
       <Footer />

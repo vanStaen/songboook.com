@@ -1,48 +1,130 @@
+@font-face {
+    font-family: 'Dymo';
+    src: local('Dymo'), url(../.././fonts/Dymo.ttf) format('truetype');
+  }
+
 .menu__main{
     position: fixed;
-    height: 100vh;
+    top: 90px;
     z-index: 2;
 }
 
-.menu__items{
+.menu__dymobgguitar{
     position: relative;
-    top: 75px;
+    top: -59px;
+    background-color: #fff;
+    width: 76px;
+    height: 20px;
+    box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
 }
 
-.menu__item{
-    margin-bottom: 10px;
-    border-radius: 0px 5px 5px 0px;
+.menu__dymotagguitar{
+    position: relative;
+    top: -35px;
+    position: relative;
+    text-align: left;
+    font-family: 'Dymo', sans-serif;
+    color: rgba(0,0,0,0.9);
+    font-size: 30px;
+    line-height: 1;
+    z-index: 1;
+    cursor: pointer;
 }
 
-.menu__item-cell{
+.menu__dymobgpiano{
+    position: relative;
+    top: -83px;
+    background-color: #fff;
+    width: 76px;
+    height: 20px;
+    box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
+}
+
+.menu__dymotagpiano{
+    position: relative;
+    top: -59px;
+    position: relative;
+    text-align: left;
+    font-family: 'Dymo', sans-serif;
+    color: rgba(0,0,0,0.9);
+    font-size: 30px;
+    line-height: 1;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.menu__dymobgbass{
+    position: relative;
+    top: -106px;
+    background-color: #fff;
+    width: 76px;
+    height: 20px;
+    box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
+}
+
+.menu__dymotagbass{
+    position: relative;
+    top: -82px;
+    position: relative;
+    text-align: left;
+    font-family: 'Dymo', sans-serif;
+    line-height: 1;
+    font-size: 30px;
+    z-index: 1;
+    color: rgba(0,0,0,0.9);
+    cursor: pointer;
+}
+
+.guitar__strike{
+    position: absolute;
+    top: -20px;
+    margin-left: 4px;
+    border-top: 1px solid rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(0,0,0,0.75);
+    width: 68px;
+    height: 2px;
+    z-index: 2;
+}
+
+.bass__strike{
+    position: absolute;
+    top: 33px;
+    margin-left: 21px;
+    border-top: 1px solid rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(0,0,0,0.75);
     width: 50px;
-    height: 50px;
-    display: table-cell;
-    vertical-align: middle;
+    height: 2px;
+    z-index: 2;
+}
+
+
+.piano__strike{
+    position: absolute;
+    top: 6px;
+    margin-left: 15px;
+    border-top: 1px solid rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(0,0,0,0.75);
+    width: 56px;
+    height: 2px;
+    z-index: 2;
+}
+
+.menu__favorite{
+    position: relative;
+    top: -95px;
+    margin-right: 5px;
+    text-align: right;
+
 }
 
 .inactive:hover {
-    opacity: 0.75;
-}
-
-.inactive {
-    border: 1px solid #6E0F1C; 
-    border-left: transparent;
-    background: rgba(255, 255, 255, 0.2);
     opacity: 0.5;
 }
 
+.inactive {
+    opacity: 0.25;
+}
+
 .active {
-    border: 1px solid #6E0F1C; 
-    border-left: transparent;
-    background: rgba(110, 15, 28, 0.5);
     opacity: 1 !important;
-}
-
-.hidden {
-    display: none;
-}
-
-.ant-tooltip-inner {
-    background: rgba(110, 15, 28, 0.8);
 }

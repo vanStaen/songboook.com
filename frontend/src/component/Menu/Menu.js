@@ -1,10 +1,6 @@
 import { React } from 'react';
 import { Tooltip } from 'antd';
-import { HeartOutlined } from '@ant-design/icons';
-
-import piano from '../Page/Piano/piano.png'
-import bass from '../Page/Bass/bass.png'
-import bookmark from '../Page/Bookmark/bookmark.png'
+import { HeartFilled } from '@ant-design/icons';
 
 import './Menu.css';
 
@@ -12,77 +8,41 @@ const Menu = (props) => {
 
     return (
         <div className="menu__main">
-            <div className="menu__items">
-                <div
-                    className={props.fitlerPiano ? "menu__item active" : "menu__item inactive"}
-                    mouseLeaveDelay={1000}
-                    onClick={() => {
-                        props.setFitlerPiano(!props.fitlerPiano);
-                        props.setFitlerBookmarked(false);
-                        props.setFitlerBass(false);
-                    }
-                    }
-                >
-                    <Tooltip
-                        placement="right"
-                        title={props.fitlerBass ? "Reset this filter" : "Show only for piano"}
-                    >
-                        <div className="menu__item-cell">
-                            <img
-                                width="32px"
-                                src={piano}
-                                alt={piano}>
-                            </img>
-                        </div>
-                    </Tooltip>
+
+            <div onClick={() => props.setFilterGuitar(!props.filterGuitar)}>
+                <div className="menu__dymotagguitar">
+                    &nbsp;Guitar&nbsp;
                 </div>
-                <div
-                    className={props.fitlerBass ? "menu__item active" : "menu__item inactive"}
-                    onClick={() => {
-                        props.setFitlerBass(!props.fitlerBass);
-                        props.setFitlerBookmarked(false);
-                        props.setFitlerPiano(false);
-                    }
-                    }
-                >
-                    <Tooltip
-                        placement="right"
-                        title={props.fitlerBass ? "Reset this filter" : "Show only for bass"}
-                    >
-                        <div className="menu__item-cell">
-                            <img
-                                width="25px"
-                                src={bass}
-                                alt={bass}>
-                            </img>
-                        </div>
-                    </Tooltip>
-                </div>
-                <div
-                    className={props.fitlerBookmarked ? "menu__item active" : "menu__item inactive"}
-                    onClick={() => {
-                        props.setFitlerBookmarked(!props.fitlerBookmarked);
-                        props.setFitlerBass(false);
-                        props.setFitlerPiano(false);
-                    }
-                    }
-                >
-                    <Tooltip
-                        placement="right"
-                        title={props.fitlerBookmarked ? "Reset this filter" : "Show bookmarked"}
-                    >
-                        <div className="menu__item-cell">
-                            <HeartOutlined style={{ paddingTop: '3px', fontSize: '24px', color: '#C70039' }} />
-                        </div>
-                    </Tooltip>
-                </div>
-                <div className="menu__item inactive hidden">
-                    <div className="menu__item-cell">?</div>
-                </div>
+                <div className="menu__dymobgguitar"></div>
+                {props.filterGuitar ? (<div className="guitar__strike"></div>) : ""}
             </div>
+
+            <div onClick={() => props.setFilterPiano(!props.filterPiano)}>
+                <div className="menu__dymotagpiano">
+                    &nbsp;&nbsp;&nbsp;Piano&nbsp;
+                </div>
+                <div className="menu__dymobgpiano"></div>
+                {props.filterPiano ? (<div className="piano__strike"></div>) : ""}
+            </div>
+
+            <div onClick={() => props.setFilterBass(!props.filterBass)} >
+                <div className="menu__dymotagbass">
+                    &nbsp;&nbsp;&nbsp;&nbsp;bass&nbsp;
+                </div>
+                <div className="menu__dymobgbass"></div>
+                {props.filterBass ? (<div className="bass__strike"></div>) : ""}
+            </div>
+
+            <Tooltip placement="right" title={"Show only bookmarked"}>
+                <div className={props.onlyBookmarked ? "menu__favorite active" : "menu__favorite inactive"}
+                    onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}>
+                    <HeartFilled style={{ fontSize: '24px', color: '#C70039' }} />
+                </div>
+            </Tooltip>
+
         </div >
     )
 
 }
 
-export default Menu; 
+export default Menu;
