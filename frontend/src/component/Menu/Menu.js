@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { Tooltip } from 'antd';
-import { HeartFilled } from '@ant-design/icons';
+import { HeartFilled, SelectOutlined } from '@ant-design/icons';
 
 import './Menu.css';
 
@@ -9,26 +9,34 @@ const Menu = (props) => {
     return (
         <div className="menu__main">
 
+
             <div onClick={() => props.setFilterGuitar(!props.filterGuitar)}>
-                <div className="menu__dymotagguitar">
-                    &nbsp;Guitar&nbsp;
+                <Tooltip placement="right" title={props.filterGuitar ? "Hide guitar tabs" : "Show guitar tabs"}>
+                    <div className="menu__dymotagguitar">
+                        &nbsp;Guitar&nbsp;
                 </div>
+                </Tooltip>
                 <div className="menu__dymobgguitar"></div>
                 {props.filterGuitar ? (<div className="guitar__strike"></div>) : ""}
             </div>
 
             <div onClick={() => props.setFilterPiano(!props.filterPiano)}>
-                <div className="menu__dymotagpiano">
-                    &nbsp;&nbsp;&nbsp;Piano&nbsp;
+                <Tooltip placement="right" title={props.filterPiano ? "Hide piano tabs" : "Show piano tabs"}>
+                    <div className="menu__dymotagpiano">
+                        &nbsp;&nbsp;&nbsp;Piano&nbsp;
                 </div>
+                </Tooltip >
                 <div className="menu__dymobgpiano"></div>
                 {props.filterPiano ? (<div className="piano__strike"></div>) : ""}
             </div>
 
+
             <div onClick={() => props.setFilterBass(!props.filterBass)} >
-                <div className="menu__dymotagbass">
-                    &nbsp;&nbsp;&nbsp;&nbsp;bass&nbsp;
+                <Tooltip placement="right" title={props.filterBass ? "Hide bass tabs" : "Show bass tabs"}>
+                    <div className="menu__dymotagbass">
+                        &nbsp;&nbsp;&nbsp;&nbsp;bass&nbsp;
                 </div>
+                </Tooltip >
                 <div className="menu__dymobgbass"></div>
                 {props.filterBass ? (<div className="bass__strike"></div>) : ""}
             </div>

@@ -18,7 +18,6 @@ class Book extends Component {
         this.loadPages();
     }
 
-
     loadPages() {
         async function fetchPages() {
             const response = await axios({
