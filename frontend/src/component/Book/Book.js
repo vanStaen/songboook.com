@@ -144,9 +144,8 @@ class Book extends Component {
                                 :
                                 (
                                     <div className="Book__nothingFound">
-                                        <div>
-                                            <img src={notFound} className="nothingFound" alt="Nothing found" />
-                                            <br />
+                                        <div style={{ marginBottom: "15px" }}>
+                                            <img src={notFound} className="nothingFound" alt="Nothing found" /><br />
                                             <div style={{ fontSize: 14, marginTop: 10, color: "white", opacity: .15 }}>Nothing found!</div>
                                         </div>
                                     </div>
