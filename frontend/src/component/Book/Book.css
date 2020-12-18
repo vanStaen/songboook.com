@@ -9,12 +9,21 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 30px;
+  padding: 0 50px 0 50px;
+}
+
+.Book__resultInfos{
+  display: absolute;
+  height: 35px;
   margin-top: 30px;
+  font-size: 12px;
+  font-weight: thin;
+  color: rgba(255,255,255,.25);
+  /*color: rgba(110, 15, 28, .75);*/
 }
 
 .Book__spinner {
-  min-height: 96vh;
+  min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;
   flex-wrap: wrap;

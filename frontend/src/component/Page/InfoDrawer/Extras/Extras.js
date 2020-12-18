@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Radio, Input, Tag } from 'antd';
-import { EditOutlined, LinkOutlined } from '@ant-design/icons';
+import { EditOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import './Extras.css';
 
@@ -111,6 +111,8 @@ const Extras = (props) => {
                 props.setIsPiano(true)
                 patchLinkInDB({ 'bass': false, 'piano': true, });
                 break;
+            default:
+                console.log('Error!');
         }
         setValueRadioTabsType(e.target.value);
     };

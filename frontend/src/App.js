@@ -11,7 +11,6 @@ function App() {
   const [filterGuitar, setFilterGuitar] = useState(false);
   const [onlyBookmarked, setOnlyBookmarked] = useState(false);
   const [onlyFlagKnown, setOnlyFlagKnown] = useState(0); // 0: all, 1: only unknown, 2: only known
-  const [filters, setFilter] = useState([]);
 
   return (
     <div className="App">

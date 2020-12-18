@@ -42,8 +42,8 @@ class Book extends Component {
         });
     };
 
-
     render() {
+
         const book = this.state.songbookPages.map(page => {
 
             let shouldBeDisplayed = true;
@@ -84,6 +84,32 @@ class Book extends Component {
 
         })
 
+        const bookNotNull = book.filter(function (e) {
+            return e != null;
+        });
+
+        const listOfFilter = () => {
+            let listOfFilter = ['guitar', 'piano', 'bass'];
+            if (this.props.filterGuitar) { listOfFilter.splice(listOfFilter.indexOf('guitar'), 1); }
+            if (this.props.filterPiano) { listOfFilter.splice(listOfFilter.indexOf('piano'), 1); }
+            if (this.props.filterBass) { listOfFilter.splice(listOfFilter.indexOf('bass'), 1); }
+            if (this.props.onlyBookmarked) { listOfFilter.push('bookmarked'); }
+            if (this.props.onlyFlagKnown === 1) { listOfFilter.push('unknown'); }
+            else if (this.props.onlyFlagKnown === 2) { listOfFilter.push('known'); }
+            return listOfFilter;
+        }
+
+        const formatedListOfFilter = () => {
+            let formatedListOfFiler = listOfFilter();
+            if (formatedListOfFiler.length > 1) {
+                const firstElement = formatedListOfFiler.slice(0, formatedListOfFiler.length - 1);
+                const lastElement = formatedListOfFiler[formatedListOfFiler.length - 1];
+
+                return firstElement.join(", ") + " & " + lastElement;
+            }
+            return formatedListOfFiler[0];
+        }
+
         return (
             <div style={{ width: "100%" }}>
                 { this.state.isLoading ?
@@ -105,8 +131,13 @@ class Book extends Component {
                             </div>
                         </div>
                         :
-                        <div className="Book__main">
-                            {book}
+                        <div>
+                            <div className="Book__resultInfos">
+                                {listOfFilter().length > 0 && (bookNotNull.length + " songs for " + formatedListOfFilter())}
+                            </div>
+                            <div className="Book__main">
+                                {book}
+                            </div>
                         </div>
                 }
             </div>

@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
-import { Tooltip, notification } from 'antd';
+import { Tooltip } from 'antd';
 import axios from 'axios';
 
 import './CheckAdd.css';
@@ -25,7 +25,7 @@ const CheckAdd = props => {
         }
         // fetch Entries
         patchEntry(value).then((resData) => {
-            const patchResult = resData;
+            // const patchResult = resData;
         }
         ).catch(error => {
             console.log("error", error.message);

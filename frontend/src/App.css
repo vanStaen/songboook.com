@@ -6,7 +6,7 @@
 
 .App-header {
   background-color: #924B55;
-  min-height: 96vh;
+  min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;
 }
