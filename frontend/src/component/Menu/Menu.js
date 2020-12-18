@@ -11,14 +11,14 @@ const Menu = (props) => {
     // 0: all, 1: only unknown, 2: only known
     const classNameFlagKnown = () => {
         if (props.onlyFlagKnown === 0) { return "menu__check inactive white" }
-        else if (props.onlyFlagKnown === 1) { return "menu__check active black" }
+        else if (props.onlyFlagKnown === 1) { return "menu__check active red" }
         else if (props.onlyFlagKnown === 2) { return "menu__check active green" }
     }
 
     const toolTipFlagKnow = () => {
         if (props.onlyFlagKnown === 0) { return null }
-        else if (props.onlyFlagKnown === 1) { return "Show only unknown songs" }
-        else if (props.onlyFlagKnown === 2) { return "Show only known songs" }
+        else if (props.onlyFlagKnown === 1) { return "Showing unknown only" }
+        else if (props.onlyFlagKnown === 2) { return "Showing known only" }
     }
 
     const iconFlagKnown = () => {
@@ -36,7 +36,6 @@ const Menu = (props) => {
 
     return (
         <div className="menu__main">
-
 
             <div onClick={() => props.setFilterGuitar(!props.filterGuitar)}>
                 <Tooltip placement="right" title={props.filterGuitar && "Guitar tabs hidden"}>
@@ -68,7 +67,7 @@ const Menu = (props) => {
                 {props.filterBass ? (<div className="bass__strike"></div>) : ""}
             </div>
 
-            <Tooltip placement="right" title={props.onlyBookmarked && "Show only bookmarked"}>
+            <Tooltip placement="right" title={props.onlyBookmarked && "Showing bookmarked only"}>
                 <div className={props.onlyBookmarked ? "menu__favorite active" : "menu__favorite inactive"}
                     onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}>
                     <img

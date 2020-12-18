@@ -2,6 +2,8 @@
 
 ## To-dos:
 
+- [ ] Random song from pool-of-known
+- [ ] Random song from pool-of-unknown
 - [ ] If lyrics api return nothing scrap google
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -10,9 +12,8 @@
     - [ ] Add userid to database songs
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
-- [ ] Random song from pool-of-known
-- [ ] Random song from pool-of-unknown
 - [ ] Smoothen drawer transition fold/unfold
+- [ ] Update Array when anything get patched.  
  
 ## Completed ✓
 

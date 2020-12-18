@@ -3,6 +3,7 @@ import { CloseOutlined } from '@ant-design/icons';
 
 import Page from '../Page/Page'
 import axios from 'axios';
+import notFound from './notFound.png'
 
 import './Book.css';
 
@@ -135,9 +136,22 @@ class Book extends Component {
                             <div className="Book__resultInfos">
                                 {listOfFilter().length > 0 && (bookNotNull.length + " songs for " + formatedListOfFilter())}
                             </div>
-                            <div className="Book__main">
-                                {book}
-                            </div>
+
+                            {bookNotNull.length > 0 ?
+                                (<div className="Book__main">
+                                    {book}
+                                </div>)
+                                :
+                                (
+                                    <div className="Book__nothingFound">
+                                        <div>
+                                            <img src={notFound} className="nothingFound" alt="Nothing found" />
+                                            <br />
+                                            <div style={{ fontSize: 14, marginTop: 10, color: "white", opacity: .15 }}>Nothing found!</div>
+                                        </div>
+                                    </div>
+                                )
+                            }
                         </div>
                 }
             </div>
