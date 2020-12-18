@@ -26,7 +26,7 @@ function App() {
           onlyBookmarked={onlyBookmarked}
           setOnlyBookmarked={setOnlyBookmarked}
           onlyFlagKnown={onlyFlagKnown}
-          setonlyFlagKnown={setOnlyFlagKnown}
+          setOnlyFlagKnown={setOnlyFlagKnown}
 
         />
         <Book

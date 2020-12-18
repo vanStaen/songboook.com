@@ -61,6 +61,17 @@ class Book extends Component {
                 shouldBeDisplayed = false;
             }
 
+            // 0: all, 1: only unknown, 2: only known
+            if (this.props.onlyFlagKnown === 1) {
+                if (page.checked) {
+                    shouldBeDisplayed = false;
+                }
+            } else if (this.props.onlyFlagKnown === 2) {
+                if (!page.checked) {
+                    shouldBeDisplayed = false;
+                }
+            }
+
             if (shouldBeDisplayed) {
                 return (
                     <div key={page.id}>

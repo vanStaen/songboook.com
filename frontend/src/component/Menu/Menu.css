@@ -123,8 +123,23 @@
     width: 33px;
     font-size: 20px;
     opacity: 0.85;
+}
+
+.green {
     color: green;
-    filter: saturate(2);
+    filter: saturate(1);
+}
+
+.red {
+    color: #6E0F1C;
+}
+
+.black {
+    color: rgba(0,0,0,.66);
+}
+
+.white {
+    color: rgba(255,255,255,.33);
 }
 
 .inactive:hover {
@@ -138,5 +153,6 @@
 }
 
 .active {
+    filter: brightness(0.75);
     opacity: 1 !important;
 }

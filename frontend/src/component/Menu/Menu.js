@@ -10,59 +10,36 @@ const Menu = (props) => {
 
     // 0: all, 1: only unknown, 2: only known
     const classNameFlagKnown = () => {
-        switch (props.onlyFlagKnown) {
-            case 0:
-                return "menu__check active";
-            case 1:
-                return "menu__check active";
-            case 2:
-                return "menu__check active";
-        }
+        if (props.onlyFlagKnown === 0) { return "menu__check inactive white" }
+        else if (props.onlyFlagKnown === 1) { return "menu__check active black" }
+        else if (props.onlyFlagKnown === 2) { return "menu__check active green" }
     }
 
     const toolTipFlagKnow = () => {
-        switch (props.onlyFlagKnown) {
-            case 0:
-                return "Show only unknown songs";
-            case 1:
-                return "Show only known songs";
-            case 2:
-                return "Show everything";
-        }
-    }
-
-    const handlerFlagKnown = (props) => {
-        console.log('clicked', props.onlyFlagKnown)
-        switch (props.onlyFlagKnown) {
-            case 0:
-                props.setOnlyFlagKnown(1);
-                break;
-            case 1:
-                props.setOnlyFlagKnown(2);
-                break;
-            case 2:
-                props.setOnlyFlagKnown(0);
-                break;
-        }
+        if (props.onlyFlagKnown === 0) { return null }
+        else if (props.onlyFlagKnown === 1) { return "Show only unknown songs" }
+        else if (props.onlyFlagKnown === 2) { return "Show only known songs" }
     }
 
     const iconFlagKnown = () => {
-        switch (props.onlyFlagKnown) {
-            case 0:
-                return <CheckOutlined />;
-            case 1:
-                return <QuestionOutlined />;
-            case 2:
-                return <CheckOutlined />;
-        }
+        if (props.onlyFlagKnown === 0) { return <CheckOutlined />; }
+        else if (props.onlyFlagKnown === 1) { return <QuestionOutlined />; }
+        else if (props.onlyFlagKnown === 2) { return <CheckOutlined />; }
     }
+
+    const handlerFlagKnown = () => {
+        if (props.onlyFlagKnown === 0) { props.setOnlyFlagKnown(1); }
+        else if (props.onlyFlagKnown === 1) { props.setOnlyFlagKnown(2); }
+        else if (props.onlyFlagKnown === 2) { props.setOnlyFlagKnown(0); }
+    }
+
 
     return (
         <div className="menu__main">
 
 
             <div onClick={() => props.setFilterGuitar(!props.filterGuitar)}>
-                <Tooltip placement="right" title={props.filterGuitar ? "Hide guitar tabs" : "Show guitar tabs"}>
+                <Tooltip placement="right" title={props.filterGuitar && "Guitar tabs hidden"}>
                     <div className="menu__dymotagguitar">
                         &nbsp;Guitar&nbsp;
                 </div>
@@ -72,7 +49,7 @@ const Menu = (props) => {
             </div>
 
             <div onClick={() => props.setFilterPiano(!props.filterPiano)}>
-                <Tooltip placement="right" title={props.filterPiano ? "Hide piano tabs" : "Show piano tabs"}>
+                <Tooltip placement="right" title={props.filterPiano && "Piano songs hidden"}>
                     <div className="menu__dymotagpiano">
                         &nbsp;&nbsp;&nbsp;Piano&nbsp;
                 </div>
@@ -82,7 +59,7 @@ const Menu = (props) => {
             </div>
 
             <div onClick={() => props.setFilterBass(!props.filterBass)} >
-                <Tooltip placement="right" title={props.filterBass ? "Hide bass tabs" : "Show bass tabs"}>
+                <Tooltip placement="right" title={props.filterBass && "Bass tabs hidden"}>
                     <div className="menu__dymotagbass">
                         &nbsp;&nbsp;&nbsp;&nbsp;bass&nbsp;
                 </div>
@@ -91,7 +68,7 @@ const Menu = (props) => {
                 {props.filterBass ? (<div className="bass__strike"></div>) : ""}
             </div>
 
-            <Tooltip placement="right" title={"Show only bookmarked"}>
+            <Tooltip placement="right" title={props.onlyBookmarked && "Show only bookmarked"}>
                 <div className={props.onlyBookmarked ? "menu__favorite active" : "menu__favorite inactive"}
                     onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}>
                     <img
@@ -101,12 +78,11 @@ const Menu = (props) => {
                         alt={bookmark}>
                     </img>
                 </div>
-            </Tooltip>
+            </Tooltip >
 
-            <Tooltip placement="bottomLeft" title={toolTipFlagKnow}>
-                <div className={classNameFlagKnown} onClick={handlerFlagKnown}>
-                    here
-                    {iconFlagKnown}
+            <Tooltip placement="bottomLeft" title={toolTipFlagKnow()}>
+                <div className={classNameFlagKnown()} onClick={handlerFlagKnown}>
+                    {iconFlagKnown()}
                 </div>
             </Tooltip>
 
