@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { CloseOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
 import Page from '../Page/Page'
-import axios from 'axios';
-import notFound from './notFound.png'
+import notFound from '../../images/notFound.png'
 
 import './Book.css';
 

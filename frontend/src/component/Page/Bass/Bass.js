@@ -1,5 +1,5 @@
 import { React } from 'react';
-import bass from './bass.png'
+import bass from './../../../images/bass.png'
 import { Tooltip } from 'antd';
 
 import './Bass.css';

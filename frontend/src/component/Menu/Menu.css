@@ -19,6 +19,10 @@
       margin: 0 auto;
     }
 
+    .menu__extra {
+        display: none;
+    }
+
     .menu__element {
       width: 20%;
     }
@@ -50,9 +54,16 @@
 @media only screen and (min-width: 600px) {
     .menu__main {
       position: fixed;
-      top: 110px;
+      top: 80px;
       z-index: 2;
     }
+
+    .menu__extra {
+        position: fixed;
+        right: 0px;
+        bottom: -20px;
+        z-index: 2;
+      }
 
     .menu__dymobgguitar{
         position: relative;
@@ -66,7 +77,6 @@
     .menu__dymotagguitar{
         position: relative;
         top: -35px;
-        position: relative;
         text-align: left;
         font-family: 'Dymo', sans-serif;
         color: rgba(0,0,0,0.9);
@@ -88,7 +98,6 @@
     .menu__dymotagpiano{
         position: relative;
         top: -59px;
-        position: relative;
         text-align: left;
         font-family: 'Dymo', sans-serif;
         color: rgba(0,0,0,0.9);
@@ -110,7 +119,6 @@
     .menu__dymotagbass{
         position: relative;
         top: -82px;
-        position: relative;
         text-align: left;
         font-family: 'Dymo', sans-serif;
         line-height: 1;
@@ -177,6 +185,56 @@
     .menu__bottombookmark
     {
       display: none;
+    }
+
+    .menu__dymobgadd{
+        position: relative;
+        top: -56px;
+        right: -20px;
+        background-color: #fff;
+        width: 47px;
+        height: 20px;
+        box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
+    }
+    
+    .menu__dymotagadd{
+        position: relative;
+        top: -32px;
+        text-align: right;
+        font-family: 'Dymo', sans-serif;
+        color: rgba(0,0,0,0.9);
+        font-size: 30px;
+        line-height: 1;
+        z-index: 1;
+        cursor: pointer;
+    }
+    
+    .menu__dymobglogin {
+        position: relative;
+        top: -77px;
+        background-color: #fff;
+        width: 64px;
+        height: 20px;
+        box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
+    }
+    
+    .menu__dymotaglogin {
+        position: relative;
+        top: -53px;
+        text-align: right;
+        font-family: 'Dymo', sans-serif;
+        color: rgba(0,0,0,0.9);
+        font-size: 30px;
+        line-height: 1;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    .menu__search {
+        position: relative;
+        bottom: 37px;
+        right: -30px;
+        width: 33px;
     }
 
   }
