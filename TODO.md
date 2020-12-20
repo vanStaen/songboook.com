@@ -2,8 +2,6 @@
 
 ## To-dos:
 
-- [ ] Random song from pool-of-known
-- [ ] Random song from pool-of-unknown
 - [ ] If lyrics api return nothing scrap google
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -41,3 +39,4 @@
 - [x] Edit infos (bottom from drawer? artist/song/bass-Piano?)
 - [x] Error shown on BackEnd connection error
 - [x] Filter bass/piano from front page
+- [x] Random song from any pool of songs

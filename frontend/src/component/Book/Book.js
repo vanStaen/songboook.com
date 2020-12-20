@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Modal } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ class Book extends Component {
         songbookPages: [],
         isLoading: true,
         isError: false,
+        showRandomModal: false,
     }
 
     componentDidMount() {
@@ -42,6 +44,10 @@ class Book extends Component {
             console.log(error.message);
         });
     };
+
+    handleRandomPick = () => {
+        this.setState({ showRandomModal: !this.state.showRandomModal })
+    }
 
     render() {
 
@@ -111,8 +117,23 @@ class Book extends Component {
             return formatedListOfFiler[0];
         }
 
+        const randomPic = Math.floor(Math.random() * bookNotNull.length) - 1;
+
         return (
             <div style={{ width: "100%" }}>
+                <Modal
+                    visible={this.state.showRandomModal}
+                    onCancel={() => this.setState({ showRandomModal: false })}
+                    footer={null}
+                    width={409}
+                    closable={false}
+                    centered
+                >
+                    <div className="centered">
+                        {bookNotNull[randomPic]}
+                    </div>
+
+                </Modal>
                 { this.state.isLoading ?
                     <div className="Book__spinner">
                         <div>
@@ -135,6 +156,8 @@ class Book extends Component {
                         <div>
                             <div className="Book__resultInfos">
                                 {listOfFilter().length > 0 && (bookNotNull.length + " songs for " + formatedListOfFilter())}
+                                &nbsp;-&nbsp;
+                                <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
                             </div>
 
                             {bookNotNull.length > 0 ?
