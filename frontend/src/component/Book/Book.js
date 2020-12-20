@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal } from 'antd';
+import { Modal, Tooltip } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
@@ -157,7 +157,9 @@ class Book extends Component {
                             <div className="Book__resultInfos">
                                 {listOfFilter().length > 0 && (bookNotNull.length + " songs for " + formatedListOfFilter())}
                                 &nbsp;-&nbsp;
-                                <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
+                                <Tooltip placement="bottomLeft" title={"Random song from this selection."}>
+                                    <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
+                                </Tooltip>
                             </div>
 
                             {bookNotNull.length > 0 ?

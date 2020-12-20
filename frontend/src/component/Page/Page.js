@@ -52,7 +52,6 @@ const Page = (props) => {
 
     return (
         <div className="Page__main" key={props.page.id}>
-
             { missing &&
                 (<div className="Page__notab" onClick={handlerOpenDrawer}>
                     <div className="Page__notab-text">

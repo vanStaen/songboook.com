@@ -2,7 +2,8 @@
 
 ## To-dos:
 
-- [ ] Lyrics Size menu 
+- [ ] Lyrics Size menu
+- [ ] Add set to inactive
 - [ ] If lyrics api return nothing scrap google
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
