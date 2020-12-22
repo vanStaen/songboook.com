@@ -16,7 +16,7 @@ const Links = props => {
 
     const [editInputValue, setEditInputValue] = useState('');
 
-    const maxTagWidth = props.isDrawerFold ? 165 : 400;
+    const maxTagWidth = props.isDrawerFold ? 165 : 390;
     const maxInputWidth = props.isDrawerFold ? 230 : 480;
 
     const patchLinkInDB = (data) => {
