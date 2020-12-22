@@ -75,10 +75,10 @@ router.patch("/:id", async (req, res) => {
     updateField = updateField + "checked=" + req.body.checked + ",";
   }
   if (req.body.tags) {
-    updateField = updateField + "tags= ARRAY ['" + req.body.tags.join("','") + "'],";
+    updateField = updateField + "tags= ARRAY ['" + req.body.tags.replace("'", "").join("','") + "'],";
   }
   if (req.body.title) {
-    updateField = updateField + "title='" + req.body.title + "',";
+    updateField = updateField + "title='" + req.body.title.replace("'", "") + "',";
   }
   if (req.body.picurl) {
     updateField = updateField + "picurl='" + req.body.picurl + "',";
@@ -90,10 +90,10 @@ router.patch("/:id", async (req, res) => {
     updateField = updateField + "videourl='" + req.body.videourl + "',";
   }
   if (req.body.artist) {
-    updateField = updateField + "artist='" + req.body.artist + "',";
+    updateField = updateField + "artist='" + req.body.artist.replace("'", "") + "',";
   }
   if (req.body.song) {
-    updateField = updateField + "song='" + req.body.song + "',";
+    updateField = updateField + "song='" + req.body.song.replace("'", "") + "',";
   }
   if (req.body.piano !== undefined) {
     updateField = updateField + "piano='" + req.body.piano + "',";
@@ -133,12 +133,12 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least an 'artist' name, and a 'song' name to create a new entry.` });
   }
 
-  const artist = req.body.artist;
-  const song = req.body.song;
+  const artist = req.body.artist.replace("'", "");
+  const song = req.body.song.replace("'", "");
   const picurl = req.body.picurl ? req.body.picurl : null;
   const link = req.body.link ? req.body.link : null;
-  const title = req.body.title ? req.body.title : artist + '-' + song;
-  const tags = req.body.tags ? "ARRAY ['" + req.body.tags.join("','") + "']" : `ARRAY ['${artist}','${song}']`;
+  const title = req.body.title ? req.body.title.replace("'", "") : artist + '-' + song;
+  const tags = req.body.tags.replace("'", "") ? "ARRAY ['" + req.body.tags.join("','") + "']" : `ARRAY ['${artist}','${song}']`;
   const bookmark = req.body.bookmark ? req.body.bookmark : false;
   const active = req.body.active ? req.body.active : true;
   const videourl = req.body.videourl ? req.body.videourl : null;
