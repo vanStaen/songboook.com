@@ -127,6 +127,7 @@ class Book extends Component {
                     footer={null}
                     width={409}
                     closable={false}
+                    className="randomPickModal"
                     centered
                 >
                     <div className="centered">

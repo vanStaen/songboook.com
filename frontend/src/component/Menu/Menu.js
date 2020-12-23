@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { Tooltip } from 'antd';
 import { QuestionOutlined, CheckOutlined } from '@ant-design/icons';
 
@@ -11,7 +11,6 @@ import bookmark from '../../images/bookmark.png'
 import './Menu.css';
 
 const Menu = (props) => {
-    const [showAddForm, setShowAddForm] = useState(false);
 
     // 0: all, 1: only unknown, 2: only known
     const classNameFlagKnown = () => {
@@ -152,7 +151,7 @@ const Menu = (props) => {
                         alt={search}>
                     </img>
                 </div>
-                <div className="menu__element" onClick={() => setShowAddForm(!showAddForm)}>
+                <div className="menu__element" onClick={() => props.setShowAddForm(!props.showAddForm)}>
                     <Tooltip placement="right" title={"Add a new song"}>
                         <div className="menu__dymotagadd">
                             &nbsp;add&nbsp;
@@ -160,7 +159,7 @@ const Menu = (props) => {
                     </Tooltip>
                     <div className="menu__dymobgadd"></div>
                 </div>
-                <div className="menu__element" onClick={() => setShowAddForm(!showAddForm)}>
+                <div className="menu__element" onClick={() => props.setShowAddForm(!props.showAddForm)}>
                     <div className="menu__dymotaglogin">
                         &nbsp;login&nbsp;
                     </div>

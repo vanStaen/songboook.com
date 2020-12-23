@@ -99,7 +99,8 @@ z-index: 1;
 opacity: 0.5;
 }
 
-.ant-modal-body, .ant-modal-content {
+.randomPickModal .ant-modal-body, 
+.randomPickModal .ant-modal-content {
   text-align: center;
   background-color: transparent !important;
 }
