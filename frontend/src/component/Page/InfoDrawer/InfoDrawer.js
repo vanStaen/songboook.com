@@ -113,7 +113,7 @@ const InfoDrawer = (props) => {
                     Lyrics
                     </span>
             </Divider>
-            <Lyrics artist={props.page.artist} song={props.page.song} />
+            <Lyrics id={props.page.id} />
 
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">

@@ -17,9 +17,14 @@ App available under songbook-cvs.herokuapp.com/
 - artist : var char
 - songname : var char
 - videourl : var char
+- genius : var char
+- bass : boolean
+- piano : boolean
+
 
 Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`
 
-## Lyrics APIs
+## Lyrics
 
-We are using as first Lyrics api https://apiseeds.com/documentation/lyrics and as a fallback, https://genius.com/api-clients. Here is a link on how to get lyrics from genius with node: https://cmichel.io/song-lyrics-in-nodejs
+We are getting the lyrics from an api https://apiseeds.com/documentation/lyrics.
+As a fallback we crawl the data from the "genius website".

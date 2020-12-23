@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const getTitleFromYoutubeVideo = require('../helpers/getTitleFromYoutubeVideo')
 const { Client } = require("pg");
+
+const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
 
 // Init Postgres
 const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
@@ -16,7 +17,7 @@ client.connect(err => {
   }
 })
 
-// GET all data from watchlist
+// GET all data from songbook
 router.get("/", async (req, res) => {
   try {
     const songbook = await client.query('SELECT * FROM songbook ORDER BY id ASC;');
@@ -111,6 +112,9 @@ router.patch("/:id", async (req, res) => {
   if (req.body.bass !== undefined) {
     updateField = updateField + "bass='" + req.body.bass + "',";
   }
+  if (req.body.geniusurl !== undefined) {
+    updateField = updateField + "geniusurl='" + req.body.geniusurl + "',";
+  }
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
   //console.log(updateQuery);
@@ -157,7 +161,8 @@ router.post("/", async (req, res) => {
   const piano = req.body.piano ? req.body.piano : false;
   const bass = req.body.bass ? req.body.bass : false;
   const checked = req.body.checked ? req.body.checked : false;
-  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass})`;
+  const geniusurl = await getFirstResultFromGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius']);
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass, geniusurl) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass}, '${geniusurl}')`;
   try {
     const songbook = await client.query(insertQuery);
     res.status(201).json({ success: "Success" });

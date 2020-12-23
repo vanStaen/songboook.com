@@ -3,7 +3,6 @@
 ## To-dos:
 
 - [ ] Lyrics Size menu
-- [ ] If lyrics api return nothing scrap google
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 - [ ] User handling
@@ -43,3 +42,4 @@
 - [x] Filter bass/piano from front page
 - [x] Random song from any pool of songs
 - [x] Add set to inactive or delete
+- [x] If lyrics api return nothing scrap google/genius
