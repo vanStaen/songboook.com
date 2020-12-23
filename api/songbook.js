@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
 const { Client } = require("pg");
 
-const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
 
 // Init Postgres
 const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
