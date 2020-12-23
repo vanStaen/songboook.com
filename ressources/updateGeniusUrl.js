@@ -1,11 +1,11 @@
-const { Client } = require("pg");
+/* const { Client } = require("pg");
 const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
 
 // Init Postgres
 const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; // This bypasses the SSL verification
 
-// Connect to Postgres 
+// Connect to Postgres
 client.connect(err => {
     if (err) {
         console.error('connection error', err.stack)
@@ -27,7 +27,7 @@ const getAllRows = async () => {
 const run = async () => {
     const rows = await getAllRows();
     rows.forEach((row) => {
-        //console.log(row.artist, row.song, row.id); 
+        //console.log(row.artist, row.song, row.id);
         const artist = row.artist.replace("'", "");
         const song = row.song.replace("'", "");
         if (row.id === 4) {
@@ -39,3 +39,4 @@ const run = async () => {
 }
 
 run();
+*/
