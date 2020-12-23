@@ -7,6 +7,7 @@ import Tags from './Tags/Tags';
 import Lyrics from './Lyrics/Lyrics';
 import Links from './Links/Links';
 import Extras from './Extras/Extras';
+import DangerZone from './DangerZone/DangerZone'
 
 const InfoDrawer = (props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
@@ -113,6 +114,13 @@ const InfoDrawer = (props) => {
                     </span>
             </Divider>
             <Lyrics artist={props.page.artist} song={props.page.song} />
+
+            <Divider orientation="left" plain>
+                <span className="Page-drawer__diviser">
+                    Danger Zone
+                 </span>
+            </Divider>
+            <DangerZone id={props.page.id} active={props.page.active} />
 
         </Drawer>
     )
