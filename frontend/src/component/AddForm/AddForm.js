@@ -104,7 +104,6 @@ const AddForm = (props) => {
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        initialValue="https://"
                         name="picurl"
                         label="Link to the album cover"
                     >
