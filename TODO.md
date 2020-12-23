@@ -3,7 +3,6 @@
 ## To-dos:
 
 - [ ] Lyrics Size menu
-- [ ] Add set to inactive
 - [ ] If lyrics api return nothing scrap google
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -13,7 +12,8 @@
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Smoothen drawer transition fold/unfold
-- [ ] Update Array when anything get patched.  
+- [ ] Update Array when anything get patched
+- [ ] Handle Archived (active=false)
  
 ## Completed ✓
 
@@ -42,3 +42,4 @@
 - [x] Error shown on BackEnd connection error
 - [x] Filter bass/piano from front page
 - [x] Random song from any pool of songs
+- [x] Add set to inactive or delete
