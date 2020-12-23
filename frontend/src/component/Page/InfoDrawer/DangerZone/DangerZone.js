@@ -1,9 +1,10 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { Button, Popconfirm, notification } from 'antd';
 import { DeleteOutlined, FolderOpenOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 const DangerZone = (props) => {
+    const [isActive, setIsActive] = useState(props.active)
 
     const handlePatchActive = (value) => {
         async function patchEntry(value) {
@@ -21,7 +22,8 @@ const DangerZone = (props) => {
         // fetch Entries
         patchEntry(value)
             .then(() => {
-                notification.error({ description: `Song #${props.id} has been ${props.active ? "a" : "una"}rchived. Please reload.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
+                setIsActive(value);
+                notification.error({ description: `Song #${props.id} has been ${isActive ? "a" : "una"}rchived.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
             })
             .catch(error => {
                 console.log("error", error.message);
@@ -43,7 +45,7 @@ const DangerZone = (props) => {
         // fetch Entries
         deleteEntry()
             .then(() => {
-                notification.error({ description: `Song #${props.id} has been deleted. Please reload.`, icon: <DeleteOutlined style={{ color: '#6E0F1C' }} />, });
+                notification.error({ description: `Song #${props.id} has been deleted.`, icon: <DeleteOutlined style={{ color: '#6E0F1C' }} />, });
             })
             .catch(error => {
                 console.log("error", error.message);
@@ -55,11 +57,11 @@ const DangerZone = (props) => {
             <Button
                 style={{ marginBottom: "10px" }}
                 icon={<FolderOpenOutlined />}
-                onClick={() => handlePatchActive(!props.active)}
+                onClick={() => handlePatchActive(!isActive)}
                 block
-                danger={props.active}
+                danger={isActive}
             >
-                {props.active ? "A" : "Una"}rchive this song
+                {isActive ? "A" : "Una"}rchive this song
             </Button>
             <Popconfirm
                 title="Are you sure？"
