@@ -52,6 +52,7 @@ router.delete("/:id", async (req, res) => {
     res.status(401).json({
       error: "Unauthorized",
     });
+    return;
   }
   try {
     const songbook = await client.query('DELETE FROM songbook WHERE id=' + req.params.id);
@@ -71,6 +72,7 @@ router.patch("/:id", async (req, res) => {
     res.status(401).json({
       error: "Unauthorized",
     });
+    return;
   }
   let updateField = '';
   if (req.body.active !== undefined) {
@@ -137,6 +139,7 @@ router.post("/", async (req, res) => {
     res.status(401).json({
       error: "Unauthorized",
     });
+    return;
   }
   // Title and Link are Mandatory
   if (!req.body.artist || !req.body.song) {

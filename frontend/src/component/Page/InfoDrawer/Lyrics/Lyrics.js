@@ -1,6 +1,19 @@
 import { React, useState } from "react";
 import axios from 'axios';
 
+const fixLatinEncoding = (input) => {
+    let output = "";
+    output = input
+        .toString()
+        .replaceAll("Ã©", "é")
+        .replaceAll("Ãª", "ê")
+        .replaceAll("Ã¨", "è")
+        .replaceAll("Ã§", "ç")
+        .replaceAll("Ã» ", "û")
+        .replaceAll("Ã", "à");
+    return output;
+}
+
 const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
 
@@ -20,7 +33,7 @@ const Lyrics = (props) => {
         // fetch Entries
         fetchLyrics()
             .then((resData) => {
-                setLyrics(resData.lyrics)
+                setLyrics(fixLatinEncoding(resData.lyrics));
             })
             .catch(error => {
                 console.log(error);

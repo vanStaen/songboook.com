@@ -20,6 +20,6 @@ App available under songbook-cvs.herokuapp.com/
 
 Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`
 
-## Lyrics API
+## Lyrics APIs
 
-https://apiseeds.com/documentation/lyrics
+We are using as first Lyrics api https://apiseeds.com/documentation/lyrics and as a fallback, https://genius.com/api-clients. Here is a link on how to get lyrics from genius with node: https://cmichel.io/song-lyrics-in-nodejs
