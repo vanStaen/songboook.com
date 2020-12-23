@@ -1,5 +1,5 @@
 const { Client } = require("pg");
-const getFirstResultFromGoogleSearch = require('./helpers/getFirstResultFromGoogleSearch')
+const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
 
 // Init Postgres
 const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
