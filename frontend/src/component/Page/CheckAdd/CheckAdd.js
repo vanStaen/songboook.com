@@ -13,7 +13,7 @@ const CheckAdd = props => {
     const patchCheck = (value) => {
         async function patchEntry(value) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + '/' + props.id,
+                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
                 method: 'PATCH',
                 data: { 'checked': value }
             });

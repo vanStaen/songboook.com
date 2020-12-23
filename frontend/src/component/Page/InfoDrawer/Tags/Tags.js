@@ -15,7 +15,7 @@ const Tags = props => {
     const patchTagsInDB = (tags) => {
         async function patchEntry(tags) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + '/' + props.id,
+                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
                 method: 'PATCH',
                 data: { 'tags': tags }
             });

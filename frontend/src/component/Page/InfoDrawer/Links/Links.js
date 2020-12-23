@@ -22,7 +22,7 @@ const Links = props => {
     const patchLinkInDB = (data) => {
         async function patchEntry(data) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + '/' + props.id,
+                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
                 method: 'PATCH',
                 data: data,
             });

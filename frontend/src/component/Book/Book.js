@@ -24,7 +24,7 @@ class Book extends Component {
     loadPages() {
         async function fetchPages() {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL,
+                url: process.env.REACT_APP_API_URL + "songbook",
                 method: "GET",
             });
             if ((response.status !== 200) & (response.status !== 201)) {

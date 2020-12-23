@@ -21,7 +21,7 @@ const AddForm = (props) => {
     const postAddSong = (data) => {
         async function postNew(data) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL,
+                url: process.env.REACT_APP_API_URL + "songbook",
                 method: 'POST',
                 data: data
             });
