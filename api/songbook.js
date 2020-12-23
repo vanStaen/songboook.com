@@ -48,6 +48,11 @@ router.get("/:id", async (req, res) => {
 
 // DELETE single data from songbook (based on id)
 router.delete("/:id", async (req, res) => {
+  if (!req.isAuth) {
+    res.status(401).json({
+      error: "Unauthorized",
+    });
+  }
   try {
     const songbook = await client.query('DELETE FROM songbook WHERE id=' + req.params.id);
     res.status(200).json({
@@ -62,9 +67,12 @@ router.delete("/:id", async (req, res) => {
 
 // PATCH single data from songbook(based on id)
 router.patch("/:id", async (req, res) => {
-
+  if (!req.isAuth) {
+    res.status(401).json({
+      error: "Unauthorized",
+    });
+  }
   let updateField = '';
-
   if (req.body.active !== undefined) {
     updateField = updateField + "active=" + req.body.active + ",";
   }
@@ -101,11 +109,9 @@ router.patch("/:id", async (req, res) => {
   if (req.body.bass !== undefined) {
     updateField = updateField + "bass='" + req.body.bass + "',";
   }
-
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
   //console.log(updateQuery);
-
   try {
     const songbook = await client.query(updateQuery);
     if (songbook.rowCount > 0) {
@@ -127,12 +133,15 @@ router.patch("/:id", async (req, res) => {
 
 // POST add to songbook
 router.post("/", async (req, res) => {
-
+  if (!req.isAuth) {
+    res.status(401).json({
+      error: "Unauthorized",
+    });
+  }
   // Title and Link are Mandatory
   if (!req.body.artist || !req.body.song) {
     return res.status(400).json({ error: `Error: Some field are missing. You need to pass at least an 'artist' name, and a 'song' name to create a new entry.` });
   }
-
   const artist = req.body.artist.replace("'", "");
   const song = req.body.song.replace("'", "");
   const picurl = req.body.picurl ? req.body.picurl : null;
@@ -146,7 +155,6 @@ router.post("/", async (req, res) => {
   const bass = req.body.bass ? req.body.bass : false;
   const checked = req.body.checked ? req.body.checked : false;
   const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass})`;
-
   try {
     const songbook = await client.query(insertQuery);
     res.status(201).json({ success: "Success" });
@@ -155,7 +163,6 @@ router.post("/", async (req, res) => {
       error: `${err})`,
     });
   }
-
 });
 
 module.exports = router;
