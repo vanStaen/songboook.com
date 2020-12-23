@@ -155,11 +155,15 @@ class Book extends Component {
                         :
                         <div>
                             <div className="Book__resultInfos">
-                                {listOfFilter().length > 0 && (bookNotNull.length + " songs for " + formatedListOfFilter())}
-                                &nbsp;-&nbsp;
-                                <Tooltip placement="bottomLeft" title={"Random song from this selection."}>
-                                    <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
-                                </Tooltip>
+                                {listOfFilter().length > 0 && (
+                                    <>
+                                        {bookNotNull.length + " songs for " + formatedListOfFilter()}
+                                        &nbsp;-&nbsp;
+                                        <Tooltip placement="bottomLeft" title={"Random song from this selection."}>
+                                            <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
+                                        </Tooltip>
+                                    </>
+                                )}
                             </div>
 
                             {bookNotNull.length > 0 ?

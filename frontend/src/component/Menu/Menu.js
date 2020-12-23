@@ -43,11 +43,11 @@ const Menu = (props) => {
         <div >
             <div className="menu__main">
                 <div className="menu__element" onClick={() => props.setFilterGuitar(!props.filterGuitar)}>
-                    <Tooltip placement="right" title={props.filterGuitar && "Guitar tabs hidden"}>
-                        <div className="menu__dymotagguitar">
+                    <div className="menu__dymotagguitar">
+                        <Tooltip placement="right" title={props.filterGuitar && "Guitar tabs hidden"}>
                             &nbsp;Guitar&nbsp;
+                        </Tooltip>
                     </div>
-                    </Tooltip>
                     <Tooltip placement="topLeft" title={props.filterGuitar && "Guitar tabs hidden"}>
                         <div className={!props.filterGuitar ? "menu__iconguitar" : "menu__iconguitar inactive"}>
                             <img
@@ -62,13 +62,13 @@ const Menu = (props) => {
                     {props.filterGuitar ? (<div className="guitar__strike"></div>) : ""}
                 </div>
                 <div className="menu__element" onClick={() => props.setFilterPiano(!props.filterPiano)}>
-                    <Tooltip placement="right" title={props.filterPiano && "Piano songs hidden"}>
-                        <div className="menu__dymotagpiano">
+                    <div className="menu__dymotagpiano">
+                        <Tooltip placement="right" title={props.filterPiano && "Piano songs hidden"}>
                             &nbsp;&nbsp;&nbsp;Piano&nbsp;
+                        </Tooltip >
                     </div>
-                        <div className="menu__dymobgpiano"></div>
-                        {props.filterPiano ? (<div className="piano__strike"></div>) : ""}
-                    </Tooltip >
+                    <div className="menu__dymobgpiano"></div>
+                    {props.filterPiano ? (<div className="piano__strike"></div>) : ""}
                     <Tooltip placement="top" title={props.filterPiano && "Piano songs hidden"}>
                         <div className={!props.filterPiano ? "menu__iconpiano" : "menu__iconpiano inactive"}>
                             <img
@@ -81,13 +81,13 @@ const Menu = (props) => {
                     </Tooltip >
                 </div>
                 <div className="menu__element" onClick={() => props.setFilterBass(!props.filterBass)} >
-                    <Tooltip placement="right" title={props.filterBass && "Bass tabs hidden"}>
-                        <div className="menu__dymotagbass">
+                    <div className="menu__dymotagbass">
+                        <Tooltip placement="right" title={props.filterBass && "Bass tabs hidden"}>
                             &nbsp;&nbsp;&nbsp;&nbsp;bass&nbsp;
-                    </div>
-                        <div className="menu__dymobgbass"></div>
-                        {props.filterBass ? (<div className="bass__strike"></div>) : ""}
                     </Tooltip >
+                    </div>
+                    <div className="menu__dymobgbass"></div>
+                    {props.filterBass ? (<div className="bass__strike"></div>) : ""}
                     <Tooltip placement="top" title={props.filterBass && "Bass tabs hidden"}>
                         <div className={!props.filterBass ? "menu__iconbass" : "menu__iconbass inactive"}>
                             <img
