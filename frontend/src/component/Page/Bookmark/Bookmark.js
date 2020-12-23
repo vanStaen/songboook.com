@@ -1,6 +1,6 @@
 import { React } from 'react';
 import bookmark from './../../../images/bookmark.png';
-import { Tooltip } from 'antd';
+import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
 import './Bookmark.css';
@@ -26,6 +26,7 @@ const Bookmark = props => {
             console.log("Sucess", patchResult);
         }
         ).catch(error => {
+            notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
     }

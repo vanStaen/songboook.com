@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { Modal, Form, Input, Radio } from 'antd';
+import { Modal, Form, Input, Radio, notification } from 'antd';
 import axios from 'axios';
 
 import './AddForm.css';
@@ -14,7 +14,6 @@ const AddForm = (props) => {
         if (values.picurl) { dataRequest.picurl = values.picurl; }
         if (values.videourl) { dataRequest.videourl = values.videourl; }
         postAddSong(dataRequest);
-        console.log(dataRequest);
         props.setShowAddForm(false);
     };
 
@@ -36,6 +35,7 @@ const AddForm = (props) => {
             console.log(resData);
         }
         ).catch(error => {
+            notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
     }

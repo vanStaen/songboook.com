@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
+import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
 import './CheckAdd.css';
@@ -24,12 +24,11 @@ const CheckAdd = props => {
             return patchResult;
         }
         // fetch Entries
-        patchEntry(value).then((resData) => {
-            // const patchResult = resData;
-        }
-        ).catch(error => {
-            console.log("error", error.message);
-        });
+        patchEntry(value)
+            .catch(error => {
+                notification.error({ description: `Unauthorized! Please login.`, });
+                console.log("error", error.message);
+            });
     }
 
     const handlerMarkAsChecked = (value) => {

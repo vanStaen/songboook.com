@@ -26,6 +26,7 @@ const DangerZone = (props) => {
                 notification.error({ description: `Song #${props.id} has been ${isActive ? "a" : "una"}rchived.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
             })
             .catch(error => {
+                notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
     }
@@ -48,6 +49,7 @@ const DangerZone = (props) => {
                 notification.error({ description: `Song #${props.id} has been deleted.`, icon: <DeleteOutlined style={{ color: '#6E0F1C' }} />, });
             })
             .catch(error => {
+                notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
     }

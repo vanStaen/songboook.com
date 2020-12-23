@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { Tag, Input } from 'antd';
+import { Tag, Input, notification } from 'antd';
 import axios from 'axios';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -30,6 +30,7 @@ const Tags = props => {
             //console.log("Sucess", resData);
         }
         ).catch(error => {
+            notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
     }
