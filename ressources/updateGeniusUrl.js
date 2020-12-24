@@ -15,10 +15,19 @@ client.connect(err => {
 })
 
 const getAllRows = async () => {
-    // GET all data from songbook
     try {
         const songbook = await client.query('SELECT * FROM songbook ORDER BY id ASC;');
         return songbook.rows;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const udpateDatabaseRow = async (id, geniusurl) => {
+    try {
+        const updateQuery = "UPDATE songbook SET geniusurl='" + geniusurl + "' WHERE id=" + id;
+        console.log(updateQuery);
+        await client.query(updateQuery);
     } catch (err) {
         console.log(err);
     }
@@ -30,9 +39,13 @@ const run = async () => {
         //console.log(row.artist, row.song, row.id);
         const artist = row.artist.replace("'", "");
         const song = row.song.replace("'", "");
-        if (row.id === 4) {
+        if (row.id !== null) {
             getfirstResultGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius'])
-                .then(geniusurl => { console.log(geniusurl) })
+                .then(geniusurl => {
+                    if (geniusurl.includes("genius.com")) {
+                        udpateDatabaseRow(row.id, geniusurl);
+                    }
+                })
                 .catch(err => { console.log(err) });
         }
     });
