@@ -86,7 +86,7 @@ router.patch("/:id", async (req, res) => {
     updateField = updateField + "checked=" + req.body.checked + ",";
   }
   if (req.body.tags) {
-    updateField = updateField + "tags= ARRAY ['" + req.body.tags.replace("'", "").join("','") + "'],";
+    updateField = updateField + "tags= ARRAY ['" + req.body.tags.join("','") + "'],";
   }
   if (req.body.title) {
     updateField = updateField + "title='" + req.body.title.replace("'", "") + "',";
