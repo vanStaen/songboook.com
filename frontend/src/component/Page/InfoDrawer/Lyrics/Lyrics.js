@@ -19,7 +19,7 @@ const Lyrics = (props) => {
 
     useEffect(() => {
         loadLyrics();
-    }, []);
+    });
 
     const loadLyrics = () => {
         async function fetchLyrics() {
@@ -37,6 +37,7 @@ const Lyrics = (props) => {
         // fetch Entries
         fetchLyrics()
             .then((resData) => {
+                console.log(resData.lyrics);
                 setLyrics(fixLatinEncoding(resData.lyrics));
             })
             .catch(error => {

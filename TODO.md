@@ -11,7 +11,7 @@
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Smoothen drawer transition fold/unfold
-- [ ] Update Array when anything get patched
+- [ ] Update array songs on any kind of update
 - [ ] Handle Archived (active=false)
  
 ## Completed ✓
