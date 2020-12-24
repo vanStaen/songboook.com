@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch');
+const getFirstResultFromGoogleSearch = require('./helpers/getFirstResultFromGoogleSearch');
 const { Client } = require("pg");
 
 
