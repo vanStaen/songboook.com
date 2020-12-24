@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from 'axios';
 
 const fixLatinEncoding = (input) => {
@@ -17,6 +17,10 @@ const fixLatinEncoding = (input) => {
 const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
 
+    useEffect(() => {
+        loadLyrics();
+    }, []);
+
     const loadLyrics = () => {
         async function fetchLyrics() {
             const response = await axios({
@@ -33,6 +37,7 @@ const Lyrics = (props) => {
         // fetch Entries
         fetchLyrics()
             .then((resData) => {
+                console.log('lyrics', resData.lyrics)
                 setLyrics(fixLatinEncoding(resData.lyrics));
             })
             .catch(error => {
@@ -40,10 +45,6 @@ const Lyrics = (props) => {
                 setLyrics('No lyrics found.');
             });
     };
-
-    if (lyrics === 'Loading ...') {
-        loadLyrics();
-    }
 
     return (
         <div style={{ whiteSpace: "pre-line" }}>
