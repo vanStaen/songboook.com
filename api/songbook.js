@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-//const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
+const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch');
 const { Client } = require("pg");
 
 
@@ -161,8 +161,7 @@ router.post("/", async (req, res) => {
   const piano = req.body.piano ? req.body.piano : false;
   const bass = req.body.bass ? req.body.bass : false;
   const checked = req.body.checked ? req.body.checked : false;
-  const geniusurl = null;
-  //const geniusurl = await getFirstResultFromGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius']);
+  const geniusurl = await getFirstResultFromGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius']);
   const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass, geniusurl) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass}, '${geniusurl}')`;
   try {
     const songbook = await client.query(insertQuery);
