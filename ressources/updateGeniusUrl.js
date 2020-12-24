@@ -1,5 +1,5 @@
-/* const { Client } = require("pg");
-const getFirstResultFromGoogleSearch = require('../helpers/getFirstResultFromGoogleSearch')
+const { Client } = require("pg");
+const getfirstResultGoogleSearch = require('../helpers/getfirstResultGoogleSearch')
 
 // Init Postgres
 const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
@@ -31,7 +31,7 @@ const run = async () => {
         const artist = row.artist.replace("'", "");
         const song = row.song.replace("'", "");
         if (row.id === 4) {
-            getFirstResultFromGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius'])
+            getfirstResultGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius'])
                 .then(geniusurl => { console.log(geniusurl) })
                 .catch(err => { console.log(err) });
         }
@@ -39,4 +39,3 @@ const run = async () => {
 }
 
 run();
-*/

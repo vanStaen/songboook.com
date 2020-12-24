@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 require("dotenv/config");
 
-async function getFirstResultFromGoogleSearch(searchWords) {
+async function getfirstResultGoogleSearch(searchWords) {
 
     const googleSearchUrl = `https://www.google.com/search?q=${searchWords.join("+")}`;
     const resTitle = await axios.get(googleSearchUrl)
@@ -20,4 +20,4 @@ async function getFirstResultFromGoogleSearch(searchWords) {
     return resTitle;
 }
 
-module.exports = getFirstResultFromGoogleSearch;
+module.exports = getfirstResultGoogleSearch;
