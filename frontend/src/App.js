@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './App.css';
 import AddForm from './component/AddForm/AddForm'
+import Login from './component/Login/Login'
 import Book from './component/Book/Book'
 import Menu from './component/Menu/Menu'
 import Footer from './component/Footer/Footer'
@@ -16,6 +17,7 @@ function App() {
   const [onlyBookmarked, setOnlyBookmarked] = useState(false);
   const [onlyFlagKnown, setOnlyFlagKnown] = useState(0); // 0: all, 1: only unknown, 2: only known
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
 
   // Axios Interceptors
   axios.interceptors.request.use((config) => {
@@ -34,6 +36,10 @@ function App() {
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
         />
+        <Login
+          showLoginForm={showLoginForm}
+          setShowLoginForm={setShowLoginForm}
+        />
         <Menu
           filterBass={filterBass}
           setFilterBass={setFilterBass}
@@ -47,6 +53,8 @@ function App() {
           setOnlyFlagKnown={setOnlyFlagKnown}
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
+          showLoginForm={showLoginForm}
+          setShowLoginForm={setShowLoginForm}
         />
         <Book
           filterBass={filterBass}

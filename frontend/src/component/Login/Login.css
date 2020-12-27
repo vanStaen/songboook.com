@@ -1,0 +1,24 @@
+.loginModal .ant-modal-body, 
+.loginModal .ant-modal-header, 
+.loginModal .ant-modal-footer, 
+.loginModal .ant-modal-content {
+  background-color: rgba(255,255,255,.8) !important;
+}
+
+.loginModal .ant-modal-body {
+    padding-top: 45px;
+    padding-bottom: 1px;
+}
+
+.collection-create-form_last-form-item {
+    margin-bottom: 0;
+}
+
+.ant-form-item-label {
+    padding: 0 0 5px 0 !important;
+}
+
+.loginModal .ant-btn-primary{
+    background:#6E0F1C ;
+    border: #000;
+}
