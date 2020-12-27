@@ -157,7 +157,7 @@ const Menu = (props) => {
                             &nbsp;add&nbsp;
                     </div>
                     </Tooltip>
-                    <div className="menu__dymobgadd"></div>
+                    <div className="menu__dymobgadd" style={props.token === null ? { right: "-20px" } : { right: "-34px" }}></div>
                 </div>
                 {props.token === null ?
                     (<div className="menu__element" onClick={() => props.setShowLoginForm(!props.showLoginForm)} >
