@@ -8,13 +8,13 @@ const Login = (props) => {
 
     const handleLogin = (values) => {
         const dataRequest = { email: values.email, password: values.password }
-        login(dataRequest);
+        fetchLogin(dataRequest);
         props.setShowLoginForm(false);
     };
 
-    const login = (data) => {
+    const fetchLogin = (data) => {
         console.log('data', data);
-        async function login(data) {
+        async function authLogin(data) {
             const response = await axios({
                 url: process.env.REACT_APP_AUTH_URL + "login",
                 method: 'POST',
@@ -27,7 +27,7 @@ const Login = (props) => {
             return patchResult;
         }
         // fetch Entries
-        login(data).then((resData) => {
+        authLogin(data).then((resData) => {
             console.log(resData);
             // Store RefreshToken
             localStorage.setItem("refreshToken", resData.refreshToken);

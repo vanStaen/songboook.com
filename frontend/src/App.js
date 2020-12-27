@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { notification } from "antd";
 import jsonwebtoken from "jsonwebtoken";
 import axios from 'axios';
@@ -158,21 +158,24 @@ function App() {
     return Promise.reject(error);
   });
 
+
+  useEffect(() => { setToken(token) }, [token])
+
   return (
     <div className="App">
       <header className="App-header">
         <AddForm
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
+        />
+        <Login
+          showLoginForm={showLoginForm}
+          setShowLoginForm={setShowLoginForm}
           token={token}
           refreshToken={refreshToken}
           login={login}
           logout={logout}
           getNewToken={getNewToken}
-        />
-        <Login
-          showLoginForm={showLoginForm}
-          setShowLoginForm={setShowLoginForm}
         />
         <Menu
           filterBass={filterBass}
@@ -189,6 +192,8 @@ function App() {
           setShowAddForm={setShowAddForm}
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
+          token={token}
+          logout={logout}
         />
         <Book
           filterBass={filterBass}

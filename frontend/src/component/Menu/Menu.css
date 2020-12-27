@@ -230,6 +230,27 @@
         cursor: pointer;
     }
 
+    .menu__dymobglogout {
+        position: relative;
+        top: -77px;
+        background-color: #fff;
+        width: 78px;
+        height: 20px;
+        box-shadow: 3px 3px 7px rgba(110, 15, 28, .5);
+    }
+    
+    .menu__dymotaglogout {
+        position: relative;
+        top: -53px;
+        text-align: right;
+        font-family: 'Dymo', sans-serif;
+        color: rgba(0,0,0,0.9);
+        font-size: 30px;
+        line-height: 1;
+        z-index: 1;
+        cursor: pointer;
+    }
+
     .menu__search {
         position: relative;
         bottom: 37px;

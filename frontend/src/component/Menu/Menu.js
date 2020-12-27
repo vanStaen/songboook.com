@@ -159,12 +159,21 @@ const Menu = (props) => {
                     </Tooltip>
                     <div className="menu__dymobgadd"></div>
                 </div>
-                <div className="menu__element" onClick={() => props.setShowLoginForm(!props.showLoginForm)} >
-                    <div className="menu__dymotaglogin">
-                        &nbsp;login&nbsp;
+                {props.token === null ?
+                    (<div className="menu__element" onClick={() => props.setShowLoginForm(!props.showLoginForm)} >
+                        <div className="menu__dymotaglogin">
+                            &nbsp;login&nbsp;
                     </div>
-                    <div className="menu__dymobglogin"></div>
-                </div>
+                        <div className="menu__dymobglogin"></div>
+                    </div>)
+                    :
+                    (<div className="menu__element" onClick={() => props.logout()} >
+                        <div className="menu__dymotaglogout">
+                            &nbsp;logout&nbsp;
+                        </div>
+                        <div className="menu__dymobglogout"></div>
+                    </div>)
+                }
             </div >
         </div >
     )
