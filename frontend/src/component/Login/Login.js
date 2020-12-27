@@ -29,6 +29,10 @@ const Login = (props) => {
         // fetch Entries
         login(data).then((resData) => {
             console.log(resData);
+            // Store RefreshToken
+            localStorage.setItem("refreshToken", resData.refreshToken);
+            // Call login context function 
+            props.login(resData.token, resData.refreshToken);
         }
         ).catch(error => {
             notification.error({ error: error.message, });
