@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { notification } from "antd";
 import jsonwebtoken from "jsonwebtoken";
 import axios from 'axios';
@@ -58,7 +58,7 @@ function App() {
     if (DEBUG) {
       console.log("[logout] Delete request:", deleteRequest);
     }
-    fetch(process.env.REACT_APP_AUTH_URL + "/logout", {
+    fetch(process.env.REACT_APP_AUTH_URL + "logout", {
       method: "DELETE",
       body: JSON.stringify(deleteRequest),
       headers: {
@@ -78,8 +78,7 @@ function App() {
       });
   };
 
-  const getNewToken = () => {
-    const refreshToken = localStorage.getItem("refreshToken");
+  const getNewToken = (refreshToken) => {
     if (DEBUG) {
       console.log("[script] Check access token");
     }
@@ -117,7 +116,8 @@ function App() {
         console.log("[script] Fetching a new token");
       }
       let requestBody = { refreshToken: refreshToken };
-      fetch(process.env.REACT_APP_AUTH_URL + "/token", {
+      console.log("requestBody", requestBody);
+      fetch(process.env.REACT_APP_AUTH_URL + "token", {
         method: "POST",
         body: JSON.stringify(requestBody),
         headers: {
@@ -145,14 +145,13 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    console.log("refreshToken", localStorage.getItem("refreshToken"));
-  });
-
   // Axios Interceptors
   axios.interceptors.request.use((config) => {
     if (DEBUG) { console.info("✉️ ", config); }
     // if refresh tokens exist, then run getToken
+    if (refreshToken) {
+      getNewToken(refreshToken);
+    }
     return config;
   }, (error) => {
     if (DEBUG) { console.error("✉️ ", error); }
