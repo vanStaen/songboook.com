@@ -28,7 +28,6 @@ const Login = (props) => {
         }
         // fetch Entries
         authLogin(data).then((resData) => {
-            console.log(resData);
             // Store RefreshToken
             localStorage.setItem("refreshToken", resData.refreshToken);
             // Call login context function 

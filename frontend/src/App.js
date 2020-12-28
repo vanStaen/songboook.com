@@ -83,7 +83,7 @@ function App() {
     }
 
     // Check if refreshtoken is expired
-    if (refreshToken) {
+    if (refreshToken != null) {
       let decodedRefreshToken = jsonwebtoken.decode(refreshToken, {
         complete: true,
       });
@@ -95,7 +95,7 @@ function App() {
     }
 
     // Check if token is expired
-    if (token) {
+    if (token != null) {
       let decodedToken = jsonwebtoken.decode(token, {
         complete: true,
       });
@@ -110,7 +110,7 @@ function App() {
     }
 
     // Refresh token if token missing
-    if (!token) {
+    if (token === null && refreshToken != null) {
       if (DEBUG) {
         console.log("[script] Fetching a new token");
       }
@@ -149,6 +149,8 @@ function App() {
     if (DEBUG) {
       //console.info("✉️ ", config);
     }
+    console.log("refreshToken", refreshToken);
+    console.log("token", token);
     if (!refreshToken != null && token === null) {
       getNewToken(refreshToken);
     }
@@ -171,10 +173,8 @@ function App() {
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
           token={token}
-          refreshToken={refreshToken}
           login={login}
           logout={logout}
-          getNewToken={getNewToken}
         />
         <Menu
           filterBass={filterBass}
