@@ -33,6 +33,12 @@ const Login = (props) => {
             localStorage.setItem("refreshToken", resData.refreshToken);
             // Call login context function 
             props.login(resData.token, resData.refreshToken);
+            // show notification
+            notification.success({
+                message: "You have successfully logged in.",
+                duration: 3,
+                placement: "topRight",
+            });
         }
         ).catch(error => {
             notification.error({ error: error.message, });

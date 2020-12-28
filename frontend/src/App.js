@@ -43,7 +43,6 @@ function App() {
       console.log("[login] Access Token:  ", token);
       console.log("[login] Refresh Token:  ", refreshToken);
     }
-    openNotification("You have successfully logged in.", "", 3, "success");
   };
 
   const logout = () => {
@@ -149,7 +148,12 @@ function App() {
   axios.interceptors.request.use((config) => {
     if (DEBUG) { console.info("✉️ ", config); }
     // if refresh tokens exist, then run getToken
-    if (refreshToken) {
+    console.log(refreshToken);
+    console.log(refreshToken != null);
+    console.log(token);
+    console.log(token === null);
+
+    if (!refreshToken != null && token === null) {
       getNewToken(refreshToken);
     }
     return config;
