@@ -69,6 +69,7 @@ const Page = (props) => {
                 id={props.page.id}
                 setIsBookmarked={setIsBookmarked}
                 isBookmarked={isBookmarked}
+                token={props.token}
             />
 
             <div className="Page__icons">
@@ -77,12 +78,18 @@ const Page = (props) => {
             </div>
 
             <div className="Page__actionicon">
-                <CheckAdd isVisitor={false} checked={props.page.checked} id={props.page.id} />
+                <CheckAdd
+                    isVisitor={false}
+                    checked={props.page.checked}
+                    id={props.page.id}
+                    token={props.token}
+                />
             </div>
 
             <Title
                 title={props.page.title}
                 id={props.page.id}
+                token={props.token}
             />
 
             <InfoDrawer
@@ -95,6 +102,7 @@ const Page = (props) => {
                 setPicMissing={setPicMissing}
                 setIsPiano={setIsPiano}
                 setIsBass={setIsBass}
+                token={props.token}
             />
 
         </div>

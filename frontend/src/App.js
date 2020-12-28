@@ -19,7 +19,7 @@ const openNotification = (msg, desc, showtime, type) => {
     description: desc,
     duration: showtime,
     type: type,
-    placement: "bottomRight",
+    placement: "topRight",
   });
 };
 
@@ -201,6 +201,7 @@ function App() {
           filterGuitar={filterGuitar}
           onlyFlagKnown={onlyFlagKnown}
           onlyBookmarked={onlyBookmarked}
+          token={token}
         />
       </header>
       <Footer />

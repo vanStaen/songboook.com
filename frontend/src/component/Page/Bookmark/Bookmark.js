@@ -12,7 +12,11 @@ const Bookmark = props => {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
                 method: 'PATCH',
-                data: { 'bookmark': value }
+                data: { 'bookmark': value },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + props.token,
+                },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
                 throw new Error("Error!");

@@ -82,7 +82,10 @@ class Book extends Component {
             if (shouldBeDisplayed) {
                 return (
                     <div key={page.id}>
-                        <Page page={page} />
+                        <Page
+                            page={page}
+                            token={this.props.token}
+                        />
                     </div>
                 );
             } else {
