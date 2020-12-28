@@ -115,7 +115,7 @@ function App() {
         console.log("[script] Fetching a new token");
       }
       let requestBody = { refreshToken: refreshToken };
-      console.log("requestBody", requestBody);
+      //console.log("requestBody", requestBody);
       fetch(process.env.REACT_APP_AUTH_URL + "token", {
         method: "POST",
         body: JSON.stringify(requestBody),
@@ -146,7 +146,9 @@ function App() {
 
   // Axios Interceptors
   axios.interceptors.request.use((config) => {
-    if (DEBUG) { console.info("✉️ ", config); }
+    if (DEBUG) {
+      //console.info("✉️ ", config);
+    }
     if (!refreshToken != null && token === null) {
       getNewToken(refreshToken);
     }
@@ -155,7 +157,6 @@ function App() {
     if (DEBUG) { console.error("✉️ ", error); }
     return Promise.reject(error);
   });
-
 
   useEffect(() => { setToken(token) }, [token])
 
