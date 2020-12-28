@@ -9,6 +9,7 @@ const Bookmark = props => {
 
     const patchBookmark = (value) => {
         async function patchEntry(value) {
+            console.log("token fo bearer: ", props.token)
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
                 method: 'PATCH',

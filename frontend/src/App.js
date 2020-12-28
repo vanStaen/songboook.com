@@ -148,10 +148,11 @@ function App() {
   axios.interceptors.request.use((config) => {
     if (DEBUG) {
       //console.info("✉️ ", config);
+      console.log("refreshToken", refreshToken);
+      console.log("token", token);
     }
-    console.log("refreshToken", refreshToken);
-    console.log("token", token);
     if (!refreshToken != null && token === null) {
+      console.log('Interceptor thinks it needs a new token!')
       getNewToken(refreshToken);
     }
     return config;
@@ -159,6 +160,7 @@ function App() {
     if (DEBUG) { console.error("✉️ ", error); }
     return Promise.reject(error);
   });
+
 
   useEffect(() => { setToken(token) }, [token])
 
