@@ -151,7 +151,7 @@ function App() {
       console.log("refreshToken", refreshToken);
       console.log("token", token);
     }
-    if (!refreshToken != null && token === null) {
+    if (refreshToken != null && token === null) {
       console.log('Interceptor thinks it needs a new token!')
       getNewToken(refreshToken);
     }
