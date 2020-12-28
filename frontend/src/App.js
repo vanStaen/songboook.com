@@ -147,12 +147,6 @@ function App() {
   // Axios Interceptors
   axios.interceptors.request.use((config) => {
     if (DEBUG) { console.info("✉️ ", config); }
-    // if refresh tokens exist, then run getToken
-    console.log(refreshToken);
-    console.log(refreshToken != null);
-    console.log(token);
-    console.log(token === null);
-
     if (!refreshToken != null && token === null) {
       getNewToken(refreshToken);
     }
