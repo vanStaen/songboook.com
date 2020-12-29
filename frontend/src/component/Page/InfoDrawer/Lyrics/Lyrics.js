@@ -39,7 +39,11 @@ const Lyrics = (props) => {
         fetchLyrics()
             .then((resData) => {
                 console.log(resData.lyrics);
-                setLyrics(fixLatinEncoding(resData.lyrics));
+                if (resData.lyrics.length > 0) {
+                    setLyrics(fixLatinEncoding(resData.lyrics));
+                } else {
+                    setLyrics('No lyrics found.');
+                }
             })
             .catch(error => {
                 console.log(error);
