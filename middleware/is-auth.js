@@ -16,11 +16,14 @@ module.exports = (req, res, next) => {
   let decodedToken;
   try {
     decodedToken = jsonwebtoken.verify(token, process.env.AUTH_SECRET_KEY);
+    console.log("decodedToken", decodedToken);
   } catch (err) {
     req.isAuth = false;
+    console.log("Error", err);
     return next();
   }
   if (!decodedToken) {
+    console.log("Decoded Token: ", decodedToken);
     req.isAuth = false;
     return next();
   }

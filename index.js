@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const isAuth = require("./middleware/is-auth");
 
 const PORT = process.env.PORT || 5002;
 require("dotenv/config");
@@ -10,6 +11,9 @@ const app = express();
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Authorization Middleware
+app.use(isAuth);
 
 // Allow cross orign request
 app.use((req, res, next) => {
