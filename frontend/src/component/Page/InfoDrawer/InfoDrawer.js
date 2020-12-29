@@ -77,6 +77,7 @@ const InfoDrawer = (props) => {
                 setVideoMissing={props.setVideoMissing}
                 setPicMissing={props.setPicMissing}
                 isDrawerFold={isDrawerFold}
+                token={props.token}
             />
 
             <Divider orientation="left" plain>
@@ -88,6 +89,7 @@ const InfoDrawer = (props) => {
                 tags={props.page.tags}
                 id={props.page.id}
                 setTagsMissing={props.setTagsMissing}
+                token={props.token}
             />
 
             <Divider orientation="left" plain>
@@ -106,6 +108,7 @@ const InfoDrawer = (props) => {
                 id={props.page.id}
                 setIsPiano={props.setIsPiano}
                 setIsBass={props.setIsBass}
+                token={props.token}
             />
 
             <Divider orientation="left" plain>
@@ -120,7 +123,11 @@ const InfoDrawer = (props) => {
                     Danger Zone
                  </span>
             </Divider>
-            <DangerZone id={props.page.id} active={props.page.active} />
+            <DangerZone
+                id={props.page.id}
+                active={props.page.active}
+                token={props.token}
+            />
 
         </Drawer>
     )

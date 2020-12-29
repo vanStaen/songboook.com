@@ -18,6 +18,7 @@ const AddForm = (props) => {
     };
 
     const postAddSong = (data) => {
+        console.log("token fo bearer: ", props.token)
         async function postNew(data) {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + "songbook",
