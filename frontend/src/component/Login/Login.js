@@ -13,7 +13,7 @@ const Login = (props) => {
     };
 
     const fetchLogin = (data) => {
-        console.log('data', data);
+        //console.log('data', data);
         async function authLogin(data) {
             const response = await axios({
                 url: process.env.REACT_APP_AUTH_URL + "login",
@@ -67,6 +67,7 @@ const Login = (props) => {
                     form
                         .validateFields()
                         .then(values => {
+                            form.resetFields();
                             handleLogin(values);
                         })
                         .catch(info => {

@@ -144,7 +144,7 @@ const Menu = (props) => {
                 </div>
             </div>
             <div className="menu__extra">
-                <div className="menu__search inactive white">
+                <div className="menu__search inactive white" style={props.token === null ? {} : { right: "-47px" }}>
                     <img
                         width="25"
                         src={search}
