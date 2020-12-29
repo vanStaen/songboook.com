@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { notification } from "antd";
 import jsonwebtoken from "jsonwebtoken";
-import axios from 'axios';
 
 import './App.css';
 
@@ -143,24 +142,6 @@ function App() {
         });
     }
   }
-
-  // Axios Interceptors
-  /*axios.interceptors.request.use((config) => {
-    console.log('Interceptor run!')
-    if (DEBUG) {
-      //console.info("✉️ ", config);
-      console.log("refreshToken", refreshToken);
-      console.log("token", token);
-    }
-    if (refreshToken != null && token === null) {
-      console.log('Interceptor thinks it needs a new token!')
-      getNewToken(refreshToken);
-    }
-    return config;
-  }, (error) => {
-    if (DEBUG) { console.error("✉️ ", error); }
-    return Promise.reject(error);
-  });*/
 
   useEffect(() => { setToken(token) }, [token])
 
