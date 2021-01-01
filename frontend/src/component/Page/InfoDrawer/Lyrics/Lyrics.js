@@ -18,6 +18,7 @@ const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
 
     useEffect(() => {
+        console.log("Lyrics: ", lyrics)
         if (lyrics === "Loading ..." && lyrics === "No lyrics found.") {
             loadLyrics();
         }
