@@ -35,6 +35,25 @@ router.get("/:id", async (req, res) => {
             } else {
                 console.log('levenshtein:', cleanedOriginalArtist, cleanFoundArtist, levenshtein(cleanedOriginalArtist, cleanFoundArtist))
                 console.log('similarity:', resData.similarity);
+                if (geniusUrl != null) {
+                    fetchLyricsGenius(geniusUrl)
+                        .then((resData) => {
+                            const $ = cheerio.load(resData)
+                            const lyrics = $('.lyrics').text().trim()
+                            //console.log('lyrics', lyrics)
+                            res.status(201).json({ lyrics: lyrics });
+                        })
+                        .catch((error) => {
+                            //console.log(error)
+                            res.status(400).json({
+                                error: `No lyrics found for ${artist} - ${song} (error: ${error})`,
+                            });
+                        })
+                }
+            }
+        }
+        ).catch(error => {
+            if (geniusUrl != null) {
                 fetchLyricsGenius(geniusUrl)
                     .then((resData) => {
                         const $ = cheerio.load(resData)
@@ -43,27 +62,17 @@ router.get("/:id", async (req, res) => {
                         res.status(201).json({ lyrics: lyrics });
                     })
                     .catch((error) => {
-                        console.log(error)
+                        //console.log(error)
                         res.status(400).json({
                             error: `No lyrics found for ${artist} - ${song} (error: ${error})`,
                         });
                     })
+            } else {
+                //console.log(error)
+                res.status(400).json({
+                    error: `No lyrics found for ${artist} - ${song} (error: ${error})`,
+                });
             }
-        }
-        ).catch(error => {
-            fetchLyricsGenius(geniusUrl)
-                .then((resData) => {
-                    const $ = cheerio.load(resData)
-                    const lyrics = $('.lyrics').text().trim()
-                    //console.log('lyrics', lyrics)
-                    res.status(201).json({ lyrics: lyrics });
-                })
-                .catch((error) => {
-                    console.log(error)
-                    res.status(400).json({
-                        error: `No lyrics found for ${artist} - ${song} (error: ${error})`,
-                    });
-                })
         });
 
     } catch (err) {
@@ -76,6 +85,7 @@ router.get("/:id", async (req, res) => {
 
 async function fetchLyrics(artist, song) {
     const lyricsApiUrl = process.env.LYRICS_API_URL + artist.replace(/ /g, "%20") + '/' + song.replace(/ /g, "%20") + '?apikey=' + process.env.LYRICS_API_KEY;
+    console.log(lyricsApiUrl);
     const response = await axios({
         url: lyricsApiUrl,
         method: "GET",
