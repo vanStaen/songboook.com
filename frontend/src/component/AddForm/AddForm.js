@@ -35,9 +35,10 @@ const AddForm = (props) => {
             const patchResult = await response.data;
             return patchResult;
         }
-        // fetch Entries
+        // post new Entries
         postNew(data).then((resData) => {
             console.log(resData);
+            notification.success({ description: `New song successfully posted!`, });
         }
         ).catch(error => {
             notification.error({ description: `Unauthorized! Please login.`, });
