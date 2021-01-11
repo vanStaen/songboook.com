@@ -3,9 +3,9 @@
   "name": "Songbook",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "127x127",
-      "type": "image/x-icon"
+      "src": "S-logo.png",
+      "sizes": "50x50",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
