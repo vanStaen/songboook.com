@@ -14,7 +14,7 @@
     "deploy": "npm run buildfe; heroku git:remote -a songbook-cvs; git push heroku main",
     "log": "heroku logs --tail",
     "kill5002": "kill $(lsof -t -i:5002)",
-    "backup": "cd helpers/; node createDatabaseBackUpFile.js; cd ../;"
+    "backup": "cd helpers/; node createDatabaseBackUpFile.js; cd ../; git add -A; git commit -a -m \"database backup\"; git push;"
   },
   "repository": {
     "type": "git",
