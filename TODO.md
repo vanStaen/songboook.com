@@ -2,6 +2,10 @@
 
 ## To-dos:
 
+- [ ] Unlog on auth errors
+- [ ] Update component only on succesfull actions
+- [ ] Retrigger load lyrics buton on fail
+- [ ] Search feature
 - [ ] Lyrics Size menu
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
