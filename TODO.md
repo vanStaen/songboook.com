@@ -17,6 +17,7 @@
 - [ ] Smoothen drawer transition fold/unfold
 - [ ] Update array songs on any kind of update
 - [ ] Handle Archived (active=false)
+- [ ] Offer a list view of songboook
  
 ## Completed ✓
 
