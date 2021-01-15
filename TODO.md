@@ -37,7 +37,7 @@
 - [x] Bookmark feature
 - [x] Click to expend drawer to 50% of screen
     - [x] Button expending screen to 600px
-    - [ ] ~~Then show artwork close to video~~
+    - [ ] ~~Then show artwork stop to video~~
     - [x] Video size adpt to drawer size
     - [x] Link shown with more characters
 - [x] Edit Links feature
