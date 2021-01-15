@@ -2,6 +2,8 @@
 
 ## To-dos:
 
+- [ ] Log the user ID to the song in the db!
+- [ ] Filter query result per User
 - [ ] Unlog on auth errors
 - [ ] Update component only on succesfull actions
 - [ ] Retrigger load lyrics buton on fail
