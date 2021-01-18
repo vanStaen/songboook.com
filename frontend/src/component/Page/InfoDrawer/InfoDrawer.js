@@ -49,6 +49,7 @@ const InfoDrawer = (props) => {
                         <MenuUnfoldOutlined onClick={() => handlerFoldDrawer(true)} />
                     }
                     &nbsp;&nbsp;{isDrawerFold ? song.toUpperCase() : (artist.toUpperCase() + " - " + song.toUpperCase())}
+                    &nbsp;<span style={{ color: "#eee" }}>#{props.page.id}</span>
                 </div>
             }
             placement="right"
