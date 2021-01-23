@@ -35,6 +35,7 @@ function App() {
   const [onlyFlagKnown, setOnlyFlagKnown] = useState(0); // 0: all, 1: only unknown, 2: only known
   const [showAddForm, setShowAddForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
   const login = (token, refreshToken) => {
     setToken(token);
@@ -155,7 +156,9 @@ function App() {
 
   return (
     <div className="App">
-      <Search />
+      <Search
+        showSearchInput={showSearchInput}
+      />
       <header className="App-header">
         <AddForm
           showAddForm={showAddForm}
@@ -186,6 +189,8 @@ function App() {
           setShowLoginForm={setShowLoginForm}
           token={token}
           logout={logout}
+          showSearchInput={showSearchInput}
+          setShowSearchInput={setShowSearchInput}
         />
         <Book
           filterBass={filterBass}
