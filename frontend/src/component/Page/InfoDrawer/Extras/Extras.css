@@ -7,11 +7,11 @@
     border-color: #924B55 !important ;
   }
   
-  .ant-radio-checked .ant-radio-inner:after{
+.ant-radio-checked .ant-radio-inner:after{
     background-color: #924B55;
   }
   
-  .ant-radio:hover .ant-radio-inner {
+.ant-radio:hover .ant-radio-inner {
     border-color: #924B55 ;
   }
 
