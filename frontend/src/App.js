@@ -8,6 +8,7 @@ import AddForm from './component/AddForm/AddForm'
 import Login from './component/Login/Login'
 import Book from './component/Book/Book'
 import Menu from './component/Menu/Menu'
+import Search from './component/Search/Search'
 import Footer from './component/Footer/Footer'
 
 const DEBUG = process.env.NODE_ENV === "development";
@@ -154,6 +155,7 @@ function App() {
 
   return (
     <div className="App">
+      <Search />
       <header className="App-header">
         <AddForm
           showAddForm={showAddForm}
