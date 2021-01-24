@@ -64,7 +64,7 @@ const Title = (props) => {
                     onPressEnter={handleEditConfirm}
                 />)
                 :
-                (<div className="Page__title" onDoubleClick={() => setIsEditmode(true)} >{title}</div>)
+                (<div className="Page__title" onDoubleClick={() => { props.token != null && setIsEditmode(true) }} >{title}</div>)
             }
         </>
 
