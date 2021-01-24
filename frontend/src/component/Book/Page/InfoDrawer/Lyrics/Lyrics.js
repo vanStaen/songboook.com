@@ -40,7 +40,7 @@ const Lyrics = (props) => {
         // fetch Entries
         fetchLyrics()
             .then((resData) => {
-                console.log(resData.lyrics);
+                //console.log(resData.lyrics);
                 if (resData.lyrics.length > 0) {
                     setLyrics(fixLatinEncoding(resData.lyrics));
                 } else {
