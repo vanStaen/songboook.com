@@ -36,6 +36,7 @@ function App() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchValue, setSearchValue] = useState(null);
 
   const login = (token, refreshToken) => {
     setToken(token);
@@ -158,6 +159,8 @@ function App() {
     <div className="App">
       <Search
         showSearchInput={showSearchInput}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
       />
       <header className="App-header">
         <AddForm
@@ -198,6 +201,7 @@ function App() {
           filterGuitar={filterGuitar}
           onlyFlagKnown={onlyFlagKnown}
           onlyBookmarked={onlyBookmarked}
+          searchValue={searchValue}
           token={token}
         />
       </header>

@@ -68,6 +68,16 @@ class Book extends Component {
                 shouldBeDisplayed = false;
             }
 
+            //if belongs to search results
+            if (this.props.searchValue && page.tags !== null && !page.tags.includes(this.props.searchValue)) {
+                shouldBeDisplayed = false;
+            } else {
+                /* for debuggin only
+                console.log(page.tags);
+                console.log(this.props.searchValue); */
+            }
+
+
             // 0: all, 1: only unknown, 2: only known
             if (this.props.onlyFlagKnown === 1) {
                 if (page.checked) {
@@ -110,14 +120,14 @@ class Book extends Component {
         }
 
         const formatedListOfFilter = () => {
-            let formatedListOfFiler = listOfFilter();
-            if (formatedListOfFiler.length > 1) {
-                const firstElement = formatedListOfFiler.slice(0, formatedListOfFiler.length - 1);
-                const lastElement = formatedListOfFiler[formatedListOfFiler.length - 1];
+            let formatedListOfFilter = listOfFilter();
+            if (formatedListOfFilter.length > 1) {
+                const firstElement = formatedListOfFilter.slice(0, formatedListOfFilter.length - 1);
+                const lastElement = formatedListOfFilter[formatedListOfFilter.length - 1];
 
                 return firstElement.join(", ") + " & " + lastElement;
             }
-            return formatedListOfFiler[0];
+            return formatedListOfFilter[0];
         }
 
         const randomPic = Math.floor(Math.random() * bookNotNull.length) - 1;

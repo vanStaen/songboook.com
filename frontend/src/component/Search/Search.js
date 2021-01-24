@@ -7,7 +7,7 @@ const { Search } = Input;
 
 const SearchField = (props) => {
 
-    const onSearch = value => console.log(value);
+    const onSearch = value => props.setSearchValue(value);
     const display = props.showSearchInput ? "block" : "none";
 
     return (

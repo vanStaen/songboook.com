@@ -2,12 +2,12 @@
 
 ## To-dos:
 
-- [ ] Log the user ID to the song in the db!
+- [ ] Hide edit option if not logged
+- [ ] Log the userID to the song in the db!
 - [ ] Filter query result per User
 - [ ] Unlog on auth errors
 - [ ] Update component only on succesfull actions
 - [ ] Retrigger load lyrics buton on fail
-- [ ] Search feature
 - [ ] Lyrics Size menu
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -50,3 +50,4 @@
 - [x] Random song from any pool of songs
 - [x] Add set to inactive or delete
 - [x] If lyrics api return nothing scrap google/genius
+- [x] Search feature
