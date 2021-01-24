@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Log the userID to the song in the db!
 - [ ] Filter query result per User
 - [ ] Unlog on auth errors
 - [ ] Update component only on succesfull actions
@@ -11,8 +10,8 @@
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 - [ ] User handling
-    - [ ] Auth feature
-    - [ ] Add userid to database songs
+    - [ ] Creat user (using auth service)
+    - [ ] Add userid to database (As author of songs)
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Smoothen drawer transition fold/unfold
