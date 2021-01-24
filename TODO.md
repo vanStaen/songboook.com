@@ -7,10 +7,11 @@
 - [ ] Update component only on succesfull actions
 - [ ] Retrigger load lyrics buton on fail
 - [ ] Lyrics Size menu
+- [ ] Auto scrol drawer feature
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 - [ ] User handling
-    - [ ] Creat user (using auth service)
+    - [ ] Create user (using auth service)
     - [ ] Add userid to database (As author of songs)
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
