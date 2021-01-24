@@ -137,12 +137,12 @@ const Links = props => {
                     (<a href={tabs} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="tabs">
                             <LinkOutlined />&nbsp;&nbsp;
-                        {returnCropedText(tabs, maxTagWidth)}
-                            <EditOutlined onClick={e => {
+                                {returnCropedText(tabs, maxTagWidth)}
+                            {props.token && (<EditOutlined onClick={e => {
                                 setEditInputValue(tabs)
                                 setIsTabsEditMode(true);
                                 e.preventDefault();
-                            }} />
+                            }} />)}
                         </Tag>
                     </a>)
                 }
@@ -166,17 +166,17 @@ const Links = props => {
                     (<a href={video} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="video">
                             <LinkOutlined />&nbsp;&nbsp;
-                        {returnCropedText(video, maxTagWidth)}
-                            <EditOutlined onClick={e => {
+                                {returnCropedText(video, maxTagWidth)}
+                            {props.token && (<EditOutlined onClick={e => {
                                 setEditInputValue(video)
                                 setIsVideoEditMode(true);
                                 e.preventDefault();
-                            }} />
+                            }} />)}
                         </Tag>
                     </a>)
                 }
             </div>
-            <div>
+            {props.token && (<div>
                 &nbsp;&nbsp;&nbsp;&nbsp;Pic:
                 {isPicEditMode ?
                     (<Input
@@ -205,7 +205,7 @@ const Links = props => {
                         }} />
                     </Tag>)
                 }
-            </div>
+            </div>)}
 
         </div>
     )
