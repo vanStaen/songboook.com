@@ -8,9 +8,7 @@ import './CheckAdd.css';
 const CheckAdd = props => {
 
     const [isChecked, setIsChecked] = useState(props.checked);
-    const isVisitor = props.isVisitor;
-
-    console.log("isVisitor", isVisitor);
+    //const isVisitor = props.isVisitor;
 
     const patchCheck = (value) => {
         async function patchEntry(value) {
