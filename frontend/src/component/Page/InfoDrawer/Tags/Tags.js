@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 import './Tags.css'
 
-const Tags = props => {
+const Tags = (props) => {
     const [tags, setTags] = useState(props.tags);
     const [editInputIndex, setEditInputIndex] = useState(-1);
     const [editInputValue, setEditInputValue] = useState('');
@@ -133,7 +133,7 @@ const Tags = props => {
             <Tag
                 className="edit-tag"
                 key={index}
-                closable
+                closable={props.token ? true : false}
                 onClose={() => handlerDeleteTag(index)}
             >
                 <span
@@ -163,7 +163,7 @@ const Tags = props => {
                     onPressEnter={handleInputConfirm}
                 />
             )}
-            {!inputVisible && (
+            {!inputVisible && props.token && (
                 <Tag className="site-tag-plus" onClick={showInput}>
                     <PlusOutlined /> Add Tag
                 </Tag>

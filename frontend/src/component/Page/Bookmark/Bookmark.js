@@ -54,7 +54,7 @@ const Bookmark = props => {
                     </img>
                 </Tooltip>)
                 :
-                (<Tooltip placement="right" title="Bookmark this.">
+                props.token != null && (<Tooltip placement="right" title="Bookmark this.">
                     <img
                         onClick={() => handlerBookmarking(true)}
                         className="bookmark__img clickable bookmark__grey"

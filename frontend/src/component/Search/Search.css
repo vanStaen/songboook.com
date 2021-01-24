@@ -1,0 +1,14 @@
+
+.search__container {
+    display: block;
+    background-color: #924B55;
+    padding: 20px 100px 0px 100px;
+}
+
+.search__bar {
+    width: 100%;
+}
+
+.search__bar .ant-input {
+    background-color: rgba(255, 255, 255, .3) !important;
+}

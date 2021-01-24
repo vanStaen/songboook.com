@@ -2,6 +2,11 @@
 
 ## To-dos:
 
+- [ ] Log the userID to the song in the db!
+- [ ] Filter query result per User
+- [ ] Unlog on auth errors
+- [ ] Update component only on succesfull actions
+- [ ] Retrigger load lyrics buton on fail
 - [ ] Lyrics Size menu
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
@@ -13,6 +18,7 @@
 - [ ] Smoothen drawer transition fold/unfold
 - [ ] Update array songs on any kind of update
 - [ ] Handle Archived (active=false)
+- [ ] Offer a list view of songboook
  
 ## Completed ✓
 
@@ -32,7 +38,7 @@
 - [x] Bookmark feature
 - [x] Click to expend drawer to 50% of screen
     - [x] Button expending screen to 600px
-    - [ ] ~~Then show artwork close to video~~
+    - [ ] ~~Then show artwork stop to video~~
     - [x] Video size adpt to drawer size
     - [x] Link shown with more characters
 - [x] Edit Links feature
@@ -43,3 +49,5 @@
 - [x] Random song from any pool of songs
 - [x] Add set to inactive or delete
 - [x] If lyrics api return nothing scrap google/genius
+- [x] Search feature
+- [x] Hide edit option if not logged
