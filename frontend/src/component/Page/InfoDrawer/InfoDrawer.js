@@ -93,24 +93,28 @@ const InfoDrawer = (props) => {
                 token={props.token}
             />
 
-            <Divider orientation="left" plain>
-                <span className="Page-drawer__diviser">
-                    Extras
+            {props.token != null && (
+                <>
+                    <Divider orientation="left" plain>
+                        <span className="Page-drawer__diviser">
+                            Extras
                     </span>
-            </Divider>
-            <Extras
-                artist={props.page.artist}
-                song={props.page.song}
-                piano={props.page.piano}
-                bass={props.page.bass}
-                setArtist={setArtist}
-                setSong={setSong}
-                isDrawerFold={isDrawerFold}
-                id={props.page.id}
-                setIsPiano={props.setIsPiano}
-                setIsBass={props.setIsBass}
-                token={props.token}
-            />
+                    </Divider>
+                    <Extras
+                        artist={props.page.artist}
+                        song={props.page.song}
+                        piano={props.page.piano}
+                        bass={props.page.bass}
+                        setArtist={setArtist}
+                        setSong={setSong}
+                        isDrawerFold={isDrawerFold}
+                        id={props.page.id}
+                        setIsPiano={props.setIsPiano}
+                        setIsBass={props.setIsBass}
+                        token={props.token}
+                    />
+                </>)}
+
 
             <Divider orientation="left" plain>
                 <span className="Page-drawer__diviser">
@@ -119,16 +123,20 @@ const InfoDrawer = (props) => {
             </Divider>
             <Lyrics id={props.page.id} />
 
-            <Divider orientation="left" plain>
-                <span className="Page-drawer__diviser">
-                    Danger Zone
-                 </span>
-            </Divider>
-            <DangerZone
-                id={props.page.id}
-                active={props.page.active}
-                token={props.token}
-            />
+
+            {props.token != null && (
+                <>
+                    <Divider orientation="left" plain>
+                        <span className="Page-drawer__diviser">
+                            Danger Zone
+                        </span>
+                    </Divider>
+                    <DangerZone
+                        id={props.page.id}
+                        active={props.page.active}
+                        token={props.token}
+                    />
+                </>)}
 
         </Drawer>
     )
