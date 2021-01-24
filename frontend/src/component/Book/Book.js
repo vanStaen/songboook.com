@@ -130,7 +130,7 @@ class Book extends Component {
             return formatedListOfFilter[0];
         }
 
-        const randomPic = Math.floor(Math.random() * bookNotNull.length) - 1;
+        const randomPic = Math.floor(Math.random() * bookNotNull.length);
 
         return (
             <div style={{ width: "100%" }}>
