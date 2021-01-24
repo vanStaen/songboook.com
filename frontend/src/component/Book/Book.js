@@ -104,7 +104,7 @@ class Book extends Component {
 
         })
 
-        const bookNotNull = book.filter(function (e) {
+        const bookNotNull = book.filter((e) => {
             return e != null;
         });
 
