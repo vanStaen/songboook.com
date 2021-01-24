@@ -105,6 +105,10 @@ opacity: 0.5;
   background-color: transparent !important;
 }
 
+.randomPickModal .ant-modal-wrap {
+  background-color: rgba(0,0,0,0.5);
+}
+
 .ant-modal-content .Page__main{
   box-shadow: 0px 0px 150px pink;
 }
