@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Hide edit option if not logged
 - [ ] Log the userID to the song in the db!
 - [ ] Filter query result per User
 - [ ] Unlog on auth errors
@@ -51,3 +50,4 @@
 - [x] Add set to inactive or delete
 - [x] If lyrics api return nothing scrap google/genius
 - [x] Search feature
+- [x] Hide edit option if not logged
