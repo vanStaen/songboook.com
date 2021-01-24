@@ -6,7 +6,7 @@ import CheckAdd from './CheckAdd/CheckAdd';
 import Bookmark from './Bookmark/Bookmark';
 import Title from './Title/Title';
 
-import '../.././fonts/Dymo.ttf';
+import '../../.././fonts/Dymo.ttf';
 import './Page.css'
 
 const Page = (props) => {

@@ -1,5 +1,5 @@
 import { React } from 'react';
-import piano from './../../../images/piano.png';
+import piano from './../../../../images/piano.png';
 import { Tooltip } from 'antd';
 
 import './Piano.css';

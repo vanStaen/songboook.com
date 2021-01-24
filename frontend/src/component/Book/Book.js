@@ -3,7 +3,7 @@ import { Modal, Tooltip } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
-import Page from '../Page/Page';
+import Page from './Page/Page';
 import notFound from '../../images/notFound.png';
 
 import './Book.css';

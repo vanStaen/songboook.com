@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Dymo';
-    src: local('Dymo'), url(../../.././fonts/Dymo.ttf) format('truetype');
+    src: local('Dymo'), url(../../../.././fonts/Dymo.ttf) format('truetype');
   }
 
 .Page__title {

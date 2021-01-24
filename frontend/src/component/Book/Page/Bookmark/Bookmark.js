@@ -1,5 +1,5 @@
 import { React } from 'react';
-import bookmark from './../../../images/bookmark.png';
+import bookmark from './../../../../images/bookmark.png';
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
