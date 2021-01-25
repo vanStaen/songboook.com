@@ -21,7 +21,9 @@ router.get("/", async (req, res) => {
     );
   } catch (err) {
     res.status(400).json({
+      "Dummy": "Failure",
       error: `${err})`,
+      isAuth: req.isAuth
     });
   }
 });
