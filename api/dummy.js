@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
       Dummy: "Success",
       User: req.userId,
       Email: req.email,
-      isAuth: red.isAuth
+      isAuth: req.isAuth
     }
     );
   } catch (err) {
@@ -27,6 +27,3 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
-
-
-
