@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 // Authorization Middleware
 app.use(isAuth);
 
-// Allow cross orign request
+// Allow cross origin request
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PATCH, OPTIONS");

@@ -3,22 +3,22 @@
 ## To-dos:
 
 - [ ] Filter query result per User
-- [ ] Unlog on auth errors
-- [ ] Update component only on succesfull actions
-- [ ] Retrigger load lyrics buton on fail
+- [ ] logout on auth errors
+- [ ] Update component only on successful actions
+- [ ] Button to trigger load lyrics on fail
 - [ ] Lyrics Size menu
-- [ ] Auto scrol drawer feature
+- [ ] Auto scroll drawer feature
 - [ ] Auto save db as Json (weekly?)
 - [ ] Pause youtube when exiting drawer.
 - [ ] User handling
     - [ ] Create user (using auth service)
-    - [ ] Add userid to database (As author of songs)
+    - [ ] Add user id to database (As author of songs)
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Smoothen drawer transition fold/unfold
 - [ ] Update array songs on any kind of update
 - [ ] Handle Archived (active=false)
-- [ ] Offer a list view of songboook
+- [ ] Offer a list view of songbook
  
 ## Completed ✓
 
@@ -39,7 +39,7 @@
 - [x] Click to expend drawer to 50% of screen
     - [x] Button expending screen to 600px
     - [ ] ~~Then show artwork stop to video~~
-    - [x] Video size adpt to drawer size
+    - [x] Video size adapt to drawer size
     - [x] Link shown with more characters
 - [x] Edit Links feature
 - [x] Edit title feature

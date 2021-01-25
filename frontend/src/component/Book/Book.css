@@ -20,12 +20,12 @@
   color: #ccc;
 }
 
-.Book_resutltRamdomPick{
+.Book_resultRandomPick{
   cursor: pointer;
   color: #fff;
 }
 
-.Book_resutltRamdomPick:hover{
+.Book_resultRandomPick:hover{
   color: rgba(255,255,255,.5);
   /*color:rgba(110, 15, 28, .33)*/
 }

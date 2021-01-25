@@ -72,7 +72,7 @@ class Book extends Component {
             if (this.props.searchValue && page.tags !== null && !page.tags.includes(this.props.searchValue)) {
                 shouldBeDisplayed = false;
             } else {
-                /* for debuggin only
+                /* for debugging only
                 console.log(page.tags);
                 console.log(this.props.searchValue); */
             }
@@ -174,7 +174,7 @@ class Book extends Component {
                                         {bookNotNull.length + " songs for " + formatedListOfFilter()}
                                         &nbsp;-&nbsp;
                                         <Tooltip placement="bottomLeft" title={"Random song from this selection."}>
-                                            <span className="Book_resutltRamdomPick" onClick={this.handleRandomPick}>[random pick]</span>
+                                            <span className="Book_resultRandomPick" onClick={this.handleRandomPick}>[random pick]</span>
                                         </Tooltip>
                                     </>
                                 )}

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// GET Dummy endpoimt
+// GET Dummy endpoint
 router.get("/", async (req, res) => {
 
   if (!req.isAuth) {
