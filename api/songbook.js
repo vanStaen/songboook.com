@@ -13,7 +13,7 @@ client.connect(err => {
   if (err) {
     console.error('connection error', err.stack)
   } else {
-    console.log('Connected to postgres db!')
+    console.log('Songbook:', 'Connected to postgres db!')
   }
 })
 
