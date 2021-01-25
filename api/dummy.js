@@ -6,7 +6,8 @@ router.get("/", async (req, res) => {
 
   if (!req.isAuth) {
     res.status(401).json({
-      error: "Unauthorized",
+      Dummy: "Unauthorized",
+      isAuth: req.isAuth
     });
     return;
   }
@@ -21,7 +22,7 @@ router.get("/", async (req, res) => {
     );
   } catch (err) {
     res.status(400).json({
-      "Dummy": "Failure",
+      Dummy: "Failure",
       error: `${err})`,
       isAuth: req.isAuth
     });
