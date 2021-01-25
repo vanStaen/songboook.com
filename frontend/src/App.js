@@ -117,7 +117,6 @@ function App() {
         console.log("[script] Fetching a new token");
       }
       let requestBody = { refreshToken: refreshToken };
-      console.log("requestBody", requestBody);
       fetch(process.env.REACT_APP_AUTH_URL + "token", {
         method: "POST",
         body: JSON.stringify(requestBody),
