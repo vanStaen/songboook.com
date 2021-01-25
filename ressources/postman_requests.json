@@ -30,17 +30,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "songbook-cvs.herokuapp.com/songbook",
+					"raw": "songbook-cvs.herokuapp.com/songbook/29",
 					"host": [
 						"songbook-cvs",
 						"herokuapp",
 						"com"
 					],
 					"path": [
-						"songbook"
+						"songbook",
+						"29"
 					]
 				},
-				"description": "GET request : list of all users\nTo localserver on port 5000\n"
+				"description": "GET request : list of all users\nTo local server on port 5000\n"
 			},
 			"response": []
 		},
@@ -100,20 +101,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{  \n   \"link\": \"https://tabs.ultimate-guitar.com/tab/radiohead/karma-police-chords-4130\",\n   \"title\": \"Radiohead - Karma Police\",\n   \"picurl\": \"https://www.readersdigest.co.uk/media/March%202019/ok%20computer%20radio%20head%20sara%20bareilles%20.jpg\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{  \n   \"geniusurl\": \"https://genius.com/Younotus-and-kelvin-jones-seventeen-lyrics\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:5002/songbook",
+					"raw": "http://localhost:5002/songbook/87",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5002",
 					"path": [
-						"songbook"
+						"songbook",
+						"87"
 					]
 				}
 			},
@@ -132,10 +131,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{  \n   \"link\": \"https://www.youtube.com/watch?v=aqtSWrl1BJI\",\n   \"title\": \"Red Hot Chili Peppers Breaking the Girl Guitar Lesson + Tutorial\",\n   \"picurl\": \"https://img.youtube.com/vi/aqtSWrl1BJI/0.jpg\"\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{  \n   \"link\": \"https://www.youtube.com/watch?v=aqtSWrl1BJI\",\n   \"artist\": \"Radiohead\",\n   \"song\": \"Just\",\n   \"picurl\": \"https://img.youtube.com/vi/aqtSWrl1BJI/0.jpg\",\n   \"videourl\" : \"https://www.youtube.com/watch?v=oIFLtNYI3Ls\"\n}"
 				},
 				"url": {
 					"raw": "songbook-cvs.herokuapp.com/songbook",
@@ -160,17 +156,19 @@
 						"key": "Content-Type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA5MjU4MzE5LCJleHAiOjE2MDkyNTkyMTl9.ALRpmR6PhsWTtwKHTWw9k95wxfuomfyLpsjzgqbdAqY",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"tags\": [\"karma\",\"police\",\"acoustic\",\"radiohead\"],\n\"rate\": 5\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\"bookmark\": true\n}"
 				},
 				"url": {
-					"raw": "http://localhost:5002/songbook/5",
+					"raw": "http://localhost:5002/songbook/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -178,7 +176,7 @@
 					"port": "5002",
 					"path": [
 						"songbook",
-						"5"
+						"4"
 					]
 				}
 			},
@@ -197,13 +195,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"tags\": [\"change\", \"those\", \"tags\"]\n}",
-					"options": {
-						"raw": {}
-					}
+					"raw": "{\n\"geniusurl\": \"https://genius.com/Red-hot-chili-peppers-under-the-bridge-lyrics\"\n}"
 				},
 				"url": {
-					"raw": "https://songbook-cvs.herokuapp.com/songbook/3",
+					"raw": "https://songbook-cvs.herokuapp.com/songbook/29",
 					"protocol": "https",
 					"host": [
 						"songbook-cvs",
@@ -212,12 +207,83 @@
 					],
 					"path": [
 						"songbook",
-						"3"
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: localhost:5002/lyrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5002/lyrics/nirvana/polly/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"lyrics",
+						"nirvana",
+						"polly",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/lyrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "songbook-cvs.herokuapp.com/lyrics/46",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"lyrics",
+						"46"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SONGBOOK: heroku/dummy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjExNTU2OTQ4LCJleHAiOjE2MTE1NTc4NDh9.oKKl1kye0UgOtfgfMlYPoZ9TqLuq95XXQ9-rjIt40VY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "songbook-cvs.herokuapp.com/dummy",
+					"host": [
+						"songbook-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dummy"
 					]
 				}
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
