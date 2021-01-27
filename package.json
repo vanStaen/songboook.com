@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/vanStaen/songbook.git"
   },
-  "author": "cvanstaen",
+  "author": "vanStaen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vanStaen/songboook/issues"
