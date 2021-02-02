@@ -35,6 +35,7 @@ const Extras = (props) => {
         }
         patchEntry(data).then((resData) => {
             console.log("Success", resData)
+            props.setPageHasChanged("true");
         }
         ).catch(error => {
             notification.error({ description: `Unauthorized! Please login.`, });
@@ -73,6 +74,7 @@ const Extras = (props) => {
             setIsSongEditMode(false);
         };
         setEditInputValue('');
+        props.setPageHasChanged("true");
     }
 
     const returnCropedText = (text, threshold) => {
