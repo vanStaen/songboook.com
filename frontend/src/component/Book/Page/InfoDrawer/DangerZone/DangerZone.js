@@ -27,6 +27,7 @@ const DangerZone = (props) => {
         patchEntry(value)
             .then(() => {
                 setIsActive(value);
+                props.setPageHasChanged("true");
                 notification.error({ description: `Song #${props.id} has been ${isActive ? "a" : "una"}rchived.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
             })
             .catch(error => {
@@ -55,6 +56,7 @@ const DangerZone = (props) => {
         deleteEntry()
             .then(() => {
                 notification.error({ description: `Song #${props.id} has been deleted.`, icon: <DeleteOutlined style={{ color: '#6E0F1C' }} />, });
+                props.setPageHasChanged("true");
             })
             .catch(error => {
                 notification.error({ description: `Unauthorized! Please login.`, });

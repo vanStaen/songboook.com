@@ -90,6 +90,7 @@ const Links = props => {
             setIsPicEditMode(false);
         };
         setEditInputValue('');
+        props.setPageHasChanged("true");
     }
 
     const returnCropedText = (text, threshold) => {

@@ -69,6 +69,7 @@ const Page = (props) => {
                 id={props.page.id}
                 setIsBookmarked={setIsBookmarked}
                 isBookmarked={isBookmarked}
+                setPageHasChanged={props.setPageHasChanged}
                 token={props.token}
             />
 
@@ -82,6 +83,7 @@ const Page = (props) => {
                     isVisitor={false}
                     checked={props.page.checked}
                     id={props.page.id}
+                    setPageHasChanged={props.setPageHasChanged}
                     token={props.token}
                 />
             </div>
@@ -102,6 +104,7 @@ const Page = (props) => {
                 setPicMissing={setPicMissing}
                 setIsPiano={setIsPiano}
                 setIsBass={setIsBass}
+                setPageHasChanged={props.setPageHasChanged}
                 token={props.token}
             />
 

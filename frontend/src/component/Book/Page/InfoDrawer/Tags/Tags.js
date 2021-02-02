@@ -97,6 +97,7 @@ const Tags = (props) => {
         setEditInputIndex(-1)
         setEditInputValue('');
         props.setTagsMissing(false);
+        props.setPageHasChanged("true");
     };
 
     const handleInputCancel = () => {

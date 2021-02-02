@@ -37,6 +37,7 @@ const Bookmark = props => {
 
     const handlerBookmarking = (value) => {
         props.setIsBookmarked(value);
+        props.setPageHasChanged(true);
         patchBookmark(value);
     }
 

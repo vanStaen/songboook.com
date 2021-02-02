@@ -38,6 +38,7 @@ const CheckAdd = props => {
     const handlerMarkAsChecked = (value) => {
         patchCheck(value);
         setIsChecked(value);
+        props.setPageHasChanged(true);
     }
 
     return (

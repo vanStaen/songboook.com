@@ -79,6 +79,7 @@ const InfoDrawer = (props) => {
                 setPicMissing={props.setPicMissing}
                 isDrawerFold={isDrawerFold}
                 token={props.token}
+                setPageHasChanged={props.setPageHasChanged}
             />
 
             <Divider orientation="left" plain>
@@ -91,6 +92,7 @@ const InfoDrawer = (props) => {
                 id={props.page.id}
                 setTagsMissing={props.setTagsMissing}
                 token={props.token}
+                setPageHasChanged={props.setPageHasChanged}
             />
 
             {props.token != null && (
@@ -112,6 +114,7 @@ const InfoDrawer = (props) => {
                         setIsPiano={props.setIsPiano}
                         setIsBass={props.setIsBass}
                         token={props.token}
+                        setPageHasChanged={props.setPageHasChanged}
                     />
                 </>)}
 
@@ -135,6 +138,7 @@ const InfoDrawer = (props) => {
                         id={props.page.id}
                         active={props.page.active}
                         token={props.token}
+                        setPageHasChanged={props.setPageHasChanged}
                     />
                 </>)}
 

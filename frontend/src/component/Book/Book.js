@@ -42,7 +42,8 @@ const Book = (props) => {
 
     useEffect(() => {
         loadPages();
-    }, [])
+        setPageHasChanged(false);
+    }, [pageHasChanged])
 
     const handleRandomPick = () => {
         setShowRandomModal(!showRandomModal);
@@ -91,6 +92,7 @@ const Book = (props) => {
                     <div key={page.id}>
                         <Page
                             page={page}
+                            setPageHasChanged={setPageHasChanged}
                             token={props.token}
                         />
                     </div>
