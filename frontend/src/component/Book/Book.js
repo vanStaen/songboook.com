@@ -42,7 +42,7 @@ const Book = (props) => {
 
     useEffect(() => {
         loadPages();
-    })
+    }, [])
 
     const handleRandomPick = () => {
         setShowRandomModal(!showRandomModal);
