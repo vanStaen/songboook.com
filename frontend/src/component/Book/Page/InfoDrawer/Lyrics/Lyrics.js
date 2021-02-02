@@ -22,7 +22,7 @@ const Lyrics = (props) => {
 
     useEffect(() => {
         loadLyrics();
-    });
+    }, []);
 
     const loadLyrics = () => {
         if (lyrics !== "Loading ..." && lyrics !== null) {             
