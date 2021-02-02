@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Tooltip } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import axios from 'axios';
@@ -8,20 +8,15 @@ import notFound from '../../images/notFound.png';
 
 import './Book.css';
 
-class Book extends Component {
+const Book = (props) => {
 
-    state = {
-        songbookPages: [],
-        isLoading: true,
-        isError: false,
-        showRandomModal: false,
-    }
+    const [songbookPages,setSongbookPages] = useState([]);
+    const [isLoading,setIsLoading] = useState(true);
+    const [isError,setIsError] = useState(false);
+    const [showRandomModal,setShowRandomModal] = useState(false);
+    const [pageHasChanged,setPageHasChanged] = useState(false);
 
-    componentDidMount() {
-        this.loadPages();
-    }
-
-    loadPages() {
+    const loadPages = () =>  {
         async function fetchPages() {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + "songbook",
@@ -35,55 +30,57 @@ class Book extends Component {
         }
         // fetch Entries
         fetchPages().then((resData) => {
-            const pages = resData;
-            this.setState({ songbookPages: pages });
-            this.setState({ isLoading: false });
+            setSongbookPages(resData);
+            setIsLoading(false);
         }
         ).catch(error => {
-            this.setState({ isError: true, isLoading: false });
+            setIsError(true);
+            setIsLoading(false);
             console.log(error.message);
         });
     };
 
-    handleRandomPick = () => {
-        this.setState({ showRandomModal: !this.state.showRandomModal })
+    useEffect(() => {
+        loadPages();
+    })
+
+    const handleRandomPick = () => {
+        setShowRandomModal(!showRandomModal);
     }
 
-    render() {
-
-        const book = this.state.songbookPages.map(page => {
+        const book = songbookPages.map(page => {
 
             let shouldBeDisplayed = true;
 
             if (page.bass) {
-                shouldBeDisplayed = !this.props.filterBass;
+                shouldBeDisplayed = !props.filterBass;
             }
             if (page.piano) {
-                shouldBeDisplayed = !this.props.filterPiano;
+                shouldBeDisplayed = !props.filterPiano;
             }
             if (!page.bass && !page.piano) {
-                shouldBeDisplayed = !this.props.filterGuitar;
+                shouldBeDisplayed = !props.filterGuitar;
             }
-            if (!page.bookmark && this.props.onlyBookmarked) {
+            if (!page.bookmark && props.onlyBookmarked) {
                 shouldBeDisplayed = false;
             }
 
             //if belongs to search results
-            if (this.props.searchValue && page.tags !== null && !page.tags.includes(this.props.searchValue)) {
+            if (props.searchValue && page.tags !== null && !page.tags.includes(props.searchValue)) {
                 shouldBeDisplayed = false;
             } else {
                 /* for debugging only
                 console.log(page.tags);
-                console.log(this.props.searchValue); */
+                console.log(props.searchValue); */
             }
 
 
             // 0: all, 1: only unknown, 2: only known
-            if (this.props.onlyFlagKnown === 1) {
+            if (props.onlyFlagKnown === 1) {
                 if (page.checked) {
                     shouldBeDisplayed = false;
                 }
-            } else if (this.props.onlyFlagKnown === 2) {
+            } else if (props.onlyFlagKnown === 2) {
                 if (!page.checked) {
                     shouldBeDisplayed = false;
                 }
@@ -94,7 +91,7 @@ class Book extends Component {
                     <div key={page.id}>
                         <Page
                             page={page}
-                            token={this.props.token}
+                            token={props.token}
                         />
                     </div>
                 );
@@ -110,12 +107,12 @@ class Book extends Component {
 
         const listOfFilter = () => {
             let listOfFilter = ['guitar', 'piano', 'bass'];
-            if (this.props.filterGuitar) { listOfFilter.splice(listOfFilter.indexOf('guitar'), 1); }
-            if (this.props.filterPiano) { listOfFilter.splice(listOfFilter.indexOf('piano'), 1); }
-            if (this.props.filterBass) { listOfFilter.splice(listOfFilter.indexOf('bass'), 1); }
-            if (this.props.onlyBookmarked) { listOfFilter.push('bookmarked'); }
-            if (this.props.onlyFlagKnown === 1) { listOfFilter.push('unknown'); }
-            else if (this.props.onlyFlagKnown === 2) { listOfFilter.push('known'); }
+            if (props.filterGuitar) { listOfFilter.splice(listOfFilter.indexOf('guitar'), 1); }
+            if (props.filterPiano) { listOfFilter.splice(listOfFilter.indexOf('piano'), 1); }
+            if (props.filterBass) { listOfFilter.splice(listOfFilter.indexOf('bass'), 1); }
+            if (props.onlyBookmarked) { listOfFilter.push('bookmarked'); }
+            if (props.onlyFlagKnown === 1) { listOfFilter.push('unknown'); }
+            else if (props.onlyFlagKnown === 2) { listOfFilter.push('known'); }
             return listOfFilter;
         }
 
@@ -135,8 +132,8 @@ class Book extends Component {
         return (
             <div style={{ width: "100%" }}>
                 <Modal
-                    visible={this.state.showRandomModal}
-                    onCancel={() => this.setState({ showRandomModal: false })}
+                    visible={showRandomModal}
+                    onCancel={() => setShowRandomModal(false)}
                     footer={null}
                     width={409}
                     closable={false}
@@ -148,7 +145,7 @@ class Book extends Component {
                     </div>
 
                 </Modal>
-                { this.state.isLoading ?
+                { isLoading ?
                     <div className="Book__spinner">
                         <div>
                             <img src="https://avatars0.githubusercontent.com/u/12551446" className="loader" alt="Loading" />
@@ -157,7 +154,7 @@ class Book extends Component {
                         </div>
                     </div>
                     :
-                    this.state.isError ?
+                    isError ?
                         <div className="Book__spinner">
                             <div>
                                 <CloseOutlined className="error__icon" />
@@ -174,7 +171,7 @@ class Book extends Component {
                                         {bookNotNull.length + " songs for " + formatedListOfFilter()}
                                         &nbsp;-&nbsp;
                                         <Tooltip placement="bottomLeft" title={"Random song from this selection."}>
-                                            <span className="Book_resultRandomPick" onClick={this.handleRandomPick}>[random pick]</span>
+                                            <span className="Book_resultRandomPick" onClick={handleRandomPick}>[random pick]</span>
                                         </Tooltip>
                                     </>
                                 )}
@@ -198,7 +195,6 @@ class Book extends Component {
                 }
             </div>
         );
-    }
 }
 
 export default Book;
