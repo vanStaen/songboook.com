@@ -4,8 +4,6 @@
 
 - [ ] Filter query result per User
 - [ ] logout on auth errors
-- [ ] Update component only on successful actions
-- [ ] Button to trigger load lyrics on fail
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
 - [ ] Auto save db as Json (weekly?)
@@ -16,7 +14,6 @@
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Smoothen drawer transition fold/unfold
-- [ ] Update array songs on any kind of update
 - [ ] Handle Archived (active=false)
 - [ ] Offer a list view of songbook
  
@@ -51,3 +48,5 @@
 - [x] If lyrics api return nothing scrap google/genius
 - [x] Search feature
 - [x] Hide edit option if not logged
+- [x] Button to trigger load lyrics on fail
+- [x] Update array songs on any kind of update
