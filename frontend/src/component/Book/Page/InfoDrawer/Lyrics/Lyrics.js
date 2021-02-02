@@ -20,14 +20,11 @@ const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
     const [found, setFound] = useState(true);
 
-    useEffect(() => {
-        if (lyrics === "Loading ..." || lyrics === "No lyrics found.") {
-            loadLyrics();
-        }
-    });
-
     const loadLyrics = () => {
-        if (lyrics !== "Loading ..." && lyrics !== null) { return }
+        if (lyrics !== "Loading ..." && lyrics !== null) { 
+            console.log("One should not pursue things one already has.")
+            return 
+        }
         async function fetchLyrics() {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + `lyrics/${props.id}`,
