@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from "react";
+import { RedoOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
 import axios from 'axios';
 
 const fixLatinEncoding = (input) => {
@@ -16,6 +18,7 @@ const fixLatinEncoding = (input) => {
 
 const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
+    const [found, setFound] = useState(true);
 
     useEffect(() => {
         if (lyrics === "Loading ..." || lyrics === "No lyrics found.") {
@@ -43,19 +46,37 @@ const Lyrics = (props) => {
                 //console.log(resData.lyrics);
                 if (resData.lyrics.length > 0) {
                     setLyrics(fixLatinEncoding(resData.lyrics));
+                    setFound(true);
                 } else {
-                    setLyrics('No lyrics found.');
+                    setFound(false);
                 }
             })
             .catch(error => {
                 console.log(error);
-                setLyrics('No lyrics found.');
+                setFound(false);
             });
     };
 
+    const handleRetryFetchLyrics = () => {
+        setLyrics("Loading ...");
+        setFound(true);
+        loadLyrics();
+    }
+
     return (
         <div style={{ whiteSpace: "pre-line" }}>
-            {lyrics}
+            {
+            found ? lyrics :
+            (<div> 
+                No lyrics found. 
+                &nbsp;
+                <Tooltip title={"Try again to fetch lyrics."}>
+                    <RedoOutlined onClick={handleRetryFetchLyrics}/>
+                </Tooltip>
+            </div>)
+            }
+            
+           
         </div>
     );
 }
