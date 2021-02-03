@@ -16,6 +16,9 @@ const Book = (props) => {
     const [showRandomModal,setShowRandomModal] = useState(false);
     const [pageHasChanged,setPageHasChanged] = useState(false);
 
+    const newSongAdded = props.newSongAdded;
+    const setNewSongAdded = props.setNewSongAdded;
+
     const loadPages = () =>  {
         async function fetchPages() {
             const response = await axios({
@@ -43,8 +46,8 @@ const Book = (props) => {
     useEffect(() => {
         loadPages();
         setPageHasChanged(false);
-        props.setNewSongAdded(false);
-    }, [pageHasChanged, props.newSongAdded])
+        setNewSongAdded(false);
+    }, [pageHasChanged, newSongAdded])
 
     const handleRandomPick = () => {
         setShowRandomModal(!showRandomModal);
