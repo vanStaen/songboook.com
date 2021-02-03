@@ -43,7 +43,8 @@ const Book = (props) => {
     useEffect(() => {
         loadPages();
         setPageHasChanged(false);
-    }, [pageHasChanged])
+        props.setNewSongAdded(false);
+    }, [pageHasChanged, props.newSongAdded])
 
     const handleRandomPick = () => {
         setShowRandomModal(!showRandomModal);

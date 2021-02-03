@@ -39,6 +39,7 @@ const AddForm = (props) => {
         postNew(data).then((resData) => {
             console.log(resData);
             notification.success({ description: `New song successfully posted!`, });
+            props.setNewSongAdded(true);
         }
         ).catch(error => {
             notification.error({ description: `Unauthorized! Please login.`, });

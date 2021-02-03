@@ -37,6 +37,7 @@ function App() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
+  const [newSongAdded, setNewSongAdded] = useState(false);
 
   const login = (token, refreshToken) => {
     setToken(token);
@@ -165,6 +166,7 @@ function App() {
         <AddForm
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
+          setNewSongAdded={setNewSongAdded}
           token={token}
         />
         <Login
@@ -201,6 +203,8 @@ function App() {
           onlyFlagKnown={onlyFlagKnown}
           onlyBookmarked={onlyBookmarked}
           searchValue={searchValue}
+          newSongAdded={newSongAdded}
+          setNewSongAdded={setNewSongAdded}
           token={token}
         />
       </header>
