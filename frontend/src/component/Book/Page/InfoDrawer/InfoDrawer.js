@@ -12,6 +12,7 @@ import DangerZone from './DangerZone/DangerZone'
 const InfoDrawer = (props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
     const [isDrawerFold, setIsDrawerFold] = useState(true);
+    const [player, setPlayer] = useState(null);
     const [artist, setArtist] = useState(props.page.artist);
     const [song, setSong] = useState(props.page.song);
 
@@ -24,7 +25,7 @@ const InfoDrawer = (props) => {
         },
     };
 
-    // Use effect to fold drwaaer after close
+    // Use effect to fold drawer after close
     useEffect(() => {
         handlerFoldDrawer(isDrawerFold);
     }, [isDrawerFold]);
@@ -36,9 +37,15 @@ const InfoDrawer = (props) => {
 
     const handlerCloseDrawer = () => {
         setIsDrawerFold(true);
+        player.pauseVideo();
         props.setDrawerVisible(false);
     };
 
+    const _onReady = (event) => {
+        setPlayer(event.target);
+      }
+    
+    
     return (
         <Drawer
             title={
@@ -59,7 +66,11 @@ const InfoDrawer = (props) => {
             width={widthDrawer}
         >
             {props.page.videourl ?
-                (<YouTube videoId={videoID} opts={videoOptions} />)
+                (<YouTube 
+                    videoId={videoID} 
+                    opts={videoOptions} 
+                    onReady={_onReady}
+                />)
                 : (<img src={props.page.picurl} className="Page-drawer__artwork" alt="pic_missing" ></img>)
             }
 

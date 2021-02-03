@@ -7,7 +7,6 @@
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
 - [ ] Auto save db as Json (weekly?)
-- [ ] Pause youtube when exiting drawer.
 - [ ] User handling
     - [ ] Create user (using auth service)
     - [ ] Add user id to database (As author of songs)
@@ -50,3 +49,4 @@
 - [x] Hide edit option if not logged
 - [x] Button to trigger load lyrics on fail
 - [x] Update array songs on any kind of update
+- [x] Pause youtube when exiting drawer.
