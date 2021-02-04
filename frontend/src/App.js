@@ -206,6 +206,7 @@ function App() {
           newSongAdded={newSongAdded}
           setNewSongAdded={setNewSongAdded}
           token={token}
+          logout={logout}
         />
       </header>
       <Footer />

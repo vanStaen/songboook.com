@@ -30,6 +30,7 @@ const CheckAdd = props => {
         // fetch Entries
         patchEntry(value)
             .catch(error => {
+                props.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });

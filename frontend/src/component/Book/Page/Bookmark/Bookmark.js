@@ -30,6 +30,7 @@ const Bookmark = props => {
             console.log("Sucess", patchResult);
         }
         ).catch(error => {
+            props.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });

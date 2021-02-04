@@ -3,7 +3,6 @@
 ## To-dos:
 
 - [ ] Filter query result per User
-- [ ] logout on auth errors
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
 - [ ] Auto save db as Json (weekly?)
@@ -49,4 +48,5 @@
 - [x] Hide edit option if not logged
 - [x] Button to trigger load lyrics on fail
 - [x] Update array songs on any kind of update
-- [x] Pause youtube when exiting drawer.
+- [x] Pause youtube when exiting drawer
+- [x] Logout on auth errors

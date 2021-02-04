@@ -98,6 +98,7 @@ const Book = (props) => {
                             page={page}
                             setPageHasChanged={setPageHasChanged}
                             token={props.token}
+                            logout={props.logout}
                         />
                     </div>
                 );

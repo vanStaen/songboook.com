@@ -34,6 +34,7 @@ const Tags = (props) => {
             //console.log("Sucess", resData);
         }
         ).catch(error => {
+            props.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });

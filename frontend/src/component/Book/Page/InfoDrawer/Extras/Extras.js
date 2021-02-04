@@ -38,6 +38,7 @@ const Extras = (props) => {
             props.setPageHasChanged("true");
         }
         ).catch(error => {
+            props.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });

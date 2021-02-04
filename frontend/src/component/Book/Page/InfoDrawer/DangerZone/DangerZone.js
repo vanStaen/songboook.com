@@ -31,6 +31,7 @@ const DangerZone = (props) => {
                 notification.error({ description: `Song #${props.id} has been ${isActive ? "a" : "una"}rchived.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
             })
             .catch(error => {
+                props.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
@@ -59,6 +60,7 @@ const DangerZone = (props) => {
                 props.setPageHasChanged("true");
             })
             .catch(error => {
+                props.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
