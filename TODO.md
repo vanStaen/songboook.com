@@ -20,22 +20,16 @@
 - [x] Create Rest API
 - [x] Create React App
 - [x] Display entries
-- [x] Show tags and lyrics
-    - [x] Create Drawer as separate component
-    - [x] Fetch lyrics from https://apiseeds.com/documentation/lyrics
-    - [x] Create Tag component
-    - [x] Create <3 component
-    - [x] Embed youtube video
+- [x] Show tags 
+- [x] Create Drawer as separate component
+- [x] Fetch lyrics
+- [x] Embed youtube video
 - [x] Edit Tag feature
 - [x] Create Piano/Bass tag
 - [x] Handle "isMissing" state with userEffect.
 - [x] Check button instead of favorite
 - [x] Bookmark feature
-- [x] Click to expend drawer to 50% of screen
-    - [x] Button expending screen to 600px
-    - [ ] ~~Then show artwork stop to video~~
-    - [x] Video size adapt to drawer size
-    - [x] Link shown with more characters
+- [x] Click to expend drawer
 - [x] Edit Links feature
 - [x] Edit title feature
 - [x] Edit infos (bottom from drawer? artist/song/bass-Piano?)
