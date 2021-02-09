@@ -44,7 +44,7 @@ const CheckAdd = props => {
 
     return (
         <div className="CheckAdd" id="checkAdd">
-            {isChecked ?
+            {props.token && (isChecked ?
                 (<Tooltip placement="top" title="Click to mark this song as unknown.">
                     <CheckOutlined
                         onClick={() => handlerMarkAsChecked(false)}
@@ -58,7 +58,7 @@ const CheckAdd = props => {
                         className="CheckAdd__ico clickable grey_check"
                     />
                 </Tooltip>)
-            }
+            )}
         </div >
     )
 }
