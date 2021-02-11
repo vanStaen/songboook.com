@@ -150,7 +150,7 @@ const Book = (props) => {
 
 
         return (
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }} onClick={() => {randomPageId && setRandomPageId(null)}}>
                 { isLoading ?
                     <div className="Book__spinner">
                         <div>
