@@ -37,7 +37,7 @@ const InfoDrawer = (props) => {
 
     const handlerCloseDrawer = () => {
         setIsDrawerFold(true);
-        player.pauseVideo();
+        player && player.pauseVideo();
         props.setDrawerVisible(false);
     };
 
