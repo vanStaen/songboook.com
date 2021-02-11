@@ -25,6 +25,7 @@ const Page = (props) => {
     }, [tabsMissing, tagsMissing, videoMissing, picMissing])
 
     const handlerOpenDrawer = () => {
+        props.setRandomPageId(null);
         setDrawerVisible(true);
     };
 
@@ -50,15 +51,19 @@ const Page = (props) => {
         }
     }
 
+    const hasHalo = props.randomPageId !== null;
+    const isHalo = props.randomPageId === props.page.id;
+    const classNamePage = hasHalo ? ( isHalo ? "Page__main Page__halo Page__main__white" : "Page__main Page__main__transparent") : "Page__main Page__main__white";
+
     return (
-        <div className="Page__main" key={props.page.id}>
-            { missing &&
+        <div className={classNamePage} key={props.page.id}>
+            { ( missing || hasHalo ) &&
                 (<div className="Page__notab" onClick={handlerOpenDrawer}>
                     <div className="Page__notab-text">
                         {textForMissing()}
                     </div>
-                    <div className="Page__notab Page__notab-background">
-                    </div>
+                    { missing && (<div className="Page__notab Page__notab-background"></div>)}
+                    { hasHalo && !isHalo && (<div className="Page__notab Page__notselected-background"></div>)}
                 </div>)}
 
             <div className="Page__opendrawer" onClick={handlerOpenDrawer}>

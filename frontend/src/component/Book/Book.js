@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Modal, Tooltip } from 'antd';
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { Tooltip } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
@@ -13,8 +13,8 @@ const Book = (props) => {
     const [songbookPages,setSongbookPages] = useState([]);
     const [isLoading,setIsLoading] = useState(true);
     const [isError,setIsError] = useState(false);
-    const [showRandomModal,setShowRandomModal] = useState(false);
     const [pageHasChanged,setPageHasChanged] = useState(false);
+    const [randomPageId, setRandomPageId] = useState(null);
 
     const newSongAdded = props.newSongAdded;
     const setNewSongAdded = props.setNewSongAdded;
@@ -49,10 +49,6 @@ const Book = (props) => {
         setNewSongAdded(false);
     }, [pageHasChanged, newSongAdded])
 
-    const handleRandomPick = () => {
-        setShowRandomModal(!showRandomModal);
-    }
-
         const book = songbookPages.map(page => {
 
             let shouldBeDisplayed = true;
@@ -73,12 +69,7 @@ const Book = (props) => {
             //if belongs to search results
             if (props.searchValue && page.tags !== null && !page.tags.includes(props.searchValue)) {
                 shouldBeDisplayed = false;
-            } else {
-                /* for debugging only
-                console.log(page.tags);
-                console.log(props.searchValue); */
             }
-
 
             // 0: all, 1: only unknown, 2: only known
             if (props.onlyFlagKnown === 1) {
@@ -93,12 +84,14 @@ const Book = (props) => {
 
             if (shouldBeDisplayed) {
                 return (
-                    <div key={page.id}>
+                    <div key={page.id} id={page.id}>
                         <Page
                             page={page}
-                            setPageHasChanged={setPageHasChanged}
                             token={props.token}
                             logout={props.logout}
+                            randomPageId={randomPageId}
+                            setRandomPageId={setRandomPageId}
+                            setPageHasChanged={setPageHasChanged}
                         />
                     </div>
                 );
@@ -111,6 +104,27 @@ const Book = (props) => {
         const bookNotNull = book.filter((e) => {
             return e != null;
         });
+
+        const handleRandomPick = () => {
+            const randomPage = Math.floor(Math.random() * bookNotNull.length);
+            setRandomPageId(bookNotNull[randomPage].props.id);
+            console.log(randomPageId);          
+        }
+
+        useLayoutEffect(() => {
+            if (randomPageId !== null){
+                const randomlySelectedPage = document.getElementById(randomPageId);
+                const randomlySelectedPageTop = randomlySelectedPage.getBoundingClientRect().top;
+                //randomlySelectedPage.scrollIntoView({behavior: 'smooth'});
+                console.log("top", randomlySelectedPageTop);
+                window.scrollTo({
+                    top: randomlySelectedPageTop-350,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+            };
+        }, [randomPageId])
+
 
         const listOfFilter = () => {
             let listOfFilter = ['guitar', 'piano', 'bass'];
@@ -134,24 +148,9 @@ const Book = (props) => {
             return formatedListOfFilter[0];
         }
 
-        const randomPic = Math.floor(Math.random() * bookNotNull.length);
 
         return (
             <div style={{ width: "100%" }}>
-                <Modal
-                    visible={showRandomModal}
-                    onCancel={() => setShowRandomModal(false)}
-                    footer={null}
-                    width={409}
-                    closable={false}
-                    className="randomPickModal"
-                    centered
-                >
-                    <div className="centered">
-                        {bookNotNull[randomPic]}
-                    </div>
-
-                </Modal>
                 { isLoading ?
                     <div className="Book__spinner">
                         <div>
