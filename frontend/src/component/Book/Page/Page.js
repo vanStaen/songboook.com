@@ -59,9 +59,7 @@ const Page = (props) => {
         <div className={classNamePage} key={props.page.id}>
             { ( missing || hasHalo ) &&
                 (<div className="Page__notab" onClick={handlerOpenDrawer}>
-                    <div className="Page__notab-text">
-                        {textForMissing()}
-                    </div>
+                    <div className={hasHalo && isHalo ? "Page__notab-text" : "Page__notab-text Page__notabnotselected-textcolor"}>{textForMissing()}</div>
                     { missing && (<div className="Page__notab Page__notab-background"></div>)}
                     { hasHalo && !isHalo && (<div className="Page__notab Page__notselected-background"></div>)}
                 </div>)}
