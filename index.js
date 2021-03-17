@@ -33,6 +33,7 @@ app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.h
 // Router to API endpoints
 app.use("/songbook", require("./api/songbook"));
 app.use("/lyrics", require("./api/lyrics"));
+app.use("/randomized", require("./api/randomized"));
 app.use("/dummy", require("./api/dummy"));
 
 // Listen on a port
