@@ -98,8 +98,16 @@ const Book = (props) => {
   });
 
   const handleRandomPick = async () => {
+    let option = undefined;
+    if (props.onlyFlagKnown === 1) {
+        option = false;
+    }
+    if (props.onlyFlagKnown === 2) {
+        option = true;
+    }
+
     try {
-      const randomPage = await getRandomized();
+      const randomPage = await getRandomized(option);
       setRandomPageId(randomPage.id);
       console.log(randomPage.id);
     } catch (error) {
