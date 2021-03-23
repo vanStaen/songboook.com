@@ -3,6 +3,8 @@ import YouTube from 'react-youtube';
 import { Drawer, Divider } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
+import './InfoDrawer.css';
+
 import Tags from './Tags/Tags';
 import Lyrics from './Lyrics/Lyrics';
 import Links from './Links/Links';

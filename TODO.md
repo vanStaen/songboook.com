@@ -5,13 +5,12 @@
 - [ ] Filter query result per User
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
-- [ ] Auto save db as Json (weekly?)
+- [ ] Auto save db as Json
 - [ ] User handling
     - [ ] Create user (using auth service)
     - [ ] Add user id to database (As author of songs)
     - [ ] Router to show songbook of user
     - [ ] If visiting user, show CheckAdd as "add"
-- [ ] Smoothen drawer transition fold/unfold
 - [ ] Handle Archived (active=false)
 - [ ] Offer a list view of songbook
  
@@ -44,3 +43,4 @@
 - [x] Update array songs on any kind of update
 - [x] Pause youtube when exiting drawer
 - [x] Logout on auth errors
+- [x] Smoothen drawer transition fold/unfold
