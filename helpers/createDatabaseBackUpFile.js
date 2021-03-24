@@ -32,7 +32,7 @@ const writeBackupFile = async () => {
     try {
         const today = new Date();
         const year = today.getFullYear();
-        const month = today.getMonth();
+        const month = today.getMonth() + 1; //Start from 0
         const day = today.getDate();
         const databaseContent = await fetchDatabaseContent();
         filename = `songbook_db_${day}${month}${year}.json`;
