@@ -37,7 +37,7 @@ const Book = (props) => {
     loadPages();
     setPageHasChanged(false);
     setNewSongAdded(false);
-  }, [pageHasChanged, newSongAdded]);
+  }, [pageHasChanged, newSongAdded, setNewSongAdded]);
 
   const book = songbookPages.map((page) => {
     let shouldBeDisplayed = true;
@@ -100,10 +100,10 @@ const Book = (props) => {
   const handleRandomPick = async () => {
     let option = undefined;
     if (props.onlyFlagKnown === 1) {
-        option = false;
+      option = false;
     }
     if (props.onlyFlagKnown === 2) {
-        option = true;
+      option = true;
     }
 
     try {
