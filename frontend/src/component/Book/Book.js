@@ -191,8 +191,7 @@ const Book = (props) => {
                 {listOfFilter().length > 0 && (
                   <>
                     {bookNotNull.length + " songs for " + formatedListOfFilter()}
-                &nbsp;-&nbsp;
-              </>
+                  </>
                 )}
               </div>
 

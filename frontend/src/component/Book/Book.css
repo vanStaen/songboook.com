@@ -17,7 +17,7 @@
   display: absolute;
   margin: 20px 0px 24px 0px;
   font-weight: thin;
-  color: #ccc;
+  color: rgba(255,255,255,.8);
 }
 
 .Book__spinner {
