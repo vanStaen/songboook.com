@@ -11,8 +11,6 @@ import Menu from "./component/Menu/Menu";
 import Search from "./component/Search/Search";
 import Footer from "./component/Footer/Footer";
 
-const DEBUG = process.env.NODE_ENV === "development";
-
 const openNotification = (msg, desc, showtime, type) => {
   notification.open({
     message: msg,
@@ -44,10 +42,6 @@ function App() {
   const login = (token, refreshToken) => {
     setToken(token);
     setRefreshToken(refreshToken);
-    if (DEBUG) {
-      console.log("[login] Access Token:  ", token);
-      console.log("[login] Refresh Token:  ", refreshToken);
-    }
   };
 
   const logout = () => {
@@ -59,9 +53,6 @@ function App() {
     setRefreshToken(null);
     // Delete refreshtoken from db
     const deleteRequest = { refreshToken: refreshToken };
-    if (DEBUG) {
-      console.log("[logout] Delete request:", deleteRequest);
-    }
     fetch(process.env.REACT_APP_AUTH_URL + "logout", {
       method: "DELETE",
       body: JSON.stringify(deleteRequest),
@@ -87,10 +78,6 @@ function App() {
   };
 
   const getNewToken = (refreshToken) => {
-    if (DEBUG) {
-      console.log("[script] Check access token");
-    }
-
     // Check if refreshtoken is expired
     if (refreshToken != null) {
       let decodedRefreshToken = jsonwebtoken.decode(refreshToken, {
@@ -117,9 +104,6 @@ function App() {
 
     // Refresh token if token missing
     if (token === null && refreshToken != null) {
-      if (DEBUG) {
-        console.log("[script] Fetching a new token");
-      }
       let requestBody = { refreshToken: refreshToken };
       fetch(process.env.REACT_APP_AUTH_URL + "token", {
         method: "POST",
@@ -152,7 +136,6 @@ function App() {
 
   useEffect(() => {
     if (refreshToken != null && token === null) {
-      console.log("Interceptor thinks it needs a new token!");
       getNewToken(refreshToken);
     }
   });
