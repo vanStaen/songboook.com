@@ -47,7 +47,7 @@ const Book = (props) => {
         loadPages();
         setPageHasChanged(false);
         setNewSongAdded(false);
-    }, [pageHasChanged, newSongAdded])
+    }, [pageHasChanged, newSongAdded, setNewSongAdded, setPageHasChanged])
 
     const book = songbookPages.map(page => {
 

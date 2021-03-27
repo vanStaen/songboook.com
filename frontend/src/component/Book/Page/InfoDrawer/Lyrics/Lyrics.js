@@ -49,12 +49,12 @@ const Lyrics = (props) => {
                     console.log(error);
                     setFound(false);
                 });
-         }
+        }
     };
 
     useEffect(() => {
         loadLyrics();
-    }, []);
+    });
 
     const handleRetryFetchLyrics = () => {
         setLyrics("Loading ...");
@@ -65,17 +65,17 @@ const Lyrics = (props) => {
     return (
         <div style={{ whiteSpace: "pre-line" }}>
             {
-            found ? lyrics :
-            (<div> 
-                No lyrics found. 
-                &nbsp;
-                <Tooltip title={"Try again to fetch lyrics."}>
-                    <RedoOutlined onClick={handleRetryFetchLyrics}/>
-                </Tooltip>
-            </div>)
+                found ? lyrics :
+                    (<div>
+                        No lyrics found.
+                        &nbsp;
+                        <Tooltip title={"Try again to fetch lyrics."}>
+                            <RedoOutlined onClick={handleRetryFetchLyrics} />
+                        </Tooltip>
+                    </div>)
             }
-            
-           
+
+
         </div>
     );
 }
