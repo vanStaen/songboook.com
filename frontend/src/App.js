@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { notification } from "antd";
 import jsonwebtoken from "jsonwebtoken";
 
-import './App.css';
+import "./App.css";
 
-import AddForm from './component/AddForm/AddForm';
-import Login from './component/Login/Login';
-import Book from './component/Book/Book';
-import Menu from './component/Menu/Menu';
-import Search from './component/Search/Search';
-import Footer from './component/Footer/Footer';
+import AddForm from "./component/AddForm/AddForm";
+import Login from "./component/Login/Login";
+import Book from "./component/Book/Book";
+import Menu from "./component/Menu/Menu";
+import Search from "./component/Search/Search";
+import Footer from "./component/Footer/Footer";
 
 const DEBUG = process.env.NODE_ENV === "development";
 
@@ -24,9 +24,10 @@ const openNotification = (msg, desc, showtime, type) => {
 };
 
 function App() {
-
   const [token, setToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
+  const [refreshToken, setRefreshToken] = useState(
+    localStorage.getItem("refreshToken")
+  );
 
   const [filterBass, setFilterBass] = useState(false);
   const [filterPiano, setFilterPiano] = useState(false);
@@ -38,6 +39,7 @@ function App() {
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
+  const [randomPageId, setRandomPageId] = useState(null);
 
   const login = (token, refreshToken) => {
     setToken(token);
@@ -49,14 +51,14 @@ function App() {
   };
 
   const logout = () => {
-    // Delete refreshtoken from localstorage, 
+    // Delete refreshtoken from localstorage,
     localStorage.removeItem("refreshToken");
     localStorage.clear();
     // Delete token from state
     setToken(null);
     setRefreshToken(null);
     // Delete refreshtoken from db
-    const deleteRequest = { refreshToken: refreshToken }
+    const deleteRequest = { refreshToken: refreshToken };
     if (DEBUG) {
       console.log("[logout] Delete request:", deleteRequest);
     }
@@ -69,8 +71,12 @@ function App() {
     })
       .then((res) => {
         if (res.status !== 204) {
-          openNotification("Error " + res.status,
-            "Error on logout: The refresh token was not found in the token database.", 0, "error");
+          openNotification(
+            "Error " + res.status,
+            "Error on logout: The refresh token was not found in the token database.",
+            0,
+            "error"
+          );
           throw new Error("Error when logout!"); // Probably was the refresh not found in the db
         }
         openNotification("You have successfully logged out.", "", 3, "success");
@@ -105,10 +111,7 @@ function App() {
       let dateNow = new Date();
       if (decodedToken.exp < Math.floor(dateNow.getTime() / 1000)) {
         console.log("[script] TOKEN HAS EXPIRED!");
-        login(
-          null,
-          refreshToken
-        );
+        login(null, refreshToken);
       }
     }
 
@@ -134,26 +137,25 @@ function App() {
         .then((resData) => {
           localStorage.setItem("refreshToken", resData.refreshToken);
           if (resData.token) {
-            login(
-              resData.token,
-              resData.refreshToken
-            );
+            login(resData.token, resData.refreshToken);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }
+  };
 
-  useEffect(() => { setToken(token) }, [token])
+  useEffect(() => {
+    setToken(token);
+  }, [token]);
 
   useEffect(() => {
     if (refreshToken != null && token === null) {
-      console.log('Interceptor thinks it needs a new token!')
+      console.log("Interceptor thinks it needs a new token!");
       getNewToken(refreshToken);
     }
-  })
+  });
 
   return (
     <div className="App">
@@ -195,6 +197,7 @@ function App() {
           logout={logout}
           showSearchInput={showSearchInput}
           setShowSearchInput={setShowSearchInput}
+          setRandomPageId={setRandomPageId}
         />
         <Book
           filterBass={filterBass}
@@ -205,6 +208,8 @@ function App() {
           searchValue={searchValue}
           newSongAdded={newSongAdded}
           setNewSongAdded={setNewSongAdded}
+          randomPageId={randomPageId}
+          setRandomPageId={setRandomPageId}
           token={token}
           logout={logout}
         />

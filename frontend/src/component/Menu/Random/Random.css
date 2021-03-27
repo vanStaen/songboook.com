@@ -1,10 +1,11 @@
 .Random__float {
   position: fixed;
-  width: 3em;
+  width: 2em;
   height: 3em;
   top: 2em;
   right: 2em;
   z-index: 10;
+  transition: filter 0.5s linear;
 }
 
 .Random__float:hover {
@@ -13,4 +14,5 @@
 
 .Random__dice {
   width: 2.5em;
+  cursor: pointer;
 }

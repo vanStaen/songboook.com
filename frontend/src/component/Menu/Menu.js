@@ -55,7 +55,10 @@ const Menu = (props) => {
 
   return (
     <div>
-      <Random />
+      <Random
+        onlyFlagKnown={props.onlyFlagKnown}
+        setRandomPageId={props.setRandomPageId}
+      />
       <div className="menu__main">
         <div
           className="menu__element"

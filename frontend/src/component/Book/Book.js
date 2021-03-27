@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
-import { Tooltip } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { getPages } from "./getPages";
-import { getRandomized } from "./getRandomized";
 
 import Page from "./Page/Page";
 import notFound from "../../images/notFound.png";
@@ -14,7 +12,6 @@ const Book = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [pageHasChanged, setPageHasChanged] = useState(false);
-  const [randomPageId, setRandomPageId] = useState(null);
 
   const newSongAdded = props.newSongAdded;
   const setNewSongAdded = props.setNewSongAdded;
@@ -82,8 +79,8 @@ const Book = (props) => {
             page={page}
             token={props.token}
             logout={props.logout}
-            randomPageId={randomPageId}
-            setRandomPageId={setRandomPageId}
+            randomPageId={props.randomPageId}
+            setRandomPageId={props.setRandomPageId}
             setPageHasChanged={setPageHasChanged}
           />
         </div>
@@ -97,27 +94,9 @@ const Book = (props) => {
     return e != null;
   });
 
-  const handleRandomPick = async () => {
-    let option = undefined;
-    if (props.onlyFlagKnown === 1) {
-      option = false;
-    }
-    if (props.onlyFlagKnown === 2) {
-      option = true;
-    }
-
-    try {
-      const randomPage = await getRandomized(option);
-      setRandomPageId(randomPage.id);
-      console.log(randomPage.id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useLayoutEffect(() => {
-    if (randomPageId !== null) {
-      const randomlySelectedPage = document.getElementById(randomPageId);
+    if (props.randomPageId !== null) {
+      const randomlySelectedPage = document.getElementById(props.randomPageId);
       const randomlySelectedPageTop = randomlySelectedPage.getBoundingClientRect()
         .top;
       const heightScreen = window.innerHeight;
@@ -128,7 +107,7 @@ const Book = (props) => {
         behavior: "smooth",
       });
     }
-  }, [randomPageId]);
+  }, [props.randomPageId]);
 
   const listOfFilter = () => {
     let listOfFilter = ["guitar", "piano", "bass"];
@@ -170,7 +149,7 @@ const Book = (props) => {
     <div
       style={{ width: "100%" }}
       onClick={() => {
-        randomPageId && setRandomPageId(null);
+        props.randomPageId && props.setRandomPageId(null);
       }}
     >
       {isLoading ? (
@@ -209,17 +188,6 @@ const Book = (props) => {
               <>
                 {bookNotNull.length + " songs for " + formatedListOfFilter()}
                 &nbsp;-&nbsp;
-                <Tooltip
-                  placement="bottomLeft"
-                  title={"Random song from this selection."}
-                >
-                  <span
-                    className="Book_resultRandomPick"
-                    onClick={handleRandomPick}
-                  >
-                    [random pick]
-                  </span>
-                </Tooltip>
               </>
             )}
           </div>
