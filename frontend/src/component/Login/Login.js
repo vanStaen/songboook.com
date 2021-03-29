@@ -2,6 +2,8 @@ import { React } from 'react';
 import { Modal, Form, Input, notification } from 'antd';
 import axios from 'axios';
 
+import { authStore } from '../../stores/authStore';
+
 import './Login.css';
 
 const Login = (props) => {
@@ -31,7 +33,7 @@ const Login = (props) => {
             // Store RefreshToken
             localStorage.setItem("refreshToken", resData.refreshToken);
             // Call login context function 
-            props.login(resData.token, resData.refreshToken);
+            authStore.login(resData.token, resData.refreshToken);
             // show notification
             notification.success({
                 message: "You have successfully logged in.",

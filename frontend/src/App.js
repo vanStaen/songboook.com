@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import { notification } from "antd";
-import jsonwebtoken from "jsonwebtoken";
-
-import "./App.css";
+import { observer } from "mobx-react";
 
 import AddForm from "./component/AddForm/AddForm";
 import Login from "./component/Login/Login";
@@ -10,23 +7,12 @@ import Book from "./component/Book/Book";
 import Menu from "./component/Menu/Menu";
 import Search from "./component/Search/Search";
 import Footer from "./component/Footer/Footer";
+import { authStore } from "./stores/authStore";
 
-const openNotification = (msg, desc, showtime, type) => {
-  notification.open({
-    message: msg,
-    description: desc,
-    duration: showtime,
-    type: type,
-    placement: "topRight",
-  });
-};
+import "./App.css";
 
-function App() {
-  const [token, setToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem("refreshToken")
-  );
 
+const App = observer(() => {
   const [filterBass, setFilterBass] = useState(false);
   const [filterPiano, setFilterPiano] = useState(false);
   const [filterGuitar, setFilterGuitar] = useState(false);
@@ -39,106 +25,11 @@ function App() {
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
 
-  const login = (token, refreshToken) => {
-    setToken(token);
-    setRefreshToken(refreshToken);
-  };
-
-  const logout = () => {
-    // Delete refreshtoken from localstorage,
-    localStorage.removeItem("refreshToken");
-    localStorage.clear();
-    // Delete token from state
-    setToken(null);
-    setRefreshToken(null);
-    // Delete refreshtoken from db
-    const deleteRequest = { refreshToken: refreshToken };
-    fetch(process.env.REACT_APP_AUTH_URL + "logout", {
-      method: "DELETE",
-      body: JSON.stringify(deleteRequest),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.status !== 204) {
-          openNotification(
-            "Error " + res.status,
-            "Error on logout: The refresh token was not found in the token database.",
-            0,
-            "error"
-          );
-          throw new Error("Error when logout!"); // Probably was the refresh not found in the db
-        }
-        openNotification("You have successfully logged out.", "", 3, "success");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const getNewToken = (refreshToken) => {
-    // Check if refreshtoken is expired
-    if (refreshToken != null) {
-      let decodedRefreshToken = jsonwebtoken.decode(refreshToken, {
-        complete: true,
-      });
-      let dateNow = new Date();
-      if (decodedRefreshToken.exp < Math.floor(dateNow.getTime() / 1000)) {
-        console.log("[script] REFRESH TOKEN HAS EXPIRED!");
-        logout();
-      }
-    }
-
-    // Check if token is expired
-    if (token != null) {
-      let decodedToken = jsonwebtoken.decode(token, {
-        complete: true,
-      });
-      let dateNow = new Date();
-      if (decodedToken.exp < Math.floor(dateNow.getTime() / 1000)) {
-        console.log("[script] TOKEN HAS EXPIRED!");
-        login(null, refreshToken);
-      }
-    }
-
-    // Refresh token if token missing
-    if (token === null && refreshToken != null) {
-      let requestBody = { refreshToken: refreshToken };
-      fetch(process.env.REACT_APP_AUTH_URL + "token", {
-        method: "POST",
-        body: JSON.stringify(requestBody),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => {
-          if (res.status !== 201) {
-            throw new Error("Error when refreshing the token!");
-          }
-          return res.json();
-        })
-        .then((resData) => {
-          localStorage.setItem("refreshToken", resData.refreshToken);
-          if (resData.token) {
-            login(resData.token, resData.refreshToken);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-
   useEffect(() => {
-    setToken(token);
-  }, [token]);
-
-  useEffect(() => {
-    if (refreshToken != null && token === null) {
-      getNewToken(refreshToken);
-    }
-  });
+    // On mount, update token
+    authStore.refreshToken &&
+      authStore.login(authStore.getNewToken(), authStore.refreshToken);
+  }, []);
 
   return (
     <div className="App">
@@ -152,14 +43,14 @@ function App() {
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
           setNewSongAdded={setNewSongAdded}
-          token={token}
+          token={authStore.token}
         />
         <Login
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
-          token={token}
-          login={login}
-          logout={logout}
+          token={authStore.token}
+          login={authStore.login}
+          logout={authStore.logout}
         />
         <Menu
           filterBass={filterBass}
@@ -176,8 +67,8 @@ function App() {
           setShowAddForm={setShowAddForm}
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
-          token={token}
-          logout={logout}
+          token={authStore.token}
+          logout={authStore.logout}
           showSearchInput={showSearchInput}
           setShowSearchInput={setShowSearchInput}
           setRandomPageId={setRandomPageId}
@@ -193,13 +84,13 @@ function App() {
           setNewSongAdded={setNewSongAdded}
           randomPageId={randomPageId}
           setRandomPageId={setRandomPageId}
-          token={token}
-          logout={logout}
+          token={authStore.token}
+          logout={authStore.logout}
         />
       </header>
       <Footer />
     </div>
   );
-}
+});
 
 export default App;
