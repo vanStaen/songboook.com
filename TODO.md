@@ -2,7 +2,12 @@
 
 ## To-dos:
 
-- [ ] Filter query result per User
+- [ ] Allow other users
+    - [ ] Implement user column in tables
+    - [ ] Rework all api endpoints
+    - [ ] Implement userStore (mobX)
+    - [ ] Filter query result per User
+    - [ ] Create User Table
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
 - [ ] Auto save db as Json
