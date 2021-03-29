@@ -18,7 +18,7 @@ const Login = (props) => {
         //console.log('data', data);
         async function authLogin(data) {
             const response = await axios({
-                url: process.env.REACT_APP_AUTH_URL + "login",
+                url: process.env.REACT_APP_AUTH_URL + "/login",
                 method: 'POST',
                 data: data
             });
