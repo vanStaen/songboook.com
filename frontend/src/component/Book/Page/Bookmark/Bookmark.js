@@ -10,7 +10,7 @@ const Bookmark = props => {
     const patchBookmark = (value) => {
         async function patchEntry(value) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
+                url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'PATCH',
                 data: { 'bookmark': value },
                 headers: {

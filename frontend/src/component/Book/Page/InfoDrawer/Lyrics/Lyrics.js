@@ -24,7 +24,7 @@ const Lyrics = (props) => {
         if (lyrics === "Loading ..." || lyrics === null) {
             const fetchLyrics = async () => {
                 const response = await axios({
-                    url: process.env.REACT_APP_API_URL + `lyrics/${props.id}`,
+                    url: process.env.REACT_APP_API_URL + `/lyrics/${props.id}`,
                     method: "GET",
                 });
                 if ((response.status !== 200) & (response.status !== 201)) {

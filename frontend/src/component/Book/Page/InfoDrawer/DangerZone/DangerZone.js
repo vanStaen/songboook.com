@@ -9,7 +9,7 @@ const DangerZone = (props) => {
     const handlePatchActive = (value) => {
         async function patchEntry(value) {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
+                url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'PATCH',
                 data: { 'active': value },
                 headers: {
@@ -40,7 +40,7 @@ const DangerZone = (props) => {
     const handleDeleteSong = () => {
         async function deleteEntry() {
             const response = await axios({
-                url: process.env.REACT_APP_API_URL + 'songbook/' + props.id,
+                url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
