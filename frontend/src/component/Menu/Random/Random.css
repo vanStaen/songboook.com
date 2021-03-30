@@ -1,18 +1,26 @@
 .Random__float {
   position: fixed;
-  width: 2em;
   height: 3em;
   top: 2em;
-  right: 2em;
-  z-index: 10;
-  transition: filter 0.5s linear;
-}
-
-.Random__float:hover {
-  filter: grayscale(50%);
+  right: 1.5em;
+  z-index: 9;
+  align-items: center;
 }
 
 .Random__dice {
   width: 2.5em;
   cursor: pointer;
+  transition: filter 0.5s linear;
+}
+
+.Random__dice:hover {
+  filter: grayscale(50%);
+}
+
+.Random__spin {
+  position: absolute;
+  margin: .2em;
+  font-size: 1.7em;
+  z-index: 10;
+  opacity: .75;
 }
