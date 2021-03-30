@@ -33,7 +33,7 @@ export const Random = (props) => {
     <Tooltip placement="left" title="Random song">
       <div className="Random__float" onClick={handleRandomPick}>
         {isLoading && <SyncOutlined spin className="Random__spin" style={{ color: "#6E0F1C" }} />}
-        <img className="Random__dice" src={Dice} alt="logo" />
+        <img className={isLoading ? "Random__dice Random__diceLoading" : "Random__dice"} src={Dice} alt="logo" />
       </div>
     </Tooltip>
   );

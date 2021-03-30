@@ -13,7 +13,7 @@
   transition: filter 0.5s linear;
 }
 
-.Random__dice:hover {
+.Random__dice:hover, .Random__diceLoading {
   filter: grayscale(50%);
 }
 
