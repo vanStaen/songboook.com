@@ -19,8 +19,12 @@
 
 .Random__spin {
   position: absolute;
+  width: 2em;
   margin: .2em;
-  font-size: 1.7em;
+  padding-top: .3em;
   z-index: 10;
-  opacity: .75;
+}
+
+.ant-spin-dot-item {
+  background-color: white;
 }
