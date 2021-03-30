@@ -12,10 +12,10 @@
     box-shadow: 0px -1px 15px #6E0F1C;*/
   }
 
-  a {
-    color: #fff;
+  a, a:visited, a:active {
+    color: #fff !important;
   }
 
   a:hover {
-    color: #D6BCBF;
+    color: #D6BCBF !important;
   }
