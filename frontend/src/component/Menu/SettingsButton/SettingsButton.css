@@ -1,8 +1,8 @@
-.ProfilButton__float {
+.SettingsButton__float {
 	float: right;
 	width: 2.7em;	
 	height: 2.7em;
-	margin-left: .1em; 
+	margin-right: .1em; 
 	margin-bottom: .8em;
 	border: 1px solid transparent;
     color: rgba(255, 255, 255);
@@ -10,29 +10,35 @@
 	z-index: 10;
 	opacity: .75;
 	cursor: pointer;
+	background-color: rgba(255, 255, 255, .25);
+    transition: background-color .2s linear, 
+				width .2s linear,
+				color .2s linear;
 }
 
-.ProfilButton__float:hover {
+.SettingsButton__float:hover {
 	opacity: 1;
 }
 
-.ProfilButton__background {
-	background-color: rgba(255, 255, 255, .25);
+.SettingsButton__open {
+	width: 8em;	
+    color: rgba(0, 0, 0, .5);
+	background-color: rgba(255, 255, 255, 1);
 }
 
-.ProfilButton__background:hover {
+.SettingsButton__background:hover {
 	border: 1px solid rgba(255, 255, 255, .5);
 	opacity: 1;
 }
 
-.ProfilButton__icon {
+.SettingsButton__icon {
 	position: relative;
 	font-size: 1.6em;
 	top: 0.25em;
 	filter: grayscale(100%);
 }
 
-.ProfilButton__close {
+.SettingsButton__close {
 	position: relative;
 	font-size: 1.6em;
 	top: 0.3em;

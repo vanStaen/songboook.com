@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
+import { SearchButton } from "./SearchButton/SearchButton";
+import { SettingsButton } from "./SettingsButton/SettingsButton";
 import { Random } from "./Random/Random";
 
 import piano from "./../../images/piano.png";
@@ -14,6 +16,8 @@ import "./Menu.css";
 
 const Menu = (props) => {
   const [showProfil, setShowProfil] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
@@ -62,10 +66,18 @@ const Menu = (props) => {
         <ProfilButton
           showProfil={showProfil}
           setShowProfil={setShowProfil} />
-        {!showProfil && <Random
-          onlyFlagKnown={props.onlyFlagKnown}
-          setRandomPageId={props.setRandomPageId}
-        />}
+        {!showProfil && <>
+          <SettingsButton
+            showSettings={showSettings}
+            setShowSettings={setShowSettings} />
+          <SearchButton
+            showSearch={showSearch}
+            setShowSearch={setShowSearch} />
+          <Random
+            onlyFlagKnown={props.onlyFlagKnown}
+            setRandomPageId={props.setRandomPageId}
+          />
+        </>}
       </div>
 
       <div className="menu__main">

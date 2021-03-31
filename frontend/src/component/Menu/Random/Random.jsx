@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tooltip, Spin } from "antd";
+import { Tooltip } from "antd";
 
 import { getRandomized } from "./getRandomized";
 import Dice from "../../../images/dice.svg";
@@ -28,13 +28,10 @@ export const Random = (props) => {
   };
 
   return (
-    <Tooltip placement="left" title="Random song">
-      <div className="Random__float" onClick={handleRandomPick}>
-        {/* isLoading && <SyncOutlined spin className="Random__spin" style={{ color: "#6E0F1C" }} /> */}
-        {isLoading && <Spin className="Random__spin" />}
-
-        <img className={isLoading ? "Random__dice Random__diceLoading" : "Random__dice"} src={Dice} alt="logo" />
-      </div>
-    </Tooltip>
+    <div onClick={handleRandomPick}>
+      <Tooltip placement="left" title="Random song">
+        <img className={isLoading ? "Random__dice spining" : "Random__dice"} src={Dice} alt="logo" />
+      </Tooltip>
+    </div>
   );
 };

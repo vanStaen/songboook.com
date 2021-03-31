@@ -1,21 +1,23 @@
 .Random__dice {
   width: 2.7em;
   cursor: pointer;
+  float: right;
   transition: filter 0.5s linear;
 }
 
-.Random__dice:hover, .Random__diceLoading {
+.Random__dice:hover {
   filter: grayscale(50%);
 }
 
-.Random__spin {
-  position: absolute;
-  width: 2em;
-  margin: .2em;
-  padding-top: .3em;
-  z-index: 10;
+.spining {
+  animation: spin infinite 5s linear;
 }
 
-.ant-spin-dot-item {
-  background-color: white;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
