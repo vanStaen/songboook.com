@@ -5,7 +5,6 @@ import AddForm from "./component/AddForm/AddForm";
 import Login from "./component/Login/Login";
 import Book from "./component/Book/Book";
 import Menu from "./component/Menu/Menu";
-import Search from "./component/Search/Search";
 import Footer from "./component/Footer/Footer";
 import { authStore } from "./stores/authStore";
 
@@ -33,11 +32,6 @@ const App = observer(() => {
 
   return (
     <div className="App">
-      <Search
-        showSearchInput={showSearchInput}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
       <header className="App-header">
         <AddForm
           showAddForm={showAddForm}
@@ -72,6 +66,8 @@ const App = observer(() => {
           showSearchInput={showSearchInput}
           setShowSearchInput={setShowSearchInput}
           setRandomPageId={setRandomPageId}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
         <Book
           filterBass={filterBass}

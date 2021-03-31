@@ -72,7 +72,10 @@ const Menu = (props) => {
             setShowSettings={setShowSettings} />
           <SearchButton
             showSearch={showSearch}
-            setShowSearch={setShowSearch} />
+            setShowSearch={setShowSearch}
+            searchValue={props.searchValue}
+            setSearchValue={props.setSearchValue}
+          />
           <Random
             onlyFlagKnown={props.onlyFlagKnown}
             setRandomPageId={props.setRandomPageId}
@@ -220,13 +223,6 @@ const Menu = (props) => {
         </div>
       </div>
       <div className="menu__extra">
-        <div
-          className="menu__search inactive white"
-          onClick={() => props.setShowSearchInput(!props.showSearchInput)}
-          style={props.token === null ? {} : { right: "-47px" }}
-        >
-          <img width="25" src={search} alt={search}></img>
-        </div>
         <div
           className="menu__element"
           onClick={() => props.setShowAddForm(!props.showAddForm)}

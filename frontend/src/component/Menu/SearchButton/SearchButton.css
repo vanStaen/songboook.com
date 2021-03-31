@@ -13,21 +13,51 @@
 	background-color: rgba(255, 255, 255, .25);
     transition: background-color .2s linear, 
 				width .2s linear,
-				color .2s linear;
+				color .2s linear,
+				opacity .2s linear,
+				border .2s linear;
 }
 
 .SearchButton__float:hover {
 	opacity: 1;
+} 
+
+.SearchButton__input {
+	display: inline-block !important;
+	width: calc(100% - 2.7em);
+	height: 90%;
+	padding-left: .3em;
+	padding-right: .3em;
+	padding-top: .4em;
+} 
+
+.ant-input {
+	display: absolute !important;
+
+}
+
+.ant-input:hover {
+    border-color: rgba(110, 15, 28, 0.1) !important;
+    outline: 0 !important;
+}
+
+.ant-input:focus {
+    border-color: rgba(110, 15, 28, .1) !important;
+    outline: 0 !important;
+    -webkit-box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
+    box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
 }
 
 .SearchButton__open {
-	width: 8em;	
+	width: 20em;	
     color: rgba(0, 0, 0, .5);
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, .9);
+	border: 1px solid rgba(110, 15, 28, .2);
+	opacity: 1;
 }
 
 .SearchButton__background:hover {
-	border: 1px solid rgba(255, 255, 255, .5);
+	border: 1px solid rgba(255, 255, 255, 1);
 	opacity: 1;
 }
 
@@ -38,9 +68,12 @@
 	filter: grayscale(100%);
 }
 
+.SearchButton__iconOpen {
+	top: 0.1em !important;
+}
+
 .SearchButton__close {
 	position: relative;
 	font-size: 1.6em;
 	top: 0.3em;
 }
-

@@ -4,7 +4,7 @@ export class UserStore {
 
     userId = localStorage.getItem("userId") || null;
     userName = null;
-    picUrl = null;
+    picUrl = "https://avatars0.githubusercontent.com/u/12551446";
 
     constructor() {
         makeObservable(this, {

@@ -2,6 +2,12 @@
 
 ## To-dos:
 
+- [ ] Menu 2.0
+    - [x] Ramdomizer 2.0
+    - [ ] Profil 
+    - [ ] Filter/view feature
+    - [ ] Search Feature 
+- [ ] use MobX everywhere
 - [ ] Allow other users
     - [ ] Implement user column in tables
     - [ ] Rework all api endpoints

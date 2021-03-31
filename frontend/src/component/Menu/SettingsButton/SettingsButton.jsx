@@ -18,7 +18,7 @@ export const SettingsButton = observer((props) => {
     >
       <div
         className={props.showSettings ? "SettingsButton__float SettingsButton__open" : "SettingsButton__float"}
-        onClick={() => props.setShowSettings(true)}
+        onClick={() => props.setShowSettings(!props.showSettings)}
       >
         <EyeOutlined className="SettingsButton__icon" />
       </div>
