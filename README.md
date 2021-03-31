@@ -1,29 +1,10 @@
-# songbook
+# songboook
 or `what song can you play, again?`.
-
 List of song text, chords, tabs with links. PERN tech stack.
-App available under  https://songbook.vanstaen.com/
 
-## db
-
-- active : boolean
-- added : date (default now())
-- link : var char
-- checked : boolean (check was problematic)
-- tags : Array [char var]
-- title : char var
-- picUrl : var char
-- bookmark : boolean
-- id : primary key int
-- artist : var char
-- songname : var char
-- videourl : var char
-- genius : var char
-- bass : boolean
-- piano : boolean
-
-
-Add an id key column : `ALTER TABLE songbook ADD COLUMN id SERIAL PRIMARY KEY;`
+## Redirection
+App available under https://www.songboook.com/
+`dig CNAME www.songboook.com`
 
 ## Lyrics
 
