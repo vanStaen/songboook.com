@@ -1,3 +1,14 @@
+.Menu__floating {
+  position: fixed;
+  width: 3em;
+  top: 2em;
+  right: 2em;
+  align-items: center;
+}
+
+
+/* old stuff */
+
 @font-face {
     font-family: 'Dymo';
     src: local('Dymo'), url(../.././fonts/Dymo.ttf) format('truetype');

@@ -1,14 +1,5 @@
-.Random__float {
-  position: fixed;
-  height: 3em;
-  top: 2em;
-  right: 1.5em;
-  z-index: 9;
-  align-items: center;
-}
-
 .Random__dice {
-  width: 2.5em;
+  width: 2.7em;
   cursor: pointer;
   transition: filter 0.5s linear;
 }

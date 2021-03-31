@@ -1,6 +1,7 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
+import { ProfilButton } from "./ProfilButton/ProfilButton";
 import { Random } from "./Random/Random";
 
 import piano from "./../../images/piano.png";
@@ -12,6 +13,8 @@ import bookmark from "../../images/bookmark.png";
 import "./Menu.css";
 
 const Menu = (props) => {
+  const [showProfil, setShowProfil] = useState(false);
+
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
     if (props.onlyFlagKnown === 0) {
@@ -55,10 +58,16 @@ const Menu = (props) => {
 
   return (
     <div>
-      <Random
-        onlyFlagKnown={props.onlyFlagKnown}
-        setRandomPageId={props.setRandomPageId}
-      />
+      <div className="Menu__floating">
+        <ProfilButton
+          showProfil={showProfil}
+          setShowProfil={setShowProfil} />
+        {!showProfil && <Random
+          onlyFlagKnown={props.onlyFlagKnown}
+          setRandomPageId={props.setRandomPageId}
+        />}
+      </div>
+
       <div className="menu__main">
         <div
           className="menu__element"
@@ -229,11 +238,11 @@ const Menu = (props) => {
             <div className="menu__dymobglogin"></div>
           </div>
         ) : (
-          <div className="menu__element" onClick={() => props.logout()}>
-            <div className="menu__dymotaglogout">&nbsp;logout&nbsp;</div>
-            <div className="menu__dymobglogout"></div>
-          </div>
-        )}
+            <div className="menu__element" onClick={() => props.logout()}>
+              <div className="menu__dymotaglogout">&nbsp;logout&nbsp;</div>
+              <div className="menu__dymobglogout"></div>
+            </div>
+          )}
       </div>
     </div>
   );
