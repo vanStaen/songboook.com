@@ -15,14 +15,7 @@ export const SearchButton = observer((props) => {
   }
 
   return (
-    <ConditionalWrapper
-      condition={true}
-      wrap={(children) => (
-        <Tooltip placement="left" title="Search">
-          {children}
-        </Tooltip>
-      )}
-    >
+    <Tooltip placement="left" title="Search">
       <div
         className={props.showSearch ? "SearchButton__float SearchButton__open" : "SearchButton__float"}
       >
@@ -39,6 +32,6 @@ export const SearchButton = observer((props) => {
           className={props.showSearch ? "SearchButton__icon SearchButton__iconOpen" : "SearchButton__icon"}
           onClick={handleClick} />
       </div>
-    </ConditionalWrapper>
+    </Tooltip>
   );
 });

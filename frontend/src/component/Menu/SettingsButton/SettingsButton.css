@@ -45,12 +45,6 @@
 	filter: grayscale(100%);
 }
 
-.SettingsButton__close {
-	position: relative;
-	font-size: 1.6em;
-	top: 0.3em;
-}
-
 .SettingsButton__actionContainer {
 	display: none;	
 	padding-right: 0.5em;

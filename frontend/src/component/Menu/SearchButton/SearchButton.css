@@ -69,9 +69,3 @@
 .SearchButton__iconOpen {
 	top: 0.1em !important;
 }
-
-.SearchButton__close {
-	position: relative;
-	font-size: 1.6em;
-	top: 0.3em;
-}

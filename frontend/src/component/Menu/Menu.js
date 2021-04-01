@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
+import { AddSongButton } from "./AddSongButton/AddSongButton";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
 import { SearchButton } from "./SearchButton/SearchButton";
 import { SettingsButton } from "./SettingsButton/SettingsButton";
@@ -67,6 +68,11 @@ const Menu = (props) => {
           showProfil={showProfil}
           setShowProfil={setShowProfil} />
         {!showProfil && <>
+          {props.token &&
+            <AddSongButton
+              setShowAddForm={props.setShowAddForm}
+              showAddForm={props.showAddForm}
+            />}
           <SettingsButton
             showSettings={showSettings}
             setShowSettings={setShowSettings} />
@@ -223,20 +229,6 @@ const Menu = (props) => {
         </div>
       </div>
       <div className="menu__extra">
-        <div
-          className="menu__element"
-          onClick={() => props.setShowAddForm(!props.showAddForm)}
-        >
-          <Tooltip placement="right" title={"Add a new song"}>
-            <div className="menu__dymotagadd">&nbsp;add&nbsp;</div>
-          </Tooltip>
-          <div
-            className="menu__dymobgadd"
-            style={
-              props.token === null ? { right: "-20px" } : { right: "-34px" }
-            }
-          ></div>
-        </div>
         {props.token === null ? (
           <div
             className="menu__element"

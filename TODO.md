@@ -24,6 +24,7 @@
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Handle Archived (active=false)
 - [ ] Offer a list view of songboook
+- [ ] Add difficulty parameter (easy, normal, difficult)
  
 ## Completed ✓
 
