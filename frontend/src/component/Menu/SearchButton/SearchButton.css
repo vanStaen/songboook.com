@@ -26,14 +26,12 @@
 	display: inline-block !important;
 	width: calc(100% - 2.7em);
 	height: 90%;
-	padding-left: .3em;
-	padding-right: .3em;
 	padding-top: .4em;
 } 
 
 .ant-input {
 	display: absolute !important;
-
+	width: 95% !important;
 }
 
 .ant-input:hover {
