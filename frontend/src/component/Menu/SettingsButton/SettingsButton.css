@@ -1,9 +1,11 @@
 .SettingsButton__float {
 	float: right;
+	text-align: right;
 	width: 2.7em;	
 	height: 2.7em;
-	margin-right: .1em; 
+	margin-left: .1em; 
 	margin-bottom: .8em;
+	padding-right: .5em;
 	border: 1px solid transparent;
     color: rgba(255, 255, 255);
 	border-radius:50px;
@@ -12,8 +14,10 @@
 	cursor: pointer;
 	background-color: rgba(255, 255, 255, .25);
     transition: background-color .2s linear, 
+				color .2s linear,
 				width .2s linear,
-				color .2s linear;
+				opacity .2s linear,
+				border .2s linear;
 }
 
 .SettingsButton__float:hover {
@@ -21,9 +25,11 @@
 }
 
 .SettingsButton__open {
-	width: 8em;	
+	width: 19em;	
     color: rgba(0, 0, 0, .5);
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 255, 255, .9);
+	border: 1px solid rgba(110, 15, 28, .2);
+	opacity: 1;
 }
 
 .SettingsButton__background:hover {
@@ -44,3 +50,13 @@
 	top: 0.3em;
 }
 
+.SettingsButton__actionContainer {
+	display: none;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+}
+
+.SettingsButton__action{
+	display: inline-block !important;
+	padding: 0 0.5em;
+}

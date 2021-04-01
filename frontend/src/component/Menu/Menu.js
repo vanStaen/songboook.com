@@ -17,7 +17,6 @@ import "./Menu.css";
 const Menu = (props) => {
   const [showProfil, setShowProfil] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
@@ -67,9 +66,7 @@ const Menu = (props) => {
           showProfil={showProfil}
           setShowProfil={setShowProfil} />
         {!showProfil && <>
-          <SettingsButton
-            showSettings={showSettings}
-            setShowSettings={setShowSettings} />
+          <SettingsButton />
           <SearchButton
             showSearch={showSearch}
             setShowSearch={setShowSearch}

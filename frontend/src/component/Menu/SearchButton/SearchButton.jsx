@@ -16,7 +16,7 @@ export const SearchButton = observer((props) => {
 
   return (
     <ConditionalWrapper
-      condition={!props.showProfil}
+      condition={!props.showSearch}
       wrap={(children) => (
         <Tooltip placement="left" title="Search">
           {children}
