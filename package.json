@@ -1,5 +1,5 @@
 {
-  "name": "songbook",
+  "name": "songboook.com",
   "version": "1.0.0",
   "description": "or `how not too forget how to be a musician`.",
   "main": "index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vanStaen/songbook.git"
+    "url": "git+https://github.com/vanStaen/songboook.com.git"
   },
   "author": "vanStaen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vanStaen/songboook/issues"
+    "url": "https://github.com/vanStaen/songboook.com/issues"
   },
-  "homepage": "https://github.com/vanStaen/songbook#readme",
+  "homepage": "https://github.com/vanStaen/songboook.com#readme",
   "dependencies": {
     "antd": "^4.9.1",
     "axios": "^0.21.1",

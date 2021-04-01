@@ -8,7 +8,7 @@ const Footer = () => {
 
     return (
         <div className='Footer__Main'>
-            Songbook by <a href="http://www.clementvanstaen.com" target="_blank" rel="noopener noreferrer">Clément van Staen</a>, {year}
+            Songboook.com by <a href="http://www.clementvanstaen.com" target="_blank" rel="noopener noreferrer">Clément van Staen</a>, {year}
         </div>
     )
 }

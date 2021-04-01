@@ -20,10 +20,10 @@
 - [ ] User handling
     - [ ] Create user (using auth service)
     - [ ] Add user id to database (As author of songs)
-    - [ ] Router to show songbook of user
+    - [ ] Router to show songboook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Handle Archived (active=false)
-- [ ] Offer a list view of songbook
+- [ ] Offer a list view of songboook
  
 ## Completed ✓
 
