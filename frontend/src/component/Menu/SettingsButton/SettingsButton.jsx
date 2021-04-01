@@ -14,7 +14,7 @@ export const SettingsButton = observer((props) => {
   }, [props.showSettings])
 
   return (
-    <Tooltip placement="left" title="Overview">
+    <Tooltip placement="left" title="Adjust what you see">
       <div
         className={props.showSettings ? "SettingsButton__float SettingsButton__open" : "SettingsButton__float"}
       >
