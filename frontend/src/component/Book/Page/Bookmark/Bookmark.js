@@ -3,6 +3,7 @@ import bookmark from './../../../../images/bookmark.png';
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
+import { authStore } from "../../../../stores/authStore";
 import './Bookmark.css';
 
 const Bookmark = props => {
@@ -15,7 +16,7 @@ const Bookmark = props => {
                 data: { 'bookmark': value },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -30,7 +31,7 @@ const Bookmark = props => {
             console.log("Sucess", patchResult);
         }
         ).catch(error => {
-            props.logout();
+            authStore.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
@@ -56,7 +57,7 @@ const Bookmark = props => {
                     </img>
                 </Tooltip>)
                 :
-                props.token != null && (<Tooltip placement="right" title="Bookmark this.">
+                authStore.token != null && (<Tooltip placement="right" title="Bookmark this.">
                     <img
                         onClick={() => handlerBookmarking(true)}
                         className="bookmark__img clickable bookmark__grey"

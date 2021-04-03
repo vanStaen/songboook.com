@@ -2,6 +2,7 @@ import { React } from 'react';
 import { Modal, Form, Input, Radio, notification } from 'antd';
 import axios from 'axios';
 
+import { authStore } from "../../stores/authStore";
 import './AddForm.css';
 
 const AddForm = (props) => {
@@ -18,7 +19,6 @@ const AddForm = (props) => {
     };
 
     const postAddSong = (data) => {
-        console.log("token fo bearer: ", props.token)
         async function postNew(data) {
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + "/songbook",
@@ -26,7 +26,7 @@ const AddForm = (props) => {
                 data: data,
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {

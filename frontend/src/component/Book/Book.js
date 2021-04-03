@@ -77,8 +77,6 @@ const Book = (props) => {
         <div key={page.id} id={page.id}>
           <Page
             page={page}
-            token={props.token}
-            logout={props.logout}
             randomPageId={props.randomPageId}
             setRandomPageId={props.setRandomPageId}
             setPageHasChanged={setPageHasChanged}

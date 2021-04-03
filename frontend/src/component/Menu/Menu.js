@@ -1,16 +1,17 @@
 import { React, useState } from "react";
 import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
+
 import { AddSongButton } from "./AddSongButton/AddSongButton";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
 import { SearchButton } from "./SearchButton/SearchButton";
 import { SettingsButton } from "./SettingsButton/SettingsButton";
 import { Random } from "./Random/Random";
+import { authStore } from "../../stores/authStore";
 
 import piano from "./../../images/piano.png";
 import bass from "./../../images/bass.png";
 import guitar from "./../../images/guitar.png";
-import search from "./../../images/search.png";
 import bookmark from "../../images/bookmark.png";
 
 import "./Menu.css";
@@ -68,7 +69,7 @@ const Menu = (props) => {
           showProfil={showProfil}
           setShowProfil={setShowProfil} />
         {!showProfil && <>
-          {props.token &&
+          {authStore.token &&
             <AddSongButton
               setShowAddForm={props.setShowAddForm}
               showAddForm={props.showAddForm}
@@ -229,7 +230,7 @@ const Menu = (props) => {
         </div>
       </div>
       <div className="menu__extra">
-        {props.token === null ? (
+        {authStore.token === null ? (
           <div
             className="menu__element"
             onClick={() => props.setShowLoginForm(!props.showLoginForm)}
@@ -238,7 +239,7 @@ const Menu = (props) => {
             <div className="menu__dymobglogin"></div>
           </div>
         ) : (
-            <div className="menu__element" onClick={() => props.logout()}>
+            <div className="menu__element" onClick={() => authStore.logout()}>
               <div className="menu__dymotaglogout">&nbsp;logout&nbsp;</div>
               <div className="menu__dymobglogout"></div>
             </div>

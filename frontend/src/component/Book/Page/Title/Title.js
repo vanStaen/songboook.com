@@ -1,6 +1,8 @@
 import { React, useState } from "react";
 import { Input, notification } from 'antd';
 import axios from 'axios';
+
+import { authStore } from "../../../../stores/authStore";
 import './Title.css';
 
 const Title = (props) => {
@@ -16,7 +18,7 @@ const Title = (props) => {
                 data: { 'title': title },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -30,7 +32,7 @@ const Title = (props) => {
             console.log("Sucess", resData);
         }
         ).catch(error => {
-            props.logout();
+            authStore.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
@@ -65,7 +67,7 @@ const Title = (props) => {
                     onPressEnter={handleEditConfirm}
                 />)
                 :
-                (<div className="Page__title" onDoubleClick={() => { props.token != null && setIsEditmode(true) }} >{title}</div>)
+                (<div className="Page__title" onDoubleClick={() => { authStore.token != null && setIsEditmode(true) }} >{title}</div>)
             }
         </>
 

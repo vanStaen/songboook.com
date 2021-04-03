@@ -3,6 +3,7 @@ import { CheckOutlined } from '@ant-design/icons';
 import { Tooltip, notification } from 'antd';
 import axios from 'axios';
 
+import { authStore } from '../../../../stores/authStore';
 import './CheckAdd.css';
 
 const CheckAdd = props => {
@@ -18,7 +19,7 @@ const CheckAdd = props => {
                 data: { 'checked': value },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -30,7 +31,7 @@ const CheckAdd = props => {
         // fetch Entries
         patchEntry(value)
             .catch(error => {
-                props.logout();
+                authStore.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
@@ -44,7 +45,7 @@ const CheckAdd = props => {
 
     return (
         <div className="CheckAdd" id="checkAdd">
-            {props.token && (isChecked ?
+            {authStore.token && (isChecked ?
                 (<Tooltip placement="top" title="Click to mark this song as unknown.">
                     <CheckOutlined
                         onClick={() => handlerMarkAsChecked(false)}

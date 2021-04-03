@@ -3,6 +3,8 @@ import { Button, Popconfirm, notification } from 'antd';
 import { DeleteOutlined, FolderOpenOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
+import { authStore } from '../../../../../stores/authStore';
+
 const DangerZone = (props) => {
     const [isActive, setIsActive] = useState(props.active)
 
@@ -14,7 +16,7 @@ const DangerZone = (props) => {
                 data: { 'active': value },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -31,7 +33,7 @@ const DangerZone = (props) => {
                 notification.error({ description: `Song #${props.id} has been ${isActive ? "a" : "una"}rchived.`, icon: <FolderOpenOutlined style={{ color: '#000' }} />, });
             })
             .catch(error => {
-                props.logout();
+                authStore.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });
@@ -44,7 +46,7 @@ const DangerZone = (props) => {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -60,7 +62,7 @@ const DangerZone = (props) => {
                 props.setPageHasChanged("true");
             })
             .catch(error => {
-                props.logout();
+                authStore.logout();
                 notification.error({ description: `Unauthorized! Please login.`, });
                 console.log("error", error.message);
             });

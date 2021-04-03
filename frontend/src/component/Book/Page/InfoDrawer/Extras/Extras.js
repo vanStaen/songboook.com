@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { Radio, Input, Tag, notification } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import axios from 'axios';
+
+import { authStore } from "../../../../../stores/authStore";
 import './Extras.css';
 
 
@@ -24,7 +26,7 @@ const Extras = (props) => {
                 data: data,
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -38,7 +40,7 @@ const Extras = (props) => {
             props.setPageHasChanged("true");
         }
         ).catch(error => {
-            props.logout();
+            authStore.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });

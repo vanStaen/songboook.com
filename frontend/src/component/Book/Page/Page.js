@@ -73,8 +73,6 @@ const Page = (props) => {
                 setIsBookmarked={setIsBookmarked}
                 isBookmarked={isBookmarked}
                 setPageHasChanged={props.setPageHasChanged}
-                token={props.token}
-                logout={props.logout}
             />
 
             <div className="Page__icons">
@@ -88,16 +86,12 @@ const Page = (props) => {
                     checked={props.page.checked}
                     id={props.page.id}
                     setPageHasChanged={props.setPageHasChanged}
-                    token={props.token}
-                    logout={props.logout}
                 />
             </div>
 
             <Title
                 title={props.page.title}
                 id={props.page.id}
-                token={props.token}
-                logout={props.logout}
             />
 
             <InfoDrawer
@@ -111,8 +105,6 @@ const Page = (props) => {
                 setIsPiano={setIsPiano}
                 setIsBass={setIsBass}
                 setPageHasChanged={props.setPageHasChanged}
-                token={props.token}
-                logout={props.logout}
             />
 
         </div>

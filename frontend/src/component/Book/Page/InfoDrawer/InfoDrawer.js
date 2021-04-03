@@ -1,15 +1,17 @@
 import { React, useEffect, useState } from "react";
-import YouTube from 'react-youtube';
-import { Drawer, Divider } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-
-import './InfoDrawer.css';
+import { Drawer, Divider } from 'antd';
+import YouTube from 'react-youtube';
 
 import Tags from './Tags/Tags';
 import Lyrics from './Lyrics/Lyrics';
 import Links from './Links/Links';
 import Extras from './Extras/Extras';
 import DangerZone from './DangerZone/DangerZone'
+import { authStore } from "../../../../stores/authStore";
+
+import './InfoDrawer.css';
+
 
 const InfoDrawer = (props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
@@ -45,9 +47,9 @@ const InfoDrawer = (props) => {
 
     const _onReady = (event) => {
         setPlayer(event.target);
-      }
-    
-    
+    }
+
+
     return (
         <Drawer
             title={
@@ -68,9 +70,9 @@ const InfoDrawer = (props) => {
             width={widthDrawer}
         >
             {props.page.videourl ?
-                (<YouTube 
-                    videoId={videoID} 
-                    opts={videoOptions} 
+                (<YouTube
+                    videoId={videoID}
+                    opts={videoOptions}
                     onReady={_onReady}
                 />)
                 : (<img src={props.page.picurl} className="Page-drawer__artwork" alt="pic_missing" ></img>)
@@ -91,9 +93,7 @@ const InfoDrawer = (props) => {
                 setVideoMissing={props.setVideoMissing}
                 setPicMissing={props.setPicMissing}
                 isDrawerFold={isDrawerFold}
-                token={props.token}
-                setPageHasChanged={props.setPageHasChanged}                
-                logout={props.logout}
+                setPageHasChanged={props.setPageHasChanged}
             />
 
             <Divider orientation="left" plain>
@@ -105,12 +105,10 @@ const InfoDrawer = (props) => {
                 tags={props.page.tags}
                 id={props.page.id}
                 setTagsMissing={props.setTagsMissing}
-                token={props.token}
                 setPageHasChanged={props.setPageHasChanged}
-                logout={props.logout}
             />
 
-            {props.token != null && (
+            {authStore.token != null && (
                 <>
                     <Divider orientation="left" plain>
                         <span className="Page-drawer__diviser">
@@ -128,9 +126,7 @@ const InfoDrawer = (props) => {
                         id={props.page.id}
                         setIsPiano={props.setIsPiano}
                         setIsBass={props.setIsBass}
-                        token={props.token}
                         setPageHasChanged={props.setPageHasChanged}
-                        logout={props.logout}
                     />
                 </>)}
 
@@ -143,7 +139,7 @@ const InfoDrawer = (props) => {
             <Lyrics id={props.page.id} />
 
 
-            {props.token != null && (
+            {authStore.token != null && (
                 <>
                     <Divider orientation="left" plain>
                         <span className="Page-drawer__diviser">
@@ -153,9 +149,7 @@ const InfoDrawer = (props) => {
                     <DangerZone
                         id={props.page.id}
                         active={props.page.active}
-                        token={props.token}
                         setPageHasChanged={props.setPageHasChanged}
-                        logout={props.logout}
                     />
                 </>)}
 

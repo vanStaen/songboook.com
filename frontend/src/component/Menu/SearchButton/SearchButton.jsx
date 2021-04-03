@@ -3,7 +3,6 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 import { Input } from 'antd';
 
-import { ConditionalWrapper } from '../../../helpers/ConditionnalWrapper';
 import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {

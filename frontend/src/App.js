@@ -37,14 +37,10 @@ const App = observer(() => {
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
           setNewSongAdded={setNewSongAdded}
-          token={authStore.token}
         />
         <Login
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
-          token={authStore.token}
-          login={authStore.login}
-          logout={authStore.logout}
         />
         <Menu
           filterBass={filterBass}
@@ -61,8 +57,6 @@ const App = observer(() => {
           setShowAddForm={setShowAddForm}
           showLoginForm={showLoginForm}
           setShowLoginForm={setShowLoginForm}
-          token={authStore.token}
-          logout={authStore.logout}
           showSearchInput={showSearchInput}
           setShowSearchInput={setShowSearchInput}
           setRandomPageId={setRandomPageId}
@@ -80,8 +74,6 @@ const App = observer(() => {
           setNewSongAdded={setNewSongAdded}
           randomPageId={randomPageId}
           setRandomPageId={setRandomPageId}
-          token={authStore.token}
-          logout={authStore.logout}
         />
       </header>
       <Footer />

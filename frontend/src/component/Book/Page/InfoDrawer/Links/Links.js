@@ -1,8 +1,9 @@
 import { React, useState } from 'react';
 import { Tag, Input, notification } from 'antd';
-import axios from 'axios';
 import { EditOutlined, LinkOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
+import { authStore } from '../../../../../stores/authStore';
 import './Links.css'
 
 const Links = props => {
@@ -27,7 +28,7 @@ const Links = props => {
                 data: data,
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -40,7 +41,7 @@ const Links = props => {
             //console.log("Success", resData)
         }
         ).catch(error => {
-            props.logout();
+            authStore.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
@@ -140,7 +141,7 @@ const Links = props => {
                         <Tag className="links__tag" key="tabs">
                             <LinkOutlined />&nbsp;&nbsp;
                                 {returnCropedText(tabs, maxTagWidth)}
-                            {props.token && (<EditOutlined onClick={e => {
+                            {authStore.token && (<EditOutlined onClick={e => {
                                 setEditInputValue(tabs)
                                 setIsTabsEditMode(true);
                                 e.preventDefault();
@@ -169,7 +170,7 @@ const Links = props => {
                         <Tag className="links__tag" key="video">
                             <LinkOutlined />&nbsp;&nbsp;
                                 {returnCropedText(video, maxTagWidth)}
-                            {props.token && (<EditOutlined onClick={e => {
+                            {authStore.token && (<EditOutlined onClick={e => {
                                 setEditInputValue(video)
                                 setIsVideoEditMode(true);
                                 e.preventDefault();
@@ -178,7 +179,7 @@ const Links = props => {
                     </a>)
                 }
             </div>
-            {props.token && (<div>
+            {authStore.token && (<div>
                 &nbsp;&nbsp;&nbsp;&nbsp;Pic:
                 {isPicEditMode ?
                     (<Input

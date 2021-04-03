@@ -1,8 +1,9 @@
 import { React, useState } from 'react';
 import { Tag, Input, notification } from 'antd';
-import axios from 'axios';
 import { PlusOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
+import { authStore } from '../../../../../stores/authStore';
 import './Tags.css'
 
 const Tags = (props) => {
@@ -20,7 +21,7 @@ const Tags = (props) => {
                 data: { 'tags': tags },
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + props.token,
+                    Authorization: "Bearer " + authStore.token,
                 },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
@@ -34,7 +35,7 @@ const Tags = (props) => {
             //console.log("Sucess", resData);
         }
         ).catch(error => {
-            props.logout();
+            authStore.logout();
             notification.error({ description: `Unauthorized! Please login.`, });
             console.log("error", error.message);
         });
@@ -44,12 +45,6 @@ const Tags = (props) => {
     const handlerDeleteTag = (deleteTagIndex) => {
         let oldTags = tags;
         oldTags.splice(deleteTagIndex, 1);
-        //if (oldTags.length === 0) {
-        //    props.setTagsMissing(true);
-        //    patchTagsInDB("null");
-        //} else {
-        //    patchTagsInDB(oldTags);
-        //}
         setTags(oldTags);
     }
 
@@ -135,7 +130,7 @@ const Tags = (props) => {
             <Tag
                 className="edit-tag"
                 key={index}
-                closable={props.token ? true : false}
+                closable={authStore.token ? true : false}
                 onClose={() => handlerDeleteTag(index)}
             >
                 <span
@@ -165,7 +160,7 @@ const Tags = (props) => {
                     onPressEnter={handleInputConfirm}
                 />
             )}
-            {!inputVisible && props.token && (
+            {!inputVisible && authStore.token && (
                 <Tag className="site-tag-plus" onClick={showInput}>
                     <PlusOutlined /> Add Tag
                 </Tag>
