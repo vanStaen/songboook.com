@@ -1,12 +1,13 @@
 import { React } from 'react';
 import bookmark from './../../../../images/bookmark.png';
 import { Tooltip, notification } from 'antd';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from "../../../../stores/authStore";
 import './Bookmark.css';
 
-const Bookmark = props => {
+const Bookmark = observer((props) => {
 
     const patchBookmark = (value) => {
         async function patchEntry(value) {
@@ -68,6 +69,6 @@ const Bookmark = props => {
             }
         </div >
     )
-}
+});
 
-export default Bookmark
+export default Bookmark;

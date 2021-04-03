@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import { Tag, Input, notification } from 'antd';
 import { EditOutlined, LinkOutlined } from '@ant-design/icons';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from '../../../../../stores/authStore';
 import './Links.css'
 
-const Links = props => {
+const Links = observer((props) => {
     const [tabs, setTabs] = useState(props.tabs);
     const [video, setVideo] = useState(props.video);
     const [pic, setPic] = useState(props.pic);
@@ -212,7 +213,7 @@ const Links = props => {
 
         </div>
     )
-}
+});
 
 export default Links
 

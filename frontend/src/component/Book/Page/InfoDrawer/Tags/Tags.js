@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import { Tag, Input, notification } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from '../../../../../stores/authStore';
 import './Tags.css'
 
-const Tags = (props) => {
+const Tags = observer((props) => {
     const [tags, setTags] = useState(props.tags);
     const [editInputIndex, setEditInputIndex] = useState(-1);
     const [editInputValue, setEditInputValue] = useState('');
@@ -167,7 +168,7 @@ const Tags = (props) => {
             )}
         </div>
     )
-}
+});
 
 export default Tags
 

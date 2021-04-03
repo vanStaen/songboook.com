@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { Tooltip, notification } from 'antd';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from '../../../../stores/authStore';
 import './CheckAdd.css';
 
-const CheckAdd = props => {
+const CheckAdd = observer((props) => {
 
     const [isChecked, setIsChecked] = useState(props.checked);
     //const isVisitor = props.isVisitor;
@@ -62,29 +63,6 @@ const CheckAdd = props => {
             )}
         </div >
     )
-}
+});
 
-export default CheckAdd
-
-
-/*
-
-
-
-    const handlerBookmarking = (value) => {
-        props.setIsBookmarked(value);
-        patchBookmark(value);
-
-        const messageTitle = value ? 'Bookmarked!' : 'Bookmarked deleted';
-        const messageText = value ? 'will appears with a bookmark from now on.' : 'is not bookmarked anymore';
-
-        notification.success({
-            message: messageTitle,
-            description:
-                `Watchlist entry #${props.id} ${messageText}.`,
-            placement: "bottomRight",
-        });
-
-    }
-
-*/
+export default CheckAdd;

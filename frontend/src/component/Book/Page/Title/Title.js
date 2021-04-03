@@ -1,11 +1,12 @@
 import { React, useState } from "react";
 import { Input, notification } from 'antd';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from "../../../../stores/authStore";
 import './Title.css';
 
-const Title = (props) => {
+const Title = observer((props) => {
     const [title, setTitle] = useState(props.title.replace(/ /g, '').length > 23 ? `${props.title.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : props.title.replace('-', '/').replace(/ /g, ''));
     const [isEditMode, setIsEditmode] = useState(false);
     const [editInputValue, setEditInputValue] = useState(props.title.replace('-', '/'));
@@ -72,7 +73,6 @@ const Title = (props) => {
         </>
 
     )
-
-}
+});
 
 export default Title;

@@ -1,12 +1,13 @@
 import { React } from 'react';
 import { Modal, Form, Input, notification } from 'antd';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from '../../stores/authStore';
 
 import './Login.css';
 
-const Login = (props) => {
+const Login = observer((props) => {
 
     const handleLogin = (values) => {
         const dataRequest = { email: values.email, password: values.password }
@@ -101,7 +102,6 @@ const Login = (props) => {
             </Modal>
         </>
     );
-
-}
+});
 
 export default Login;

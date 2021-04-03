@@ -1,13 +1,14 @@
 import { React, useState } from "react";
 import { Radio, Input, Tag, notification } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from "../../../../../stores/authStore";
 import './Extras.css';
 
 
-const Extras = (props) => {
+const Extras = observer((props) => {
 
     const [valueRadioTabsType, setValueRadioTabsType] = useState(props.bass ? "b" : (props.piano ? "p" : "g"))
     const [artist, setArtist] = useState(props.artist);
@@ -192,7 +193,6 @@ const Extras = (props) => {
 
 
     )
-
-}
+});
 
 export default Extras;

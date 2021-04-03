@@ -1,11 +1,12 @@
 import { React, useState } from 'react';
 import { Button, Popconfirm, notification } from 'antd';
 import { DeleteOutlined, FolderOpenOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from '../../../../../stores/authStore';
 
-const DangerZone = (props) => {
+const DangerZone = observer((props) => {
     const [isActive, setIsActive] = useState(props.active)
 
     const handlePatchActive = (value) => {
@@ -94,6 +95,6 @@ const DangerZone = (props) => {
             </Popconfirm>
         </>
     )
-}
+});
 
 export default DangerZone;

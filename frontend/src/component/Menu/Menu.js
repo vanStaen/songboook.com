@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
+import { observer } from "mobx-react";
 
 import { AddSongButton } from "./AddSongButton/AddSongButton";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
@@ -16,7 +17,7 @@ import bookmark from "../../images/bookmark.png";
 
 import "./Menu.css";
 
-const Menu = (props) => {
+const Menu = observer((props) => {
   const [showProfil, setShowProfil] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -247,6 +248,6 @@ const Menu = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default Menu;

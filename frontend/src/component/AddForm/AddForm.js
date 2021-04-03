@@ -1,11 +1,12 @@
 import { React } from 'react';
 import { Modal, Form, Input, Radio, notification } from 'antd';
+import { observer } from "mobx-react";
 import axios from 'axios';
 
 import { authStore } from "../../stores/authStore";
 import './AddForm.css';
 
-const AddForm = (props) => {
+const AddForm = observer((props) => {
 
     const handleAddSong = (values) => {
         const dataRequest = { artist: values.artist, song: values.song }
@@ -135,14 +136,6 @@ const AddForm = (props) => {
         </>
     );
 
-}
+})
 
 export default AddForm;
-
-/*
-"link":
-"artist":
-"song":
-"picurl":
-"videourl"
-*/

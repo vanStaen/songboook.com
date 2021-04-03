@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Drawer, Divider } from 'antd';
+import { observer } from "mobx-react";
 import YouTube from 'react-youtube';
 
 import Tags from './Tags/Tags';
@@ -13,7 +14,7 @@ import { authStore } from "../../../../stores/authStore";
 import './InfoDrawer.css';
 
 
-const InfoDrawer = (props) => {
+const InfoDrawer = observer((props) => {
     const [widthDrawer, setWidthDrawer] = useState(350);
     const [isDrawerFold, setIsDrawerFold] = useState(true);
     const [player, setPlayer] = useState(null);
@@ -155,7 +156,6 @@ const InfoDrawer = (props) => {
 
         </Drawer>
     )
-
-}
+});
 
 export default InfoDrawer;
