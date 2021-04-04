@@ -20,10 +20,6 @@ const Tags = observer((props) => {
                 url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'PATCH',
                 data: { 'tags': tags },
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + authStore.token,
-                },
             });
             if ((response.status !== 200) & (response.status !== 201)) {
                 throw new Error("Error!");
