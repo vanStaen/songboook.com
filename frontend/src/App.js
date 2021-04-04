@@ -9,7 +9,7 @@ import Footer from "./component/Footer/Footer";
 import { authStore } from "./stores/authStore";
 
 import "./App.css";
-
+import "./helpers/axiosInterceptor";
 
 const App = observer(() => {
   const [filterBass, setFilterBass] = useState(false);

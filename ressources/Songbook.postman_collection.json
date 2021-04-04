@@ -159,7 +159,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA5MjU4MzE5LCJleHAiOjE2MDkyNTkyMTl9.ALRpmR6PhsWTtwKHTWw9k95wxfuomfyLpsjzgqbdAqY",
+						"value": "Bearer 123.456.789",
 						"type": "text"
 					}
 				],
@@ -267,7 +267,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjExNTU2OTQ4LCJleHAiOjE2MTE1NTc4NDh9.oKKl1kye0UgOtfgfMlYPoZ9TqLuq95XXQ9-rjIt40VY",
+						"value": "Bearer 123.456.789",
 						"type": "text"
 					}
 				],
