@@ -3,7 +3,6 @@ import { Modal, Form, Input, Radio, notification } from 'antd';
 import { observer } from "mobx-react";
 import axios from 'axios';
 
-import { authStore } from "../../stores/authStore";
 import './AddForm.css';
 
 const AddForm = observer((props) => {
