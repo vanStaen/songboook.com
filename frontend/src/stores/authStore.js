@@ -54,7 +54,7 @@ export class AuthStore {
         if (refreshToken) {
             let decodedRefreshToken = jsonwebtoken.decode(refreshToken, { complete: true });
             let dateNow = new Date();
-            if (decodedRefreshToken.exp < Math.floor(dateNow.getTime() / 1000)) {
+            if (decodedRefreshToken.payload.exp < Math.floor(dateNow.getTime() / 1000)) {
                 this.logout();
             } else {
                 this.refreshToken = refreshToken;
@@ -64,7 +64,7 @@ export class AuthStore {
         if (this.token) {
             let decodedToken = jsonwebtoken.decode(this.token, { complete: true });
             let dateNow = new Date();
-            if (decodedToken.exp < Math.floor(dateNow.getTime() / 1000)) {
+            if (decodedToken.payload.exp < Math.floor(dateNow.getTime() / 1000)) {
                 this.token = null;
             } else {
                 return this.token
