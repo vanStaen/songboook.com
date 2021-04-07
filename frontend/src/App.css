@@ -10,3 +10,20 @@
   width: 100%;
   display: flex;
 }
+
+.ant-input {
+	display: absolute !important;
+	width: 95% !important; 
+}
+
+.ant-input:hover {
+    border-color: rgba(110, 15, 28, 0.1) !important;
+    outline: 0 !important;
+}
+
+.ant-input:focus {
+    border-color: rgba(110, 15, 28, .1) !important;
+    outline: 0 !important;
+    -webkit-box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
+    box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
+}
