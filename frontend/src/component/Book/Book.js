@@ -4,6 +4,7 @@ import { getPages } from "./getPages";
 
 import Page from "./Page/Page";
 import notFound from "../../images/notFound.png";
+import logo from "../../images/logo.png"; // Tell webpack this JS file uses this image
 
 import "./Book.css";
 
@@ -100,9 +101,10 @@ const Book = (props) => {
       const heightScreen = window.innerHeight;
       const offSetScreen = (heightScreen - 330) / 2;
       const heightPosition = window.scrollY;
-      const scrolltarget = randomlySelectedPageTop < 0 ?
-        randomlySelectedPageTop + heightPosition :
-        heightPosition + randomlySelectedPageTop
+      const scrolltarget =
+        randomlySelectedPageTop < 0
+          ? randomlySelectedPageTop + heightPosition
+          : heightPosition + randomlySelectedPageTop;
       window.scrollTo({
         top: scrolltarget - offSetScreen,
         left: 0,
@@ -156,15 +158,10 @@ const Book = (props) => {
     >
       {isLoading ? (
         <div className="Book__spinner">
-          <div>
-            <img
-              src="https://avatars0.githubusercontent.com/u/12551446"
-              className="loader"
-              alt="Loading"
-            />
-            <br />
-            <div style={{ fontSize: 18, marginTop: 10, color: "white" }}>
-              Loading ...{" "}
+          <div className="spinner">
+            <img src={logo} className="loader" alt="Loading" />
+            <div className="spinner spinner__header">
+              Songbo<b>0</b>ok
             </div>
           </div>
         </div>
@@ -172,53 +169,47 @@ const Book = (props) => {
         <div className="Book__spinner">
           <div>
             <CloseOutlined className="error__icon" />
-            <img
-              src="https://avatars0.githubusercontent.com/u/12551446"
-              className="error"
-              alt="Error"
-            />
+            <img src={logo} className="error" alt="Error" />
             <br />
-            <div style={{ fontSize: 18, marginTop: 10, color: "white" }}>
+            <div style={{ fontSize: 18, marginTop: 15, color: "white" }}>
               Error connecting to the backend!
             </div>
           </div>
         </div>
       ) : (
-            <div>
-              <div className="Book__resultInfos">
-                {listOfFilter().length > 0 && (
-                  <>
-                    {bookNotNull.length + " songs for " + formatedListOfFilter()}
-                  </>
-                )}
-              </div>
+        <div>
+          <div className="Book__resultInfos">
+            {listOfFilter().length > 0 && (
+              <>{bookNotNull.length + " songs for " + formatedListOfFilter()}</>
+            )}
+          </div>
 
-              {bookNotNull.length > 0 ? (
-                <div className="Book__main">{book}</div>
-              ) : (
-                  <div className="Book__nothingFound">
-                    <div style={{ marginBottom: "15px" }}>
-                      <img
-                        src={notFound}
-                        className="nothingFound"
-                        alt="Nothing found"
-                      />
-                      <br />
-                      <div
-                        style={{
-                          fontSize: 14,
-                          marginTop: 10,
-                          color: "white",
-                          opacity: 0.15,
-                        }}
-                      >
-                        Nothing found!
+          {bookNotNull.length > 0 ? (
+            <div className="Book__main">{book}</div>
+          ) : (
+            <div className="Book__nothingFound">
+              <div style={{ marginBottom: "15px" }}>
+                <img
+                  src={notFound}
+                  className="nothingFound"
+                  alt="Nothing found"
+                />
+                <br />
+                <div
+                  style={{
+                    fontSize: 14,
+                    marginTop: 10,
+                    color: "white",
+                    opacity: 0.15,
+                  }}
+                >
+                  Nothing found!
                 </div>
-                    </div>
-                  </div>
-                )}
+              </div>
             </div>
           )}
+        </div>
+      )}
     </div>
   );
 };
