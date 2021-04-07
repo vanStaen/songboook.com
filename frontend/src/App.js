@@ -6,6 +6,8 @@ import Login from "./component/Login/Login";
 import Book from "./component/Book/Book";
 import Menu from "./component/Menu/Menu";
 import Footer from "./component/Footer/Footer";
+import { Profil } from "./component/Profil/Profil";
+
 import { authStore } from "./stores/authStore";
 
 import "./App.css";
@@ -23,12 +25,16 @@ const App = observer(() => {
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
+  const [showProfil, setShowProfil] = useState(false);
 
   useEffect(() => {
-    // On mount, update token
     authStore.refreshToken &&
       authStore.login(authStore.getNewToken(), authStore.refreshToken);
   }, []);
+
+  useEffect(() => {
+    if (!authStore.token) {setShowProfil(false)};
+  }, [authStore.token]);
 
   return (
     <div className="App">
@@ -62,19 +68,26 @@ const App = observer(() => {
           setRandomPageId={setRandomPageId}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          showProfil={showProfil}
+          setShowProfil={setShowProfil}
         />
-        <Book
-          filterBass={filterBass}
-          filterPiano={filterPiano}
-          filterGuitar={filterGuitar}
-          onlyFlagKnown={onlyFlagKnown}
-          onlyBookmarked={onlyBookmarked}
-          searchValue={searchValue}
-          newSongAdded={newSongAdded}
-          setNewSongAdded={setNewSongAdded}
-          randomPageId={randomPageId}
-          setRandomPageId={setRandomPageId}
-        />
+
+        {showProfil ? (
+          <Profil />
+        ) : (
+          <Book
+            filterBass={filterBass}
+            filterPiano={filterPiano}
+            filterGuitar={filterGuitar}
+            onlyFlagKnown={onlyFlagKnown}
+            onlyBookmarked={onlyBookmarked}
+            searchValue={searchValue}
+            newSongAdded={newSongAdded}
+            setNewSongAdded={setNewSongAdded}
+            randomPageId={randomPageId}
+            setRandomPageId={setRandomPageId}
+          />
+        )}
       </header>
       <Footer />
     </div>

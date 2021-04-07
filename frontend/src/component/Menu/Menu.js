@@ -18,7 +18,6 @@ import bookmark from "../../images/bookmark.png";
 import "./Menu.css";
 
 const Menu = observer((props) => {
-  const [showProfil, setShowProfil] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -67,9 +66,9 @@ const Menu = observer((props) => {
     <div>
       <div className="Menu__floating">
         <ProfilButton
-          showProfil={showProfil}
-          setShowProfil={setShowProfil} />
-        {!showProfil && <>
+          showProfil={props.showProfil}
+          setShowProfil={props.setShowProfil} />
+        {!props.showProfil && <>
           {authStore.token &&
             <AddSongButton
               setShowAddForm={props.setShowAddForm}

@@ -1,0 +1,50 @@
+.Profil__full {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Profil__title {
+  justify-content: center;
+  font-size: 0.5em;
+  color: rgba(255, 255, 255, 0.2);
+  margin: 0 0 1em 0;
+  font-weight: 200;
+  letter-spacing: 2.7px;
+}
+
+.Profil__main {
+  max-width: 1200px;
+  width: calc(100% - 2em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 2em 0;
+  font-size: 0.75em;
+}
+
+.Profil__avatar {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+}
+
+.Profil__ActivitiesContainer {
+  max-width: 500px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 200;
+  padding: 10px;
+}
+
+.Profil__logout {
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.Profil__logout:hover {
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.5);
+}

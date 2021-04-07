@@ -4,7 +4,8 @@ import { getPages } from "./getPages";
 
 import Page from "./Page/Page";
 import notFound from "../../images/notFound.png";
-import logo from "../../images/logo.png"; // Tell webpack this JS file uses this image
+import { Spinner } from '../Spinner/Spinner'
+import logo from "../../images/logo.png";
 
 import "./Book.css";
 
@@ -157,14 +158,7 @@ const Book = (props) => {
       }}
     >
       {isLoading ? (
-        <div className="Book__spinner">
-          <div className="spinner">
-            <img src={logo} className="loader" alt="Loading" />
-            <div className="spinner spinner__header">
-              Songbo<b>0</b>ok
-            </div>
-          </div>
-        </div>
+        <Spinner/>
       ) : isError ? (
         <div className="Book__spinner">
           <div>
