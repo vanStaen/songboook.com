@@ -11,6 +11,7 @@ import './Extras.css';
 const Extras = observer((props) => {
 
     const [valueRadioTabsType, setValueRadioTabsType] = useState(props.bass ? "b" : (props.piano ? "p" : "g"))
+    const [valueRadioTabsLevel, setValueRadioTabsLevel] = useState(props.level)
     const [artist, setArtist] = useState(props.artist);
     const [song, setSong] = useState(props.song);
     const [isArtistEditMode, setIsArtistEditMode] = useState(false);
@@ -21,6 +22,7 @@ const Extras = observer((props) => {
 
     const patchLinkInDB = (data) => {
         async function patchEntry(data) {
+            console.log(data);
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'PATCH',
@@ -124,6 +126,11 @@ const Extras = observer((props) => {
         setValueRadioTabsType(e.target.value);
     };
 
+    const onRadioChangeTabsLevel = e => {
+        patchLinkInDB({ 'level': e.target.value });
+        setValueRadioTabsLevel(e.target.value);
+    };
+
     return (
         <div>
             <div className="Extras__radioType">
@@ -133,7 +140,13 @@ const Extras = observer((props) => {
                     <Radio value="p">Piano</Radio>
                 </Radio.Group>
             </div>
-            <div className="Extra__spacer"></div>
+            <div className="Extras__radioType">
+                <Radio.Group onChange={onRadioChangeTabsLevel} value={valueRadioTabsLevel}>
+                    <Radio value="easy">Easy</Radio>
+                    <Radio value="medium">Medium</Radio>
+                    <Radio value="hard">Hard</Radio>
+                </Radio.Group>
+            </div>
             <div className="Extras__artist">
                 &nbsp;&nbsp;Artist:
                 {isArtistEditMode ?
@@ -147,7 +160,7 @@ const Extras = observer((props) => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<Tag key="Artist">
+                    (<Tag key="Artist" className="Extra__tag">
                         {returnCropedText(artist, maxTagWidth)}
                         &nbsp;&nbsp;
                         <EditOutlined onClick={e => {
@@ -173,7 +186,7 @@ const Extras = observer((props) => {
                         onPressEnter={handleEditConfirm}
                     />)
                     :
-                    (<Tag key="Song" >
+                    (<Tag key="Song" className="Extra__tag">
                         {returnCropedText(song, maxTagWidth)}
                         &nbsp;&nbsp;
                         <EditOutlined onClick={e => {

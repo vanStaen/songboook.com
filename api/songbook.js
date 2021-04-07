@@ -115,6 +115,9 @@ router.patch("/:id", async (req, res) => {
   if (req.body.geniusurl !== undefined) {
     updateField = updateField + "geniusurl='" + req.body.geniusurl + "',";
   }
+  if (req.body.level) {
+    updateField = updateField + "level='" + req.body.level + "',";
+  }
   const updateFieldEdited = updateField.slice(0, -1) // delete the last comma
   const updateQuery = 'UPDATE songbook SET ' + updateFieldEdited + ' WHERE id=' + req.params.id;
   //console.log(updateQuery);
@@ -161,10 +164,11 @@ router.post("/", async (req, res) => {
   const piano = req.body.piano ? req.body.piano : false;
   const bass = req.body.bass ? req.body.bass : false;
   const checked = req.body.checked ? req.body.checked : false;
+  const level = req.body.level ? req.body.level : null;
   const geniusurl = await getfirstResultGoogleSearch(['"' + artist.split(' ').join('","'), song.split(" ").join("', '") + '"', 'lyrics', 'genius']);
-  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass, geniusurl) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass}, '${geniusurl}')`;
+  const insertQuery = `INSERT INTO songbook (title, link, tags, picurl, active, bookmark, artist, song, videourl, piano, checked, bass, geniusurl, level) VALUES ('${title}', '${link}', ${tags}, '${picurl}', ${active}, ${bookmark}, '${artist}', '${song}', '${videourl}', ${piano}, ${checked}, ${bass}, '${geniusurl}', '${level}')`;
   try {
-    const songbook = await client.query(insertQuery);
+    await client.query(insertQuery);
     res.status(201).json({ success: "Success" });
   } catch (err) {
     res.status(400).json({
