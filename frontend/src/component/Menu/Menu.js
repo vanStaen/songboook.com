@@ -103,6 +103,7 @@ const Menu = observer((props) => {
         )}
       </div>
 
+      {/*
       <div className="menu__main">
         <div
           className="menu__element"
@@ -242,6 +243,7 @@ const Menu = observer((props) => {
           </div>
         </div>
       </div>
+    */}
     </div>
   );
 });
