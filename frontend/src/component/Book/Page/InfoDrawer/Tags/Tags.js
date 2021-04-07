@@ -113,8 +113,8 @@ const Tags = observer((props) => {
             return (
                 <Input
                     key={index}
+                    className="input-tag"
                     size="small"
-                    className="tag-input"
                     value={editInputValue}
                     onChange={handleEditInputChange}
                     onBlur={handleEditInputCancel}
@@ -149,8 +149,8 @@ const Tags = observer((props) => {
             {inputVisible && (
                 <Input
                     type="text"
+                    className="input-tag"
                     size="small"
-                    className="tag-input"
                     value={inputValue}
                     onChange={handleInputChange}
                     onBlur={handleInputCancel}

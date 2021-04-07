@@ -6,35 +6,30 @@
     padding: 0px 0px;
     width: 100%;
   }
-
-.tag-input {
-    margin: 4px;
-    background: #fff;
-    color: #333;
-    border-color: #333;
-    border-style: dashed;
-    padding-bottom: 2px;
-    width: 78px;
-    height: 22px;
-    font-size: 12px;
-  }
   
-.ant-tag {
+.edit-tag {
     margin: 3.5px 3px;
+    cursor: pointer !important;
+    margin-bottom: 5px !important;
   }
-
 
 .site-tag-plus {
-    background: #333;
-    color: #fff;
-    border-style: dashed;
-    border-color: #333;
+    background: #333 !important;
+    color: #fff !important;
+    border-style: dashed !important;
+    border-color: #333 !important;
+    margin-bottom: 5px !important;
   }
 
 .edit-tag {
-    color: #333;
-    border-color: #333;
-    user-select: none;
-    text-transform: capitalize;
+    color: #333 !important;
+    user-select: none !important;
+    text-transform: capitalize !important;
   }
   
+.input-tag {
+  border-style: dashed !important;
+  border-color: #333 !important;
+  margin-bottom: 5px !important;
+  font-size: 12px !important;
+}

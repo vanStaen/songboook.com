@@ -1,5 +1,6 @@
 .Extras__radioType {
     text-align: center;
+    margin-bottom: 15px;
     width: 100%;
 }
 
@@ -15,26 +16,29 @@
     border-color: #924B55 ;
   }
 
-.Extras__artist {
+.Extras__container {
     color: #999;
     font-size: 12px;
     text-transform: capitalize;
-}
-
-.Extras__song {
-    color: #999;
-    font-size: 12px;
-    text-transform: capitalize;
-}
-
-.Extra__spacer {
-    height: 10px;
-    border: 0px solid red;
+    display: inline-block;
 }
 
 .Extras__input {
     color: #999;
     font-size: 12px;
-    width: 240px;
-    margin: 5px;
+    border-style: dashed !important;
+    border-color: #333 !important;
+    margin-bottom: 5px !important;
 }
+
+.Extra__tag {
+    margin: 3.5px 3px;
+    margin-bottom: 5px !important;
+  }
+
+.Extra__ref {
+      width: 40px;
+      text-align: right;
+      padding-right: 5px;
+      display: inline-block;
+  }

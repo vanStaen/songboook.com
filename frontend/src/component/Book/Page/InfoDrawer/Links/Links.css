@@ -3,7 +3,30 @@
     font-size: 12px;
 }
 
+.link__container {
+    display: inline-block;
+    width: 100%;
+}
+
 .links__tag {
     border: 0px;
-    cursor: pointer;
+    cursor: pointer !important;
+    margin-bottom: 5px !important;
+    width: auto !important;
 }
+
+.link__ref {
+    width: 15%;
+    text-align: right;
+    padding-right: 8px;
+    display: inline-block;
+}
+
+.link__input {
+    margin-bottom: 5px !important;
+    border-style: dashed !important;
+    border-color: #333 !important;
+    margin-bottom: 5px !important;
+    font-size: 12px !important;
+  }
+  

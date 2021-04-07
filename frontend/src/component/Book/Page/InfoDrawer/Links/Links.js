@@ -18,8 +18,7 @@ const Links = observer((props) => {
 
     const [editInputValue, setEditInputValue] = useState('');
 
-    const maxTagWidth = props.isDrawerFold ? 165 : 390;
-    const maxInputWidth = props.isDrawerFold ? 230 : 480;
+    const maxTagWidth = props.isDrawerFold ? 160 : 350;
 
     const patchLinkInDB = (data) => {
         async function patchEntry(data) {
@@ -120,19 +119,20 @@ const Links = observer((props) => {
 
     return (
         <div className='links'>
-            <div>
-                &nbsp;&nbsp;Tabs:
+            <div className='link__container'>
+                <div className='link__ref'>Tabs:</div>
                 {isTabsEditMode ?
-                    (<Input
+                    (<div style={{ display: "inline-block", width: maxTagWidth+90}}>
+                        <Input
                         key={`link_input_${props.id}`}
                         size="small"
-                        style={{ width: maxInputWidth }}
-                        className="tag-input"
+                        className="link__input"
                         value={editInputValue}
                         onChange={handleEditChange}
                         onBlur={handleEditCancel}
                         onPressEnter={handleEditConfirm}
-                    />)
+                    />
+                    </div>)
                     :
                     (<a href={tabs} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="tabs">
@@ -147,21 +147,21 @@ const Links = observer((props) => {
                     </a>)
                 }
             </div>
-
-
-            <div>
-                Video:
+            
+            <div className='link__container'>
+                <div className='link__ref'>Video:</div>
                 {isVideoEditMode ?
-                    (<Input
+                    (<div style={{ display: "inline-block", width: maxTagWidth+90}}>
+                    <Input
                         key={`link_input_${props.id}`}
                         size="small"
-                        style={{ width: maxInputWidth }}
-                        className="tag-input"
+                        className="link__input"
                         value={editInputValue}
                         onChange={handleEditChange}
                         onBlur={handleEditCancel}
                         onPressEnter={handleEditConfirm}
-                    />)
+                    />
+                    </div>)
                     :
                     (<a href={video} target="_Blank" rel="noreferrer">
                         <Tag className="links__tag" key="video">
@@ -176,19 +176,22 @@ const Links = observer((props) => {
                     </a>)
                 }
             </div>
-            {authStore.token && (<div>
-                &nbsp;&nbsp;&nbsp;&nbsp;Pic:
+
+            {authStore.token && (
+            <div className='link__container'>
+                <div className='link__ref'>Pic:</div>
                 {isPicEditMode ?
-                    (<Input
+                    (<div style={{ display: "inline-block", width: maxTagWidth+90}}>
+                        <Input
                         key={`link_input_${props.id}`}
                         size="small"
-                        style={{ width: maxInputWidth }}
-                        className="tag-input"
+                        className="link__input"
                         value={editInputValue}
                         onChange={handleEditChange}
                         onBlur={handleEditCancel}
                         onPressEnter={handleEditConfirm}
-                    />)
+                    />
+                    </div>)
                     :
                     (<Tag className="links__tag" key="pic"
                         onDoubleClick={e => {

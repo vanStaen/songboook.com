@@ -18,11 +18,10 @@ const Extras = observer((props) => {
     const [isSongEditMode, setIsSongEditMode] = useState(false);
     const [editInputValue, setEditInputValue] = useState('');
 
-    const maxTagWidth = props.isDrawerFold ? 165 : 400;
+    const maxTagWidth = props.isDrawerFold ? 200 : 400;
 
     const patchLinkInDB = (data) => {
         async function patchEntry(data) {
-            console.log(data);
             const response = await axios({
                 url: process.env.REACT_APP_API_URL + '/songbook/' + props.id,
                 method: 'PATCH',
@@ -147,10 +146,11 @@ const Extras = observer((props) => {
                     <Radio value="hard">Hard</Radio>
                 </Radio.Group>
             </div>
-            <div className="Extras__artist">
-                &nbsp;&nbsp;Artist:
+            <div className="Extras__container">
+                <div className='Extra__ref'>Artist:</div>
                 {isArtistEditMode ?
-                    (<Input
+                    (<div style={{ display: "inline-block", width: maxTagWidth}}>
+                        <Input
                         key={`link_input_${props.id}`}
                         size="small"
                         className="Extras__input"
@@ -158,7 +158,8 @@ const Extras = observer((props) => {
                         onChange={handleEditChange}
                         onBlur={handleEditCancel}
                         onPressEnter={handleEditConfirm}
-                    />)
+                    />
+                    </div>)
                     :
                     (<Tag key="Artist" className="Extra__tag">
                         {returnCropedText(artist, maxTagWidth)}
@@ -173,10 +174,11 @@ const Extras = observer((props) => {
                     )
                 }
             </div>
-            <div className="Extras__song">
-                &nbsp;&nbsp;&nbsp;Song:
+            <div className="Extras__container">
+                <div className='Extra__ref'>Song:</div>
                 {isSongEditMode ?
-                    (<Input
+                    (<div style={{ display: "inline-block", width: maxTagWidth}}>
+                        <Input
                         key={`link_input_${props.id}`}
                         size="small"
                         className="Extras__input"
@@ -184,7 +186,8 @@ const Extras = observer((props) => {
                         onChange={handleEditChange}
                         onBlur={handleEditCancel}
                         onPressEnter={handleEditConfirm}
-                    />)
+                    />
+                    </div>)
                     :
                     (<Tag key="Song" className="Extra__tag">
                         {returnCropedText(song, maxTagWidth)}
