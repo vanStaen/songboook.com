@@ -11,6 +11,7 @@ const AddForm = observer((props) => {
         const dataRequest = { artist: values.artist, song: values.song }
         if (values.type === "bass") { dataRequest.bass = true; }
         if (values.type === "piano") { dataRequest.piano = true; }
+        if (values.level) { dataRequest.level = values.level; }
         if (values.link) { dataRequest.link = values.link; }
         if (values.picurl) { dataRequest.picurl = values.picurl; }
         if (values.videourl) { dataRequest.videourl = values.videourl; }
@@ -117,12 +118,19 @@ const AddForm = observer((props) => {
                         label="Link to the youtube video"
                     >
                         <Input />
-                    </Form.Item>
+                    </Form.Item>                    
                     <Form.Item name="type" className="collection-create-form_last-form-item">
                         <Radio.Group>
                             <Radio value="guitar">Guitar</Radio>
                             <Radio value="bass">Bass</Radio>
                             <Radio value="piano">Piano</Radio>
+                        </Radio.Group>
+                    </Form.Item>
+                    <Form.Item name="level" className="collection-create-form_last-form-item">
+                        <Radio.Group>
+                            <Radio value="easy">Easy</Radio>
+                            <Radio value="medium">Medium</Radio>
+                            <Radio value="hard">Hard</Radio>
                         </Radio.Group>
                     </Form.Item>
                 </Form>

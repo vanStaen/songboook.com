@@ -24,7 +24,6 @@
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Handle Archived (active=false)
 - [ ] Offer a list view of songboook
-- [ ] Add difficulty parameter (easy, normal, difficult)
  
 ## Completed ✓
 
@@ -57,3 +56,4 @@
 - [x] Logout on auth errors
 - [x] Smoothen drawer transition fold/unfold
 - [x] Lyrics : genius first, then lyrics api
+- [x] Add level parameter (easy, medium, hard)

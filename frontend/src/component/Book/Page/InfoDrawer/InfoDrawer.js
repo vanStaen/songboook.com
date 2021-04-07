@@ -121,6 +121,7 @@ const InfoDrawer = observer((props) => {
                         song={props.page.song}
                         piano={props.page.piano}
                         bass={props.page.bass}
+                        level={props.page.level}
                         setArtist={setArtist}
                         setSong={setSong}
                         isDrawerFold={isDrawerFold}
