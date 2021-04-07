@@ -1,0 +1,33 @@
+.LoginButton__float {
+	float: right;
+	text-align: right;
+	width: 2.7em;	
+	height: 2.7em;
+	margin-left: .1em; 
+	margin-bottom: .8em;
+	padding-right: .5em;
+	padding-top: 0.22em;
+	border: 1px solid transparent;
+    color: rgba(255, 255, 255);
+	border-radius:50px;
+	z-index: 10;
+	opacity: .75;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, .25);
+}
+
+.LoginButton__float:hover {
+	opacity: 1;
+}
+
+.LoginButton__background:hover {
+	border: 1px solid rgba(255, 255, 255, .5);
+	opacity: 1;
+}
+
+.LoginButton__icon {
+	position: relative;
+	top: 0.15em;
+	font-size: 1.6em;
+	filter: grayscale(100%);
+}

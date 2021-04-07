@@ -7,6 +7,7 @@ import { AddSongButton } from "./AddSongButton/AddSongButton";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
 import { SearchButton } from "./SearchButton/SearchButton";
 import { SettingsButton } from "./SettingsButton/SettingsButton";
+import { LoginButton } from "./LoginButton/LoginButton";
 import { Random } from "./Random/Random";
 import { authStore } from "../../stores/authStore";
 
@@ -65,29 +66,41 @@ const Menu = observer((props) => {
   return (
     <div>
       <div className="Menu__floating">
-        <ProfilButton
-          showProfil={props.showProfil}
-          setShowProfil={props.setShowProfil} />
-        {!props.showProfil && <>
-          {authStore.token &&
-            <AddSongButton
-              setShowAddForm={props.setShowAddForm}
-              showAddForm={props.showAddForm}
-            />}
-          <SettingsButton
-            showSettings={showSettings}
-            setShowSettings={setShowSettings} />
-          <SearchButton
-            showSearch={showSearch}
-            setShowSearch={setShowSearch}
-            searchValue={props.searchValue}
-            setSearchValue={props.setSearchValue}
+        {!authStore.token ? (
+          <LoginButton
+            showLoginForm={props.showLoginForm}
+            setShowLoginForm={props.setShowLoginForm}
           />
-          <Random
-            onlyFlagKnown={props.onlyFlagKnown}
-            setRandomPageId={props.setRandomPageId}
+        ) : (
+          <ProfilButton
+            showProfil={props.showProfil}
+            setShowProfil={props.setShowProfil}
           />
-        </>}
+        )}
+        {!props.showProfil && (
+          <>
+            {authStore.token && (
+              <AddSongButton
+                setShowAddForm={props.setShowAddForm}
+                showAddForm={props.showAddForm}
+              />
+            )}
+            <SettingsButton
+              showSettings={showSettings}
+              setShowSettings={setShowSettings}
+            />
+            <SearchButton
+              showSearch={showSearch}
+              setShowSearch={setShowSearch}
+              searchValue={props.searchValue}
+              setSearchValue={props.setSearchValue}
+            />
+            <Random
+              onlyFlagKnown={props.onlyFlagKnown}
+              setRandomPageId={props.setRandomPageId}
+            />
+          </>
+        )}
       </div>
 
       <div className="menu__main">
@@ -228,22 +241,6 @@ const Menu = observer((props) => {
             </Tooltip>
           </div>
         </div>
-      </div>
-      <div className="menu__extra">
-        {authStore.token === null ? (
-          <div
-            className="menu__element"
-            onClick={() => props.setShowLoginForm(!props.showLoginForm)}
-          >
-            <div className="menu__dymotaglogin">&nbsp;login&nbsp;</div>
-            <div className="menu__dymobglogin"></div>
-          </div>
-        ) : (
-            <div className="menu__element" onClick={() => authStore.logout()}>
-              <div className="menu__dymotaglogout">&nbsp;logout&nbsp;</div>
-              <div className="menu__dymobglogout"></div>
-            </div>
-          )}
       </div>
     </div>
   );
