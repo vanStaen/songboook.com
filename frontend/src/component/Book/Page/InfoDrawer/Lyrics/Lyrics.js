@@ -18,7 +18,7 @@ const fixLatinEncoding = (input) => {
 
 const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState('Loading ...');
-    const [found, setFound] = useState(true);
+    const [notFound, setNotFound] = useState(false);
 
     const loadLyrics = () => {
         if (lyrics === "Loading ..." || lyrics === null) {
@@ -40,32 +40,32 @@ const Lyrics = (props) => {
                     //console.log(resData.lyrics);
                     if (resData.lyrics.length > 0) {
                         setLyrics(fixLatinEncoding(resData.lyrics));
-                        setFound(true);
+                        setNotFound(false);
                     } else {
-                        setFound(false);
+                        setNotFound(true);
                     }
                 })
                 .catch(error => {
                     console.log(error);
-                    setFound(false);
+                    setNotFound(true);
                 });
         }
     };
 
     useEffect(() => {
         loadLyrics();
-    });
+    }, []);
 
     const handleRetryFetchLyrics = () => {
         setLyrics("Loading ...");
-        setFound(true);
+        setNotFound(false);
         loadLyrics();
     }
 
     return (
         <div style={{ whiteSpace: "pre-line" }}>
             {
-                found ? lyrics :
+                !notFound ? lyrics :
                     (<div>
                         No lyrics found.
                         &nbsp;
