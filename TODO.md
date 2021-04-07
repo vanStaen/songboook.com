@@ -56,3 +56,4 @@
 - [x] Pause youtube when exiting drawer
 - [x] Logout on auth errors
 - [x] Smoothen drawer transition fold/unfold
+- [x] Lyrics : genius first, then lyrics api
