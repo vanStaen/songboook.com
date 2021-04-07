@@ -32,9 +32,9 @@ const App = observer(() => {
       authStore.login(authStore.getNewToken(), authStore.refreshToken);
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!authStore.token) {setShowProfil(false)};
-  }, [authStore.token]);
+  }, [authStore.token]); */
 
   return (
     <div className="App">

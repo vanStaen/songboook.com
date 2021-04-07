@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { Tooltip } from "antd";
 import { QuestionOutlined, CheckOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
@@ -9,6 +8,7 @@ import { SearchButton } from "./SearchButton/SearchButton";
 import { SettingsButton } from "./SettingsButton/SettingsButton";
 import { LoginButton } from "./LoginButton/LoginButton";
 import { Random } from "./Random/Random";
+import { InfoButton } from "./InfoButton/InfoButton"
 import { authStore } from "../../stores/authStore";
 
 import piano from "./../../images/piano.png";
@@ -65,7 +65,7 @@ const Menu = observer((props) => {
 
   return (
     <div>
-      <div className="Menu__floating">
+      <div className="Menu__top">
         {!authStore.token ? (
           <LoginButton
             showLoginForm={props.showLoginForm}
@@ -101,6 +101,10 @@ const Menu = observer((props) => {
             />
           </>
         )}
+      </div>
+
+      <div className="Menu__bottom">
+        <InfoButton/>
       </div>
 
       {/*

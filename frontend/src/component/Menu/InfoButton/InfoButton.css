@@ -1,0 +1,33 @@
+.InfoButton__float {
+	float: right;
+	text-align: right;
+	width: 2.7em;	
+	height: 2.7em;
+	margin-left: .1em; 
+	margin-bottom: .8em;
+	padding-right: .5em;
+	padding-top: 0.22em;
+	border: 1px solid transparent;
+    color: rgba(255, 255, 255, .75);
+	border-radius:50px;
+	z-index: 10;
+	opacity: .75;
+	cursor: pointer;
+	background-color: rgba(110, 15, 28, .2);
+}
+
+.InfoButton__float:hover {
+    color: rgba(255, 255, 255, 1);
+	opacity: 1;
+}
+
+.InfoButton__background:hover {
+	background-color: rgba(110, 15, 28, .5);
+	opacity: 1;
+}
+
+.InfoButton__icon {
+	position: relative;
+	top: 0.15em;
+	font-size: 1.6em;
+}

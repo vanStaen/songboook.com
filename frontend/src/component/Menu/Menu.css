@@ -1,10 +1,18 @@
-.Menu__floating {
+.Menu__top {
   position: fixed;
   width: 3em;
   top: 2em;
   right: 2em;
   z-index: 1;
 }
+
+.Menu__bottom {
+    position: fixed;
+    width: 3em;
+    bottom: 2em;
+    right: 2em;
+    z-index: 1;
+  }
 
 
 /* old stuff */

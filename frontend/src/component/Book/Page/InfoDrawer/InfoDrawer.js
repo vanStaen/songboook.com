@@ -13,9 +13,15 @@ import { authStore } from "../../../../stores/authStore";
 
 import './InfoDrawer.css';
 
+const isMobile = (window.innerWidth <= 768);
 
+const initialDrawerSize = () => {
+    let initialDrawerSize = 350;
+    if (isMobile) { initialDrawerSize = window.innerWidth;}
+    return initialDrawerSize;
+}
 const InfoDrawer = observer((props) => {
-    const [widthDrawer, setWidthDrawer] = useState(350);
+    const [widthDrawer, setWidthDrawer] = useState(initialDrawerSize());
     const [isDrawerFold, setIsDrawerFold] = useState(true);
     const [player, setPlayer] = useState(null);
     const [artist, setArtist] = useState(props.page.artist);
@@ -23,8 +29,8 @@ const InfoDrawer = observer((props) => {
 
     const videoID = props.page.videourl ? props.page.videourl.split('=')[1] : '';
     const videoOptions = {
-        height: isDrawerFold ? 227 : 310,
-        width: isDrawerFold ? 300 : 550,
+        height: isMobile ? (window.innerWidth * .60) : isDrawerFold ? 227 : 310,
+        width: isMobile ? "100%" : isDrawerFold ? 300 : 550,
         playerVars: {
             autoplay: 0,
         },
@@ -32,12 +38,12 @@ const InfoDrawer = observer((props) => {
 
     // Use effect to fold drawer after close
     useEffect(() => {
-        handlerFoldDrawer(isDrawerFold);
+        !isMobile && handlerFoldDrawer(isDrawerFold);
     }, [isDrawerFold]);
 
     const handlerFoldDrawer = (value) => {
         value ? setWidthDrawer(350) : setWidthDrawer(600);
-        setIsDrawerFold(value);
+        !isMobile && setIsDrawerFold(value);
     }
 
     const handlerCloseDrawer = () => {
@@ -55,12 +61,14 @@ const InfoDrawer = observer((props) => {
         <Drawer
             title={
                 <div>
-                    {isDrawerFold ?
-                        <MenuFoldOutlined onClick={() => handlerFoldDrawer(false)} />
+                    {!isMobile && (isDrawerFold ?
+                        <><MenuFoldOutlined onClick={() => handlerFoldDrawer(false)} />
+                        &nbsp;&nbsp;</>
                         :
-                        <MenuUnfoldOutlined onClick={() => handlerFoldDrawer(true)} />
+                        <><MenuUnfoldOutlined onClick={() => handlerFoldDrawer(true)} />
+                        &nbsp;&nbsp;</>)
                     }
-                    &nbsp;&nbsp;{isDrawerFold ? song.toUpperCase() : (artist.toUpperCase() + " - " + song.toUpperCase())}
+                    {isDrawerFold ? song.toUpperCase() : (artist.toUpperCase() + " - " + song.toUpperCase())}
                     &nbsp;<span style={{ color: "#eee" }}>#{props.page.id}</span>
                 </div>
             }
