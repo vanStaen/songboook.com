@@ -26,7 +26,7 @@
 }
 
 .SettingsButton__open {
-	width: 18em;	
+	width: 16.8em;	
     color: rgba(0, 0, 0, .5);
 	background-color: rgba(255, 255, 255, .9);
 	border: 1px solid rgba(110, 15, 28, .2);
@@ -54,10 +54,6 @@
 .SettingsButton__action{
 	display: inline-block !important;
 	top: -10px;
-}
-
-.SettingsButton__padding {
-	padding: 0 0.5em;
 }
 
 .SettingsButton__knowflag {
@@ -99,4 +95,11 @@
 	position: relative;
 	top: -1px;
 	padding-right: 0.6em;
+}
+
+.icon__view {
+	position: relative;
+	top: 2px;
+	padding: 0 0.4em;
+	font-size: 17px;
 }

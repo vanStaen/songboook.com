@@ -10,11 +10,6 @@
     width: 100px;
     height: 100px;
   }
-  .nothingFound {      
-    width: 75px;
-    height: 75px;
-    opacity: .1;
-  }
 }
 
 @keyframes App-logo-spin {

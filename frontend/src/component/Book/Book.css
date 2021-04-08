@@ -20,7 +20,7 @@
   color: rgba(255,255,255,.8);
 }
 
-.Book__spinner {
+.Book__centered {
   min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;
@@ -30,8 +30,14 @@
   margin: 0 auto;
 }
 
+.nothingFound {      
+  width: 150px;
+  height: 150px;
+  opacity: .1;
+}
+
 .Book__nothingFound {
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 100px);
   width: 100%;
   display: flex;
   flex-wrap: wrap;

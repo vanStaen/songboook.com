@@ -18,15 +18,16 @@ import "./SettingsButton.css";
 
 export const SettingsButton = observer((props) => {
   const [mouseHover, setMouseHover] = useState(false);
+  const [displayedAsList, setDisplayedAsList] = useState(false);
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
     if (props.onlyFlagKnown === 0) {
-      return "SettingsButton__knowflag";
+      return "SettingsButton__knowflag inactive";
     } else if (props.onlyFlagKnown === 1) {
-      return "SettingsButton__knowflag active red";
+      return "SettingsButton__knowflag red";
     } else if (props.onlyFlagKnown === 2) {
-      return "SettingsButton__knowflag active green";
+      return "SettingsButton__knowflag green";
     }
   };
 
@@ -132,7 +133,6 @@ export const SettingsButton = observer((props) => {
             }
             onClick={() => props.setFilterBass(!props.filterBass)}
           >
-            {" "}
             <Tooltip
               placement="bottom"
               title={
@@ -192,8 +192,24 @@ export const SettingsButton = observer((props) => {
             </Tooltip>
           </div>
           |
-          <BarsOutlined className="SettingsButton__action SettingsButton__padding" />
-          <AppstoreOutlined className="SettingsButton__action" /> |
+          <div
+            className="SettingsButton__action"
+            onClick={() => setDisplayedAsList(!displayedAsList)}
+          >
+            <Tooltip
+              placement="bottom"
+              title={
+                displayedAsList ? "Switch to grid view" : "Switch to list view"
+              }
+            >
+              {displayedAsList ? (
+                <BarsOutlined className="icon__view" />
+              ) : (
+                <AppstoreOutlined className="icon__view" />
+              )}
+            </Tooltip>
+          </div>
+          |
         </div>
         <EyeOutlined
           onClick={() => props.setShowSettings(!props.showSettings)}

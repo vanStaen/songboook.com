@@ -160,7 +160,7 @@ const Book = (props) => {
       {isLoading ? (
         <Spinner/>
       ) : isError ? (
-        <div className="Book__spinner">
+        <div className="Book__centered">
           <div>
             <CloseOutlined className="error__icon" />
             <img src={logo} className="error" alt="Error" />
