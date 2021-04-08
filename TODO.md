@@ -26,11 +26,11 @@
     - [ ] Add user id to database (As author of songs)
     - [ ] Router to show songboook of user
     - [ ] If visiting user, show CheckAdd as "add"
-- [ ] Handle Archived (active=false)
+- [ ] Handle Archived (active=false, shows in search result, but not in book)
 - [ ] Offer a list view of songboook 
 - [ ] Check https encryption 
     - [ ] Lets-encrypt (client for server) -> SSL
-    - [ ] Two keys exsist Public/Privat (one for backend, one for client)
+    - [ ] Two keys exist Public/Privat (one for backend, one for client)
 
 ## Completed ✓
 
