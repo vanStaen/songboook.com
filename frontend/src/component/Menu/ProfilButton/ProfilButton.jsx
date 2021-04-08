@@ -3,7 +3,7 @@ import { UserOutlined, CloseOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
-import { ConditionalWrapper } from '../../../helpers/ConditionnalWrapper';
+import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
 // import { getUser } from "../Profil/getUser";
 import { userStore } from "../../../stores/userStore";
 
@@ -16,17 +16,17 @@ export const ProfilButton = observer((props) => {
 
   return (
     <ConditionalWrapper
-      condition={!props.showProfil}
+      condition={props.showPage === "book"}
       wrap={(children) => (
         <Tooltip placement="left" title="Profil">
           {children}
         </Tooltip>
       )}
     >
-      {props.showProfil ? (
+      {props.showPage === "profil" ? (
         <div
           className="ProfilButton__float"
-          onClick={() => props.setShowProfil(false)}
+          onClick={() => props.setShowPage("book")}
         >
           <CloseOutlined className="ProfilButton__close" />
         </div>
@@ -37,16 +37,16 @@ export const ProfilButton = observer((props) => {
             backgroundImage: `url(${userStore.picUrl})`,
             backgroundSize: "cover",
           }}
-          onClick={() => props.setShowProfil(true)}
+          onClick={() => props.setShowPage("profil")}
         ></div>
       ) : (
-            <div
-              className="ProfilButton__float ProfilButton__background"
-              onClick={() => props.setShowProfil(true)}
-            >
-              <UserOutlined className="ProfilButton__icon" />
-            </div>
-          )}
+        <div
+          className="ProfilButton__float ProfilButton__background"
+          onClick={() => props.setShowProfil(true)}
+        >
+          <UserOutlined className="ProfilButton__icon" />
+        </div>
+      )}
     </ConditionalWrapper>
   );
 });

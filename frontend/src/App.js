@@ -25,7 +25,7 @@ const App = observer(() => {
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
-  const [showProfil, setShowProfil] = useState(false);
+  const [showPage, setShowPage] = useState("book");
 
   useEffect(() => {
     authStore.refreshToken &&
@@ -33,7 +33,11 @@ const App = observer(() => {
   }, []);
 
   useEffect(() => {
-    if (!authStore.token) {setShowProfil(false)};
+    if (!authStore.token) {
+      if (showPage === "profil") {
+        setShowPage("daily");
+      }
+    };
   }, [authStore.token]);
 
   return (
@@ -68,13 +72,12 @@ const App = observer(() => {
           setRandomPageId={setRandomPageId}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          showProfil={showProfil}
-          setShowProfil={setShowProfil}
+          showPage={showPage}
+          setShowPage={setShowPage}
         />
 
-        {showProfil ? (
-          <Profil />
-        ) : (
+        {showPage === "profil" && <Profil />}
+        {showPage === "book" && 
           <Book
             filterBass={filterBass}
             filterPiano={filterPiano}
@@ -86,8 +89,7 @@ const App = observer(() => {
             setNewSongAdded={setNewSongAdded}
             randomPageId={randomPageId}
             setRandomPageId={setRandomPageId}
-          />
-        )}
+          />}
       </header>
       <Footer />
     </div>

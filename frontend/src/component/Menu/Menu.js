@@ -27,11 +27,11 @@ const Menu = observer((props) => {
           />
         ) : (
           <ProfilButton
-            showProfil={props.showProfil}
-            setShowProfil={props.setShowProfil}
+            showPage={props.showPage}
+            setShowPage={props.setShowPage}
           />
         )}
-        {!props.showProfil && (
+        {props.showPage === "book" && (
           <>
             {authStore.token && (
               <AddSongButton
