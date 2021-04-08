@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import {
   EyeOutlined,
   AppstoreOutlined,
@@ -9,8 +9,6 @@ import {
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
-import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
-
 import piano from "./../../../images/piano.png";
 import bass from "./../../../images/bass.png";
 import guitar from "./../../../images/guitar.png";
@@ -19,6 +17,8 @@ import bookmark from "./../../../images/bookmark.png";
 import "./SettingsButton.css";
 
 export const SettingsButton = observer((props) => {
+  const [mouseHover, setMouseHover] = useState(false);
+
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
     if (props.onlyFlagKnown === 0) {
@@ -60,6 +60,15 @@ export const SettingsButton = observer((props) => {
     }
   };
 
+  const showToolTip = () => {
+    if (props.showSettings) {
+      return false;
+    } else if (mouseHover) {
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
     props.showSettings
       ? setTimeout(function () {
@@ -73,15 +82,18 @@ export const SettingsButton = observer((props) => {
   }, [props.showSettings]);
 
   return (
-    <ConditionalWrapper
-      condition={!props.showSettings}
-      wrap={(children) => (
-        <Tooltip placement="left" title="Adjust what you see">
-          {children}
-        </Tooltip>
-      )}
+    <Tooltip
+      placement="left"
+      title="Adjust what you see"
+      visible={showToolTip()}
     >
       <div
+        onMouseEnter={() => {
+          setMouseHover(true);
+        }}
+        onMouseLeave={() => {
+          setMouseHover(false);
+        }}
         className={
           props.showSettings
             ? "SettingsButton__float SettingsButton__open"
@@ -188,6 +200,6 @@ export const SettingsButton = observer((props) => {
           className="SettingsButton__icon"
         />
       </div>
-    </ConditionalWrapper>
+    </Tooltip>
   );
 });

@@ -2,6 +2,7 @@
 
 ## To-dos:
 
+- [ ] Logging form
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0
     - [ ] Profil 
@@ -19,15 +20,18 @@
     - [ ] Create User Table
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
-- [ ] Auto save db as Json
+- [ ] Auto save db as Json (Cron job?)
 - [ ] User handling
     - [ ] Create user (using auth service)
     - [ ] Add user id to database (As author of songs)
     - [ ] Router to show songboook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Handle Archived (active=false)
-- [ ] Offer a list view of songboook
- 
+- [ ] Offer a list view of songboook 
+- [ ] Check https encryption 
+    - [ ] Lets-encrypt (client for server) -> SSL
+    - [ ] Two keys exsist Public/Privat (one for backend, one for client)
+
 ## Completed ✓
 
 - [x] Create Rest API

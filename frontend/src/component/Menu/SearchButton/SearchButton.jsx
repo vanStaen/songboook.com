@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
@@ -7,14 +8,30 @@ import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {
   const onSearch = (value) => props.setSearchValue(value);
+  const [mouseHover, setMouseHover] = useState(false);
 
   const handleClick = () => {
     props.setShowSearch(!props.showSearch);
   };
 
+  const showToolTip = () => {
+    if (props.showSearch) {
+      return false;
+    } else if (mouseHover) {
+      return true;
+    }
+    return false;
+  };
+
   return (
-    <Tooltip placement="left" title="Search">
+    <Tooltip placement="left" title="Search" visible={showToolTip()}>
       <div
+        onMouseEnter={() => {
+          setMouseHover(true);
+        }}
+        onMouseLeave={() => {
+          setMouseHover(false);
+        }}
         className={
           props.showSearch
             ? "SearchButton__float SearchButton__open"
