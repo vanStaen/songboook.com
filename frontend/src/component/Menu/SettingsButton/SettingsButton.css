@@ -1,7 +1,6 @@
 .SettingsButton__float {
 	float: right;
 	text-align: right;
-	width: 2.7em;	
 	height: 2.7em;
 	margin-left: .1em; 
 	margin-bottom: .8em;
@@ -26,7 +25,6 @@
 }
 
 .SettingsButton__open {
-	width: 16.8em;	
     color: rgba(0, 0, 0, .5);
 	background-color: rgba(255, 255, 255, .9);
 	border: 1px solid rgba(110, 15, 28, .2);

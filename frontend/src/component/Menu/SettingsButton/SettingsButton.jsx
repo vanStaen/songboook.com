@@ -9,6 +9,8 @@ import {
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
+import { authStore } from "../../../stores/authStore";
+
 import piano from "./../../../images/piano.png";
 import bass from "./../../../images/bass.png";
 import guitar from "./../../../images/guitar.png";
@@ -70,6 +72,16 @@ export const SettingsButton = observer((props) => {
     return false;
   };
 
+  const widthButton = () => {
+    if (!props.showSettings) {
+      return { width: "2.7em" };
+    }
+    if (authStore.token !== null) {
+      return { width: "16.8em" };
+    }
+    return { width: "12.3em" };
+  };
+
   useEffect(() => {
     props.showSettings
       ? setTimeout(function () {
@@ -89,6 +101,7 @@ export const SettingsButton = observer((props) => {
       visible={showToolTip()}
     >
       <div
+        style={widthButton()}
         onMouseEnter={() => {
           setMouseHover(true);
         }}
@@ -163,34 +176,38 @@ export const SettingsButton = observer((props) => {
               <img width="17" height="17" src={guitar}></img>
             </Tooltip>
           </div>
-          |
-          <Tooltip placement="bottom" title={toolTipFlagKnow()}>
-            <div
-              className={`SettingsButton__action ${classNameFlagKnown()}`}
-              onClick={handlerFlagKnown}
-            >
-              {iconFlagKnown()}
-            </div>
-          </Tooltip>
-          <div
-            className={
-              props.onlyBookmarked
-                ? "SettingsButton__action icon__bookmark"
-                : "SettingsButton__action icon__bookmark inactive"
-            }
-            onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}
-          >
-            <Tooltip
-              placement="bottom"
-              title={
-                props.onlyBookmarked
-                  ? "Showing only bookmarked songs"
-                  : "Show only bookmarked songs"
-              }
-            >
-              <img width="17" height="18" src={bookmark}></img>
-            </Tooltip>
-          </div>
+          {authStore.token !== null && (
+            <>
+              |
+              <Tooltip placement="bottom" title={toolTipFlagKnow()}>
+                <div
+                  className={`SettingsButton__action ${classNameFlagKnown()}`}
+                  onClick={handlerFlagKnown}
+                >
+                  {iconFlagKnown()}
+                </div>
+              </Tooltip>
+              <div
+                className={
+                  props.onlyBookmarked
+                    ? "SettingsButton__action icon__bookmark"
+                    : "SettingsButton__action icon__bookmark inactive"
+                }
+                onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}
+              >
+                <Tooltip
+                  placement="bottom"
+                  title={
+                    props.onlyBookmarked
+                      ? "Showing only bookmarked songs"
+                      : "Show only bookmarked songs"
+                  }
+                >
+                  <img width="17" height="18" src={bookmark}></img>
+                </Tooltip>
+              </div>
+            </>
+          )}
           |
           <div
             className="SettingsButton__action"

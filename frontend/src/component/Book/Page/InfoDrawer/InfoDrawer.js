@@ -117,9 +117,18 @@ const InfoDrawer = observer((props) => {
                 setPageHasChanged={props.setPageHasChanged}
             />
 
-            {authStore.token != null && (
+            <Divider orientation="left" plain>
+                <span className="Page-drawer__diviser">
+                    Lyrics
+                    </span>
+            </Divider>
+            <Lyrics id={props.page.id} />
+
+
+
+            {authStore.token !== null && (
                 <>
-                    <Divider orientation="left" plain>
+                 <Divider orientation="left" plain>
                         <span className="Page-drawer__diviser">
                             Extras
                     </span>
@@ -138,19 +147,7 @@ const InfoDrawer = observer((props) => {
                         setIsBass={props.setIsBass}
                         setPageHasChanged={props.setPageHasChanged}
                     />
-                </>)}
 
-
-            <Divider orientation="left" plain>
-                <span className="Page-drawer__diviser">
-                    Lyrics
-                    </span>
-            </Divider>
-            <Lyrics id={props.page.id} />
-
-
-            {authStore.token != null && (
-                <>
                     <Divider orientation="left" plain>
                         <span className="Page-drawer__diviser">
                             Danger Zone
