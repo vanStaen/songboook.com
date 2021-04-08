@@ -12,6 +12,12 @@
   padding-right: 50px;
 }
 
+@media screen and (max-width: 768px) {
+  .App-header {
+    padding-right: 25px;
+  }
+}
+
 .ant-input {
 	display: absolute !important;
 	width: 95% !important; 
