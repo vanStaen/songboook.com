@@ -1,4 +1,4 @@
-.InfoButton__float {
+.HelpButton__float {
 	float: right;
 	text-align: right;
 	width: 2.7em;	
@@ -16,20 +16,18 @@
 	background-color: rgba(110, 15, 28, .2);
 }
 
-.InfoButton__float:hover {
+.HelpButton__float:hover {
     color: rgba(255, 255, 255, 1);
 	opacity: 1;
 }
 
-.InfoButton__background:hover {
+.HelpButton__background:hover {
 	background-color: rgba(110, 15, 28, .5);
 	opacity: 1;
 }
 
-.InfoButton__icon {
-	width: 2.2em;
+.HelpButton__icon {
 	position: relative;
-	left: .2em;
-	bottom: .1em;
-	opacity: .75;
+	top: 0.15em;
+	font-size: 1.6em;
 }

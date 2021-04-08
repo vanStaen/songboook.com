@@ -7,7 +7,8 @@ import { SearchButton } from "./SearchButton/SearchButton";
 import { SettingsButton } from "./SettingsButton/SettingsButton";
 import { LoginButton } from "./LoginButton/LoginButton";
 import { Random } from "./Random/Random";
-import { InfoButton } from "./InfoButton/InfoButton"
+import { InfoButton } from "./InfoButton/InfoButton";
+import { HelpButton } from "./HelpButton/HelpButton"
 import { authStore } from "../../stores/authStore";
 
 import "./Menu.css";
@@ -68,6 +69,7 @@ const Menu = observer((props) => {
 
       <div className="Menu__bottom">
         <InfoButton/>
+        <HelpButton/>
       </div>
 
     </div>

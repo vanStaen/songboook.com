@@ -10,9 +10,7 @@ export const AddSongButton = (props) => {
         className={"AddSongButton__float"}
         onClick={() => props.setShowAddForm(!props.showAddForm)}
       >
-        <PlusOutlined
-          className="AddSongButton__icon"
-        />
+        <PlusOutlined className="AddSongButton__icon" />
       </div>
     </Tooltip>
   );
