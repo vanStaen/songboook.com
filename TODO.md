@@ -5,9 +5,12 @@
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0
     - [ ] Profil 
-    - [ ] Filter/view feature
+    - [x] Filter/view feature
     - [ ] Search Feature 
 - [ ] use MobX everywhere
+  - [x] AuthStore
+  - [ ] UserStore
+  - [ ] DisplayStore
 - [ ] Allow other users
     - [ ] Implement user column in tables
     - [ ] Rework all api endpoints

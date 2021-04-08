@@ -1,24 +1,37 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
-import { Input } from 'antd';
+import { Input } from "antd";
+
+import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
 
 import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {
-
-  const onSearch = value => props.setSearchValue(value);
+  const onSearch = (value) => props.setSearchValue(value);
 
   const handleClick = () => {
     props.setShowSearch(!props.showSearch);
-  }
+  };
 
   return (
-    <Tooltip placement="left" title="Search">
+    <ConditionalWrapper
+      condition={!props.showSettings}
+      wrap={(children) => (
+        <Tooltip placement="left" title="Search">
+          {children}
+        </Tooltip>
+      )}
+    >
+      import {ConditionalWrapper} from "../../../helpers/ConditionnalWrapper";
       <div
-        className={props.showSearch ? "SearchButton__float SearchButton__open" : "SearchButton__float"}
+        className={
+          props.showSearch
+            ? "SearchButton__float SearchButton__open"
+            : "SearchButton__float"
+        }
       >
-        {props.showSearch &&
+        {props.showSearch && (
           <div className="SearchButton__input">
             <Input
               placeholder="input search text"
@@ -26,11 +39,16 @@ export const SearchButton = observer((props) => {
               className="SearchButton__input"
             />
           </div>
-        }
+        )}
         <SearchOutlined
-          className={props.showSearch ? "SearchButton__icon SearchButton__iconOpen" : "SearchButton__icon"}
-          onClick={handleClick} />
+          className={
+            props.showSearch
+              ? "SearchButton__icon SearchButton__iconOpen"
+              : "SearchButton__icon"
+          }
+          onClick={handleClick}
+        />
       </div>
-    </Tooltip>
+    </ConditionalWrapper>
   );
 });

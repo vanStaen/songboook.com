@@ -9,6 +9,8 @@ import {
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
+import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
+
 import piano from "./../../../images/piano.png";
 import bass from "./../../../images/bass.png";
 import guitar from "./../../../images/guitar.png";
@@ -71,7 +73,14 @@ export const SettingsButton = observer((props) => {
   }, [props.showSettings]);
 
   return (
-    <Tooltip placement="left" title="Adjust what you see">
+    <ConditionalWrapper
+      condition={!props.showSettings}
+      wrap={(children) => (
+        <Tooltip placement="left" title="Adjust what you see">
+          {children}
+        </Tooltip>
+      )}
+    >
       <div
         className={
           props.showSettings
@@ -179,6 +188,6 @@ export const SettingsButton = observer((props) => {
           className="SettingsButton__icon"
         />
       </div>
-    </Tooltip>
+    </ConditionalWrapper>
   );
 });
