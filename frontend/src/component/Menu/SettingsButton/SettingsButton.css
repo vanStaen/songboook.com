@@ -26,7 +26,7 @@
 }
 
 .SettingsButton__open {
-	width: 19em;	
+	width: 18em;	
     color: rgba(0, 0, 0, .5);
 	background-color: rgba(255, 255, 255, .9);
 	border: 1px solid rgba(110, 15, 28, .2);
@@ -54,5 +54,49 @@
 .SettingsButton__action{
 	display: inline-block !important;
 	top: -10px;
+}
+
+.SettingsButton__padding {
 	padding: 0 0.5em;
+}
+
+.SettingsButton__knowflag {
+	font-size: 15px;
+	padding: 0 0.5em;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.inactive:hover {
+    opacity: 0.5;
+    filter: grayscale(0);
+}
+
+.inactive {
+    opacity: 0.33;
+    filter: grayscale(1);
+}
+
+.icon__piano {
+	padding-right: 0.5em;
+}
+
+.icon__bass {
+	padding-right: 0.7em;
+}
+
+.icon__guitar {
+	padding-right: 0.7em;
+}
+
+.icon__bookmark {
+	position: relative;
+	top: -1px;
+	padding-right: 0.6em;
 }

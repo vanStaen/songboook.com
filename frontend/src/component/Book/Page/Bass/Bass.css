@@ -4,9 +4,9 @@
 
 .bass__img {
   position: relative;
-  left: -4px;
-  top: 0px;
-  width: 22px;
+  left: 0px;
+  top: 3px;
+  width: 30px;
   filter: contrast(160%);
   opacity: 0.75;
 }
