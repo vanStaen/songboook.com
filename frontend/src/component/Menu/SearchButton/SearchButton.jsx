@@ -3,8 +3,6 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 import { Input } from "antd";
 
-import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
-
 import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {
@@ -15,15 +13,7 @@ export const SearchButton = observer((props) => {
   };
 
   return (
-    <ConditionalWrapper
-      condition={!props.showSettings}
-      wrap={(children) => (
-        <Tooltip placement="left" title="Search">
-          {children}
-        </Tooltip>
-      )}
-    >
-      import {ConditionalWrapper} from "../../../helpers/ConditionnalWrapper";
+    <Tooltip placement="left" title="Search">
       <div
         className={
           props.showSearch
@@ -49,6 +39,6 @@ export const SearchButton = observer((props) => {
           onClick={handleClick}
         />
       </div>
-    </ConditionalWrapper>
+    </Tooltip>
   );
 });
