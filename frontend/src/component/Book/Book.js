@@ -4,7 +4,7 @@ import { getPages } from "./getPages";
 
 import Page from "./Page/Page";
 import notFound from "../../images/notFound.png";
-import { Spinner } from '../Spinner/Spinner'
+import { Spinner } from "../Spinner/Spinner";
 import logo from "../../images/logo.png";
 
 import "./Book.css";
@@ -125,14 +125,6 @@ const Book = (props) => {
     if (props.filterBass) {
       listOfFilter.splice(listOfFilter.indexOf("bass"), 1);
     }
-    if (props.onlyBookmarked) {
-      listOfFilter.push("bookmarked");
-    }
-    if (props.onlyFlagKnown === 1) {
-      listOfFilter.push("unknown");
-    } else if (props.onlyFlagKnown === 2) {
-      listOfFilter.push("known");
-    }
     return listOfFilter;
   };
 
@@ -150,6 +142,27 @@ const Book = (props) => {
     return formatedListOfFilter[0];
   };
 
+  const resultInfos = () => {
+    let bookmarked = "";
+    let known = "";
+    if (props.onlyBookmarked) {
+      bookmarked = "bookmarked";
+    }
+    if (props.onlyFlagKnown === 1) {
+      known = "unknown";
+    } else if (props.onlyFlagKnown === 2) {
+      known = "known";
+    }
+    if (listOfFilter().length < 1) {
+      return <>{"test"}</>;
+    }
+    return (
+      <>{`${
+        bookNotNull.length
+      } ${bookmarked} ${known} songs for ${formatedListOfFilter()}`}</>
+    );
+  };
+
   return (
     <div
       style={{ width: "100%" }}
@@ -158,7 +171,7 @@ const Book = (props) => {
       }}
     >
       {isLoading ? (
-        <Spinner/>
+        <Spinner />
       ) : isError ? (
         <div className="Book__centered">
           <div>
@@ -172,11 +185,7 @@ const Book = (props) => {
         </div>
       ) : (
         <div>
-          <div className="Book__resultInfos">
-            {listOfFilter().length > 0 && (
-              <>{bookNotNull.length + " songs for " + formatedListOfFilter()}</>
-            )}
-          </div>
+          <div className="Book__resultInfos">{resultInfos()}</div>
 
           {bookNotNull.length > 0 ? (
             <div className="Book__main">{book}</div>

@@ -7,6 +7,8 @@
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0
     - [ ] Profil 
+      - [ ] Settings: Show guitar/bass/piano per default
+      - [ ] Settings: how to sort results
     - [x] Filter/view feature
     - [ ] Search Feature 
 - [ ] use MobX everywhere
