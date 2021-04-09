@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 
 import AddForm from "./component/AddForm/AddForm";
-import Login from "./component/Login/Login";
 import Book from "./component/Book/Book";
 import Menu from "./component/Menu/Menu";
 import Footer from "./component/Footer/Footer";
+import { Login } from "./component/Login/Login";
 import { Profil } from "./component/Profil/Profil";
 
 import { authStore } from "./stores/authStore";

@@ -20,6 +20,7 @@ export class AuthStore {
   login = (token, refreshToken) => {
     this.token = token;
     this.refreshToken = refreshToken;
+    displayStore.setShowPage("book");
   };
 
   logout = () => {

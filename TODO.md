@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Redo Logging form
 - [ ] Redo Add Song form
 - [ ] Store fetched lyrics
 - [ ] Menu 2.0
@@ -70,3 +69,4 @@
 - [x] Smoothen drawer transition fold/unfold
 - [x] Lyrics : genius first, then lyrics api
 - [x] Add level parameter (easy, medium, hard)
+- [x] Redo Logging form
