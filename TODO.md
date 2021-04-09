@@ -4,6 +4,7 @@
 
 - [ ] Redo Logging form
 - [ ] Redo Add Song form
+- [ ] Store fetched lyrics
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0
     - [ ] Profil 
@@ -30,6 +31,8 @@
     - [ ] Router to show songboook of user
     - [ ] If visiting user, show CheckAdd as "add"
 - [ ] Handle Archived (active=false, shows in search result, but not in book)
+  - [ ] Archived song should not get picked by randomizer
+  - [ ] show archived somehow disabled?  
 - [ ] Offer a list view of songboook 
 - [ ] Check https encryption 
     - [ ] Lets-encrypt (client for server) -> SSL
