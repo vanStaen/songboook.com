@@ -27,7 +27,7 @@ export const ProfilButton = observer((props) => {
       {displayStore.showPage === "profil" ? (
         <div
           className="ProfilButton__float"
-          onClick={() => props.setShowPage("book")}
+          onClick={() => displayStore.setShowPage("book")}
         >
           <CloseOutlined className="ProfilButton__close" />
         </div>
@@ -43,7 +43,7 @@ export const ProfilButton = observer((props) => {
       ) : (
         <div
           className="ProfilButton__float ProfilButton__background"
-          onClick={() => props.setShowProfil(true)}
+          onClick={() => displayStore.setShowProfil("profil")}
         >
           <UserOutlined className="ProfilButton__icon" />
         </div>

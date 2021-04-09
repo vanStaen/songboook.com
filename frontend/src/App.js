@@ -27,14 +27,6 @@ const App = observer(() => {
       authStore.login(authStore.getNewToken(), authStore.refreshToken);
   }, []);
 
-  useEffect(() => {
-    if (!authStore.token) {
-      if (displayStore.showPage === "profil") {
-        displayStore.setShowPage("daily");
-      }
-    };
-  }, [authStore.token]);
-
   return (
     <div className="App">
       <header className="App-header">
