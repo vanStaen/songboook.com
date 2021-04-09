@@ -25,11 +25,11 @@
   width: 100%;
 }
 
-a:link, a:visited {
+.login__full a:link, .login__full a:visited {
   color: rgba(110, 15, 28, .75) !important;
 }
 
-a:hover {
+.login__full a:hover {
   color: rgba(110, 15, 28, .75) !important;
 }
 
