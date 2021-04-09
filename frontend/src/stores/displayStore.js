@@ -46,8 +46,8 @@ export class DisplayStore {
         this.onlyFlagKnown = onlyFlagKnown;
     };
 
-    setShowPage = (setShowPage) => {
-        this.setShowPage = setShowPage;
+    setShowPage = (showPage) => {
+        this.showPage = showPage;
     };
 
 }

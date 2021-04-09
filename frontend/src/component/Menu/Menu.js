@@ -10,9 +10,9 @@ import { Random } from "./Random/Random";
 import { InfoButton } from "./InfoButton/InfoButton";
 import { HelpButton } from "./HelpButton/HelpButton"
 import { authStore } from "../../stores/authStore";
+import { displayStore } from "../../stores/displayStore";
 
 import "./Menu.css";
-
 const Menu = observer((props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -27,11 +27,11 @@ const Menu = observer((props) => {
           />
         ) : (
           <ProfilButton
-            showPage={props.showPage}
+            showPage={displayStore.showPage}
             setShowPage={props.setShowPage}
           />
         )}
-        {props.showPage === "book" && (
+        {displayStore.showPage === "book" && (
           <>
             {authStore.token && (
               <AddSongButton
@@ -42,16 +42,6 @@ const Menu = observer((props) => {
             <SettingsButton
               showSettings={showSettings}
               setShowSettings={setShowSettings}
-              onlyFlagKnown={props.onlyFlagKnown}
-              setOnlyFlagKnown={props.setOnlyFlagKnown}
-              filterPiano={props.filterPiano}
-              filterBass={props.filterBass}
-              filterGuitar={props.filterGuitar}
-              setFilterPiano={props.setFilterPiano}
-              setFilterBass={props.setFilterBass}
-              setFilterGuitar={props.setFilterGuitar}
-              onlyBookmarked={props.onlyBookmarked}
-              setOnlyBookmarked={props.setOnlyBookmarked}
             />
             <SearchButton
               showSearch={showSearch}
@@ -60,7 +50,6 @@ const Menu = observer((props) => {
               setSearchValue={props.setSearchValue}
             />
             <Random
-              onlyFlagKnown={props.onlyFlagKnown}
               setRandomPageId={props.setRandomPageId}
             />
           </>

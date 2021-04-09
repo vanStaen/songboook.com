@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 import { ConditionalWrapper } from "../../../helpers/ConditionnalWrapper";
 // import { getUser } from "../Profil/getUser";
 import { userStore } from "../../../stores/userStore";
+import { displayStore } from "../../../stores/displayStore";
 
 import "./ProfilButton.css";
 
@@ -16,14 +17,14 @@ export const ProfilButton = observer((props) => {
 
   return (
     <ConditionalWrapper
-      condition={props.showPage === "book"}
+      condition={displayStore.showPage === "book"}
       wrap={(children) => (
         <Tooltip placement="left" title="Profil">
           {children}
         </Tooltip>
       )}
     >
-      {props.showPage === "profil" ? (
+      {displayStore.showPage === "profil" ? (
         <div
           className="ProfilButton__float"
           onClick={() => props.setShowPage("book")}
@@ -37,7 +38,7 @@ export const ProfilButton = observer((props) => {
             backgroundImage: `url(${userStore.picUrl})`,
             backgroundSize: "cover",
           }}
-          onClick={() => props.setShowPage("profil")}
+          onClick={() => displayStore.setShowPage("profil")}
         ></div>
       ) : (
         <div

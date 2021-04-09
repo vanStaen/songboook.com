@@ -10,6 +10,7 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
 import { authStore } from "../../../stores/authStore";
+import { displayStore } from "../../../stores/displayStore";
 
 import piano from "./../../../images/piano.png";
 import bass from "./../../../images/bass.png";
@@ -24,42 +25,42 @@ export const SettingsButton = observer((props) => {
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
-    if (props.onlyFlagKnown === 0) {
+    if (displayStore.onlyFlagKnown === 0) {
       return "SettingsButton__knowflag inactive";
-    } else if (props.onlyFlagKnown === 1) {
+    } else if (displayStore.onlyFlagKnown === 1) {
       return "SettingsButton__knowflag red";
-    } else if (props.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 2) {
       return "SettingsButton__knowflag green";
     }
   };
 
   const toolTipFlagKnow = () => {
-    if (props.onlyFlagKnown === 0) {
+    if (displayStore.onlyFlagKnown === 0) {
       return "Show only song you know";
-    } else if (props.onlyFlagKnown === 1) {
+    } else if (displayStore.onlyFlagKnown === 1) {
       return "Showing unknown only";
-    } else if (props.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 2) {
       return "Showing known only";
     }
   };
 
   const iconFlagKnown = () => {
-    if (props.onlyFlagKnown === 0) {
+    if (displayStore.onlyFlagKnown === 0) {
       return <CheckOutlined />;
-    } else if (props.onlyFlagKnown === 1) {
+    } else if (displayStore.onlyFlagKnown === 1) {
       return <QuestionOutlined />;
-    } else if (props.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 2) {
       return <CheckOutlined />;
     }
   };
 
   const handlerFlagKnown = () => {
-    if (props.onlyFlagKnown === 0) {
-      props.setOnlyFlagKnown(1);
-    } else if (props.onlyFlagKnown === 1) {
-      props.setOnlyFlagKnown(2);
-    } else if (props.onlyFlagKnown === 2) {
-      props.setOnlyFlagKnown(0);
+    if (displayStore.onlyFlagKnown === 0) {
+      displayStore.setOnlyFlagKnown(1);
+    } else if (displayStore.onlyFlagKnown === 1) {
+      displayStore.setOnlyFlagKnown(2);
+    } else if (displayStore.onlyFlagKnown === 2) {
+      displayStore.setOnlyFlagKnown(0);
     }
   };
 
@@ -120,17 +121,19 @@ export const SettingsButton = observer((props) => {
         >
           <div
             className={
-              props.filterPiano
+              displayStore.filterPiano
                 ? "SettingsButton__action icon__piano inactive"
                 : "SettingsButton__action icon__piano"
             }
-            onClick={() => props.setFilterPiano(!props.filterPiano)}
+            onClick={() =>
+              displayStore.setFilterPiano(!displayStore.filterPiano)
+            }
           >
             {" "}
             <Tooltip
               placement="bottom"
               title={
-                props.filterPiano
+                displayStore.filterPiano
                   ? "Show all songs for piano"
                   : "Hide all songs for piano"
               }
@@ -140,16 +143,16 @@ export const SettingsButton = observer((props) => {
           </div>
           <div
             className={
-              props.filterBass
+              displayStore.filterBass
                 ? "SettingsButton__action icon__bass inactive"
                 : "SettingsButton__action icon__bass"
             }
-            onClick={() => props.setFilterBass(!props.filterBass)}
+            onClick={() => displayStore.setFilterBass(!displayStore.filterBass)}
           >
             <Tooltip
               placement="bottom"
               title={
-                props.filterBass
+                displayStore.filterBass
                   ? "Show all songs for bass"
                   : "Hide all songs for bass"
               }
@@ -159,16 +162,18 @@ export const SettingsButton = observer((props) => {
           </div>
           <div
             className={
-              props.filterGuitar
+              displayStore.filterGuitar
                 ? "SettingsButton__action icon__guitar inactive"
                 : "SettingsButton__action icon__guitar"
             }
-            onClick={() => props.setFilterGuitar(!props.filterGuitar)}
+            onClick={() =>
+              displayStore.setFilterGuitar(!displayStore.filterGuitar)
+            }
           >
             <Tooltip
               placement="bottom"
               title={
-                props.filterGuitar
+                displayStore.filterGuitar
                   ? "Show all songs for guitar"
                   : "Hide all songs for guitar"
               }
@@ -189,16 +194,18 @@ export const SettingsButton = observer((props) => {
               </Tooltip>
               <div
                 className={
-                  props.onlyBookmarked
+                  displayStore.onlyBookmarked
                     ? "SettingsButton__action icon__bookmark"
                     : "SettingsButton__action icon__bookmark inactive"
                 }
-                onClick={() => props.setOnlyBookmarked(!props.onlyBookmarked)}
+                onClick={() =>
+                  displayStore.setOnlyBookmarked(!displayStore.onlyBookmarked)
+                }
               >
                 <Tooltip
                   placement="bottom"
                   title={
-                    props.onlyBookmarked
+                    displayStore.onlyBookmarked
                       ? "Showing only bookmarked songs"
                       : "Show only bookmarked songs"
                   }

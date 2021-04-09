@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tooltip } from "antd";
 
+import { displayStore } from "../../../stores/displayStore";
 import { getRandomized } from "./getRandomized";
 import Dice from "../../../images/dice.svg";
 
@@ -12,10 +13,10 @@ export const Random = (props) => {
   const handleRandomPick = async () => {
     setIsloading(true);
     let option = undefined;
-    if (props.onlyFlagKnown === 1) {
+    if (displayStore.onlyFlagKnown === 1) {
       option = false;
     }
-    if (props.onlyFlagKnown === 2) {
+    if (displayStore.onlyFlagKnown === 2) {
       option = true;
     }
     try {
@@ -30,7 +31,11 @@ export const Random = (props) => {
   return (
     <div onClick={handleRandomPick}>
       <Tooltip placement="left" title="Random song">
-        <img className={isLoading ? "Random__dice spining" : "Random__dice"} src={Dice} alt="logo" />
+        <img
+          className={isLoading ? "Random__dice spining" : "Random__dice"}
+          src={Dice}
+          alt="logo"
+        />
       </Tooltip>
     </div>
   );

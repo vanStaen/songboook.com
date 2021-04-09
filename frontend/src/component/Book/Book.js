@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { getPages } from "./getPages";
+import { observer } from "mobx-react";
 
 import Page from "./Page/Page";
-import notFound from "../../images/notFound.png";
+import { getPages } from "./getPages";
 import { Spinner } from "../Spinner/Spinner";
+import { displayStore } from "../../stores/displayStore";
+
+import notFound from "../../images/notFound.png";
 import logo from "../../images/logo.png";
 
 import "./Book.css";
 
-const Book = (props) => {
+const Book = observer((props) => {
   const [songbookPages, setSongbookPages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -42,15 +45,15 @@ const Book = (props) => {
     let shouldBeDisplayed = true;
 
     if (page.bass) {
-      shouldBeDisplayed = !props.filterBass;
+      shouldBeDisplayed = !displayStore.filterBass;
     }
     if (page.piano) {
-      shouldBeDisplayed = !props.filterPiano;
+      shouldBeDisplayed = !displayStore.filterPiano;
     }
     if (!page.bass && !page.piano) {
-      shouldBeDisplayed = !props.filterGuitar;
+      shouldBeDisplayed = !displayStore.filterGuitar;
     }
-    if (!page.bookmark && props.onlyBookmarked) {
+    if (!page.bookmark && displayStore.onlyBookmarked) {
       shouldBeDisplayed = false;
     }
 
@@ -64,11 +67,11 @@ const Book = (props) => {
     }
 
     // 0: all, 1: only unknown, 2: only known
-    if (props.onlyFlagKnown === 1) {
+    if (displayStore.onlyFlagKnown === 1) {
       if (page.checked) {
         shouldBeDisplayed = false;
       }
-    } else if (props.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 2) {
       if (!page.checked) {
         shouldBeDisplayed = false;
       }
@@ -116,13 +119,13 @@ const Book = (props) => {
 
   const listOfFilter = () => {
     let listOfFilter = ["guitar", "piano", "bass"];
-    if (props.filterGuitar) {
+    if (displayStore.filterGuitar) {
       listOfFilter.splice(listOfFilter.indexOf("guitar"), 1);
     }
-    if (props.filterPiano) {
+    if (displayStore.filterPiano) {
       listOfFilter.splice(listOfFilter.indexOf("piano"), 1);
     }
-    if (props.filterBass) {
+    if (displayStore.filterBass) {
       listOfFilter.splice(listOfFilter.indexOf("bass"), 1);
     }
     return listOfFilter;
@@ -145,12 +148,12 @@ const Book = (props) => {
   const resultInfos = () => {
     let bookmarked = "";
     let known = "";
-    if (props.onlyBookmarked) {
+    if (displayStore.onlyBookmarked) {
       bookmarked = "bookmarked";
     }
-    if (props.onlyFlagKnown === 1) {
+    if (displayStore.onlyFlagKnown === 1) {
       known = "unknown";
-    } else if (props.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 2) {
       known = "known";
     }
     if (listOfFilter().length < 1) {
@@ -215,6 +218,6 @@ const Book = (props) => {
       )}
     </div>
   );
-};
+});
 
 export default Book;

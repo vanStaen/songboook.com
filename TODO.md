@@ -15,7 +15,7 @@
 - [ ] use MobX everywhere
   - [x] AuthStore
   - [ ] UserStore
-  - [ ] DisplayStore
+  - [x] DisplayStore
 - [ ] Allow other users
     - [ ] Implement user column in tables
     - [ ] Rework all api endpoints

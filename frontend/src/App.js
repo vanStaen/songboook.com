@@ -9,23 +9,18 @@ import Footer from "./component/Footer/Footer";
 import { Profil } from "./component/Profil/Profil";
 
 import { authStore } from "./stores/authStore";
+import { displayStore } from "./stores/displayStore";
 
 import "./App.css";
 import "./helpers/axiosInterceptor";
 
 const App = observer(() => {
-  const [filterBass, setFilterBass] = useState(false);
-  const [filterPiano, setFilterPiano] = useState(false);
-  const [filterGuitar, setFilterGuitar] = useState(false);
-  const [onlyBookmarked, setOnlyBookmarked] = useState(false);
-  const [onlyFlagKnown, setOnlyFlagKnown] = useState(0); // 0: all, 1: only unknown, 2: only known
   const [showAddForm, setShowAddForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
-  const [showPage, setShowPage] = useState("book");
 
   useEffect(() => {
     authStore.refreshToken &&
@@ -34,8 +29,8 @@ const App = observer(() => {
 
   useEffect(() => {
     if (!authStore.token) {
-      if (showPage === "profil") {
-        setShowPage("daily");
+      if (displayStore.showPage === "profil") {
+        displayStore.setShowPage("daily");
       }
     };
   }, [authStore.token]);
@@ -53,16 +48,6 @@ const App = observer(() => {
           setShowLoginForm={setShowLoginForm}
         />
         <Menu
-          filterBass={filterBass}
-          setFilterBass={setFilterBass}
-          filterPiano={filterPiano}
-          setFilterPiano={setFilterPiano}
-          filterGuitar={filterGuitar}
-          setFilterGuitar={setFilterGuitar}
-          onlyBookmarked={onlyBookmarked}
-          setOnlyBookmarked={setOnlyBookmarked}
-          onlyFlagKnown={onlyFlagKnown}
-          setOnlyFlagKnown={setOnlyFlagKnown}
           showAddForm={showAddForm}
           setShowAddForm={setShowAddForm}
           showLoginForm={showLoginForm}
@@ -72,18 +57,11 @@ const App = observer(() => {
           setRandomPageId={setRandomPageId}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          showPage={showPage}
-          setShowPage={setShowPage}
         />
 
-        {showPage === "profil" && <Profil />}
-        {showPage === "book" && 
+        {displayStore.showPage === "profil" && <Profil />}
+        {displayStore.showPage === "book" && 
           <Book
-            filterBass={filterBass}
-            filterPiano={filterPiano}
-            filterGuitar={filterGuitar}
-            onlyFlagKnown={onlyFlagKnown}
-            onlyBookmarked={onlyBookmarked}
             searchValue={searchValue}
             newSongAdded={newSongAdded}
             setNewSongAdded={setNewSongAdded}
