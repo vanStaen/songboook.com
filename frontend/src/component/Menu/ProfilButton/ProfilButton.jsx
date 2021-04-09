@@ -10,7 +10,7 @@ import { displayStore } from "../../../stores/displayStore";
 
 import "./ProfilButton.css";
 
-export const ProfilButton = observer((props) => {
+export const ProfilButton = observer(() => {
   useEffect(() => {
     //getUser();
   }, []);
