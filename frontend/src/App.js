@@ -15,9 +15,6 @@ import "./App.css";
 import "./helpers/axiosInterceptor";
 
 const App = observer(() => {
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
-  const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
@@ -30,36 +27,26 @@ const App = observer(() => {
   return (
     <div className="App">
       <header className="App-header">
-        <AddForm
-          showAddForm={showAddForm}
-          setShowAddForm={setShowAddForm}
-          setNewSongAdded={setNewSongAdded}
-        />
-        <Login
-          showLoginForm={showLoginForm}
-          setShowLoginForm={setShowLoginForm}
-        />
         <Menu
-          showAddForm={showAddForm}
-          setShowAddForm={setShowAddForm}
-          showLoginForm={showLoginForm}
-          setShowLoginForm={setShowLoginForm}
-          showSearchInput={showSearchInput}
-          setShowSearchInput={setShowSearchInput}
           setRandomPageId={setRandomPageId}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
 
+        {displayStore.showPage === "addsong" && (
+          <AddForm setNewSongAdded={setNewSongAdded} />
+        )}
+        {displayStore.showPage === "login" && <Login />}
         {displayStore.showPage === "profil" && <Profil />}
-        {displayStore.showPage === "book" && 
+        {displayStore.showPage === "book" && (
           <Book
             searchValue={searchValue}
             newSongAdded={newSongAdded}
             setNewSongAdded={setNewSongAdded}
             randomPageId={randomPageId}
             setRandomPageId={setRandomPageId}
-          />}
+          />
+        )}
       </header>
       <Footer />
     </div>

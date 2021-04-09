@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { Modal, Form, Input, notification } from 'antd';
+import { Form, Input, notification } from 'antd';
 import { observer } from "mobx-react";
 import axios from 'axios';
 
@@ -61,7 +61,7 @@ const Login = observer((props) => {
 
     return (
         <>
-            <Modal
+            <div
                 visible={props.showLoginForm}
                 onCancel={handleCancel}
                 className="loginModal"
@@ -99,7 +99,7 @@ const Login = observer((props) => {
                         <Input.Password />
                     </Form.Item>
                 </Form>
-            </Modal>
+            </div>
         </>
     );
 });
