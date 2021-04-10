@@ -31,6 +31,9 @@ router.get("/:id", async (req, res) => {
                 .then((resData) => {
                     const $ = cheerio.load(resData)
                     const lyrics = $('.lyrics').text().trim()
+                    const updateLyrics = `UPDATE songbook set lyrics='${JSON.stringify(lyrics.replace("'", "\'"))}' WHERE id=${req.params.id}`;
+                    console.log(updateLyrics);
+                    client.query(updateLyrics);
                     //console.log('lyrics', lyrics)
                     res.status(201).json({ lyrics: lyrics });
                 })
@@ -47,6 +50,9 @@ router.get("/:id", async (req, res) => {
                 const cleanFoundArtist = resData.artist.name.toLowerCase().replace(/ /g, "");
                 const sameArtist = levenshtein(cleanedOriginalArtist, cleanFoundArtist) < 5 ? true : false;
                 if (sameArtist || resData.similarity > 0.9) {
+                    const updateLyrics = `UPDATE songbook set lyrics='${JSON.stringify(resData.track.text.replace("'", "\'"))}' WHERE id=${req.params.id}`;
+                    console.log(updateLyrics);
+                    client.query(updateLyrics);
                     res.status(201).json({ lyrics: resData.track.text });
                 } 
                 else {
