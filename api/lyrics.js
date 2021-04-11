@@ -24,8 +24,6 @@ client.connect((err) => {
 function sqlEscape(input) {
   try {
     let output;
-    output = replaceAll(input, "[", "");
-    output = replaceAll(input, "]", "");
     output = replaceAll(input, "'", "''");
     return output;
   } catch (err) {
