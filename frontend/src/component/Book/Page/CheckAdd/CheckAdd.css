@@ -8,7 +8,7 @@
 .CheckAdd__ico {
   width: 25px;
   opacity: 0.85;
-  color: green;
+  color: green !important;
   filter: saturate(2);
 }
   
