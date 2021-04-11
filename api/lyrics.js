@@ -18,6 +18,24 @@ client.connect(err => {
     }
 })
 
+function sqlEscape(input) {
+    try {
+        let output;
+        output = replaceAll(input, "[", "");
+        output = replaceAll(input, "]", "");
+        output = replaceAll(input, "'", "''");
+        return output
+    } catch (err) {
+        console.log(`${err}`)
+    }
+}
+
+function replaceAll(str, find, replace) {
+    const pieces = str.split(find);
+    const resultingString = pieces.join(replace);
+    return resultingString
+  }
+
 // GET lyrics
 router.get("/:id", async (req, res) => {
     const songbook = await client.query('SELECT * FROM songbook WHERE id=' + req.params.id);
@@ -31,8 +49,7 @@ router.get("/:id", async (req, res) => {
                 .then((resData) => {
                     const $ = cheerio.load(resData)
                     const lyrics = $('.lyrics').text().trim()
-                    const updateLyrics = `UPDATE songbook set lyrics='${JSON.stringify(lyrics.replace("'", "\'"))}' WHERE id=${req.params.id}`;
-                    console.log(updateLyrics);
+                    const updateLyrics = `UPDATE songbook set lyrics='${sqlEscape(lyrics)}' WHERE id=${req.params.id}`;
                     client.query(updateLyrics);
                     //console.log('lyrics', lyrics)
                     res.status(201).json({ lyrics: lyrics });
@@ -50,8 +67,7 @@ router.get("/:id", async (req, res) => {
                 const cleanFoundArtist = resData.artist.name.toLowerCase().replace(/ /g, "");
                 const sameArtist = levenshtein(cleanedOriginalArtist, cleanFoundArtist) < 5 ? true : false;
                 if (sameArtist || resData.similarity > 0.9) {
-                    const updateLyrics = `UPDATE songbook set lyrics='${JSON.stringify(resData.track.text.replace("'", "\'"))}' WHERE id=${req.params.id}`;
-                    console.log(updateLyrics);
+                    const updateLyrics = `UPDATE songbook set lyrics='${sqlEscape(resData.track.text)}' WHERE id=${req.params.id}`;
                     client.query(updateLyrics);
                     res.status(201).json({ lyrics: resData.track.text });
                 } 
