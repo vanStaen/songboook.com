@@ -17,11 +17,12 @@ const fixLatinEncoding = (input) => {
 }
 
 const Lyrics = (props) => {
-    const [lyrics, setLyrics] = useState('Loading ...');
+    const [lyrics, setLyrics] = useState(props.lyrics ? props.lyrics : 'Loading ...');
     const [notFound, setNotFound] = useState(false);
 
     const loadLyrics = () => {
         if (lyrics === "Loading ..." || lyrics === null) {
+            console.log("here!")
             const fetchLyrics = async () => {
                 const response = await axios({
                     url: process.env.REACT_APP_API_URL + `/lyrics/${props.id}`,
