@@ -138,7 +138,7 @@ export const SettingsButton = observer((props) => {
                   : "Hide all songs for piano"
               }
             >
-              <img width="22" height="22" src={piano}></img>
+              <img width="22" height="22" src={piano} alt="piano"></img>
             </Tooltip>
           </div>
           <div
@@ -157,7 +157,7 @@ export const SettingsButton = observer((props) => {
                   : "Hide all songs for bass"
               }
             >
-              <img width="17" height="17" src={bass}></img>
+              <img width="17" height="17" src={bass} alt="bass"></img>
             </Tooltip>
           </div>
           <div
@@ -178,7 +178,7 @@ export const SettingsButton = observer((props) => {
                   : "Hide all songs for guitar"
               }
             >
-              <img width="17" height="17" src={guitar}></img>
+              <img width="17" height="17" src={guitar} alt="guitar"></img>
             </Tooltip>
           </div>
           {authStore.token !== null && (
@@ -210,7 +210,12 @@ export const SettingsButton = observer((props) => {
                       : "Show only bookmarked songs"
                   }
                 >
-                  <img width="17" height="18" src={bookmark}></img>
+                  <img
+                    width="17"
+                    height="18"
+                    src={bookmark}
+                    alt="bookmark"
+                  ></img>
                 </Tooltip>
               </div>
             </>

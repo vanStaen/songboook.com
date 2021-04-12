@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import { RedoOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import axios from 'axios';
@@ -20,7 +20,7 @@ const Lyrics = (props) => {
     const [lyrics, setLyrics] = useState(props.lyrics ? props.lyrics : 'Loading ...');
     const [notFound, setNotFound] = useState(false);
 
-    const loadLyrics = () => {
+    const loadLyrics = useCallback(() => {
         if (lyrics === "Loading ..." || lyrics === null) {
             const fetchLyrics = async () => {
                 const response = await axios({
@@ -50,11 +50,11 @@ const Lyrics = (props) => {
                     setNotFound(true);
                 });
         }
-    };
+    }, [lyrics, props.id]);
 
     useEffect(() => {
         loadLyrics();
-    }, []);
+    }, [loadLyrics]);
 
     const handleRetryFetchLyrics = () => {
         setLyrics("Loading ...");
