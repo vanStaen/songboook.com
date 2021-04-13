@@ -2,8 +2,14 @@
 
 ## To-dos:
 
+- [ ] CheckAdd -> after request + spinner
+- [ ] Tags should always be lowcase
+- [ ] Tags on song add
+- [ ] Link which are "null" should not be clickable
+- [ ] Offer a list view of songboook 
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
+  - [ ] Check for song exist already
   - [ ] temp save all form data in store in case of auth problem
   - [ ] delete data from store after upload
 - [ ] Menu 2.0
@@ -40,7 +46,6 @@
 - [ ] Handle Archived (active=false, shows in search result, but not in book)
   - [ ] Archived song should not get picked by randomizer
   - [ ] show archived somehow disabled?  
-- [ ] Offer a list view of songboook 
 - [ ] Check https encryption 
     - [ ] Lets-encrypt (client for server) -> SSL
     - [ ] Two keys exist Public/Privat (one for backend, one for client)
