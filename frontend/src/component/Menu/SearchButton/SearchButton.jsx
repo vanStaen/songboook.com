@@ -7,7 +7,6 @@ import { Input } from "antd";
 import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {
-  const onSearch = (value) => props.setSearchValue(value);
   const [mouseHover, setMouseHover] = useState(false);
 
   const handleClick = () => {
@@ -21,6 +20,10 @@ export const SearchButton = observer((props) => {
       return true;
     }
     return false;
+  };
+
+  const onSearch = (e) => {
+    props.setSearchValue(e.target.value);
   };
 
   return (

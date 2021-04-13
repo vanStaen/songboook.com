@@ -159,10 +159,13 @@ const Book = observer((props) => {
     if (listOfFilter().length < 1) {
       return <>{"test"}</>;
     }
+
     return (
-      <>{`${
-        bookNotNull.length
-      } ${bookmarked} ${known} songs for ${formatedListOfFilter()}`}</>
+      <>
+      {`${bookNotNull.length} 
+        ${bookmarked} ${known} songs for 
+        ${props.searchValue ? ` filter '${props.searchValue}'` : formatedListOfFilter()}`}
+      </>
     );
   };
 

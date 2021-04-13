@@ -3,6 +3,9 @@
 ## To-dos:
 
 - [ ] Redo Add Song form
+  - [ ] Check for artist spelling (artist table in db maybe?)
+  - [ ] temp save all form data in store in case of auth problem
+  - [ ] delete data from store after upload
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0
     - [ ] Profil 
@@ -10,11 +13,14 @@
       - [ ] Settings: how to sort results
     - [x] Filter/view feature
     - [ ] Search Feature 
+      - [ ] show search terms in header
+      - [ ] Filter reset option
 - [ ] use MobX everywhere
   - [x] AuthStore
   - [ ] UserStore
   - [ ] DisplayStore
-    - [ ] Behavior
+    - [x] Save all display flag with mobX
+    - [ ] Behavior 
       - [ ] closing menu
       - [ ] unselecting random
 - [ ] Allow other users
