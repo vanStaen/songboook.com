@@ -58,12 +58,16 @@ const Book = observer((props) => {
     }
 
     //if belongs to search results
-    if (
-      props.searchValue &&
-      page.tags !== null &&
-      !page.tags.includes(props.searchValue)
-    ) {
-      shouldBeDisplayed = false;
+    if (props.searchValue ) {
+      
+      const tagsIncludeSearchValue = page.tags.includes(props.searchValue);
+      const objectsInsclueSearchValue = Object.values(page).some(value => String(value).includes(props.searchValue));
+      
+      if ( tagsIncludeSearchValue || objectsInsclueSearchValue ) {
+        shouldBeDisplayed = true;
+      } else {
+        shouldBeDisplayed = false;
+      }
     }
 
     // 0: all, 1: only unknown, 2: only known
