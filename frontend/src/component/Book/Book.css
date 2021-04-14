@@ -12,11 +12,11 @@
   padding: 0 50px 0 50px;
 }
 
-.Book__resultInfos {
+.Book__header {
   display: absolute;
-  font-size: 14px;  
-  margin-top: 20px;
-  margin-bottom: 24px;
+  font-size: 1em;  
+  margin-top: 2.1em;
+  margin-bottom: 2em;
   font-weight: thin;
   color: rgba(255,255,255,.8);
   text-align: left;
@@ -79,3 +79,9 @@ opacity: 0.75;
     padding: 9px;
   }
 } 
+
+.Book__logo {
+  color: #fff;
+    font-weight: 500;
+  letter-spacing: 1.7px;
+}

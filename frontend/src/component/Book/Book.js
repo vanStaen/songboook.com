@@ -197,8 +197,6 @@ const Book = observer((props) => {
       (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
       marginLeftOfAPageInPixel + 10 ;
     setPositionHeader(positionFromLeft);
-    console.log("pagePerRow:", pagePerRow);
-    console.log("positionFromLeft:", positionFromLeft);
   };
 
   return (
@@ -225,9 +223,11 @@ const Book = observer((props) => {
       ) : (
         <div>
           <div 
-            className="Book__resultInfos"
+            className="Book__header"
             style={{ marginLeft: positionHeader}}
-          >{resultInfos()}
+          > 
+            <span className="Book__logo">Songbo<b>0</b>ok.com</span>
+            &nbsp; | &nbsp; {resultInfos()}
           </div>
           {bookNotNull.length > 0 ? (
             <div className="Book__main">{book}</div>
