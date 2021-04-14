@@ -1,4 +1,4 @@
-.SettingsButton__float {
+.FilterButton__float {
 	float: right;
 	text-align: right;
 	height: 2.7em;
@@ -20,41 +20,41 @@
 				border .2s linear;
 }
 
-.SettingsButton__float:hover {
+.FilterButton__float:hover {
 	opacity: 1;
 }
 
-.SettingsButton__open {
+.FilterButton__open {
     color: rgba(0, 0, 0, .5);
 	background-color: rgba(255, 255, 255, .9);
 	border: 1px solid rgba(110, 15, 28, .2);
 	opacity: 1;
 }
 
-.SettingsButton__background:hover {
+.FilterButton__background:hover {
 	border: 1px solid rgba(255, 255, 255, .5);
 	opacity: 1;
 }
 
-.SettingsButton__icon {
+.FilterButton__icon {
 	position: relative;
 	top: 0.15em;
 	font-size: 1.6em;
 	filter: grayscale(100%);
 }
 
-.SettingsButton__actionContainer {
+.FilterButton__actionContainer {
 	display: none;	
 	padding-right: 0.5em;
 	padding-left: 0.5em;
 }
 
-.SettingsButton__action{
+.FilterButton__action{
 	display: inline-block !important;
 	top: -10px;
 }
 
-.SettingsButton__knowflag {
+.FilterButton__knowflag {
 	font-size: 15px;
 	padding: 0 0.5em;
 }

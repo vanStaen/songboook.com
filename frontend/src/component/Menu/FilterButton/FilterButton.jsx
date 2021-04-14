@@ -17,20 +17,20 @@ import bass from "./../../../images/bass.png";
 import guitar from "./../../../images/guitar.png";
 import bookmark from "./../../../images/bookmark.png";
 
-import "./SettingsButton.css";
+import "./FilterButton.css";
 
-export const SettingsButton = observer((props) => {
+export const FilterButton = observer((props) => {
   const [mouseHover, setMouseHover] = useState(false);
   const [displayedAsList, setDisplayedAsList] = useState(false);
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
     if (displayStore.onlyFlagKnown === 0) {
-      return "SettingsButton__knowflag inactive";
+      return "FilterButton__knowflag inactive";
     } else if (displayStore.onlyFlagKnown === 1) {
-      return "SettingsButton__knowflag red";
+      return "FilterButton__knowflag red";
     } else if (displayStore.onlyFlagKnown === 2) {
-      return "SettingsButton__knowflag green";
+      return "FilterButton__knowflag green";
     }
   };
 
@@ -65,7 +65,7 @@ export const SettingsButton = observer((props) => {
   };
 
   const showToolTip = () => {
-    if (props.showSettings) {
+    if (props.showFilters) {
       return false;
     } else if (mouseHover) {
       return true;
@@ -74,7 +74,7 @@ export const SettingsButton = observer((props) => {
   };
 
   const widthButton = () => {
-    if (!props.showSettings) {
+    if (!props.showFilters) {
       return { width: "2.7em" };
     }
     if (authStore.token !== null) {
@@ -84,16 +84,16 @@ export const SettingsButton = observer((props) => {
   };
 
   useEffect(() => {
-    props.showSettings
+    props.showFilters
       ? setTimeout(function () {
           document.getElementById(
-            "SettingsButton__actionContainer"
+            "FilterButton__actionContainer"
           ).style.display = "inline-block";
         }, 200)
       : (document.getElementById(
-          "SettingsButton__actionContainer"
+          "FilterButton__actionContainer"
         ).style.display = "none");
-  }, [props.showSettings]);
+  }, [props.showFilters]);
 
   return (
     <Tooltip
@@ -110,20 +110,20 @@ export const SettingsButton = observer((props) => {
           setMouseHover(false);
         }}
         className={
-          props.showSettings
-            ? "SettingsButton__float SettingsButton__open"
-            : "SettingsButton__float"
+          props.showFilters
+            ? "FilterButton__float FilterButton__open"
+            : "FilterButton__float"
         }
       >
         <div
-          className="SettingsButton__actionContainer"
-          id="SettingsButton__actionContainer"
+          className="FilterButton__actionContainer"
+          id="FilterButton__actionContainer"
         >
           <div
             className={
               displayStore.filterPiano
-                ? "SettingsButton__action icon__piano inactive"
-                : "SettingsButton__action icon__piano"
+                ? "FilterButton__action icon__piano inactive"
+                : "FilterButton__action icon__piano"
             }
             onClick={() =>
               displayStore.setFilterPiano(!displayStore.filterPiano)
@@ -144,8 +144,8 @@ export const SettingsButton = observer((props) => {
           <div
             className={
               displayStore.filterBass
-                ? "SettingsButton__action icon__bass inactive"
-                : "SettingsButton__action icon__bass"
+                ? "FilterButton__action icon__bass inactive"
+                : "FilterButton__action icon__bass"
             }
             onClick={() => displayStore.setFilterBass(!displayStore.filterBass)}
           >
@@ -163,8 +163,8 @@ export const SettingsButton = observer((props) => {
           <div
             className={
               displayStore.filterGuitar
-                ? "SettingsButton__action icon__guitar inactive"
-                : "SettingsButton__action icon__guitar"
+                ? "FilterButton__action icon__guitar inactive"
+                : "FilterButton__action icon__guitar"
             }
             onClick={() =>
               displayStore.setFilterGuitar(!displayStore.filterGuitar)
@@ -186,7 +186,7 @@ export const SettingsButton = observer((props) => {
               |
               <Tooltip placement="bottom" title={toolTipFlagKnow()}>
                 <div
-                  className={`SettingsButton__action ${classNameFlagKnown()}`}
+                  className={`FilterButton__action ${classNameFlagKnown()}`}
                   onClick={handlerFlagKnown}
                 >
                   {iconFlagKnown()}
@@ -195,8 +195,8 @@ export const SettingsButton = observer((props) => {
               <div
                 className={
                   displayStore.onlyBookmarked
-                    ? "SettingsButton__action icon__bookmark"
-                    : "SettingsButton__action icon__bookmark inactive"
+                    ? "FilterButton__action icon__bookmark"
+                    : "FilterButton__action icon__bookmark inactive"
                 }
                 onClick={() =>
                   displayStore.setOnlyBookmarked(!displayStore.onlyBookmarked)
@@ -222,7 +222,7 @@ export const SettingsButton = observer((props) => {
           )}
           |
           <div
-            className="SettingsButton__action"
+            className="FilterButton__action"
             onClick={() => setDisplayedAsList(!displayedAsList)}
           >
             <Tooltip
@@ -241,8 +241,8 @@ export const SettingsButton = observer((props) => {
           |
         </div>
         <EyeOutlined
-          onClick={() => props.setShowSettings(!props.showSettings)}
-          className="SettingsButton__icon"
+          onClick={() => props.setShowFilters(!props.showFilters)}
+          className="FilterButton__icon"
         />
       </div>
     </Tooltip>

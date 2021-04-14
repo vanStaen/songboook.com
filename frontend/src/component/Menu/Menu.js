@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import { AddSongButton } from "./AddSongButton/AddSongButton";
 import { ProfilButton } from "./ProfilButton/ProfilButton";
 import { SearchButton } from "./SearchButton/SearchButton";
-import { SettingsButton } from "./SettingsButton/SettingsButton";
+import { FilterButton } from "./FilterButton/FilterButton";
 import { LoginButton } from "./LoginButton/LoginButton";
 import { Random } from "./Random/Random";
 import { InfoButton } from "./InfoButton/InfoButton";
@@ -15,7 +15,7 @@ import { displayStore } from "../../stores/displayStore";
 import "./Menu.css";
 const Menu = observer((props) => {
   const [showSearch, setShowSearch] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   return (
     <div>
@@ -39,9 +39,9 @@ const Menu = observer((props) => {
                 showAddForm={props.showAddForm}
               />
             )}
-            <SettingsButton
-              showSettings={showSettings}
-              setShowSettings={setShowSettings}
+            <FilterButton
+              showFilters={showFilters}
+              setShowFilters={setShowFilters}
             />
             <SearchButton
               showSearch={showSearch}
