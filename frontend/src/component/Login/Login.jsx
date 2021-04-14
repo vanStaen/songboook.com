@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 import { authStore } from "../../stores/authStore";
 import { userStore } from "../../stores/userStore";
@@ -135,7 +136,7 @@ export const Login = () => {
             className="login__formbutton"
           >
             {isLoading ? (
-              <SyncOutlined spin />
+              <LoadingOutlined />
             ) : isLogin ? (
               "Log in"
             ) : (

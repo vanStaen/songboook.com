@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] CheckAdd -> after request + spinner
 - [ ] Tags should always be lowcase
 - [ ] Tags on song add
 - [ ] Link which are "null" should not be clickable
@@ -84,3 +83,4 @@
 - [x] Add level parameter (easy, medium, hard)
 - [x] Redo Logging form
 - [x] Store fetched lyrics
+- [x] CheckAdd -> after request + spinner
