@@ -1,10 +1,5 @@
 import { useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-
-import { authStore } from "../../stores/authStore";
-import { userStore } from "../../stores/userStore";
-import { postFetchToken } from "./postFetchToken";
 
 import {
   UserOutlined,
@@ -12,8 +7,12 @@ import {
   LockOutlined,
   EyeInvisibleOutlined,
   EyeOutlined,
-  SyncOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
+
+import { authStore } from "../../stores/authStore";
+import { userStore } from "../../stores/userStore";
+import { postFetchToken } from "./postFetchToken";
 
 import "./Login.css";
 
