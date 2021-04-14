@@ -17,6 +17,7 @@ const Book = observer((props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [pageHasChanged, setPageHasChanged] = useState(false);
+  const [positionHeader, setPositionHeader] = useState();
 
   const newSongAdded = props.newSongAdded;
   const setNewSongAdded = props.setNewSongAdded;
@@ -34,6 +35,14 @@ const Book = observer((props) => {
         console.log(error.message);
       });
   };
+
+  useEffect(() => {
+    calculatePositionHeader();
+    window.addEventListener("resize", calculatePositionHeader);
+    return () => {
+      window.removeEventListener("resize", calculatePositionHeader);
+    };
+  }, []);
 
   useEffect(() => {
     loadPages();
@@ -58,12 +67,13 @@ const Book = observer((props) => {
     }
 
     //if belongs to search results
-    if (props.searchValue ) {
-      
+    if (props.searchValue) {
       const tagsIncludeSearchValue = page.tags.includes(props.searchValue);
-      const objectsInsclueSearchValue = Object.values(page).some(value => String(value).includes(props.searchValue));
-      
-      if ( tagsIncludeSearchValue || objectsInsclueSearchValue ) {
+      const objectsInsclueSearchValue = Object.values(page).some((value) =>
+        String(value).includes(props.searchValue)
+      );
+
+      if (tagsIncludeSearchValue || objectsInsclueSearchValue) {
         shouldBeDisplayed = true;
       } else {
         shouldBeDisplayed = false;
@@ -166,16 +176,35 @@ const Book = observer((props) => {
 
     return (
       <>
-      {`${bookNotNull.length} 
+        {`${bookNotNull.length} 
         ${bookmarked} ${known} songs for 
-        ${props.searchValue ? ` filter '${props.searchValue}'` : formatedListOfFilter()}`}
+        ${
+          props.searchValue
+            ? ` filter '${props.searchValue}'`
+            : formatedListOfFilter()
+        }`}
       </>
     );
+  };
+
+  const calculatePositionHeader = () => {
+    const widthOfAPageInPixel = 362;
+    const marginLeftOfAPageInPixel = 15;
+    const widthOfBookInPixel = document.getElementById("bookContainer")
+      .clientWidth;
+    const pagePerRow = Math.floor( (widthOfBookInPixel - 90) / widthOfAPageInPixel);
+    const positionFromLeft =
+      (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
+      marginLeftOfAPageInPixel + 10 ;
+    setPositionHeader(positionFromLeft);
+    console.log("pagePerRow:", pagePerRow);
+    console.log("positionFromLeft:", positionFromLeft);
   };
 
   return (
     <div
       style={{ width: "100%" }}
+      id="bookContainer"
       onClick={() => {
         props.randomPageId && props.setRandomPageId(null);
       }}
@@ -195,8 +224,11 @@ const Book = observer((props) => {
         </div>
       ) : (
         <div>
-          <div className="Book__resultInfos">{resultInfos()}</div>
-
+          <div 
+            className="Book__resultInfos"
+            style={{ marginLeft: positionHeader}}
+          >{resultInfos()}
+          </div>
           {bookNotNull.length > 0 ? (
             <div className="Book__main">{book}</div>
           ) : (

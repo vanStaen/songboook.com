@@ -54,7 +54,7 @@
 - [x] Create React App
 - [x] Display entries
 - [x] Show tags 
-- [x] Create Drawer as separate component
+- [x] Create Drawer
 - [x] Fetch lyrics
 - [x] Embed youtube video
 - [x] Edit Tag feature

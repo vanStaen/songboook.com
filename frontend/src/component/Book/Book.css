@@ -13,11 +13,13 @@
 }
 
 .Book__resultInfos {
-  font-size: 14px;
   display: absolute;
-  margin: 20px 0px 24px 0px;
+  font-size: 14px;  
+  margin-top: 20px;
+  margin-bottom: 24px;
   font-weight: thin;
   color: rgba(255,255,255,.8);
+  text-align: left;
 }
 
 .Book__centered {
