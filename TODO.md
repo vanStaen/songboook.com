@@ -4,7 +4,6 @@
 
 - [ ] Tags should always be lowcase
 - [ ] Tags on song add
-- [ ] Link which are "null" should not be clickable
 - [ ] Offer a list view of songboook 
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
@@ -84,3 +83,4 @@
 - [x] Redo Logging form
 - [x] Store fetched lyrics
 - [x] CheckAdd -> after request + spinner
+- [x] Do not open 'null' Link 
