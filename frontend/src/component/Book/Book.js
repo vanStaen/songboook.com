@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
+import { Tooltip } from "antd";
 
 import Page from "./Page/Page";
 import { getPages } from "./getPages";
@@ -170,9 +171,6 @@ const Book = observer((props) => {
     } else if (displayStore.onlyFlagKnown === 2) {
       known = "known";
     }
-    if (listOfFilter().length < 1) {
-      return <>{"test"}</>;
-    }
 
     return (
       <>
@@ -192,10 +190,13 @@ const Book = observer((props) => {
     const marginLeftOfAPageInPixel = 15;
     const widthOfBookInPixel = document.getElementById("bookContainer")
       .clientWidth;
-    const pagePerRow = Math.floor( (widthOfBookInPixel - 90) / widthOfAPageInPixel);
+    const pagePerRow = Math.floor(
+      (widthOfBookInPixel - 90) / widthOfAPageInPixel
+    );
     const positionFromLeft =
       (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
-      marginLeftOfAPageInPixel + 10 ;
+      marginLeftOfAPageInPixel +
+      10;
     setPositionHeader(positionFromLeft);
   };
 
@@ -222,11 +223,13 @@ const Book = observer((props) => {
         </div>
       ) : (
         <div>
-          <div 
-            className="Book__header"
-            style={{ marginLeft: positionHeader}}
-          > 
-            <span className="Book__logo">Songbo<b>0</b>ok.com</span>
+          <div className="Book__header" style={{ marginLeft: positionHeader }}>
+            <Tooltip placement="top" title={<span style={{fontSize : "12px"}}>S-Bahn logo,<br/> &nbsp;Love Berlin!</span>}>
+              <img src={logo} className="Book__logoHeader" alt="logotest" />
+            </Tooltip>
+            <span className="Book__logo">
+              ongbo<b>0</b>ok
+            </span>
             &nbsp; | &nbsp; {resultInfos()}
           </div>
           {bookNotNull.length > 0 ? (
