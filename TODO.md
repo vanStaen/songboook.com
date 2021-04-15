@@ -7,8 +7,8 @@
 - [ ] Offer a list view of songboook 
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
-  - [ ] Check for song exist already
-  - [ ] temp save all form data in store in case of auth problem
+  - [ ] Check for song already exist 
+  - [x] temp save all form data in store in case of auth problem
   - [ ] delete data from store after upload
 - [ ] Menu 2.0
     - [x] Ramdomizer 2.0

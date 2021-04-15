@@ -3,9 +3,8 @@ import { action, makeObservable, observable } from "mobx";
 export class FormStore {
   artist = null;
   song = null;
-  bass = false;
-  piano = false;
   level = null;
+  type = "guitar";
   link = null;
   picurl = null;
   videourl = null;
@@ -16,10 +15,8 @@ export class FormStore {
       setArtist: action,
       song: observable,
       setSong: action,
-      bass: observable,
-      setBass: action,
-      piano: observable,
-      setPiano: action,
+      type: observable,
+      setType: action,
       level: observable,
       setLevel: action,
       link: observable,
@@ -37,11 +34,8 @@ export class FormStore {
   setSong = (song) => {
     this.song = song;
   };
-  setBass = (bass) => {
-    this.bass = bass;
-  };
-  setPiano = (piano) => {
-    this.piano = piano;
+  setType = (type) => {
+    this.type = type;
   };
   setLevel = (level) => {
     this.level = level;

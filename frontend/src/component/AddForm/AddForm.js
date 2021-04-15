@@ -4,28 +4,37 @@ import { observer } from "mobx-react";
 import axios from "axios";
 
 import { displayStore } from "../../stores/displayStore";
+import { formStore } from "../../stores/formStore"
 import "./AddForm.css";
 
 const AddForm = observer((props) => {
   const handleAddSong = (values) => {
     const dataRequest = { artist: values.artist, song: values.song };
+    formStore.setArtist(values.artist);
+    formStore.setSong(values.song);
     if (values.type === "bass") {
+      formStore.setType("bass");
       dataRequest.bass = true;
     }
     if (values.type === "piano") {
+      formStore.setType("piano");
       dataRequest.piano = true;
     }
     if (values.level) {
       dataRequest.level = values.level;
+      formStore.setLevel(values.level);
     }
     if (values.link) {
       dataRequest.link = values.link;
+      formStore.setLink(values.link);
     }
     if (values.picurl) {
       dataRequest.picurl = values.picurl;
+      formStore.setPicurl(values.picurl);
     }
     if (values.videourl) {
       dataRequest.videourl = values.videourl;
+      formStore.setVideourl(values.videourl);
     }
     postAddSong(dataRequest);
     displayStore.setShowPage("book");
@@ -41,6 +50,15 @@ const AddForm = observer((props) => {
       if ((response.status !== 200) & (response.status !== 201)) {
         throw new Error("Error!");
       }
+      // Empty the display store
+      formStore.setArtist(null);
+      formStore.setSong(null);
+      formStore.setType("guitar");
+      formStore.setLevel(null);
+      formStore.setLink(null);
+      formStore.setPicurl(null);
+      formStore.setVideourl(null);
+
       const patchResult = await response.data;
       return patchResult;
     }
@@ -87,8 +105,15 @@ const AddForm = observer((props) => {
           layout="vertical"
           name="addSongForm"
           initialValues={{
-            type: "guitar",
-          }}
+            artist: formStore.artist,
+            song: formStore.song,
+            link: formStore.link,
+            picurl: formStore.picurl,
+            videourl: formStore.videourl,
+            type: formStore.type,
+            level: formStore.level,
+          }
+        }
         >
           <Form.Item
             name="artist"
