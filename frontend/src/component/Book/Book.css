@@ -87,6 +87,11 @@ opacity: 0.75;
 }
 
 .Book__logoHeader {
-  height: 22px;
+  height: 25px;
   margin-right: 3px;
+  padding-bottom: 2px;
+}
+
+.Book__logoHeader:hover {
+  filter: hue-rotate(90deg);
 }

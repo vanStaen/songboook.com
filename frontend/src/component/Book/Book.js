@@ -224,7 +224,7 @@ const Book = observer((props) => {
       ) : (
         <div>
           <div className="Book__header" style={{ marginLeft: positionHeader }}>
-            <Tooltip placement="top" title={<span style={{fontSize : "12px"}}>S-Bahn logo,<br/> &nbsp;Love Berlin!</span>}>
+            <Tooltip placement="top" title={<span style={{fontSize : "12px"}}>Love from Berlin</span>}>
               <img src={logo} className="Book__logoHeader" alt="logotest" />
             </Tooltip>
             <span className="Book__logo">
