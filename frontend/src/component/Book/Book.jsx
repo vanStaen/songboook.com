@@ -176,11 +176,10 @@ const Book = observer((props) => {
       <>
         {`${bookNotNull.length} 
         ${bookmarked} ${known} songs for 
-        ${
-          props.searchValue
+        ${props.searchValue
             ? ` filter '${props.searchValue}'`
             : formatedListOfFilter()
-        }`}
+          }`}
       </>
     );
   };
@@ -193,11 +192,18 @@ const Book = observer((props) => {
     const pagePerRow = Math.floor(
       (widthOfBookInPixel - 90) / widthOfAPageInPixel
     );
-    const positionFromLeft =
-      (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
-      marginLeftOfAPageInPixel +
-      10;
-    setPositionHeader(positionFromLeft);
+    if (pagePerRow !== 0) {
+      const positionFromLeft =
+        (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
+        marginLeftOfAPageInPixel +
+        10;
+      setPositionHeader(positionFromLeft);
+    }
+    else {
+      console.log("pagePerRow", pagePerRow)
+      setPositionHeader(10);
+    }
+
   };
 
   return (
@@ -222,42 +228,42 @@ const Book = observer((props) => {
           </div>
         </div>
       ) : (
-        <div>
-          <div className="Book__header" style={{ marginLeft: positionHeader }}>
-            <Tooltip placement="top" title={<span style={{fontSize : "12px"}}>Love from Berlin</span>}>
-              <img src={logo} className="Book__logoHeader" alt="logotest" />
-            </Tooltip>
-            <span className="Book__logo">
-              ongbo<b>0</b>ok
+            <div>
+              <div className="Book__header" style={{ marginLeft: positionHeader }}>
+                <Tooltip placement="top" title={<span style={{ fontSize: "12px" }}>Love from Berlin</span>}>
+                  <img src={logo} className="Book__logoHeader" alt="logotest" />
+                </Tooltip>
+                <span className="Book__logo">
+                  ongbo<b>0</b>ok
             </span>
             &nbsp; | &nbsp; {resultInfos()}
-          </div>
-          {bookNotNull.length > 0 ? (
-            <div className="Book__main">{book}</div>
-          ) : (
-            <div className="Book__nothingFound">
-              <div style={{ marginBottom: "15px" }}>
-                <img
-                  src={notFound}
-                  className="nothingFound"
-                  alt="Nothing found"
-                />
-                <br />
-                <div
-                  style={{
-                    fontSize: 14,
-                    marginTop: 10,
-                    color: "white",
-                    opacity: 0.15,
-                  }}
-                >
-                  Nothing found!
-                </div>
               </div>
+              {bookNotNull.length > 0 ? (
+                <div className="Book__main">{book}</div>
+              ) : (
+                  <div className="Book__nothingFound">
+                    <div style={{ marginBottom: "15px" }}>
+                      <img
+                        src={notFound}
+                        className="nothingFound"
+                        alt="Nothing found"
+                      />
+                      <br />
+                      <div
+                        style={{
+                          fontSize: 14,
+                          marginTop: 10,
+                          color: "white",
+                          opacity: 0.15,
+                        }}
+                      >
+                        Nothing found!
+                </div>
+                    </div>
+                  </div>
+                )}
             </div>
           )}
-        </div>
-      )}
     </div>
   );
 });

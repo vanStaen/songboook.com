@@ -78,6 +78,9 @@ opacity: 0.75;
   .ant-modal-body, .ant-modal-content {
     padding: 9px;
   }
+  .Book__logo{
+    display: none;
+  }
 } 
 
 .Book__logo {
