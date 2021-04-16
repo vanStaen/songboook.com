@@ -2,8 +2,6 @@
 
 ## To-dos:
 
-- [ ] Tags should always be lowcase
-- [ ] Tags on song add
 - [ ] Offer a list view of songboook 
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
