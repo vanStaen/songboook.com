@@ -54,15 +54,16 @@ const Book = observer((props) => {
   const book = songbookPages.map((page) => {
     let shouldBeDisplayed = true;
 
-    if (page.bass) {
-      shouldBeDisplayed = !displayStore.filterBass;
+    if (displayStore.bassOnly) {
+      shouldBeDisplayed = page.bass;
     }
-    if (page.piano) {
-      shouldBeDisplayed = !displayStore.filterPiano;
+    else if (displayStore.pianoOnly) {
+      shouldBeDisplayed = page.piano;
     }
-    if (!page.bass && !page.piano) {
-      shouldBeDisplayed = !displayStore.filterGuitar;
+    else if (displayStore.guitarOnly) {
+      shouldBeDisplayed = !page.piano && !page.bass;
     }
+
     if (!page.bookmark && displayStore.onlyBookmarked) {
       shouldBeDisplayed = false;
     }
@@ -134,14 +135,14 @@ const Book = observer((props) => {
 
   const listOfFilter = () => {
     let listOfFilter = ["guitar", "piano", "bass"];
-    if (displayStore.filterGuitar) {
-      listOfFilter.splice(listOfFilter.indexOf("guitar"), 1);
+    if (displayStore.guitarOnly) {
+      listOfFilter = ["guitar"];
     }
-    if (displayStore.filterPiano) {
-      listOfFilter.splice(listOfFilter.indexOf("piano"), 1);
+    else if (displayStore.pianoOnly) {
+      listOfFilter = ["piano"];
     }
-    if (displayStore.filterBass) {
-      listOfFilter.splice(listOfFilter.indexOf("bass"), 1);
+    if (displayStore.bassOnly) {
+      listOfFilter = ["bass"];
     }
     return listOfFilter;
   };

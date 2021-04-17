@@ -41,10 +41,13 @@ export const SearchButton = observer((props) => {
             : "SearchButton__float"
         }
       >
+        {!props.showSearch && props.searchValue && <div className="FilterButton__badge"></div>}
         {props.showSearch && (
           <div className="SearchButton__input">
             <Input
               placeholder="input search text"
+              defaultValue={props.searchValue}
+              onChange={onSearch}
               onPressEnter={onSearch}
               className="SearchButton__input"
             />

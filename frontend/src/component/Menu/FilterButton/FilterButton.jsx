@@ -21,7 +21,6 @@ import "./FilterButton.css";
 
 export const FilterButton = observer((props) => {
   const [mouseHover, setMouseHover] = useState(false);
-  const [displayedAsList, setDisplayedAsList] = useState(false);
 
   // 0: all, 1: only unknown, 2: only known
   const classNameFlagKnown = () => {
@@ -86,13 +85,13 @@ export const FilterButton = observer((props) => {
   useEffect(() => {
     props.showFilters
       ? setTimeout(function () {
-          document.getElementById(
-            "FilterButton__actionContainer"
-          ).style.display = "inline-block";
-        }, 200)
-      : (document.getElementById(
+        document.getElementById(
           "FilterButton__actionContainer"
-        ).style.display = "none");
+        ).style.display = "inline-block";
+      }, 200)
+      : (document.getElementById(
+        "FilterButton__actionContainer"
+      ).style.display = "none");
   }, [props.showFilters]);
 
   return (
@@ -115,27 +114,28 @@ export const FilterButton = observer((props) => {
             : "FilterButton__float"
         }
       >
+        {!props.showFilters &&
+          (displayStore.pianoOnly || displayStore.bassOnly || displayStore.guitarOnly || displayStore.onlyBookmarked || displayStore.onlyFlagKnown !== 0) &&
+          <div className="FilterButton__badge"></div>}
         <div
           className="FilterButton__actionContainer"
           id="FilterButton__actionContainer"
         >
           <div
             className={
-              displayStore.filterPiano
-                ? "FilterButton__action icon__piano inactive"
-                : "FilterButton__action icon__piano"
+              displayStore.pianoOnly
+                ? "FilterButton__action icon__piano"
+                : "FilterButton__action icon__piano inactive"
             }
-            onClick={() =>
-              displayStore.setFilterPiano(!displayStore.filterPiano)
-            }
+            onClick={() => displayStore.setPianoOnly(!displayStore.pianoOnly)}
           >
             {" "}
             <Tooltip
               placement="bottom"
               title={
-                displayStore.filterPiano
-                  ? "Show all songs for piano"
-                  : "Hide all songs for piano"
+                displayStore.pianoOnly
+                  ? "Click to reset this filter"
+                  : "Show only songs for piano"
               }
             >
               <img width="22" height="22" src={piano} alt="piano"></img>
@@ -143,18 +143,18 @@ export const FilterButton = observer((props) => {
           </div>
           <div
             className={
-              displayStore.filterBass
-                ? "FilterButton__action icon__bass inactive"
-                : "FilterButton__action icon__bass"
+              displayStore.bassOnly
+                ? "FilterButton__action icon__bass"
+                : "FilterButton__action icon__bass inactive"
             }
-            onClick={() => displayStore.setFilterBass(!displayStore.filterBass)}
+            onClick={() => displayStore.setBassOnly(!displayStore.bassOnly)}
           >
             <Tooltip
               placement="bottom"
               title={
-                displayStore.filterBass
-                  ? "Show all songs for bass"
-                  : "Hide all songs for bass"
+                displayStore.bassOnly
+                  ? "Click to reset this filter"
+                  : "Show only songs for bass"
               }
             >
               <img width="17" height="17" src={bass} alt="bass"></img>
@@ -162,20 +162,18 @@ export const FilterButton = observer((props) => {
           </div>
           <div
             className={
-              displayStore.filterGuitar
-                ? "FilterButton__action icon__guitar inactive"
-                : "FilterButton__action icon__guitar"
+              displayStore.guitarOnly
+                ? "FilterButton__action icon__guitar"
+                : "FilterButton__action icon__guitar inactive"
             }
-            onClick={() =>
-              displayStore.setFilterGuitar(!displayStore.filterGuitar)
-            }
+            onClick={() => displayStore.setGuitarOnly(!displayStore.guitarOnly)}
           >
             <Tooltip
               placement="bottom"
               title={
-                displayStore.filterGuitar
-                  ? "Show all songs for guitar"
-                  : "Hide all songs for guitar"
+                displayStore.guitarOnly
+                  ? "Click to reset this filter"
+                  : "Show only songs for guitar"
               }
             >
               <img width="17" height="17" src={guitar} alt="guitar"></img>
@@ -223,19 +221,19 @@ export const FilterButton = observer((props) => {
           |
           <div
             className="FilterButton__action"
-            onClick={() => setDisplayedAsList(!displayedAsList)}
+            onClick={() => displayStore.setDisplayedAsList(!displayStore.displayedAsList)}
           >
             <Tooltip
               placement="bottom"
               title={
-                displayedAsList ? "Switch to grid view" : "Switch to list view"
+                displayStore.displayedAsList ? "Switch to grid view" : "Switch to list view"
               }
             >
-              {displayedAsList ? (
+              {displayStore.displayedAsList ? (
                 <BarsOutlined className="icon__view" />
               ) : (
-                <AppstoreOutlined className="icon__view" />
-              )}
+                  <AppstoreOutlined className="icon__view" />
+                )}
             </Tooltip>
           </div>
           |

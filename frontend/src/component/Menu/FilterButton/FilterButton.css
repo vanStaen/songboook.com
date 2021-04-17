@@ -101,3 +101,16 @@
 	padding: 0 0.4em;
 	font-size: 17px;
 }
+
+.FilterButton__badge {
+	position: absolute;
+	right: -3px;
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #d32f2f;
+	border: 1px solid rgba(255, 255, 255, .75);
+	/*background-color: #d32f2f;
+	font-size: 5px;
+	text-align: center;*/
+}

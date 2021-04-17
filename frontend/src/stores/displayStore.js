@@ -2,40 +2,68 @@ import { action, makeObservable, observable } from "mobx";
 
 export class DisplayStore {
 
-    filterBass = false;
-    filterPiano = null;
-    filterGuitar = false;
+    bassOnly = false;
+    pianoOnly = false;
+    guitarOnly = false;
     onlyBookmarked = false;
     onlyFlagKnown = 0; // 0: all, 1: only unknown, 2: only known
+    displayedAsList = false;
     showPage = "book";
 
     constructor() {
         makeObservable(this, {
-            filterBass: observable,
-            setFilterBass: action,
-            filterPiano: observable,
-            setFilterPiano: action,
-            filterGuitar: observable,
-            setFilterGuitar: action,
+            bassOnly: observable,
+            setBassOnly: action,
+            pianoOnly: observable,
+            setPianoOnly: action,
+            guitarOnly: observable,
+            setGuitarOnly: action,
             onlyBookmarked: observable,
             setOnlyBookmarked: action,
             onlyFlagKnown: observable,
             setOnlyFlagKnown: action,
             showPage: observable,
             setShowPage: action,
+            displayedAsList: observable,
+            setDisplayedAsList: action,
+
         });
     }
 
-    setFilterBass = (filterBass) => {
-        this.filterBass = filterBass;
+    setBassOnly = (bassOnly) => {
+        if (bassOnly === true) {
+            this.bassOnly = true;
+            this.pianoOnly = false;
+            this.guitarOnly = false;
+        } else {
+            this.bassOnly = false;
+            this.pianoOnly = false;
+            this.guitarOnly = false;
+        }
     };
 
-    setFilterPiano = (filterPiano) => {
-        this.filterPiano = filterPiano;
+    setPianoOnly = (pianoOnly) => {
+        if (pianoOnly === true) {
+            this.bassOnly = false;
+            this.pianoOnly = true;
+            this.guitarOnly = false;
+        } else {
+            this.bassOnly = false;
+            this.pianoOnly = false;
+            this.guitarOnly = false;
+        }
     };
 
-    setFilterGuitar = (filterGuitar) => {
-        this.filterGuitar = filterGuitar;
+    setGuitarOnly = (guitarOnly) => {
+        if (guitarOnly === true) {
+            this.bassOnly = false;
+            this.pianoOnly = false;
+            this.guitarOnly = true;
+        } else {
+            this.bassOnly = false;
+            this.pianoOnly = false;
+            this.guitarOnly = false;
+        }
     };
 
     setOnlyBookmarked = (onlyBookmarked) => {
@@ -49,6 +77,11 @@ export class DisplayStore {
     setShowPage = (showPage) => {
         this.showPage = showPage;
     };
+
+    setDisplayedAsList = (displayedAsList) => {
+        this.displayedAsList = displayedAsList;
+    };
+
 
 }
 
