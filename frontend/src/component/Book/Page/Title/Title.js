@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { authStore } from "../../../../stores/authStore";
 import './Title.css';
+import { displayStore } from "../../../../stores/displayStore";
 
 const Title = observer((props) => {
     const [title, setTitle] = useState(props.title.replace(/ /g, '').length > 23 ? `${props.title.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : props.title.replace('-', '/').replace(/ /g, ''));
@@ -41,6 +42,7 @@ const Title = observer((props) => {
 
     const handleEditCancel = () => {
         setIsEditmode(false);
+        displayStore.isInEditMode(false);
         setEditInputValue(props.title.replace('-', '/'));
         console.log('cancel');
     };
@@ -49,7 +51,13 @@ const Title = observer((props) => {
         patchTitleInDB(editInputValue.replace('/', '-'))
         setTitle(editInputValue.replace(/ /g, '').length > 23 ? `${editInputValue.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : editInputValue.replace('-', '/').replace(/ /g, ''))
         setIsEditmode(false);
+        displayStore.isInEditMode(false);
     };
+
+    const handleEditMode = () => {
+        setIsEditmode(true)
+        displayStore.isInEditMode(true);
+    }
 
     return (
         <>
@@ -64,7 +72,7 @@ const Title = observer((props) => {
                     onPressEnter={handleEditConfirm}
                 />)
                 :
-                (<div className="Page__title" onDoubleClick={() => { authStore.token != null && setIsEditmode(true) }} >{title}</div>)
+                (<div className="Page__title" onDoubleClick={() => { authStore.token != null && handleEditMode() }} >{title}</div>)
             }
         </>
 

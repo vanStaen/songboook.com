@@ -4,6 +4,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { observer } from "mobx-react";
 import axios from 'axios';
 
+import { displayStore } from "../../../../../stores/displayStore";
 import { authStore } from '../../../../../stores/authStore';
 import './Tags.css'
 
@@ -51,6 +52,7 @@ const Tags = observer((props) => {
         patchTagsInDB(tags);
         setEditInputIndex(-1)
         setEditInputValue('');
+        displayStore.isInEditMode(false);
         setInputValue('');
         setInputVisible(false);
         props.setTagsMissing(false);
@@ -59,6 +61,7 @@ const Tags = observer((props) => {
     const handleEditInputCancel = e => {
         setEditInputIndex(-1)
         setEditInputValue('');
+        displayStore.isInEditMode(false);
         setInputValue('');
         setInputVisible(false);
     };
@@ -86,6 +89,7 @@ const Tags = observer((props) => {
             setTags(newtags);
         }
         setInputValue('');
+        displayStore.isInEditMode(false);
         setInputVisible(false);
         setEditInputIndex(-1)
         setEditInputValue('');
@@ -98,10 +102,12 @@ const Tags = observer((props) => {
         setInputVisible(false);
         setEditInputIndex(-1)
         setEditInputValue('');
+        displayStore.isInEditMode(false);
     };
 
     const showInput = () => {
         setInputVisible(true);
+        displayStore.isInEditMode(true);
         setEditInputIndex(-1)
         setEditInputValue('');
     };

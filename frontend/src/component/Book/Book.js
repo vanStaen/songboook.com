@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import { Tooltip } from "antd";
@@ -50,6 +50,41 @@ const Book = observer((props) => {
     setPageHasChanged(false);
     setNewSongAdded(false);
   }, [pageHasChanged, newSongAdded, setNewSongAdded]);
+
+
+  const keyDownHandler = useCallback((event) => {
+    event.preventDefault();
+    if (!displayStore.isInEditMode) {
+      const top = window.pageYOffset || document.documentElement.scrollTop;
+      const movingInPx = 390;
+      const keyPressed = event.key.toLowerCase();
+      if (keyPressed === "enter") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+      else if (keyPressed === "arrowup") {
+        window.scrollTo({
+          top: top - movingInPx,
+          behavior: "smooth",
+        });
+      }
+      else if (keyPressed === "arrowdown") {
+        window.scrollTo({
+          top: top + movingInPx,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [keyDownHandler]);
 
   const book = songbookPages.map((page) => {
     let shouldBeDisplayed = true;

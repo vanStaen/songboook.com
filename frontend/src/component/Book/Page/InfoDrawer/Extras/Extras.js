@@ -4,6 +4,7 @@ import { EditOutlined } from '@ant-design/icons';
 import { observer } from "mobx-react";
 import axios from 'axios';
 
+import { displayStore } from "../../../../../stores/displayStore";
 import { authStore } from "../../../../../stores/authStore";
 import './Extras.css';
 
@@ -51,6 +52,7 @@ const Extras = observer((props) => {
     const handleEditCancel = () => {
         isArtistEditMode && setIsArtistEditMode(false);
         isSongEditMode && setIsSongEditMode(false);
+        displayStore.isInEditMode(false);
         setEditInputValue('');
     }
     const handleEditConfirm = () => {
@@ -63,6 +65,7 @@ const Extras = observer((props) => {
             setArtist(editInputValue);
             props.setArtist(editInputValue);
             setIsArtistEditMode(false);
+            displayStore.isInEditMode(false);
         }
         else if (isSongEditMode) {
             if (editInputValue.length > 0) {
@@ -73,6 +76,7 @@ const Extras = observer((props) => {
             setSong(editInputValue);
             props.setSong(editInputValue);
             setIsSongEditMode(false);
+            displayStore.isInEditMode(false);
         };
         setEditInputValue('');
         props.setPageHasChanged("true");
@@ -149,16 +153,16 @@ const Extras = observer((props) => {
             <div className="Extras__container">
                 <div className='Extra__ref'>Artist:</div>
                 {isArtistEditMode ?
-                    (<div style={{ display: "inline-block", width: maxTagWidth}}>
+                    (<div style={{ display: "inline-block", width: maxTagWidth }}>
                         <Input
-                        key={`link_input_${props.id}`}
-                        size="small"
-                        className="Extras__input"
-                        value={editInputValue}
-                        onChange={handleEditChange}
-                        onBlur={handleEditCancel}
-                        onPressEnter={handleEditConfirm}
-                    />
+                            key={`link_input_${props.id}`}
+                            size="small"
+                            className="Extras__input"
+                            value={editInputValue}
+                            onChange={handleEditChange}
+                            onBlur={handleEditCancel}
+                            onPressEnter={handleEditConfirm}
+                        />
                     </div>)
                     :
                     (<Tag key="Artist" className="Extra__tag">
@@ -167,6 +171,7 @@ const Extras = observer((props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(artist);
                             setIsArtistEditMode(true);
+                            displayStore.isInEditMode(true);
                             setIsSongEditMode(false);
                             e.preventDefault();
                         }} />
@@ -177,16 +182,16 @@ const Extras = observer((props) => {
             <div className="Extras__container">
                 <div className='Extra__ref'>Song:</div>
                 {isSongEditMode ?
-                    (<div style={{ display: "inline-block", width: maxTagWidth}}>
+                    (<div style={{ display: "inline-block", width: maxTagWidth }}>
                         <Input
-                        key={`link_input_${props.id}`}
-                        size="small"
-                        className="Extras__input"
-                        value={editInputValue}
-                        onChange={handleEditChange}
-                        onBlur={handleEditCancel}
-                        onPressEnter={handleEditConfirm}
-                    />
+                            key={`link_input_${props.id}`}
+                            size="small"
+                            className="Extras__input"
+                            value={editInputValue}
+                            onChange={handleEditChange}
+                            onBlur={handleEditCancel}
+                            onPressEnter={handleEditConfirm}
+                        />
                     </div>)
                     :
                     (<Tag key="Song" className="Extra__tag">
@@ -195,6 +200,7 @@ const Extras = observer((props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(song)
                             setIsSongEditMode(true);
+                            displayStore.isInEditMode(true);
                             setIsArtistEditMode(false);
                             e.preventDefault();
                         }} />

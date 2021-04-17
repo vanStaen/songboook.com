@@ -8,6 +8,7 @@ import { formStore } from "../../stores/formStore"
 import "./AddForm.css";
 
 const AddForm = observer((props) => {
+
   const handleAddSong = (values) => {
     const dataRequest = { artist: values.artist, song: values.song };
     formStore.setArtist(values.artist);
@@ -113,7 +114,7 @@ const AddForm = observer((props) => {
             type: formStore.type,
             level: formStore.level,
           }
-        }
+          }
         >
           <Form.Item
             name="artist"

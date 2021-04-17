@@ -4,6 +4,7 @@ import { EditOutlined, LinkOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import axios from "axios";
 
+import { displayStore } from "../../../../../stores/displayStore";
 import { authStore } from "../../../../../stores/authStore";
 import "./Links.css";
 
@@ -52,6 +53,7 @@ const Links = observer((props) => {
     isTabsEditMode && setIsTabsEditMode(false);
     isVideoEditMode && setIsVideoEditMode(false);
     isPicEditMode && setIsPicEditMode(false);
+    displayStore.isInEditMode(false);
     setEditInputValue("");
   };
 
@@ -89,12 +91,13 @@ const Links = observer((props) => {
     }
     setEditInputValue("");
     props.setPageHasChanged("true");
+    displayStore.isInEditMode(false);
   };
 
   const clickLinkHandler = (url) => {
-      if (url !== "null") {
-        window.open(url, '_blank').focus();
-      }
+    if (url !== "null") {
+      window.open(url, '_blank').focus();
+    }
   };
 
   const returnCropedText = (text, threshold) => {
@@ -141,23 +144,24 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
-          <a onClick={() => clickLinkHandler(tabs)} >
-            <Tag className="links__tag" key="tabs">
-              <LinkOutlined />
+            <a onClick={() => clickLinkHandler(tabs)} >
+              <Tag className="links__tag" key="tabs">
+                <LinkOutlined />
               &nbsp;&nbsp;
               {returnCropedText(tabs, maxTagWidth)}
-              {authStore.token && (
-                <EditOutlined
-                  onClick={(e) => {
-                    setEditInputValue(tabs);
-                    setIsTabsEditMode(true);
-                    e.preventDefault();
-                  }}
-                />
-              )}
-            </Tag>
-          </a>
-        )}
+                {authStore.token && (
+                  <EditOutlined
+                    onClick={(e) => {
+                      setEditInputValue(tabs);
+                      setIsTabsEditMode(true);
+                      displayStore.isInEditMode(true);
+                      e.preventDefault();
+                    }}
+                  />
+                )}
+              </Tag>
+            </a>
+          )}
       </div>
 
       <div className="link__container">
@@ -175,23 +179,24 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
-          <a onClick={() => clickLinkHandler(video)}>
-            <Tag className="links__tag" key="video">
-              <LinkOutlined />
+            <a onClick={() => clickLinkHandler(video)}>
+              <Tag className="links__tag" key="video">
+                <LinkOutlined />
               &nbsp;&nbsp;
               {returnCropedText(video, maxTagWidth)}
-              {authStore.token && (
-                <EditOutlined
-                  onClick={(e) => {
-                    setEditInputValue(video);
-                    setIsVideoEditMode(true);
-                    e.preventDefault();
-                  }}
-                />
-              )}
-            </Tag>
-          </a>
-        )}
+                {authStore.token && (
+                  <EditOutlined
+                    onClick={(e) => {
+                      setEditInputValue(video);
+                      setIsVideoEditMode(true);
+                      displayStore.isInEditMode(true);
+                      e.preventDefault();
+                    }}
+                  />
+                )}
+              </Tag>
+            </a>
+          )}
       </div>
 
       {authStore.token && (
@@ -210,27 +215,29 @@ const Links = observer((props) => {
               />
             </div>
           ) : (
-            <Tag
-              className="links__tag"
-              key="pic"
-              onDoubleClick={(e) => {
-                setEditInputValue(pic);
-                setIsPicEditMode(true);
-                e.preventDefault();
-              }}
-            >
-              <LinkOutlined />
-              &nbsp;&nbsp;
-              {returnCropedText(pic, maxTagWidth)}
-              <EditOutlined
-                onClick={(e) => {
+              <Tag
+                className="links__tag"
+                key="pic"
+                onDoubleClick={(e) => {
                   setEditInputValue(pic);
                   setIsPicEditMode(true);
+                  displayStore.isInEditMode(true);
                   e.preventDefault();
                 }}
-              />
-            </Tag>
-          )}
+              >
+                <LinkOutlined />
+              &nbsp;&nbsp;
+                {returnCropedText(pic, maxTagWidth)}
+                <EditOutlined
+                  onClick={(e) => {
+                    setEditInputValue(pic);
+                    setIsPicEditMode(true);
+                    displayStore.isInEditMode(true);
+                    e.preventDefault();
+                  }}
+                />
+              </Tag>
+            )}
         </div>
       )}
     </div>

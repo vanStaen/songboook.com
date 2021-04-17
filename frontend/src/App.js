@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 
 import AddForm from "./component/AddForm/AddForm";
@@ -18,24 +18,6 @@ const App = observer(() => {
   const [searchValue, setSearchValue] = useState(null);
   const [newSongAdded, setNewSongAdded] = useState(false);
   const [randomPageId, setRandomPageId] = useState(null);
-
-  const keyDownHandler = useCallback((event) => {
-    event.preventDefault();
-    const keyPressed = event.key.toLowerCase();
-    if (keyPressed === "enter") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", keyDownHandler);
-    return () => {
-      document.removeEventListener("keydown", keyDownHandler);
-    };
-  }, [keyDownHandler]);
 
   useEffect(() => {
     authStore.refreshToken &&

@@ -8,6 +8,7 @@ export class DisplayStore {
     onlyBookmarked = false;
     onlyFlagKnown = 0; // 0: all, 1: only unknown, 2: only known
     displayedAsList = false;
+    isInEditMode = false;
     showPage = "book";
 
     constructor() {
@@ -26,7 +27,8 @@ export class DisplayStore {
             setShowPage: action,
             displayedAsList: observable,
             setDisplayedAsList: action,
-
+            isInEditMode: observable,
+            setIsInEditMode: action,
         });
     }
 
@@ -80,6 +82,10 @@ export class DisplayStore {
 
     setDisplayedAsList = (displayedAsList) => {
         this.displayedAsList = displayedAsList;
+    };
+
+    setIsInEditMode = (isInEditMode) => {
+        this.isInEditMode = isInEditMode;
     };
 
 
