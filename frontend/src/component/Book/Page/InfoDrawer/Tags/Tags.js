@@ -52,18 +52,18 @@ const Tags = observer((props) => {
         patchTagsInDB(tags);
         setEditInputIndex(-1)
         setEditInputValue('');
-        displayStore.isInEditMode(false);
         setInputValue('');
         setInputVisible(false);
         props.setTagsMissing(false);
+        displayStore.setIsInEditMode(false);
     };
 
     const handleEditInputCancel = e => {
         setEditInputIndex(-1)
         setEditInputValue('');
-        displayStore.isInEditMode(false);
         setInputValue('');
         setInputVisible(false);
+        displayStore.setIsInEditMode(false);
     };
 
     const handleEditInputChange = e => {
@@ -89,12 +89,12 @@ const Tags = observer((props) => {
             setTags(newtags);
         }
         setInputValue('');
-        displayStore.isInEditMode(false);
         setInputVisible(false);
         setEditInputIndex(-1)
         setEditInputValue('');
         props.setTagsMissing(false);
         props.setPageHasChanged("true");
+        displayStore.setIsInEditMode(false);
     };
 
     const handleInputCancel = () => {
@@ -102,12 +102,12 @@ const Tags = observer((props) => {
         setInputVisible(false);
         setEditInputIndex(-1)
         setEditInputValue('');
-        displayStore.isInEditMode(false);
+        displayStore.setIsInEditMode(false);
     };
 
     const showInput = () => {
+        displayStore.setIsInEditMode(true);
         setInputVisible(true);
-        displayStore.isInEditMode(true);
         setEditInputIndex(-1)
         setEditInputValue('');
     };
@@ -138,6 +138,7 @@ const Tags = observer((props) => {
             >
                 <span
                     onDoubleClick={e => {
+                        displayStore.setIsInEditMode(true);
                         setEditInputIndex(index);
                         setEditInputValue(tag);
                         e.preventDefault();

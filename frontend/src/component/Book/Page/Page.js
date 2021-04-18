@@ -1,4 +1,7 @@
 import { React, useState, useEffect } from "react";
+import { observer } from "mobx-react";
+
+import { displayStore } from '../../../stores/displayStore'
 import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
@@ -9,7 +12,7 @@ import Title from './Title/Title';
 import '../../.././fonts/Dymo.ttf';
 import './Page.css'
 
-const Page = (props) => {
+const Page = observer((props) => {
     const [isBookmarked, setIsBookmarked] = useState(props.page.bookmark);
     const [isPiano, setIsPiano] = useState(props.page.piano);
     const [isBass, setIsBass] = useState(props.page.bass);
@@ -54,61 +57,70 @@ const Page = (props) => {
     const hasHalo = props.randomPageId !== null;
     const isHalo = props.randomPageId === props.page.id;
     const classNamePage = hasHalo ? (isHalo ? "Page__main Page__halo Page__main__white" : "Page__main Page__main__transparent") : "Page__main Page__main__white";
+    const classNameList = hasHalo ? (isHalo ? "List__main Page__halo Page__main__white" : "List__main Page__main__transparent") : "List__main Page__main__white";
 
     return (
-        <div className={classNamePage} key={props.page.id}>
-            { (missing || hasHalo) &&
-                (<div className="Page__notab" onClick={handlerOpenDrawer}>
-                    <div className={hasHalo ? "Page__notab-text Page__notabnotselected-textcolor" : "Page__notab-text"}>{textForMissing()}</div>
-                    { missing && (<div className="Page__notab Page__notab-background"></div>)}
-                    { hasHalo && !isHalo && (<div className="Page__notab Page__notselected-background"></div>)}
-                </div>)}
+        !displayStore.displayedAsList ?
+            <div className={classNamePage} key={props.page.id}>
+                {(missing || hasHalo) &&
+                    (<div className="Page__notab" onClick={handlerOpenDrawer}>
+                        <div className={hasHalo ? "Page__notab-text Page__notabnotselected-textcolor" : "Page__notab-text"}>{textForMissing()}</div>
+                        { missing && (<div className="Page__notab Page__notab-background"></div>)}
+                        { hasHalo && !isHalo && (<div className="Page__notab Page__notselected-background"></div>)}
+                    </div>)}
 
-            <div className="Page__opendrawer" onClick={handlerOpenDrawer}>
-                <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
-            </div>
+                <div className="Page__opendrawer" onClick={handlerOpenDrawer}>
+                    <img src={props.page.picurl} alt="pic_missing" className="Page__artwork"></img>
+                </div>
 
-            <Bookmark
-                id={props.page.id}
-                setIsBookmarked={setIsBookmarked}
-                isBookmarked={isBookmarked}
-                setPageHasChanged={props.setPageHasChanged}
-            />
-
-            <div className="Page__icons">
-                <Piano isPiano={isPiano} />
-                <Bass isBass={isBass} />
-            </div>
-
-            <div className="Page__actionicon">
-                <CheckAdd
-                    isVisitor={false}
-                    checked={props.page.checked}
+                <Bookmark
                     id={props.page.id}
+                    setIsBookmarked={setIsBookmarked}
+                    isBookmarked={isBookmarked}
                     setPageHasChanged={props.setPageHasChanged}
                 />
+
+                <div className="Page__icons">
+                    <Piano isPiano={isPiano} />
+                    <Bass isBass={isBass} />
+                </div>
+
+                <div className="Page__actionicon">
+                    <CheckAdd
+                        isVisitor={false}
+                        checked={props.page.checked}
+                        id={props.page.id}
+                        setPageHasChanged={props.setPageHasChanged}
+                    />
+                </div>
+
+                <Title
+                    title={props.page.title}
+                    id={props.page.id}
+                />
+
+                <InfoDrawer
+                    page={props.page}
+                    setDrawerVisible={setDrawerVisible}
+                    drawerVisible={drawerVisible}
+                    setTabsMissing={setTabsMissing}
+                    setTagsMissing={setTagsMissing}
+                    setVideoMissing={setVideoMissing}
+                    setPicMissing={setPicMissing}
+                    setIsPiano={setIsPiano}
+                    setIsBass={setIsBass}
+                    setPageHasChanged={props.setPageHasChanged}
+                />
+
             </div>
-
-            <Title
-                title={props.page.title}
-                id={props.page.id}
-            />
-
-            <InfoDrawer
-                page={props.page}
-                setDrawerVisible={setDrawerVisible}
-                drawerVisible={drawerVisible}
-                setTabsMissing={setTabsMissing}
-                setTagsMissing={setTagsMissing}
-                setVideoMissing={setVideoMissing}
-                setPicMissing={setPicMissing}
-                setIsPiano={setIsPiano}
-                setIsBass={setIsBass}
-                setPageHasChanged={props.setPageHasChanged}
-            />
-
-        </div>
-    );
-}
+            :
+            <div className={classNameList}
+                style={{ width: `calc(${window.innerWidth}px - 200px)` }}>
+                <Title
+                    title={props.page.title}
+                    id={props.page.id}
+                />
+            </div>)
+});
 
 export default Page;

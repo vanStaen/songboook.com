@@ -53,8 +53,8 @@ const Book = observer((props) => {
 
 
   const keyDownHandler = useCallback((event) => {
-    event.preventDefault();
     if (!displayStore.isInEditMode) {
+      event.preventDefault();
       const top = window.pageYOffset || document.documentElement.scrollTop;
       const movingInPx = 390;
       const keyPressed = event.key.toLowerCase();

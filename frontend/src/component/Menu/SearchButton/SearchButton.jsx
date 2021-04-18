@@ -4,6 +4,8 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 import { Input } from "antd";
 
+import { displayStore } from '../../../stores/displayStore';
+
 import "./SearchButton.css";
 
 export const SearchButton = observer((props) => {
@@ -49,6 +51,8 @@ export const SearchButton = observer((props) => {
               defaultValue={props.searchValue}
               onChange={onSearch}
               onPressEnter={onSearch}
+              onFocus={() => displayStore.setIsInEditMode(true)}
+              onBlur={() => displayStore.setIsInEditMode(false)}
               className="SearchButton__input"
             />
           </div>

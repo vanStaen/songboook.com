@@ -14,11 +14,11 @@
 }
 
 .title__input {
-  position: fixed;
-  bottom: 8px;
-  left: 8px;
-  font-family: 'Dymo', sans-serif;
-  font-size: 30px;
+  position: fixed !important;
+  bottom: 8px !important;
+  left: 8px !important;
+  font-family: 'Dymo', sans-serif !important;
+  font-size: 30px !important;
   height: 30px;
-  width: 285px;
+  width: 275px;
 }

@@ -42,21 +42,20 @@ const Title = observer((props) => {
 
     const handleEditCancel = () => {
         setIsEditmode(false);
-        displayStore.isInEditMode(false);
+        displayStore.setIsInEditMode(false);
         setEditInputValue(props.title.replace('-', '/'));
-        console.log('cancel');
     };
 
     const handleEditConfirm = () => {
         patchTitleInDB(editInputValue.replace('/', '-'))
         setTitle(editInputValue.replace(/ /g, '').length > 23 ? `${editInputValue.replace('-', '/').replace(/ /g, '').slice(0, 23)}...` : editInputValue.replace('-', '/').replace(/ /g, ''))
         setIsEditmode(false);
-        displayStore.isInEditMode(false);
+        displayStore.setIsInEditMode(false);
     };
 
     const handleEditMode = () => {
         setIsEditmode(true)
-        displayStore.isInEditMode(true);
+        displayStore.setIsInEditMode(true);
     }
 
     return (

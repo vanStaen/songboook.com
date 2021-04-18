@@ -52,7 +52,7 @@ const Extras = observer((props) => {
     const handleEditCancel = () => {
         isArtistEditMode && setIsArtistEditMode(false);
         isSongEditMode && setIsSongEditMode(false);
-        displayStore.isInEditMode(false);
+        displayStore.setIsInEditMode(false);
         setEditInputValue('');
     }
     const handleEditConfirm = () => {
@@ -65,7 +65,7 @@ const Extras = observer((props) => {
             setArtist(editInputValue);
             props.setArtist(editInputValue);
             setIsArtistEditMode(false);
-            displayStore.isInEditMode(false);
+            displayStore.setIsInEditMode(false);
         }
         else if (isSongEditMode) {
             if (editInputValue.length > 0) {
@@ -76,7 +76,7 @@ const Extras = observer((props) => {
             setSong(editInputValue);
             props.setSong(editInputValue);
             setIsSongEditMode(false);
-            displayStore.isInEditMode(false);
+            displayStore.setIsInEditMode(false);
         };
         setEditInputValue('');
         props.setPageHasChanged("true");
@@ -171,7 +171,7 @@ const Extras = observer((props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(artist);
                             setIsArtistEditMode(true);
-                            displayStore.isInEditMode(true);
+                            displayStore.setIsInEditMode(true);
                             setIsSongEditMode(false);
                             e.preventDefault();
                         }} />
@@ -200,7 +200,7 @@ const Extras = observer((props) => {
                         <EditOutlined onClick={e => {
                             setEditInputValue(song)
                             setIsSongEditMode(true);
-                            displayStore.isInEditMode(true);
+                            displayStore.setIsInEditMode(true);
                             setIsArtistEditMode(false);
                             e.preventDefault();
                         }} />

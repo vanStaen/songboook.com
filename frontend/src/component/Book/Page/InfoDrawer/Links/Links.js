@@ -53,7 +53,7 @@ const Links = observer((props) => {
     isTabsEditMode && setIsTabsEditMode(false);
     isVideoEditMode && setIsVideoEditMode(false);
     isPicEditMode && setIsPicEditMode(false);
-    displayStore.isInEditMode(false);
+    displayStore.setIsInEditMode(false);
     setEditInputValue("");
   };
 
@@ -91,7 +91,7 @@ const Links = observer((props) => {
     }
     setEditInputValue("");
     props.setPageHasChanged("true");
-    displayStore.isInEditMode(false);
+    displayStore.setIsInEditMode(false);
   };
 
   const clickLinkHandler = (url) => {
@@ -154,7 +154,7 @@ const Links = observer((props) => {
                     onClick={(e) => {
                       setEditInputValue(tabs);
                       setIsTabsEditMode(true);
-                      displayStore.isInEditMode(true);
+                      displayStore.setIsInEditMode(true);
                       e.preventDefault();
                     }}
                   />
@@ -189,7 +189,7 @@ const Links = observer((props) => {
                     onClick={(e) => {
                       setEditInputValue(video);
                       setIsVideoEditMode(true);
-                      displayStore.isInEditMode(true);
+                      displayStore.setIsInEditMode(true);
                       e.preventDefault();
                     }}
                   />
@@ -221,7 +221,7 @@ const Links = observer((props) => {
                 onDoubleClick={(e) => {
                   setEditInputValue(pic);
                   setIsPicEditMode(true);
-                  displayStore.isInEditMode(true);
+                  displayStore.setIsInEditMode(true);
                   e.preventDefault();
                 }}
               >
@@ -232,7 +232,7 @@ const Links = observer((props) => {
                   onClick={(e) => {
                     setEditInputValue(pic);
                     setIsPicEditMode(true);
-                    displayStore.isInEditMode(true);
+                    displayStore.setIsInEditMode(true);
                     e.preventDefault();
                   }}
                 />
