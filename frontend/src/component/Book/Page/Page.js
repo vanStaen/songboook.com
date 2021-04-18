@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { observer } from "mobx-react";
 
 import { displayStore } from '../../../stores/displayStore'
+
 import InfoDrawer from './InfoDrawer/InfoDrawer';
 import Piano from './Piano/Piano';
 import Bass from './Bass/Bass';
@@ -26,6 +27,7 @@ const Page = observer((props) => {
     useEffect(() => {
         setMissing((tabsMissing || tagsMissing || videoMissing || picMissing) ? true : false);
     }, [tabsMissing, tagsMissing, videoMissing, picMissing])
+
 
     const handlerOpenDrawer = () => {
         props.setRandomPageId(null);
@@ -115,7 +117,7 @@ const Page = observer((props) => {
             </div>
             :
             <div className={classNameList}
-                style={{ width: `calc(${window.innerWidth}px - 200px)` }}>
+                style={{ width: displayStore.sizeListview }}>
                 <Title
                     title={props.page.title}
                     id={props.page.id}

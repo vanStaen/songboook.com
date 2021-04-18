@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable, ObservableSet } from "mobx";
 
 export class DisplayStore {
 
@@ -9,6 +9,7 @@ export class DisplayStore {
     onlyFlagKnown = 0; // 0: all, 1: only unknown, 2: only known
     displayedAsList = false;
     isInEditMode = false;
+    sizeListview = 0;
     showPage = "book";
 
     constructor() {
@@ -29,6 +30,8 @@ export class DisplayStore {
             setDisplayedAsList: action,
             isInEditMode: observable,
             setIsInEditMode: action,
+            sizeListview: observable,
+            setSizeListview: action,
         });
     }
 
@@ -87,6 +90,11 @@ export class DisplayStore {
     setIsInEditMode = (isInEditMode) => {
         this.isInEditMode = isInEditMode;
     };
+
+    setSizeListview = (sizeListview) => {
+        this.sizeListview = sizeListview;
+    };
+
 
 
 }

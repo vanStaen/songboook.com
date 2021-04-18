@@ -43,7 +43,7 @@ const Book = observer((props) => {
     return () => {
       window.removeEventListener("resize", calculatePositionHeader);
     };
-  }, []);
+  }, [displayStore.displayedAsList]);
 
   useEffect(() => {
     loadPages();
@@ -221,18 +221,23 @@ const Book = observer((props) => {
   };
 
   const calculatePositionHeader = () => {
-    const widthOfAPageInPixel = 362;
-    const marginLeftOfAPageInPixel = 15;
-    const widthOfBookInPixel = document.getElementById("bookContainer")
-      .clientWidth;
-    const pagePerRow = Math.floor(
-      (widthOfBookInPixel - 90) / widthOfAPageInPixel
-    );
-    const positionFromLeft =
-      (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
-      marginLeftOfAPageInPixel +
-      10;
-    setPositionHeader(positionFromLeft);
+    if (displayStore.displayedAsList) {
+      displayStore.setSizeListview(window.innerWidth - 200);
+      setPositionHeader(80);
+    } else {
+      const widthOfAPageInPixel = 362;
+      const marginLeftOfAPageInPixel = 15;
+      const widthOfBookInPixel = document.getElementById("bookContainer")
+        .clientWidth;
+      const pagePerRow = Math.floor(
+        (widthOfBookInPixel - 90) / widthOfAPageInPixel
+      );
+      const positionFromLeft =
+        (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
+        marginLeftOfAPageInPixel +
+        10;
+      setPositionHeader(positionFromLeft);
+    }
   };
 
   return (
