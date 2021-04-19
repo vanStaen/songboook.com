@@ -45,6 +45,11 @@ const Book = observer((props) => {
     };
   }, []);
 
+
+  useEffect(() => {
+    displayStore.displayedAsList && calculatePositionHeader();
+  }, [displayStore.displayedAsList]);
+
   useEffect(() => {
     loadPages();
     setPageHasChanged(false);

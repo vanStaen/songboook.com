@@ -9,7 +9,7 @@ export class DisplayStore {
     onlyFlagKnown = 0; // 0: all, 1: only unknown, 2: only known
     displayedAsList = false;
     isInEditMode = false;
-    sizeListview = 0;
+    sizeListview = window.innerWidth - 200;
     showPage = "book";
 
     constructor() {

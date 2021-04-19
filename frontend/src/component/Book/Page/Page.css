@@ -121,12 +121,36 @@
 */
 
 .List__main {
-    height: 50px;
+    display: inline-flex;
+    height: 70px;
     margin: 0px 15px 20px 15px;
     font-size: 17px;
     transform-style: preserve-3d;
     text-transform: capitalize;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 10px 0px 10px;
     border: 1px solid #555;
     box-shadow: 5px 5px 10px #6E0F1C;
+}
+
+.List__left {
+    font-family: 'Dymo', sans-serif;
+    font-size: 29px;
+    line-height: 80%;
+    text-align: left;
+    margin: 10px;
+}
+
+.List__right {
+    border: 1px solid green;
+    margin: 10px;
+}
+
+.List__artworkContainer {
+    margin:10px 0px;
+    cursor: pointer;
+}
+
+.List__artwork {
+    height: 50px;
+    width: 50px;
 }
