@@ -29,11 +29,10 @@ app.use((req, res, next) => {
 // Set up for React
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get('/.well-known/acme-challenge/:content', function (req, res) {
-  res.send('lD8K9JPfdfZLp9XIClHdI-tyB6LxzJf9UAkUUVWLIWE.Jr5r8DGVQ4AD-PDm8eKRyzFImCTHpPmykZ4DY_41uOk')
-})
-
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html")); });
+app.get('/.well-known/acme-challenge/:content', function (req, res) {
+  res.send('k2HJjcoGkBYNQgZ4U6TpevjSzz6tOSKyn6f7RSdYE0M.Jr5r8DGVQ4AD-PDm8eKRyzFImCTHpPmykZ4DY_41uOk')
+})
 
 // Router to API endpoints
 app.use("/songbook", require("./api/songbook"));
