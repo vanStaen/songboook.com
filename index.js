@@ -28,6 +28,11 @@ app.use((req, res, next) => {
 
 // Set up for React
 app.use(express.static(path.join(__dirname, "build")));
+
+app.get('/.well-known/acme-challenge/:content', function (req, res) {
+  res.send('1OcjwMb5cU60nOeKjmjhWD-55FsktBVvmFY804XiGlQ.Jr5r8DGVQ4AD-PDm8eKRyzFImCTHpPmykZ4DY_41uOk')
+})
+
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html")); });
 
 // Router to API endpoints
