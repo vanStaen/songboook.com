@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/vanStaen/songboook.com#readme",
   "dependencies": {
-    "antd": "^4.9.1",
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
     "cheerio-select": "^1.4.0",

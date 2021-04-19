@@ -144,6 +144,7 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
+            // eslint-disable-next-line
             <a onClick={() => clickLinkHandler(tabs)} >
               <Tag className="links__tag" key="tabs">
                 <LinkOutlined />
@@ -179,6 +180,7 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
+            // eslint-disable-next-line
             <a onClick={() => clickLinkHandler(video)}>
               <Tag className="links__tag" key="video">
                 <LinkOutlined />

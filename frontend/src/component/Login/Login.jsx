@@ -29,7 +29,7 @@ export const Login = () => {
     const email = values.email;
     const password = values.password;
     const remember = values.remember;
-    const username = values.username;
+    //const username = values.username;
 
     if (!isLogin) {
       // TODO! Create a user on auth service + in Songboook
@@ -139,8 +139,8 @@ export const Login = () => {
             ) : isLogin ? (
               "Log in"
             ) : (
-              "Create account"
-            )}
+                  "Create account"
+                )}
           </Button>
           <div className="login__switchmode">
             Or{" "}

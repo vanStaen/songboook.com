@@ -12,8 +12,6 @@ const CheckAdd = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
   //const isVisitor = props.isVisitor;
 
-  const patchCheck = (value) => {};
-
   const handlerMarkAsChecked = (value) => {
     setIsLoading(true);
     async function patchEntry(value) {
@@ -46,23 +44,23 @@ const CheckAdd = observer((props) => {
       {isLoading ? (
         <LoadingOutlined className="CheckAdd__ico clickable grey_check" />
       ) : (
-        authStore.token &&
-        (isChecked ? (
-          <Tooltip placement="top" title="Click to mark this song as unknown.">
-            <CheckOutlined
-              onClick={() => handlerMarkAsChecked(false)}
-              className="CheckAdd__ico clickable"
-            />
-          </Tooltip>
-        ) : (
-          <Tooltip placement="top" title="Click to mark this song as known.">
-            <CheckOutlined
-              onClick={() => handlerMarkAsChecked(true)}
-              className="CheckAdd__ico clickable grey_check"
-            />
-          </Tooltip>
-        ))
-      )}
+          authStore.token &&
+          (isChecked ? (
+            <Tooltip placement="top" title="Click to mark this song as unknown.">
+              <CheckOutlined
+                onClick={() => handlerMarkAsChecked(false)}
+                className="CheckAdd__ico clickable"
+              />
+            </Tooltip>
+          ) : (
+              <Tooltip placement="top" title="Click to mark this song as known.">
+                <CheckOutlined
+                  onClick={() => handlerMarkAsChecked(true)}
+                  className="CheckAdd__ico clickable grey_check"
+                />
+              </Tooltip>
+            ))
+        )}
     </div>
   );
 });

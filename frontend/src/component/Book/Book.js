@@ -43,7 +43,7 @@ const Book = observer((props) => {
     return () => {
       window.removeEventListener("resize", calculatePositionHeader);
     };
-  }, [displayStore.displayedAsList]);
+  }, []);
 
   useEffect(() => {
     loadPages();
