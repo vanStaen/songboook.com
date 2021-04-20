@@ -36,7 +36,10 @@
     "jsonwebtoken": "^8.5.1",
     "path": "^0.12.7",
     "pg": "^8.5.1",
-    "react-youtube": "^7.13.0"
+    "react-youtube": "^7.13.0",
+    "bcryptjs": "^2.4.3",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.8"
   },
   "devDependencies": {
     "lint": "^0.7.0",

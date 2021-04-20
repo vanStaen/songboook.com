@@ -33,7 +33,7 @@ export class AuthStore {
     this.token = null;
     this.refreshToken = null;
     // Delete token from store
-    fetch(process.env.REACT_APP_AUTH_URL + "/logout", {
+    fetch(process.env.REACT_APP_API_URL + "/logout", {
       method: "DELETE",
       body: JSON.stringify(deleteRequest),
       headers: {
@@ -80,7 +80,7 @@ export class AuthStore {
     // Refresh token if token missing
     else if (this.refreshToken) {
       let requestBody = { refreshToken: this.refreshToken };
-      return fetch(process.env.REACT_APP_AUTH_URL + "/token", {
+      return fetch(process.env.REACT_APP_API_URL + "/token", {
         method: "POST",
         body: JSON.stringify(requestBody),
         headers: {

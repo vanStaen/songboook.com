@@ -2,7 +2,7 @@ export const postFetchToken = async (email, password) => {
 
   let requestBody = { email: email, password: password };
 
-  const response = await fetch(process.env.REACT_APP_AUTH_URL + "/login", {
+  const response = await fetch(process.env.REACT_APP_API_URL + "/login", {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {
