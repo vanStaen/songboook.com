@@ -5,7 +5,7 @@
 }
 
 .App-header {
-  background-color: #AB6964; /*924B55*/
+  background-color: #924B55; /* AB6964 */
   min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;
