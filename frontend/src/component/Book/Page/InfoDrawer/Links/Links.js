@@ -144,8 +144,7 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
-            // eslint-disable-next-line
-            <a onClick={() => clickLinkHandler(tabs)} >
+            <a onClick={() => clickLinkHandler(tabs)} > {/* eslint-disable-line jsx-a11y/anchor-is-valid */}
               <Tag className="links__tag" key="tabs">
                 <LinkOutlined />
               &nbsp;&nbsp;
@@ -180,8 +179,7 @@ const Links = observer((props) => {
             />
           </div>
         ) : (
-            // eslint-disable-next-line
-            <a onClick={() => clickLinkHandler(video)}>
+            <a onClick={() => clickLinkHandler(video)}> {/* eslint-disable-line jsx-a11y/anchor-is-valid */}
               <Tag className="links__tag" key="video">
                 <LinkOutlined />
               &nbsp;&nbsp;
