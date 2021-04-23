@@ -29,7 +29,7 @@ const Bookmark = observer((props) => {
         }
         ).catch(error => {
             authStore.logout();
-            notification.error({ description: `Unauthorized! Please login.`, });
+            notification.error({ description: error.message, });
             console.log("error", error.message);
         });
     }
