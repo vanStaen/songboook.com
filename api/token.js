@@ -47,7 +47,8 @@ router.post("/", async (req, res) => {
     userId: isTokenValid.userId,
     email: isTokenValid.email,
   });
-  const savedToken = await newToken.save();
+  
+  await newToken.save();
 
   /*
   console.log('__________')

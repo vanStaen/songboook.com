@@ -60,7 +60,7 @@ export class AuthStore {
       });
       let dateNow = new Date();
       if (
-        decodedRefreshToken.payload.exp < Math.floor(dateNow.getTime() / 1000)
+        (decodedRefreshToken.payload.exp * 1000) < dateNow.getTime()
       ) {
         this.logout();
       } else {
