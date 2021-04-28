@@ -166,11 +166,11 @@ const Page = observer((props) => {
           <div className="List__left">
             <div onClick={handlerOpenDrawer}>
               <b>{props.page.artist}</b> - {props.page.song}
-              <div className="List__leftInstr">
-                {isBass && <Bass isBass={isBass} />}
-                {isPiano && <Piano isPiano={isPiano} />}
-              </div>
             </div>
+          </div>
+          <div className="List__leftInstr">
+            {isBass && <Bass isBass={isBass} />}
+            {isPiano && <Piano isPiano={isPiano} />}
           </div>
           <div className="List__check">
             <CheckAdd
