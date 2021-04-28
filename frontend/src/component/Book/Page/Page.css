@@ -108,49 +108,44 @@
     color: #999;
 }
 
-/*
-.Page__title_alternative {
-    background: black;
-    color:white;
-    display:inline;
-    font-family: courier;
-    padding:3px;
-    line-height:2em;
-    text-transform: uppercase;
-} 
-*/
-
 .List__main {
     display: inline-flex;
-    height: 70px;
-    margin: 0px 15px 20px 15px;
+    margin: 0px 0px 12px 0px;
     font-size: 17px;
     transform-style: preserve-3d;
     text-transform: capitalize;
-    padding: 0px 10px 0px 10px;
-    border: 1px solid #555;
+    padding: 0px 0px 0px 0px;
     box-shadow: 5px 5px 10px #6E0F1C;
 }
 
-.List__left {
-    font-family: 'Dymo', sans-serif;
-    font-size: 29px;
-    line-height: 80%;
-    text-align: left;
-    margin: 10px;
+.List__main:hover {
+    background-color:  rgba(110, 15, 28, 1);
+    color: #fff;
+    cursor: pointer;
 }
 
-.List__right {
-    border: 1px solid green;
+.List__left {
+    text-align: left;
+    padding-top: 1px;
     margin: 10px;
+    width: 100%;
+}
+
+.List__check { 
+    margin: 10px 20px 10px 5px;
 }
 
 .List__artworkContainer {
-    margin:10px 0px;
     cursor: pointer;
 }
 
 .List__artwork {
     height: 50px;
-    width: 50px;
+    width: 100;
+}
+
+.List__leftInstr {
+    display: inline-block;
+    margin-left: 10px;
+    opacity: .75;
 }

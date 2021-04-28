@@ -21,11 +21,6 @@ module.exports = (req, res, next) => {
       console.log("Error", err);
       return next();
     }
-    if (!decodedToken) {
-      console.log("Decoded Token: ", decodedToken);
-      req.isAuth = false;
-      return next();
-    }
       req.isAuth = true;
     req.userId = decodedToken.userId;
     req.email = decodedToken.email;
