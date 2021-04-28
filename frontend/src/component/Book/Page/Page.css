@@ -117,7 +117,7 @@
     text-transform: capitalize;
     padding: 0px 0px 0px 0px;
     box-shadow: 2px 2px 5px #6E0F1C;
-    background-color:   rgba(255, 255, 255, .66);
+    background-color:   rgba(255, 255, 255, 1);
     color: #000;
 }
 
@@ -136,6 +136,10 @@
 
 .List__check { 
     margin: 2px 10px 0px 0px;
+}
+
+.List__bookmark { 
+    margin: 0px 0px 0px 8px;
 }
 
 .List__artworkContainer {

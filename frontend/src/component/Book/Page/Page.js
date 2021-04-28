@@ -172,6 +172,15 @@ const Page = observer((props) => {
             {isBass && <Bass isBass={isBass} />}
             {isPiano && <Piano isPiano={isPiano} />}
           </div>
+          <div className="List__bookmark">
+          <Bookmark
+            id={props.page.id}
+            setIsBookmarked={setIsBookmarked}
+            isBookmarked={isBookmarked}
+            setPageHasChanged={props.setPageHasChanged}
+            displayedAsList={true}
+          />
+          </div>
           <div className="List__check">
             <CheckAdd
               isVisitor={false}
