@@ -12,6 +12,7 @@ export const Random = (props) => {
 
   const handleRandomPick = async () => {
     setIsloading(true);
+    props.setSearchValue(null);
     let option = undefined;
     if (displayStore.onlyFlagKnown === 1) {
       option = false;

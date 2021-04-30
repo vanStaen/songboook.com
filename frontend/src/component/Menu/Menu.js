@@ -51,6 +51,7 @@ const Menu = observer((props) => {
             />
             <Random
               setRandomPageId={props.setRandomPageId}
+              setSearchValue={props.setSearchValue}
             />
           </>
         )}
