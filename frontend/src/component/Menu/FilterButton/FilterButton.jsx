@@ -55,11 +55,11 @@ export const FilterButton = observer((props) => {
 
   const handlerFlagKnown = () => {
     if (displayStore.onlyFlagKnown === 0) {
-      displayStore.setOnlyFlagKnown(1);
-    } else if (displayStore.onlyFlagKnown === 1) {
       displayStore.setOnlyFlagKnown(2);
-    } else if (displayStore.onlyFlagKnown === 2) {
+    } else if (displayStore.onlyFlagKnown === 1) {
       displayStore.setOnlyFlagKnown(0);
+    } else if (displayStore.onlyFlagKnown === 2) {
+      displayStore.setOnlyFlagKnown(1);
     }
   };
 
@@ -85,13 +85,13 @@ export const FilterButton = observer((props) => {
   useEffect(() => {
     props.showFilters
       ? setTimeout(function () {
-        document.getElementById(
-          "FilterButton__actionContainer"
-        ).style.display = "inline-block";
-      }, 200)
+          document.getElementById(
+            "FilterButton__actionContainer"
+          ).style.display = "inline-block";
+        }, 200)
       : (document.getElementById(
-        "FilterButton__actionContainer"
-      ).style.display = "none");
+          "FilterButton__actionContainer"
+        ).style.display = "none");
   }, [props.showFilters]);
 
   return (
@@ -115,8 +115,13 @@ export const FilterButton = observer((props) => {
         }
       >
         {!props.showFilters &&
-          (displayStore.pianoOnly || displayStore.bassOnly || displayStore.guitarOnly || displayStore.onlyBookmarked || displayStore.onlyFlagKnown !== 0) &&
-          <div className="FilterButton__badge"></div>}
+          (displayStore.pianoOnly ||
+            displayStore.bassOnly ||
+            displayStore.guitarOnly ||
+            displayStore.onlyBookmarked ||
+            displayStore.onlyFlagKnown !== 0) && (
+            <div className="FilterButton__badge"></div>
+          )}
         <div
           className="FilterButton__actionContainer"
           id="FilterButton__actionContainer"
@@ -221,19 +226,23 @@ export const FilterButton = observer((props) => {
           |
           <div
             className="FilterButton__action"
-            onClick={() => displayStore.setDisplayedAsList(!displayStore.displayedAsList)}
+            onClick={() =>
+              displayStore.setDisplayedAsList(!displayStore.displayedAsList)
+            }
           >
             <Tooltip
               placement="bottom"
               title={
-                displayStore.displayedAsList ? "Switch to grid view" : "Switch to list view"
+                displayStore.displayedAsList
+                  ? "Switch to grid view"
+                  : "Switch to list view"
               }
             >
               {displayStore.displayedAsList ? (
                 <BarsOutlined className="icon__view" />
               ) : (
-                  <AppstoreOutlined className="icon__view" />
-                )}
+                <AppstoreOutlined className="icon__view" />
+              )}
             </Tooltip>
           </div>
           |
