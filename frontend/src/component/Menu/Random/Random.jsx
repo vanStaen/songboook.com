@@ -13,6 +13,10 @@ export const Random = (props) => {
   const handleRandomPick = async () => {
     setIsloading(true);
     props.setSearchValue(null);
+    displayStore.setBassOnly(false);
+    displayStore.setPianoOnly(false);
+    displayStore.setGuitarOnly(false);
+    displayStore.setOnlyBookmarked(false);
     let option = undefined;
     if (displayStore.onlyFlagKnown === 1) {
       option = false;
