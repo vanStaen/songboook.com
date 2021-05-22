@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import jsonwebtoken from "jsonwebtoken";
+import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
 
 import { displayStore } from "./displayStore";
 
@@ -55,26 +55,29 @@ export class AuthStore {
     const refreshToken = localStorage.getItem("refreshToken");
     // Check if refreshtoken is expired
     if (refreshToken) {
-      let decodedRefreshToken = jsonwebtoken.decode(refreshToken, {
-        complete: true,
-      });
-      let dateNow = new Date();
-      if (
-        decodedRefreshToken.payload.exp < Math.floor(dateNow.getTime() / 1000)
-      ) {
-        this.logout();
-      } else {
+      try {
+        jsonwebtoken.decode(refreshToken, { complete: true });
         this.refreshToken = refreshToken;
+      } catch (err) {
+        if (err instanceof TokenExpiredError) {
+          console.log("refreshtoken is expired", err);
+          this.logout();
+        } else {
+          console.log("unknown error:", err);
+        }
       }
     }
     // Check if token exist and/or is expired
-    if (this.token) {
-      let decodedToken = jsonwebtoken.decode(this.token, { complete: true });
-      let dateNow = new Date();
-      if (decodedToken.payload.exp < Math.floor(dateNow.getTime() / 1000)) {
-        this.token = null;
-      } else {
-        return this.token;
+    if (this.token !== null) {
+      try {
+        jsonwebtoken.decode(this.token, { complete: true });
+      } catch (err) {
+        if (err instanceof TokenExpiredError) {
+          console.log("token is expired", err);
+          this.logout();
+        } else {
+          console.log("unknown error:", err);
+        }
       }
     }
     // Refresh token if token missing

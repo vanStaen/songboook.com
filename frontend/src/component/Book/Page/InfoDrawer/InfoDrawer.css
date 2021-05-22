@@ -1,3 +1,5 @@
 .ant-drawer-content-wrapper {
-    transition: width .2s cubic-bezier(1, 0, 0, 1) !important;
+    transition: transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1), 
+    box-shadow 0.3s cubic-bezier(0.7, 0.3, 0.1, 1), 
+    width .2s cubic-bezier(1, 0, 0, 1) !important;
 }

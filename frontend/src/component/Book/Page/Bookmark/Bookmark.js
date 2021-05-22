@@ -29,7 +29,7 @@ const Bookmark = observer((props) => {
         }
         ).catch(error => {
             authStore.logout();
-            notification.error({ description: `Unauthorized! Please login.`, });
+            notification.error({ description: error.message, });
             console.log("error", error.message);
         });
     }
@@ -43,7 +43,7 @@ const Bookmark = observer((props) => {
     const bookmarked = props.isBookmarked;
 
     return (
-        <div className="bookmark" id="bookmark">
+        <div className={props.displayedAsList ? "bookmark__list" : "bookmark"} id="bookmark">
             {bookmarked ?
                 (<Tooltip placement="right" title="Delete the bookmark.">
                     <img

@@ -47,11 +47,14 @@ router.post("/", async (req, res) => {
     userId: isTokenValid.userId,
     email: isTokenValid.email,
   });
-  const savedToken = await newToken.save();
+  
+  await newToken.save();
 
+  /*
   console.log('__________')
   console.log('token:', accessToken)
   console.log('refreshToken:', newRefreshToken)
+  */
 
   // Return new tokens
   res.status(201).json({

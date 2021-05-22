@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Offer a list view of songboook 
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
   - [ ] Check for song already exist 
@@ -26,6 +25,7 @@
       - [ ] closing menu
       - [ ] unselecting random
 - [ ] Allow other users
+    - [ ] Auth service use PostGres
     - [ ] Implement user column in tables
     - [ ] Rework all api endpoints
     - [ ] Implement userStore (mobX)
@@ -82,3 +82,4 @@
 - [x] Store fetched lyrics
 - [x] CheckAdd -> after request + spinner
 - [x] Do not open 'null' Link 
+- [x] Offer a list view of songboook 

@@ -1,6 +1,7 @@
 # songboook
-or `what song can you play, again?`.
-List of song text, chords, tabs with links. PERN tech stack.
+or `what song can you play?`.
+List of song text, chords, tabs with links. 
+PERN tech stack.
 
 ## Redirection
 App available under https://www.songboook.com/

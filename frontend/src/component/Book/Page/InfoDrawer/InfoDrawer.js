@@ -82,6 +82,7 @@ const InfoDrawer = observer((props) => {
       }
       placement="right"
       closable={true}
+      className="InfoDrawer"
       onClose={handlerCloseDrawer}
       visible={props.drawerVisible}
       width={widthDrawer}
