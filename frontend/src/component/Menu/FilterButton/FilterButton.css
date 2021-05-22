@@ -2,22 +2,18 @@
 	float: right;
 	text-align: right;
 	height: 2.7em;
-	margin-left: .1em; 
+	margin-left: .1em;
 	margin-bottom: .8em;
 	padding-right: .5em;
 	padding-top: 0.22em;
 	border: 1px solid transparent;
-    color: rgba(255, 255, 255);
-	border-radius:50px;
+	color: rgba(255, 255, 255);
+	border-radius: 50px;
 	z-index: 10;
 	opacity: .75;
 	cursor: pointer;
 	background-color: rgba(255, 255, 255, .25);
-    transition: background-color .2s linear, 
-				color .2s linear,
-				width .2s linear,
-				opacity .2s linear,
-				border .2s linear;
+	transition: background-color .2s linear, color .2s linear, width .2s linear, opacity .2s linear, border .2s linear;
 }
 
 .FilterButton__float:hover {
@@ -25,7 +21,7 @@
 }
 
 .FilterButton__open {
-    color: rgba(0, 0, 0, .5);
+	color: rgba(0, 0, 0, .5);
 	background-color: rgba(255, 255, 255, .9);
 	border: 1px solid rgba(110, 15, 28, .2);
 	opacity: 1;
@@ -44,12 +40,12 @@
 }
 
 .FilterButton__actionContainer {
-	display: none;	
+	display: none;
 	padding-right: 0.5em;
 	padding-left: 0.5em;
 }
 
-.FilterButton__action{
+.FilterButton__action {
 	display: inline-block !important;
 	top: -10px;
 }
@@ -60,21 +56,21 @@
 }
 
 .green {
-    color: green;
+	color: green;
 }
 
 .red {
-    color: red;
+	color: red;
 }
 
 .inactive:hover {
-    opacity: 0.5;
-    filter: grayscale(0);
+	opacity: 0.5;
+	filter: grayscale(0);
 }
 
 .inactive {
-    opacity: 0.33;
-    filter: grayscale(1);
+	opacity: 0.33;
+	filter: grayscale(1);
 }
 
 .icon__piano {
@@ -110,7 +106,6 @@
 	border-radius: 5px;
 	background-color: #d32f2f;
 	border: 1px solid rgba(255, 255, 255, .75);
-	/*background-color: #d32f2f;
-	font-size: 5px;
+	/*font-size: 5px;
 	text-align: center;*/
 }
