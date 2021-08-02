@@ -1,26 +1,26 @@
 .Menu__top {
-    position: fixed;
-    width: 3em;
-    top: 2em;
-    right: 2em;
-    z-index: 1;
+  position: fixed;
+  width: 3em;
+  top: 2em;
+  right: 2em;
+  z-index: 1;
+}
+
+.Menu__bottom {
+  position: fixed;
+  width: 3em;
+  bottom: 2em;
+  right: 2em;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .Menu__top {
+    right: .5em;
+    top: .5em;
   }
-  
   .Menu__bottom {
-      position: fixed;
-      width: 3em;
-      bottom: 2em;
-      right: 2em;
-      z-index: 1;
-    }
-  
-  @media screen and (max-width: 768px) {
-      .Menu__top {
-          right: .5em;
-          top: .5em;
-      }
-      .Menu__bottom {
-          right: .5em;
-          bottom: .5em;
-      }
-    }
+    right: .5em;
+    bottom: .5em;
+  }
+}
