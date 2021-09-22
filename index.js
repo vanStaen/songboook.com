@@ -2,12 +2,17 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const isAuth = require("./middleware/is-auth");
+const redirectTraffic = require("./middleware/redirectTraffic");
 
 const PORT = process.env.PORT || 5002;
 require("dotenv/config");
 
 // Init Express
 const app = express();
+
+// Redirect trafic to root and https
+app.set("trust proxy", true);
+app.use(redirectTraffic);
 
 // Fix moongoose deprecation warning
 mongoose.set('useCreateIndex', true);
