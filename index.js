@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require(`cors`)
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieSession = require("./middleware/cookieSession");
@@ -57,9 +58,6 @@ app.use("/songbook", require("./api/songbook"));
 app.use("/lyrics", require("./api/lyrics"));
 app.use("/randomized", require("./api/randomized"));
 app.use("/dummy", require("./api/dummy"));
-app.use("/passport", require("./api/passport"));
-app.use("/token", require("./api/token"));
-
 
 // Connect to Mongo db
 mongoose.connect(

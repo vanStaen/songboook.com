@@ -1,4 +1,4 @@
-const Passport = require("../models/Passport");
+const Passport = require("../../models/Passport");
 const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 

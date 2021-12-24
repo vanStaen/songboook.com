@@ -25,7 +25,6 @@
     - [ ] Create User Table
 - [ ] Lyrics Size menu
 - [ ] Auto scroll drawer feature
-- [ ] Auto save db as Json (Cron job?)
 - [ ] User handling
     - [ ] Create user (using auth service)
     - [ ] Add user id to database (As author of songs)
@@ -34,6 +33,7 @@
 - [ ] Handle Archived (active=false, shows in search result, but not in book)
   - [ ] Archived song should not get picked by randomizer
   - [ ] show archived somehow disabled?  
+- [ ] User Journey (create, validate, login)
 
 ## Completed ✓
 
