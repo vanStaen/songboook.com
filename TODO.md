@@ -16,14 +16,6 @@
     - [ ] Search Feature 
       - [ ] show search terms in header
       - [ ] Filter reset option
-- [ ] use MobX everywhere
-  - [x] AuthStore
-  - [ ] UserStore
-  - [ ] DisplayStore
-    - [x] Save all display flag with mobX
-    - [ ] Behavior 
-      - [ ] closing menu
-      - [ ] unselecting random
 - [ ] Allow other users
     - [ ] Auth service use PostGres
     - [ ] Implement user column in tables
@@ -42,9 +34,6 @@
 - [ ] Handle Archived (active=false, shows in search result, but not in book)
   - [ ] Archived song should not get picked by randomizer
   - [ ] show archived somehow disabled?  
-- [ ] Check https encryption 
-    - [ ] Lets-encrypt (client for server) -> SSL
-    - [ ] Two keys exist Public/Privat (one for backend, one for client)
 
 ## Completed ✓
 
@@ -83,3 +72,4 @@
 - [x] CheckAdd -> after request + spinner
 - [x] Do not open 'null' Link 
 - [x] Offer a list view of songboook 
+- [x] MobX: AuthStore/UserStore/DisplayStore
