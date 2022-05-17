@@ -12,7 +12,6 @@ import { authStore } from "./stores/authStore";
 import { displayStore } from "./stores/displayStore";
 
 import "./App.css";
-import "./helpers/axiosInterceptor";
 
 const App = observer(() => {
   const [searchValue, setSearchValue] = useState(null);
@@ -20,33 +19,36 @@ const App = observer(() => {
   const [randomPageId, setRandomPageId] = useState(null);
 
   useEffect(() => {
-    authStore.refreshToken &&
-      authStore.login(authStore.getNewToken(), authStore.refreshToken);
+    authStore.checkAccess();
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <Menu
-          setRandomPageId={setRandomPageId}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+        {authStore.hasAccess ?
+          (<>
+            <Menu
+              setRandomPageId={setRandomPageId}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
 
-        {displayStore.showPage === "addsong" && (
-          <AddForm setNewSongAdded={setNewSongAdded} />
-        )}
-        {displayStore.showPage === "login" && <Login />}
-        {displayStore.showPage === "profil" && <Profil />}
-        {displayStore.showPage === "book" && (
-          <Book
-            searchValue={searchValue}
-            newSongAdded={newSongAdded}
-            setNewSongAdded={setNewSongAdded}
-            randomPageId={randomPageId}
-            setRandomPageId={setRandomPageId}
-          />
-        )}
+            {displayStore.showPage === "addsong" && (
+              <AddForm setNewSongAdded={setNewSongAdded} />
+            )}
+            {displayStore.showPage === "login" && <Login />}
+            {displayStore.showPage === "profil" && <Profil />}
+            {displayStore.showPage === "book" && (
+              <Book
+                searchValue={searchValue}
+                newSongAdded={newSongAdded}
+                setNewSongAdded={setNewSongAdded}
+                randomPageId={randomPageId}
+                setRandomPageId={setRandomPageId}
+              />
+            )}
+          </>) :
+          <Login />}
       </header>
       <Footer />
     </div>

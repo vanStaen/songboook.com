@@ -11,8 +11,6 @@ import {
 } from "@ant-design/icons";
 
 import { authStore } from "../../stores/authStore";
-import { userStore } from "../../stores/userStore";
-import { postFetchToken } from "./postFetchToken";
 
 import "./Login.css";
 
@@ -36,15 +34,14 @@ export const Login = () => {
       // postCreateUser()
     } else {
       try {
-        const userData = await postFetchToken(email, password);
-        if (remember === true) {
-          localStorage.setItem("refreshToken", userData.refreshToken);
-          localStorage.setItem("userId", userData.userId);
+        const error = await authStore.login(email, null, password, remember);
+        if (error) {
+          notification.error({
+            message: error,
+          });
         }
-        authStore.login(userData.token, userData.refreshToken);
-        userStore.setUserId(userData.userId);
       } catch (error) {
-        notification.warn({
+        notification.error({
           message: error.message,
         });
         console.log(error);

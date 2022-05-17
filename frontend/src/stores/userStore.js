@@ -2,7 +2,7 @@ import { action, makeObservable, observable } from "mobx";
 
 export class UserStore {
 
-    userId = localStorage.getItem("userId") || null;
+    userId = null;
     userName = null;
     picUrl = "https://avatars0.githubusercontent.com/u/12551446";
 

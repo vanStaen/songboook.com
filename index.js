@@ -1,7 +1,8 @@
 const express = require("express");
+const cors = require(`cors`)
 const mongoose = require("mongoose");
 const path = require("path");
-const isAuth = require("./middleware/is-auth");
+const cookieSession = require("./middleware/cookieSession");
 const redirectTraffic = require("./middleware/redirectTraffic");
 
 const PORT = process.env.PORT || 5002;
@@ -21,33 +22,42 @@ mongoose.set('useCreateIndex', true);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Authorization Middleware
-app.use(isAuth);
+// Session Cookie Middleware
+app.use(cookieSession);
 
 // Allow cross origin request
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PATCH, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
+app.use(function (req, res, next) {
+  let corsOptions = {};
+  if ((req.get('host') === 'localhost:5002')) {
+    corsOptions = {
+      origin: 'http://localhost:3000',
+      optionsSuccessStatus: 200
+    }
+  } else {
+    corsOptions = {
+      origin: [
+        'https://www.songboook.com',
+        'https://songboook.com',
+        'http://songboook.herokuapp.com',
+        'https://songboook.herokuapp.com',
+      ],
+      credentials: true,
+      optionsSuccessStatus: 200
+    }
   }
-  next();
-});
+  cors(corsOptions)(req, res, next);
+})
 
 // Set up for React
 app.use(express.static(path.join(__dirname, "build")));
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html")); });
 
 // Router to API endpoints
+app.use("/auth", require("./api/controller/authController"));
 app.use("/songbook", require("./api/songbook"));
 app.use("/lyrics", require("./api/lyrics"));
 app.use("/randomized", require("./api/randomized"));
-app.use("/dummy", require("./api/dummy")); app.use("/passport", require("./api/passport"));
-app.use("/login", require("./api/login"));
-app.use("/token", require("./api/token"));
-app.use("/logout", require("./api/logout"));
-
+app.use("/dummy", require("./api/dummy"));
 
 // Connect to Mongo db
 mongoose.connect(
