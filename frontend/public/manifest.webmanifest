@@ -4,6 +4,11 @@
   "description" : "Songboook | All your songs",
   "icons": [
     {
+      "src": "songbook_logo_24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
       "src": "songbook_logo_128.png",
       "type": "image/png",
       "sizes": "128x128"
