@@ -1,0 +1,23 @@
+{
+  "short_name": "Songboook",
+  "name": "Songboook",
+  "description" : "Songboook | All your songs",
+  "icons": [
+    {
+      "src": "songbook_logo_128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "songbook_logo_128.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "https://songboook.com",
+  "display": "standalone",
+  "background_color": "#924B55",
+  "theme_color": "#924B55",
+  "clipboardWrite": true
+}
+
