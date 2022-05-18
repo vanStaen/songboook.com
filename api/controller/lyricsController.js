@@ -1,25 +1,8 @@
 const express = require("express");
+const levenshtein = require("js-levenshtein");
 const router = express.Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
-const { Client } = require("pg");
-const levenshtein = require("js-levenshtein");
-
-// Init Postgres
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; // This bypasses the SSL verification
-
-// Connect to Postgres
-client.connect((err) => {
-  if (err) {
-    console.error("connection error", err.stack);
-  } else {
-    console.log("Lyrics:", "Connected to postgres db!");
-  }
-});
 
 function sqlEscape(input) {
   try {
@@ -47,7 +30,7 @@ router.get("/:id", async (req, res) => {
   const geniusUrl = songbook.rows[0].geniusurl;
   const lyrics = songbook.rows[0].lyrics;
 
-  if (lyrics !== null && lyrics !== "") {
+  if (lyrics !== null && lyrics !== "") {
     res.status(201).json({ lyrics: lyrics });
   } else {
     try {

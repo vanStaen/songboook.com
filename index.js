@@ -53,10 +53,12 @@ app.use(function (req, res, next) {
 
 // Router to API endpoints
 app.use("/auth", require("./api/controller/authController"));
-app.use("/songbook", require("./api/songbook"));
-app.use("/lyrics", require("./api/lyrics"));
-app.use("/randomized", require("./api/randomized"));
-app.use("/dummy", require("./api/dummy"));
+app.use("/user", require("./api/controller/userController"));
+app.use("/mail", require("./api/controller/mailController"));
+app.use("/song", require("./api/controller/songController"));
+app.use("/lyrics", require("./api/controller/lyricsController"));
+app.use("/random", require("./api/controller/randomController"));
+
 
 // Start DB & use GraphQL
 db.sequelize.sync().then((req) => {});

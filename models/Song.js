@@ -22,7 +22,7 @@ const Song = sequelize.define("song", {
   tags: {    
     type: DataTypes.ARRAY(DataTypes.STRING),
     required: true,
-    default: null,
+    default: [],
   },
   title: {
     type: DataTypes.STRING,
@@ -71,6 +71,10 @@ const Song = sequelize.define("song", {
   lyrics: {
     type: DataTypes.STRING,
     default: false,
+  },
+  createdBy: {
+    type: DataTypes.INTEGER,
+    required: true,
   },
 });
 

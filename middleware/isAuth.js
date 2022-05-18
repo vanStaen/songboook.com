@@ -1,10 +1,26 @@
 const jsonwebtoken = require("jsonwebtoken");
+const { User } = require("../models/User");
 require("dotenv/config");
 
+const devMode = true;
+
 module.exports = async (req, res, next) => {
+  // if in development mode
+  if (devMode) {
+    if (req.get("host") === "localhost:5001") {
+      console.log(">>>> Developement Mode <<<<<");
+      req.isAuth = true;
+      req.userId = "1";
+      req.email = "clement.vanstaen@gmail.com";
+      return next();
+    }
+  }
+
   // Authorization: Bearer <token>
   const token = req.session.token;
   const refreshToken = req.session.refreshToken;
+  //console.log("token", token)
+  //console.log("refreshToken", refreshToken)
 
   // Check tokens are valid:
   if (!token || token === "undefined" || token === "") {
@@ -37,6 +53,7 @@ module.exports = async (req, res, next) => {
     process.env.AUTH_SECRET_KEY,
     { expiresIn: "15m" }
   );
+
   //console.log("accessToken updated!");
   req.session.token = accessToken;
 
@@ -50,6 +67,12 @@ module.exports = async (req, res, next) => {
     //console.log("refreshToken updated!");
     req.session.refreshToken = refreshToken;
   }
+
+  // Update lastLogin in user table
+  await User.update(
+    { lastActive: Date.now() },
+    { where: { _id: decodedToken.userId } }
+  );
 
   next();
 };
