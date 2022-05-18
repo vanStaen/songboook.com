@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import bass from './../../../../images/bass.png'
 import { Tooltip } from 'antd';
 

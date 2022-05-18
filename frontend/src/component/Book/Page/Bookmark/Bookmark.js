@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import bookmark from './../../../../images/bookmark.png';
 import { Tooltip, notification } from 'antd';
 import { observer } from "mobx-react";

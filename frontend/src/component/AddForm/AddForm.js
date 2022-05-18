@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import { Modal, Form, Input, Radio, notification } from "antd";
 import { observer } from "mobx-react";
 import axios from "axios";
