@@ -4,10 +4,9 @@
   "description": "or `how not too forget how to be a musician`.",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "cd frontend; jest; cd ../;",
     "start": "node index.js",
-    "start-client": "react-scripts start",
-    "devfr": "cd frontend/; npm start; cd ../;",
+    "devfr": "cd frontend/; npm i; npm start; cd ../;",
     "dev": "npm i; nodemon index",
     "version": "heroku --version; git --version",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
@@ -37,14 +36,13 @@
     "express": "^4.17.1",
     "js-levenshtein": "^1.1.6",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.6.2",
-    "mongoose": "^5.10.8",
     "path": "^0.12.7",
     "pg": "^8.5.1",
-    "react-youtube": "^7.13.0"
+    "react-youtube": "^7.13.0",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
-    "lint": "^0.7.0",
+    "lint": "^1.1.2",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.1"
   }

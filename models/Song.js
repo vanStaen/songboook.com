@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require('../helpers/sequelizedb');
 
 const Song = sequelize.define("song", {
   id: {

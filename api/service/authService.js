@@ -1,15 +1,15 @@
-const Passport = require("../../models/Passport");
+const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 
 exports.authService = {
   async login(req, email, username, password, remindMe) {
     if (username) {
-      foundUser = await Passport.findOne({
+      foundUser = await User.findOne({
         where: { userName: username },
       });
     } else {
-      foundUser = await Passport.findOne({
+      foundUser = await User.findOne({
         where: { email: email },
       });
     }
@@ -41,7 +41,7 @@ exports.authService = {
       }
 
       // Update lastLogin in user table
-      await Passport.update(
+      await User.update(
         { lastActive: Date.now() },
         { where: { _id: foundUser._id } }
       );
