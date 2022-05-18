@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 import { AddSongButton } from "./AddSongButton/AddSongButton";

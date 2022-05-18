@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import { Tag, Input, notification } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { observer } from "mobx-react";

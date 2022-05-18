@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Popconfirm, notification } from 'antd'
 import {
   DeleteOutlined,

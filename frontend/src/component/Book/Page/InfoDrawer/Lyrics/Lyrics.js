@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { RedoOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 import axios from 'axios';
