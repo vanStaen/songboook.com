@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 
 import {
@@ -136,8 +136,8 @@ export const Login = () => {
             ) : isLogin ? (
               "Log in"
             ) : (
-                  "Create account"
-                )}
+              "Create account"
+            )}
           </Button>
           <div className="login__switchmode">
             Or{" "}
