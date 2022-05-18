@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
   let corsOptions = {};
   if ((req.get('host') === 'localhost:5002')) {
     corsOptions = {
-      origin: 'http://localhost:3000',
+      origin: 'http://localhost:8081',
       optionsSuccessStatus: 200
     }
   } else {

@@ -8,7 +8,7 @@
     "start": "node index.js",
     "start-client": "react-scripts start",
     "devfr": "cd frontend/; npm start; cd ../;",
-    "dev": "nodemon index",
+    "dev": "npm i; nodemon index",
     "version": "heroku --version; git --version",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
     "deploy": "npm i;npm run backup; npm run buildfe; heroku git:remote -a songbook-cvs; git push heroku main",
