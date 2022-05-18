@@ -1,12 +1,15 @@
 const express = require("express");
 const cors = require(`cors`)
-const mongoose = require("mongoose");
 const path = require("path");
+
+const db = require("./models");
+const isAuth = require("./middleware/isAuth");
 const cookieSession = require("./middleware/cookieSession");
 const redirectTraffic = require("./middleware/redirectTraffic");
 
-const PORT = process.env.PORT || 5002;
 require("dotenv/config");
+
+const PORT = process.env.PORT || 5002;
 
 // Init Express
 const app = express();
@@ -15,15 +18,15 @@ const app = express();
 app.set("trust proxy", true);
 app.use(redirectTraffic);
 
-// Fix moongoose deprecation warning
-mongoose.set('useCreateIndex', true);
-
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Session Cookie Middleware
 app.use(cookieSession);
+
+// Authorization Middleware
+app.use(isAuth);
 
 // Allow cross origin request
 app.use(function (req, res, next) {
@@ -48,10 +51,6 @@ app.use(function (req, res, next) {
   cors(corsOptions)(req, res, next);
 })
 
-// Set up for React
-app.use(express.static(path.join(__dirname, "build")));
-app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html")); });
-
 // Router to API endpoints
 app.use("/auth", require("./api/controller/authController"));
 app.use("/songbook", require("./api/songbook"));
@@ -59,12 +58,12 @@ app.use("/lyrics", require("./api/lyrics"));
 app.use("/randomized", require("./api/randomized"));
 app.use("/dummy", require("./api/dummy"));
 
-// Connect to Mongo db
-mongoose.connect(
-  process.env.DB_REWAER_CONNECTION,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => console.log("Connected to db!")
-);
+// Start DB & use GraphQL
+db.sequelize.sync().then((req) => {});
+
+// Set up for React
+app.use(express.static(path.join(__dirname, "build")));
+app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.html")); });
 
 // Listen on a port
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
