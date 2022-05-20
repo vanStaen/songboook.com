@@ -1,13 +1,16 @@
 const { User } = require("../../models/User");
-const checkUsernameforbidden = require("../../helpers/checkUsernameforbidden")
+const checkUsernameforbidden = require("../../helpers/checkUsernameforbidden");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const { mailService } = require("./mailService");
 
 exports.userService = {
-
   async getUsers() {
     return await User.findAll({
-      order: [["id", "ASC"], ["last_login", "DESC"]],
+      order: [
+        ["id", "ASC"],
+        ["last_login", "DESC"],
+      ],
     });
   },
 
@@ -163,6 +166,12 @@ exports.userService = {
           plain: true,
         }
       );
+      // Send a mail to admin
+      mailService.mail(
+        process.env.ADMIN_EMAIL,
+        "Songboook | New User's email validated!",
+        `The following email has just been validated: ${email}`
+      );
       return true;
     } catch (err) {
       return false;
@@ -180,5 +189,4 @@ exports.userService = {
     }
     return true;
   },
-
 };
