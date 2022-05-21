@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 
 import { authStore } from "../../stores/authStore";
 import { userStore } from "../../stores/userStore";
-import { Spinner } from "../Spinner/Spinner";
+import { Spinner } from "../../component/Spinner/Spinner";
 
 import "./Profil.css";
 

@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import { Tooltip } from "antd";
@@ -13,7 +18,7 @@ import logo from "../../images/logo.png";
 
 import "./Book.css";
 
-const Book = observer((props) => {
+export const Book = observer((props) => {
   const [songbookPages, setSongbookPages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -45,7 +50,6 @@ const Book = observer((props) => {
     };
   }, []);
 
-
   useEffect(() => {
     displayStore.displayedAsList && calculatePositionHeader();
   }, []);
@@ -55,7 +59,6 @@ const Book = observer((props) => {
     setPageHasChanged(false);
     setNewSongAdded(false);
   }, [pageHasChanged, newSongAdded, setNewSongAdded]);
-
 
   const keyDownHandler = useCallback((event) => {
     if (!displayStore.isInEditMode) {
@@ -68,14 +71,12 @@ const Book = observer((props) => {
           top: 0,
           behavior: "smooth",
         });
-      }
-      else if (keyPressed === "arrowup") {
+      } else if (keyPressed === "arrowup") {
         window.scrollTo({
           top: top - movingInPx,
           behavior: "smooth",
         });
-      }
-      else if (keyPressed === "arrowdown") {
+      } else if (keyPressed === "arrowdown") {
         window.scrollTo({
           top: top + movingInPx,
           behavior: "smooth",
@@ -96,11 +97,9 @@ const Book = observer((props) => {
 
     if (displayStore.bassOnly) {
       shouldBeDisplayed = page.bass;
-    }
-    else if (displayStore.pianoOnly) {
+    } else if (displayStore.pianoOnly) {
       shouldBeDisplayed = page.piano;
-    }
-    else if (displayStore.guitarOnly) {
+    } else if (displayStore.guitarOnly) {
       shouldBeDisplayed = !page.piano && !page.bass;
     }
 
@@ -156,8 +155,8 @@ const Book = observer((props) => {
   useLayoutEffect(() => {
     if (props.randomPageId !== null) {
       const randomlySelectedPage = document.getElementById(props.randomPageId);
-      const randomlySelectedPageTop = randomlySelectedPage.getBoundingClientRect()
-        .top;
+      const randomlySelectedPageTop =
+        randomlySelectedPage.getBoundingClientRect().top;
       const heightScreen = window.innerHeight;
       const offSetScreen = (heightScreen - 330) / 2;
       const heightPosition = window.scrollY;
@@ -177,8 +176,7 @@ const Book = observer((props) => {
     let listOfFilter = ["guitar", "piano", "bass"];
     if (displayStore.guitarOnly) {
       listOfFilter = ["guitar"];
-    }
-    else if (displayStore.pianoOnly) {
+    } else if (displayStore.pianoOnly) {
       listOfFilter = ["piano"];
     }
     if (displayStore.bassOnly) {
@@ -217,10 +215,11 @@ const Book = observer((props) => {
       <>
         {`${bookNotNull.length} 
         ${bookmarked} ${known} songs for 
-        ${props.searchValue
+        ${
+          props.searchValue
             ? ` filter '${props.searchValue}'`
             : formatedListOfFilter()
-          }`}
+        }`}
       </>
     );
   };
@@ -232,8 +231,8 @@ const Book = observer((props) => {
     } else {
       const widthOfAPageInPixel = 362;
       const marginLeftOfAPageInPixel = 15;
-      const widthOfBookInPixel = document.getElementById("bookContainer")
-        .clientWidth;
+      const widthOfBookInPixel =
+        document.getElementById("bookContainer").clientWidth;
       const pagePerRow = Math.floor(
         (widthOfBookInPixel - 90) / widthOfAPageInPixel
       );
@@ -267,44 +266,45 @@ const Book = observer((props) => {
           </div>
         </div>
       ) : (
-            <div>
-              <div className="Book__header" style={{ marginLeft: positionHeader }}>
-                <Tooltip placement="top" title={<span style={{ fontSize: "12px" }}>Love from Berlin</span>}>
-                  <img src={logo} className="Book__logoHeader" alt="logotest" />
-                </Tooltip>
-                <span className="Book__logo">
-                  ongbo<b>0</b>ok
+        <div>
+          <div className="Book__header" style={{ marginLeft: positionHeader }}>
+            <Tooltip
+              placement="top"
+              title={<span style={{ fontSize: "12px" }}>Love from Berlin</span>}
+            >
+              <img src={logo} className="Book__logoHeader" alt="logotest" />
+            </Tooltip>
+            <span className="Book__logo">
+              ongbo<b>0</b>ok
             </span>
             &nbsp; | &nbsp; {resultInfos()}
-              </div>
-              {bookNotNull.length > 0 ? (
-                <div className="Book__main">{book}</div>
-              ) : (
-                  <div className="Book__nothingFound">
-                    <div style={{ marginBottom: "15px" }}>
-                      <img
-                        src={notFound}
-                        className="nothingFound"
-                        alt="Nothing found"
-                      />
-                      <br />
-                      <div
-                        style={{
-                          fontSize: 14,
-                          marginTop: 10,
-                          color: "white",
-                          opacity: 0.15,
-                        }}
-                      >
-                        Nothing found!
+          </div>
+          {bookNotNull.length > 0 ? (
+            <div className="Book__main">{book}</div>
+          ) : (
+            <div className="Book__nothingFound">
+              <div style={{ marginBottom: "15px" }}>
+                <img
+                  src={notFound}
+                  className="nothingFound"
+                  alt="Nothing found"
+                />
+                <br />
+                <div
+                  style={{
+                    fontSize: 14,
+                    marginTop: 10,
+                    color: "white",
+                    opacity: 0.15,
+                  }}
+                >
+                  Nothing found!
                 </div>
-                    </div>
-                  </div>
-                )}
+              </div>
             </div>
           )}
+        </div>
+      )}
     </div>
   );
 });
-
-export default Book;

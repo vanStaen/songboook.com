@@ -8,12 +8,13 @@ import { FilterButton } from "./FilterButton/FilterButton";
 import { LoginButton } from "./LoginButton/LoginButton";
 import { Random } from "./Random/Random";
 import { InfoButton } from "./InfoButton/InfoButton";
-import { HelpButton } from "./HelpButton/HelpButton"
+import { HelpButton } from "./HelpButton/HelpButton";
 import { authStore } from "../../stores/authStore";
 import { displayStore } from "../../stores/displayStore";
 
 import "./Menu.css";
-const Menu = observer((props) => {
+
+export const Menu = observer((props) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -58,12 +59,9 @@ const Menu = observer((props) => {
       </div>
 
       <div className="Menu__bottom">
-        <InfoButton/>
-        <HelpButton/>
+        <InfoButton />
+        <HelpButton />
       </div>
-
     </div>
   );
 });
-
-export default Menu;

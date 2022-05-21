@@ -4,11 +4,10 @@ import { observer } from "mobx-react";
 import axios from "axios";
 
 import { displayStore } from "../../stores/displayStore";
-import { formStore } from "../../stores/formStore"
+import { formStore } from "../../stores/formStore";
 import "./AddForm.css";
 
-const AddForm = observer((props) => {
-
+export const AddForm = observer((props) => {
   const handleAddSong = (values) => {
     const dataRequest = { artist: values.artist, song: values.song };
     formStore.setArtist(values.artist);
@@ -113,8 +112,7 @@ const AddForm = observer((props) => {
             videourl: formStore.videourl,
             type: formStore.type,
             level: formStore.level,
-          }
-          }
+          }}
         >
           <Form.Item
             name="artist"
@@ -175,5 +173,3 @@ const AddForm = observer((props) => {
     </>
   );
 });
-
-export default AddForm;

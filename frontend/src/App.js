@@ -1,57 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { notification } from "antd";
 import { observer } from "mobx-react";
 
-import AddForm from "./component/AddForm/AddForm";
-import Book from "./component/Book/Book";
-import Menu from "./component/Menu/Menu";
-import Footer from "./component/Footer/Footer";
-import { Login } from "./component/Login/Login";
-import { Profil } from "./component/Profil/Profil";
+import { Welcome } from "./pages/Welcome/Welcome";
+import { Songbook } from "./pages/Songbook/Songbook";
+import { NewPassword } from "./pages/NewPassword/NewPassword";
+import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
+import { Footer } from "./component/Footer/Footer";
 
 import { authStore } from "./stores/authStore";
-import { displayStore } from "./stores/displayStore";
+import { userStore } from "./stores/userStore";
+import { archiveAccount } from "./stores/actions/archiveAccount";
 
 import "./App.css";
 
 const App = observer(() => {
-  const [searchValue, setSearchValue] = useState(null);
-  const [newSongAdded, setNewSongAdded] = useState(false);
-  const [randomPageId, setRandomPageId] = useState(null);
 
   useEffect(() => {
     authStore.checkAccess();
+    userStore.fetchUserData();
   }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {authStore.hasAccess ?
-          (<>
-            <Menu
-              setRandomPageId={setRandomPageId}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
+  useEffect(() => {
+    userStore.fetchUserData();
+  }, [authStore.hasAccess]);
 
-            {displayStore.showPage === "addsong" && (
-              <AddForm setNewSongAdded={setNewSongAdded} />
-            )}
-            {displayStore.showPage === "login" && <Login />}
-            {displayStore.showPage === "profil" && <Profil />}
-            {displayStore.showPage === "book" && (
-              <Book
-                searchValue={searchValue}
-                newSongAdded={newSongAdded}
-                setNewSongAdded={setNewSongAdded}
-                randomPageId={randomPageId}
-                setRandomPageId={setRandomPageId}
-              />
-            )}
-          </>) :
-          <Login />}
-      </header>
+  useEffect(() => {
+    // Check if account was archived
+    if (userStore.archived) {
+      archiveAccount(false);
+      notification.success({
+        message: (
+          <>
+            <b>{t("profile.accountReactivated")}</b>
+            <br />
+            {t("profile.gladToHaveYouBack")}
+          </>
+        ),
+        placement: "bottomRight",
+      });
+    }
+  }, [userStore.archived]);
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="recoverpwd/:key" element={<NewPassword />} />
+          <Route path="emailverify/:verifyCode" element={<EmailVerified />} />
+          {authStore.hasAccess ? (
+            <>
+              <Route path="/" element={<Songbook />} />
+            </>
+          ) : (
+            <Route path="/" element={<Welcome showLogin={true} />} />
+          )}
+        </Routes>
       <Footer />
-    </div>
+      </div>
+    </BrowserRouter>
   );
 });
 

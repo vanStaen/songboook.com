@@ -1,0 +1,55 @@
+.emailVerified__leftPanel {
+  width: 40vw;
+  height: 100vh;
+  display: inline-block;
+  vertical-align: top;
+  background-image: url("./../../img/open.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.emailVerified__rightPanel {
+  width: 60vw;
+  height: 100vh;
+  display: inline-block;
+  vertical-align: top;
+  background-color: white;
+}
+
+.emailVerified__container{
+  min-height: 100vh;
+  padding: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.emailVerified__link {
+  padding-top: 15px;
+  color: rgba(0, 0, 0, .75);
+}
+
+.emailVerified__loader {
+  font-size: 75px;
+}
+
+@media (max-width: 800px) {
+  .emailVerified__leftPanel {
+    width: 0vw;
+  }
+  .emailVerified__rightPanel {
+    width: 100vw;
+    background-image: url("./../../img/open.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .emailVerified__text {
+    padding: 10%;
+    background-color: rgba(255,255,255,.75);
+  }
+}

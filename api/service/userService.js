@@ -167,7 +167,7 @@ exports.userService = {
         }
       );
       // Send a mail to admin
-      mailService.mail(
+      await mailService.mail(
         process.env.ADMIN_EMAIL,
         "Songboook | New User's email validated!",
         `The following email has just been validated: ${email}`
