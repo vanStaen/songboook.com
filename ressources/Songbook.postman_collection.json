@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "SONGBOOK: localhost:5002/songbook",
+			"name": "songbook",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -25,28 +25,7 @@
 			"response": []
 		},
 		{
-			"name": "SONGBOOK: heroku/songbook",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "songbook-cvs.herokuapp.com/songbook/29",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"songbook",
-						"29"
-					]
-				},
-				"description": "GET request : list of all users\nTo localserver on port 5000\n"
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: localhost:5002/songbook",
+			"name": "songbook",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -67,29 +46,7 @@
 			"response": []
 		},
 		{
-			"name": "SONGBOOK: heroku/songbook",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "https://songbook-cvs.herokuapp.com/songbook/2",
-					"protocol": "https",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"songbook",
-						"2"
-					]
-				},
-				"description": "delete user"
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: localhost:5002/songbook",
+			"name": "songbook",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -119,36 +76,7 @@
 			"response": []
 		},
 		{
-			"name": "SONGBOOK: heroku/songbook",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{  \n   \"link\": \"https://www.youtube.com/watch?v=aqtSWrl1BJI\",\n   \"artist\": \"Radiohead\",\n   \"song\": \"Just\",\n   \"picurl\": \"https://img.youtube.com/vi/aqtSWrl1BJI/0.jpg\",\n   \"videourl\" : \"https://www.youtube.com/watch?v=oIFLtNYI3Ls\"\n}"
-				},
-				"url": {
-					"raw": "songbook-cvs.herokuapp.com/songbook",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"songbook"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: localhost:5002/songbook",
+			"name": "songbook",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -159,7 +87,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 123.456.789",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA5MjU4MzE5LCJleHAiOjE2MDkyNTkyMTl9.ALRpmR6PhsWTtwKHTWw9k95wxfuomfyLpsjzgqbdAqY",
 						"type": "text"
 					}
 				],
@@ -183,38 +111,7 @@
 			"response": []
 		},
 		{
-			"name": "SONGBOOK: heroku/songbook",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"geniusurl\": \"https://genius.com/Red-hot-chili-peppers-under-the-bridge-lyrics\"\n}"
-				},
-				"url": {
-					"raw": "https://songbook-cvs.herokuapp.com/songbook/29",
-					"protocol": "https",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"songbook",
-						"29"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: localhost:5002/lyrics",
+			"name": "lyrics",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -236,57 +133,7 @@
 			"response": []
 		},
 		{
-			"name": "SONGBOOK: heroku/lyrics",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "songbook-cvs.herokuapp.com/lyrics/46",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"lyrics",
-						"46"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: heroku/dummy",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 123.456.789",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "songbook-cvs.herokuapp.com/dummy",
-					"host": [
-						"songbook-cvs",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"dummy"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "SONGBOOK: localhost:5002/randomized",
+			"name": "randomized",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -312,6 +159,219 @@
 					"path": [
 						"randomized",
 						"true"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"clement.vanstaen@gmail.com\",\n    \"password\": \"123456\",\n    \"remind\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5002/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/logout",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5017/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth/access",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5017/auth/access",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"auth",
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/taken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5017/user/taken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"user",
+						"taken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5017/user/email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"user",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/validtoken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5017/user/validtoken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"user",
+						"validtoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user/emailverified",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjI4NjExNDI0LCJleHAiOjE2Mjg2OTc4MjR9.Lq3paHX3vWgV7FroiYbzXS2tVIG7mrf96EuvTE0FiGY\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5002/user/emailverified",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"user",
+						"emailverified"
 					]
 				}
 			},
