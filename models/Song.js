@@ -40,10 +40,6 @@ const Song = sequelize.define("song", {
     type: DataTypes.STRING,
     required: false,
   },
-  bookmark: {
-    type: DataTypes.BOOLEAN,
-    default: false,
-  },
   song: {
     type: DataTypes.STRING,
     required: true,
@@ -53,14 +49,6 @@ const Song = sequelize.define("song", {
     default: false,
   },
   bass: {
-    type: DataTypes.BOOLEAN,
-    default: false,
-  },
-  checked: {
-    type: DataTypes.BOOLEAN,
-    default: false,
-  },
-  randomized: {
     type: DataTypes.BOOLEAN,
     default: false,
   },
