@@ -1,7 +1,6 @@
 # Watchlist
 
 ## To-dos:
-
 - [ ] Redo Add Song form
   - [ ] Check for artist spelling (artist table in db maybe?)
   - [ ] Check for song already exist 
@@ -34,6 +33,7 @@
   - [ ] Archived song should not get picked by randomizer
   - [ ] show archived somehow disabled?  
 - [ ] User Journey (create, validate, login)
+- [ ] Try the Bundle analyzer
 
 ## Completed ✓
 
