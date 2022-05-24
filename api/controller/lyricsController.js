@@ -1,8 +1,7 @@
-const express = require("express");
+const router = require("express").Router();
 const levenshtein = require("js-levenshtein");
-const router = express.Router();
-const axios = require("axios");
 const cheerio = require("cheerio");
+const { lyricsService } = require("../service/lyricsService");
 
 function sqlEscape(input) {
   try {
@@ -36,7 +35,8 @@ router.get("/:id", async (req, res) => {
     try {
       // fetch Entries
       if (geniusUrl !== null) {
-        fetchLyricsGenius(geniusUrl)
+        lyricsService
+          .fetchLyricsGenius(geniusUrl)
           .then((resData) => {
             const $ = cheerio.load(resData);
             const lyrics = $(".lyrics").text().trim();
@@ -54,7 +54,8 @@ router.get("/:id", async (req, res) => {
             });
           });
       } else {
-        fetchLyrics(artist, song)
+        lyricsService
+          .fetchLyrics(artist, song)
           .then((resData) => {
             const cleanedOriginalArtist = artist
               .toLowerCase()
@@ -96,39 +97,5 @@ router.get("/:id", async (req, res) => {
     }
   }
 });
-
-async function fetchLyrics(artist, song) {
-  const lyricsApiUrl =
-    process.env.LYRICS_API_URL +
-    artist.replace(/ /g, "%20") +
-    "/" +
-    song.replace(/ /g, "%20") +
-    "?apikey=" +
-    process.env.LYRICS_API_KEY;
-  // console.log(lyricsApiUrl);
-  const response = await axios({
-    url: lyricsApiUrl,
-    method: "GET",
-  });
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Error!");
-  }
-  const result = await response.data;
-  const resultLyrics = result.result;
-  return resultLyrics;
-}
-
-async function fetchLyricsGenius(geniusUrl) {
-  const response = await axios({
-    url: geniusUrl,
-    method: "GET",
-  });
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Error!");
-  }
-  const result = await response.data;
-  const resultLyrics = result;
-  return resultLyrics;
-}
 
 module.exports = router;
