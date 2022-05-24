@@ -14,13 +14,15 @@ const Book = sequelize.define("book", {
   },
   cover: {
     type: DataTypes.STRING,
-    required: true,
-    default: true,
+    required: false,
+  },
+  title: {
+    type: DataTypes.STRING,
+    required: false,
   },
   description: {
     type: DataTypes.STRING,
-    required: true,
-    default: true,
+    required: false,
   },
   // songs: id, checked, randomized, bookmarked 
   songs: { 

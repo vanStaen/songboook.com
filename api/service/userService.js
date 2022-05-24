@@ -1,4 +1,6 @@
 const { User } = require("../../models/User");
+const { Book } = require("../../models/Book");
+
 const checkUsernameforbidden = require("../../helpers/checkUsernameforbidden");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -48,7 +50,13 @@ exports.userService = {
         email: input.email,
         pwd: hashedPassword,
       });
-      return await user.save();
+      const newUser = await user.save();
+      const book = new Book({
+        userId: newUser.id,
+        title: `${input.username}'s Songbook`,
+      });
+      await book.save();
+      return newUser;
     } catch (err) {
       console.log(err);
     }
