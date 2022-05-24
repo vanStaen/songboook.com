@@ -11,6 +11,10 @@ const Song = sequelize.define("song", {
     required: true,
     default: true,
   },
+  artist: {
+    type: DataTypes.STRING,
+    required: true,
+  },
   added: {
     type: DataTypes.DATE,
     required: true,
