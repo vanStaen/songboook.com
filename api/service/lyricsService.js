@@ -9,7 +9,7 @@ exports.lyricsService = {
       song.replace(/ /g, "%20") +
       "?apikey=" +
       process.env.LYRICS_API_KEY;
-    // console.log(lyricsApiUrl);
+      //console.log(lyricsApiUrl);
     const response = await axios({
       url: lyricsApiUrl,
       method: "GET",
