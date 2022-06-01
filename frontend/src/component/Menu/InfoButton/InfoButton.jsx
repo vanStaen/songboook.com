@@ -1,3 +1,5 @@
+import React from "react";
+
 import Info from "./../../../images/info.svg";
 import { Tooltip } from "antd";
 

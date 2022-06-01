@@ -43,7 +43,7 @@ export const AddForm = observer((props) => {
   const postAddSong = (data) => {
     async function postNew(data) {
       const response = await axios({
-        url: process.env.REACT_APP_API_URL + "/songbook",
+        url: process.env.API_URL + "/song",
         method: "POST",
         data: data,
       });

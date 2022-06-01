@@ -16,7 +16,7 @@ const CheckAdd = observer((props) => {
     setIsLoading(true);
     async function patchEntry(value) {
       const response = await axios({
-        url: process.env.REACT_APP_API_URL + "/songbook/" + props.id,
+        url: process.env.API_URL + "/song/" + props.id,
         method: "PATCH",
         data: { checked: value },
       });
@@ -44,23 +44,23 @@ const CheckAdd = observer((props) => {
       {isLoading ? (
         <LoadingOutlined className="CheckAdd__ico clickable grey_check" />
       ) : (
-          authStore.token &&
-          (isChecked ? (
-            <Tooltip placement="top" title="Click to mark this song as unknown.">
-              <CheckOutlined
-                onClick={() => handlerMarkAsChecked(false)}
-                className="CheckAdd__ico clickable"
-              />
-            </Tooltip>
-          ) : (
-              <Tooltip placement="top" title="Click to mark this song as known.">
-                <CheckOutlined
-                  onClick={() => handlerMarkAsChecked(true)}
-                  className="CheckAdd__ico clickable grey_check"
-                />
-              </Tooltip>
-            ))
-        )}
+        authStore.token &&
+        (isChecked ? (
+          <Tooltip placement="top" title="Click to mark this song as unknown.">
+            <CheckOutlined
+              onClick={() => handlerMarkAsChecked(false)}
+              className="CheckAdd__ico clickable"
+            />
+          </Tooltip>
+        ) : (
+          <Tooltip placement="top" title="Click to mark this song as known.">
+            <CheckOutlined
+              onClick={() => handlerMarkAsChecked(true)}
+              className="CheckAdd__ico clickable grey_check"
+            />
+          </Tooltip>
+        ))
+      )}
     </div>
   );
 });

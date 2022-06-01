@@ -1,3 +1,5 @@
+import React from "react";
+
 import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { displayStore } from "../../../stores/displayStore";

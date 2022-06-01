@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { UserOutlined, CloseOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";

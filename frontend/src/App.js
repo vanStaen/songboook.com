@@ -19,11 +19,11 @@ const App = observer(() => {
 
   useEffect(() => {
     authStore.checkAccess();
-    userStore.fetchUserData();
+    //userStore.fetchUserData();
   }, []);
 
   useEffect(() => {
-    userStore.fetchUserData();
+    //userStore.fetchUserData();
   }, [authStore.hasAccess]);
 
   useEffect(() => {

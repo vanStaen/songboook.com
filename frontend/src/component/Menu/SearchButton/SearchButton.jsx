@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 import { Input } from "antd";
 
-import { displayStore } from '../../../stores/displayStore';
+import { displayStore } from "../../../stores/displayStore";
 
 import "./SearchButton.css";
 
@@ -43,7 +43,9 @@ export const SearchButton = observer((props) => {
             : "SearchButton__float"
         }
       >
-        {!props.showSearch && props.searchValue && <div className="FilterButton__badge"></div>}
+        {!props.showSearch && props.searchValue && (
+          <div className="FilterButton__badge"></div>
+        )}
         {props.showSearch && (
           <div className="SearchButton__input">
             <Input

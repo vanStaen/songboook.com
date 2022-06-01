@@ -3,7 +3,7 @@ import axios from "axios";
 export const getHasAccess = async () => {
 
     const response = await axios({
-        url: process.env.REACT_APP_API_URL + `/auth/access/`,
+        url: process.env.API_URL + `/auth/access/`,
         method: "GET",
     });
 
@@ -14,6 +14,8 @@ export const getHasAccess = async () => {
             throw new Error(`Error! Status ${response.status}`);
         }
     }
+
+    console.log("response", response.data)
 
     return response.data.access;
 };
