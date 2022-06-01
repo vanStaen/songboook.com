@@ -1,6 +1,8 @@
 .Songbook__container {
     background-color: #924B55; /* AB6964 */
     padding: 30px;
+    filter: blur(0px) brightness(100%) grayscale(0%);
+    transition: .1s filter ease-in, .1s -webkit-filter ease-in;
 }
 
 .Songbook__blury{
