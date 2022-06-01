@@ -7,6 +7,9 @@ router.post("/login", async (req, res) => {
     if (!req.body.email && !req.body.username) {
       throw new Error("Please provide at least an 'Email' or a 'Username'");
     }
+    if (req.body.password === undefined) {
+      throw new Error("Please provide a password!");
+    }
     if (req.body.remind === undefined) {
       throw new Error("The 'remind me'-flag shoud not be missing!");
     }
