@@ -23,7 +23,7 @@ const emailDisclaimer = `
   Be especially wary of .zip or other compressed or executable file types. 
   Do not provide sensitive personal information (like usernames and passwords) over email. 
   Watch for email senders that use suspicious or misleading domain names. 
-  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@rewaer.com</u>. 
+  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@songboook.com</u>. 
   Be especially cautious when opening attachments or clicking links if you receive an email 
   containing a warning banner indicating that it originated from an external source.<br/><br/>
   <b>Virus transmission</b><br/>

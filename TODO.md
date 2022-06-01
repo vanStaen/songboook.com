@@ -34,6 +34,7 @@
   - [ ] show archived somehow disabled?  
 - [ ] User Journey (create, validate, login)
 - [ ] Try the Bundle analyzer
+- [ ] check info@songboook.com (and all other project)
 
 ## Completed ✓
 
