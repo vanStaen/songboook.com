@@ -47,9 +47,9 @@ router.post("/", async (req, res) => {
     if (!req.body.userInput.username) {
       throw new Error(`No username was provided`);
     }
-    if (!req.body.userInput.pwd && !req.body.userInput.access_code) {
+    if (!req.body.userInput.pwd) {
       throw new Error(
-        `No means of identification (Password or Access Code) were provided!`
+        `No password was provided!`
       );
     }
     const emailTaken = await userService.email(req.body.userInput.email);

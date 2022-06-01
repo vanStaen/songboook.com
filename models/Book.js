@@ -9,8 +9,7 @@ const Book = sequelize.define("book", {
   },
   active: {
     type: DataTypes.BOOLEAN,
-    required: true,
-    default: true,
+    defaultValue: true,
   },
   cover: {
     type: DataTypes.STRING,

@@ -9,7 +9,7 @@ const Song = sequelize.define("song", {
   active: {
     type: DataTypes.BOOLEAN,
     required: true,
-    default: true,
+    defaultValue: true,
   },
   artist: {
     type: DataTypes.STRING,
@@ -26,7 +26,7 @@ const Song = sequelize.define("song", {
   tags: {    
     type: DataTypes.ARRAY(DataTypes.STRING),
     required: true,
-    default: [],
+    defaultValue: [],
   },
   title: {
     type: DataTypes.STRING,
@@ -50,19 +50,19 @@ const Song = sequelize.define("song", {
   },
   piano: {
     type: DataTypes.BOOLEAN,
-    default: false,
+    defaultValue: false,
   },
   bass: {
     type: DataTypes.BOOLEAN,
-    default: false,
+    defaultValue: false,
   },
   level: {
     type: DataTypes.STRING,
-    default: false,
+    defaultValue: false,
   },
   lyrics: {
     type: DataTypes.STRING,
-    default: false,
+    defaultValue: false,
   },
   createdBy: {
     type: DataTypes.INTEGER,

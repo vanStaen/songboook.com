@@ -9,10 +9,7 @@ const { mailService } = require("./mailService");
 exports.userService = {
   async getUsers() {
     return await User.findAll({
-      order: [
-        ["id", "ASC"],
-        ["last_login", "DESC"],
-      ],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -45,10 +42,12 @@ exports.userService = {
     try {
       hashedPassword = await bcrypt.hash(input.pwd, 12);
       const user = new User({
+        firstname: input.firstname,
+        lastname: input.lastname,
         username: input.username,
         language: input.language,
         email: input.email,
-        pwd: hashedPassword,
+        password: hashedPassword,
       });
       const newUser = await user.save();
       const book = new Book({

@@ -35,7 +35,7 @@ const User = sequelize.define("user", {
   active: {
     type: DataTypes.BOOLEAN,
     required: true,
-    default: true,
+    defaultValue: true,
   },
   verifiedEmail: {
     type: DataTypes.BOOLEAN,

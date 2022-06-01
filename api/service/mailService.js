@@ -35,7 +35,7 @@ const emailDisclaimer = `
   of the author and do not represent those of the company. No liability can be held 
   for any damages, however, caused, to any recipients of this message. <br/><br/>
   <b>GDPR</b><br/>
-  Rewaer is compliant with the General Data Protection Regulation (GDPR) (EU) 2016/679. 
+  Songboook is compliant with the General Data Protection Regulation (GDPR) (EU) 2016/679. 
   We are committed to guaranteeing the security and protection of the private information 
   that we process. To understand more about how we collect, store, and process your personal 
   information in compliance with GDPR, please take a look at our privacy policy
@@ -47,7 +47,7 @@ exports.mailService = {
 
   async mail(sendto, subject, body) {
     const requestBody = {
-      "from": "Rewaer <info@rewaer.com>",
+      "from": "Songboook <info@songboook.com>",
       "to": sendto,
       "subject": subject,
       "body": `${body}<br/> ${emailDisclaimer}`,
@@ -86,17 +86,17 @@ exports.mailService = {
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
                   <br/>
                   This link will only be active for 10 minutes. <br/>
-                  https://rewaer.com/recoverpwd/${recoveryToken}<br/>
+                  https://songboook.com/recoverpwd/${recoveryToken}<br/>
                   <br/>
-                  Rewaer App<br/>
-                  <i>The Fashion App for minimalistic and sustainable geniuses!</i>
+                  Songboook App<br/>
+                  <i>All your songs</i>
                   <br/>
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Rewaer <info@rewaer.com>",
+      "from": "Songboook <info@songboook.com>",
       "to": sendto,
-      "subject": "Rewaer.app | Reset your password with this link",
+      "subject": "Songboook.com | Reset your password with this link",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
@@ -137,18 +137,17 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
-                  https://rewaer.com/emailverify/${emailVerifyToken}<br/>
+                  https://songboook.com/emailverify/${emailVerifyToken}<br/>
                   <br/>
-                  Rewaer App<br/>
-                  <i>Only trees should get new
-                  leaves every years.</i>
+                  Songboook App<br/>
+                  <i>All your songs</i>
                   <br/>
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Rewaer <info@rewaer.com>",
+      "from": "Songboook <info@songboook.com>",
       "to": sendto,
-      "subject": "Rewaer.app | Confirm your email address with this link",
+      "subject": "Songboook.com | Confirm your email address with this link",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
