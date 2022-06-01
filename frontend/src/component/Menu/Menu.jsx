@@ -19,7 +19,7 @@ export const Menu = observer((props) => {
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <div>
+    <div className="Menu__container">
       <div className="Menu__top">
         {!authStore.token ? (
           <LoginButton

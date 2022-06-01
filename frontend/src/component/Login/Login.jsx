@@ -52,101 +52,106 @@ export const Login = () => {
 
   return (
     <div className="login__full">
-      <div className="login__header">
+      <div className="login__container">
         <div className="login__header">
-          Songbo<b>0</b>ok
+          <div className="login__header">
+            Songbo<b>0</b>ok
+          </div>
         </div>
-      </div>
 
-      <Form
-        name="normal_login"
-        className="login__form"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={submitHandler}
-      >
-        <Form.Item
-          name="username"
-          hidden={isLogin}
-          rules={[
-            {
-              required: !isLogin,
-              message: "How should we call you?",
-            },
-          ]}
+        <Form
+          name="normal_login"
+          className="login__form"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={submitHandler}
         >
-          <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Name"
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="email"
-          rules={[
-            {
-              type: "email",
-              required: true,
-              message: "Please input your Email!",
-            },
-          ]}
-        >
-          <Input
-            prefix={<MailOutlined className="site-form-item-icon" />}
-            placeholder="Email"
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Password!",
-            },
-          ]}
-        >
-          <Input.Password
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            placeholder="input Password"
-            iconRender={(visible) =>
-              visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
-            }
-          />
-        </Form.Item>
-        <Form.Item hidden={!isLogin}>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>
-              <span className="login__remember">Remember me</span>
-            </Checkbox>
+          <Form.Item
+            name="username"
+            hidden={isLogin}
+            rules={[
+              {
+                required: !isLogin,
+                message: "How should we call you?",
+              },
+            ]}
+          >
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Name"
+            />
           </Form.Item>
 
-          <a className="login__formforgot" href="/#">
-            Recover password
-          </a>
-        </Form.Item>
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login__formbutton"
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                type: "email",
+                required: true,
+                message: "Please input your Email!",
+              },
+            ]}
           >
-            {isLoading ? (
-              <LoadingOutlined />
-            ) : isLogin ? (
-              "Log in"
-            ) : (
-              "Create account"
-            )}
-          </Button>
-          <div className="login__switchmode">
-            Or{" "}
-            <span className="login__switchmodetext" onClick={switchModeHandler}>
-              {isLogin ? "register now!" : "log into your account!"}
-            </span>
-          </div>
-        </Form.Item>
-      </Form>
+            <Input
+              prefix={<MailOutlined className="site-form-item-icon" />}
+              placeholder="Email"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Password!",
+              },
+            ]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              placeholder="input Password"
+              iconRender={(visible) =>
+                visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <Form.Item hidden={!isLogin}>
+            <Form.Item name="remember" valuePropName="checked" noStyle>
+              <Checkbox>
+                <span className="login__remember">Remember me</span>
+              </Checkbox>
+            </Form.Item>
+
+            <a className="login__formforgot" href="/#">
+              Recover password
+            </a>
+          </Form.Item>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login__formbutton"
+            >
+              {isLoading ? (
+                <LoadingOutlined />
+              ) : isLogin ? (
+                "Log in"
+              ) : (
+                "Create account"
+              )}
+            </Button>
+            <div className="login__switchmode">
+              Or &nbsp;
+              <span
+                className="login__switchmodetext"
+                onClick={switchModeHandler}
+              >
+                {isLogin ? "register now!" : "log into your account!"}
+              </span>
+            </div>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

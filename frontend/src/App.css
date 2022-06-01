@@ -2,11 +2,10 @@
 
 .App {
   text-align: center;
-  background-color: #924B55; /* AB6964 */
+  background-color: rgba(92, 49, 55, 1);
 }
 
 .App-header {
-  background-color: #924B55; /* AB6964 */
   min-height: calc(100vh - 50px);
   width: 100%;
   display: flex;

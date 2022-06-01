@@ -81,6 +81,7 @@ export class DisplayStore {
 
     setShowPage = (showPage) => {
         this.showPage = showPage;
+        console.log("showPage", showPage)
     };
 
     setDisplayedAsList = (displayedAsList) => {

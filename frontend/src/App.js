@@ -16,7 +16,6 @@ import { archiveAccount } from "./stores/actions/archiveAccount";
 import "./App.css";
 
 const App = observer(() => {
-
   useEffect(() => {
     authStore.checkAccess();
     //userStore.fetchUserData();
@@ -49,15 +48,9 @@ const App = observer(() => {
         <Routes>
           <Route path="recoverpwd/:key" element={<NewPassword />} />
           <Route path="emailverify/:verifyCode" element={<EmailVerified />} />
-          {authStore.hasAccess ? (
-            <>
-              <Route path="/" element={<Songbook />} />
-            </>
-          ) : (
-            <Route path="/" element={<Welcome showLogin={true} />} />
-          )}
+          <Route path="/" element={<Songbook />} />
         </Routes>
-      <Footer />
+        <Footer />
       </div>
     </BrowserRouter>
   );

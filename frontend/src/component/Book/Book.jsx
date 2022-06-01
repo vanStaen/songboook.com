@@ -61,7 +61,7 @@ export const Book = observer((props) => {
   }, [pageHasChanged, newSongAdded, setNewSongAdded]);
 
   const keyDownHandler = useCallback((event) => {
-    if (!displayStore.isInEditMode) {
+    if (!displayStore.isInEditMode && displayStore.showPage === "book") {
       event.preventDefault();
       const top = window.pageYOffset || document.documentElement.scrollTop;
       const movingInPx = 390;
@@ -226,20 +226,17 @@ export const Book = observer((props) => {
 
   const calculatePositionHeader = () => {
     if (displayStore.displayedAsList) {
-      displayStore.setSizeListview(window.innerWidth - 200);
+      displayStore.setSizeListview(window.innerWidth - 60);
       setPositionHeader(80);
     } else {
       const widthOfAPageInPixel = 362;
       const marginLeftOfAPageInPixel = 15;
       const widthOfBookInPixel =
         document.getElementById("bookContainer").clientWidth;
-      const pagePerRow = Math.floor(
-        (widthOfBookInPixel - 90) / widthOfAPageInPixel
-      );
+      const pagePerRow = Math.floor(widthOfBookInPixel / widthOfAPageInPixel);
       const positionFromLeft =
         (widthOfBookInPixel - pagePerRow * widthOfAPageInPixel) / 2 +
-        marginLeftOfAPageInPixel +
-        10;
+        marginLeftOfAPageInPixel;
       setPositionHeader(positionFromLeft);
     }
   };

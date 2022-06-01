@@ -1,28 +1,41 @@
 .login__full {
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-weight: 200;
-  letter-spacing: 1px;
-  padding-bottom: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;  
+  width: 100vw;  
+  z-index: 1;
 } 
 
-.login__form {
-  width: 300px;
+.login__container {
+    text-align: center;
+    height: 100vh;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.login__form {
+  width: 330px;
+}
+
 .login__formforgot {
   padding-right: 7px;
   float: right;
 }
+
+.login__formforgot:hover {
+  text-decoration: underline;
+}
+
 .ant-col-rtl .login__formforgot {
   float: left;
 }
+
 .login__formbutton {
   width: 100%;
+  font-weight: 500 !important;
 }
 
 .login__full a:link, .login__full a:visited {
@@ -41,6 +54,8 @@
 .login__switchmodetext {
   cursor: pointer;
   color: rgba(110, 15, 28, 1);
+  background-color: rgba(255,255,255,.25);
+  padding: 0 3px 2px 4px;
 }
 
 .login__switchmodetext:hover {
@@ -75,10 +90,10 @@
 
 .login__header {
   position: relative;
-  top: -5px;
-  color: #fff;
-  font-size: 17px;
-  padding: .7em;
+  padding-bottom: 15px;
+  justify-content: center;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
   font-weight: 300;
-  letter-spacing: 2.7px;
+  letter-spacing: 14px;
 }
