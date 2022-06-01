@@ -141,7 +141,7 @@ export const Login = () => {
               )}
             </Button>
             <div className="login__switchmode">
-              Or &nbsp;
+              Or&nbsp;
               <span
                 className="login__switchmodetext"
                 onClick={switchModeHandler}

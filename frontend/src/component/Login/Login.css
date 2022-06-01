@@ -20,9 +20,10 @@
   width: 330px;
 }
 
-.login__formforgot {
+.login__full .login__form .login__formforgot {
   padding-right: 7px;
   float: right;
+  color: rgba(255, 255, 255, .75) !important;
 }
 
 .login__formforgot:hover {
@@ -53,14 +54,14 @@
 
 .login__switchmodetext {
   cursor: pointer;
-  color: rgba(110, 15, 28, 1);
-  background-color: rgba(255,255,255,.25);
+  color: rgba(255, 255, 255, 1);
   padding: 0 3px 2px 4px;
+  font-weight: 600;
 }
 
 .login__switchmodetext:hover {
   cursor: pointer;
-  color: rgba(110, 15, 28, .5);
+  color: rgba(255, 255, 255, .75);
 }
 
 .login__remember {

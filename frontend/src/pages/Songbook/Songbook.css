@@ -4,5 +4,5 @@
 }
 
 .Songbook__blury{
-    filter: blur(7px) brightness(75%) grayscale(20%);
+    filter: blur(7px) brightness(50%) grayscale(50%);
 }
