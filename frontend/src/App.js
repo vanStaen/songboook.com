@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { notification } from "antd";
 import { observer } from "mobx-react";
 
-import { Welcome } from "./pages/Welcome/Welcome";
 import { Songbook } from "./pages/Songbook/Songbook";
 import { NewPassword } from "./pages/NewPassword/NewPassword";
 import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
