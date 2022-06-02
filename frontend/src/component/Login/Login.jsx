@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 import {
   UserOutlined,
+  LinkOutlined,
   MailOutlined,
   LockOutlined,
   EyeInvisibleOutlined,
@@ -11,7 +12,7 @@ import {
 
 import { authStore } from "../../stores/authStore";
 import { validateEmail } from "../../helpers/validateEmail";
-
+import { postVerifyEmailLink } from "./postVerifyEmailLink";
 
 import "./Login.css";
 
@@ -21,10 +22,10 @@ export const Login = () => {
 
   const submitHandler = async (values) => {
     setIsLoading(true);
-    const emailOrUsername = values.email;
+    const emailOrUsername = values.emailOrUsername;
     const isValidEmail = validateEmail(emailOrUsername);
     if (isValidEmail) {
-      isEmail.current = values.email.toLowerCase();
+      isEmail.current = values.emailOrUsername.toLowerCase();
     }
     const password = values.password;
     const remember = values.remember;
@@ -45,25 +46,26 @@ export const Login = () => {
           remember
         );
       }
+      console.log(error)
       if (error) {
         if (error === "Error: Email is not verified!") {
           const errorMessage = (
             <>
-              <strong>{t("login.emailNotVerifyYet")}!</strong>{" "}
-              {t("login.checkPostBoxForVerificationLink")}.
+              <strong>Your email is not verified yet!</strong>{" "}
+              Please check your email postbox for the verification link.
               <div
                 className="login__verifyEmailLink"
                 onClick={() => {
                   postVerifyEmailLink(isEmail.current);
                   notification.success({
                     duration: 0,
-                    message: t("login.recoverEmailSent"),
+                    message: "Please check your email postbox for the verification link!",
                     placement: "topLeft",
                   });
                 }}
               >
-                <LinkOutlined /> {t("login.clickToGetNewVerificationLink")}
-                <span className="link"> {t("login.verifyYourEmail")}</span>.
+                <LinkOutlined /> Click here to have us send you a brand new link to{" "}
+                <span className="link">verify your email</span>.
               </div>
             </>
           );
@@ -75,13 +77,12 @@ export const Login = () => {
         } else if (error === "Error: Password is incorrect!") {
           const errorMessage = (
             <>
-              <strong>{t("login.passwordIsIncorrect")}!</strong> <br />
-              {t("login.pleaseCheckPasswordOrUse")}
+              <strong>Password is incorrect!</strong> <br />
+              Please check your password or use the{" "}
               <span className="link" onClick={() => setIsRecovery(!isRecovery)}>
-                {" "}
-                {t("login.recoverPassword")}{" "}
-              </span>{" "}
-              {t("login.feature")}.
+                recover password
+              </span>
+              {" "}feature.
             </>
           );
           notification.error({
@@ -120,10 +121,9 @@ export const Login = () => {
           onFinish={submitHandler}
         >
           <Form.Item
-            name="email"
+            name="emailOrUsername"
             rules={[
               {
-                type: "email",
                 required: true,
                 message: "Please input your Email!",
               },
@@ -131,7 +131,7 @@ export const Login = () => {
           >
             <Input
               prefix={<MailOutlined className="site-form-item-icon" />}
-              placeholder="Email"
+              placeholder="Email or Username"
             />
           </Form.Item>
           <Form.Item
