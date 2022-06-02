@@ -80,7 +80,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_RECOVERY,
       { expiresIn: "10m" }
     );
-    const body = `Hello beautiful,<br/>
+    const body = `Hello there,<br/>
                   <br/>A recover-link has been requested for this email address.
                   By following this link you'll be able to generate a new password for your account.<br/>
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
@@ -100,7 +100,7 @@ exports.mailService = {
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
-    
+
     try {
       const response = await axios({
         url: process.env.MAILMAN_URL,
@@ -128,7 +128,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
       { expiresIn: "24h" }
     );
-    const body = `Hello georgeous,<br/><br/>
+    const body = `Hej,<br/><br/>
                   Thank you for joining us, and welcome to your next aventure.
                   Protecting our community is the upmost important: By following the link 
                   underneath you will help us verify the email now linked to your account. 
