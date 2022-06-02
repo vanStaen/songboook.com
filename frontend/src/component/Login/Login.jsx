@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
-
 import {
   UserOutlined,
   MailOutlined,
@@ -11,44 +10,97 @@ import {
 } from "@ant-design/icons";
 
 import { authStore } from "../../stores/authStore";
+import { validateEmail } from "../../helpers/validateEmail";
+
 
 import "./Login.css";
 
 export const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const switchModeHandler = () => {
-    setIsLogin(!isLogin);
-  };
+  const isEmail = useRef(undefined);
 
   const submitHandler = async (values) => {
     setIsLoading(true);
-    const email = values.email;
+    const emailOrUsername = values.email;
+    const isValidEmail = validateEmail(emailOrUsername);
+    if (isValidEmail) {
+      isEmail.current = values.email.toLowerCase();
+    }
     const password = values.password;
     const remember = values.remember;
-    //const username = values.username;
-
-    if (!isLogin) {
-      // TODO! Create a user on auth service + in Songboook
-      // postCreateUser()
-    } else {
-      try {
-        const error = await authStore.login(email, null, password, remember);
-        if (error) {
+    try {
+      let error = null;
+      if (isValidEmail) {
+        error = await authStore.login(
+          emailOrUsername,
+          null,
+          password,
+          remember
+        );
+      } else {
+        error = await authStore.login(
+          null,
+          emailOrUsername,
+          password,
+          remember
+        );
+      }
+      if (error) {
+        if (error === "Error: Email is not verified!") {
+          const errorMessage = (
+            <>
+              <strong>{t("login.emailNotVerifyYet")}!</strong>{" "}
+              {t("login.checkPostBoxForVerificationLink")}.
+              <div
+                className="login__verifyEmailLink"
+                onClick={() => {
+                  postVerifyEmailLink(isEmail.current);
+                  notification.success({
+                    duration: 0,
+                    message: t("login.recoverEmailSent"),
+                    placement: "topLeft",
+                  });
+                }}
+              >
+                <LinkOutlined /> {t("login.clickToGetNewVerificationLink")}
+                <span className="link"> {t("login.verifyYourEmail")}</span>.
+              </div>
+            </>
+          );
+          notification.error({
+            duration: 0,
+            message: errorMessage,
+            placement: "topLeft",
+          });
+        } else if (error === "Error: Password is incorrect!") {
+          const errorMessage = (
+            <>
+              <strong>{t("login.passwordIsIncorrect")}!</strong> <br />
+              {t("login.pleaseCheckPasswordOrUse")}
+              <span className="link" onClick={() => setIsRecovery(!isRecovery)}>
+                {" "}
+                {t("login.recoverPassword")}{" "}
+              </span>{" "}
+              {t("login.feature")}.
+            </>
+          );
+          notification.error({
+            message: errorMessage,
+            placement: "topLeft",
+          });
+        } else {
           notification.error({
             message: error,
+            placement: "topLeft",
           });
         }
-      } catch (error) {
-        notification.error({
-          message: error.message,
-        });
-        console.log(error);
       }
-      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
     }
+    setIsLoading(false);
   };
+
 
   return (
     <div className="login__full">
@@ -67,22 +119,6 @@ export const Login = () => {
           }}
           onFinish={submitHandler}
         >
-          <Form.Item
-            name="username"
-            hidden={isLogin}
-            rules={[
-              {
-                required: !isLogin,
-                message: "How should we call you?",
-              },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Name"
-            />
-          </Form.Item>
-
           <Form.Item
             name="email"
             rules={[
@@ -115,7 +151,7 @@ export const Login = () => {
               }
             />
           </Form.Item>
-          <Form.Item hidden={!isLogin}>
+          <Form.Item>
             <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>
                 <span className="login__remember">Remember me</span>
@@ -134,13 +170,11 @@ export const Login = () => {
             >
               {isLoading ? (
                 <LoadingOutlined />
-              ) : isLogin ? (
+              ) :
                 "Log in"
-              ) : (
-                "Create account"
-              )}
+              }
             </Button>
-            <div className="login__switchmode">
+            {/* <div className="login__switchmode">
               Or&nbsp;
               <span
                 className="login__switchmodetext"
@@ -148,7 +182,7 @@ export const Login = () => {
               >
                 {isLogin ? "register now!" : "log into your account!"}
               </span>
-            </div>
+            </div> */}
           </Form.Item>
         </Form>
       </div>
