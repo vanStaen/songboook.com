@@ -34,3 +34,12 @@
     -webkit-box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
     box-shadow: 0 0 0 2px rgba(110, 15, 28, .05) !important;
 }
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link:hover {
+  font-weight: 300;
+}

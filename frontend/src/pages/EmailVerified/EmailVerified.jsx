@@ -34,56 +34,56 @@ export const EmailVerified = () => {
   return (
     <>
       <div className="emailVerified__container">
-        <div className="emailVerified__textContainer">
-          {isLoading ? (
-            <LoadingOutlined className="emailVerified__loader" />
-          ) : isVerified ? (
-            <div className="emailVerified__text">
-              <strong>Your email have been verified</strong> <br />
+        <div className={`emailVerified__textContainer ${isVerified ? "emailVerified__success" : "emailVerified__error"}`}>
+          {
+            isLoading ? (
+              <LoadingOutlined className="emailVerified__loader" />
+            ) : isVerified ? (
+              <div className="emailVerified__text">
+                <strong>Your email have been verified</strong> <br />
               Thank you and welcome in our community!
-              <br />
+                <br />
               You can now go ahead and log yourself in.
-              <br />
-              <br />
-              <div className="emailVerified__link">
-                You will be redirected to the{" "}
-                <span
-                  className="link"
-                  onClick={() => {
-                    document.location.href = "/";
-                  }}
-                >
-                  {" "}
-                  login page.
+                <br />
+                <div className="emailVerified__link">
+                  You will be redirected to the{" "}
+                  <span
+                    className="link"
+                    onClick={() => {
+                      document.location.href = "/";
+                    }}
+                  >
+                    {" "}
+                  login page
                 </span>
                 .
               </div>
-            </div>
-          ) : (
-            <div className="emailVerified__text">
-              <strong>Your email could not be verified!</strong>
-              <br />
-              <br />
+              </div>
+            ) : (
+                  <div className="emailVerified__text">
+                    <strong>Your email could not be verified!</strong>
+                    <br />
+                    <br />
               Something went wrong in the verification of the email linked to
               your account!
-              <br />
-              <div className="emailVerified__link">
-                What can you do? Go back to the
-                <span
-                  className="link"
-                  onClick={() => {
-                    document.location.href = "/";
-                  }}
-                >
-                  {" "}
-                  login page.
+                    <br />
+                    <div className="emailVerified__link">
+                      What can you do? Go back to the
+                        {" "}
+                      <span
+                        className="link"
+                        onClick={() => {
+                          document.location.href = "/";
+                        }}
+                      >
+                        login page
                 </span>
-                {", "}
+                      {", "}
                 sign in, and follow the infos on how to request a new
                 verification link.
               </div>
-            </div>
-          )}
+                  </div>
+                )}
         </div>
       </div>
 

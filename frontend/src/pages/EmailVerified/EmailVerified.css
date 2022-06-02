@@ -1,6 +1,6 @@
 .emailVerified__blury {
   background-color: #924B55;
-  min-height: calc(100vh - 50px); /* footert 50px */
+  min-height: calc(100vh - 50px); /* footer 50px */
   padding: 30px;
   filter: blur(7px) brightness(50%) grayscale(50%);
 }
@@ -11,28 +11,33 @@
   left:0;
   width: 100vw;
   min-height: 100vh;
-  padding: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  text-align: justify;
   z-index: 3;
   color: #FFF;
 }
 
 .emailVerified__textContainer {
-  width: 400px;
+  width: 330px;
   padding: 0 20px 20px 25px;
-  background-color: rgba(146, 75, 85, .75);
+  background-color: rgba(75, 146, 101, 0.75);
+  border-radius: 15px;
+  box-shadow: 0px 0px 50px white;
+}
+
+.emailVerified__success {
+  background-color: rgba(31, 65, 44, 0.75);
+}
+
+.emailVerified__error {
+  background-color: rgba(103, 18, 29, 0.95);
 }
 
 .emailVerified__link, .emailVerified__text {
   font-weight: 400;
-  letter-spacing: 4px;
   padding-top: 15px;
-  line-height: 1.8;
   font-size: 14px;
 }
 
