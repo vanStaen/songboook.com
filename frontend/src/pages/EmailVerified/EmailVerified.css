@@ -1,23 +1,15 @@
-.emailVerified__leftPanel {
-  width: 40vw;
-  height: 100vh;
-  display: inline-block;
-  vertical-align: top;
-  background-image: url("./../../img/open.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.emailVerified__rightPanel {
-  width: 60vw;
-  height: 100vh;
-  display: inline-block;
-  vertical-align: top;
-  background-color: white;
+.emailVerified__blury {
+  background-color: #924B55;
+  min-height: calc(100vh - 50px); /* footert 50px */
+  padding: 30px;
+  filter: blur(7px) brightness(50%) grayscale(50%);
 }
 
 .emailVerified__container{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
   min-height: 100vh;
   padding: 20%;
   display: flex;
@@ -26,30 +18,24 @@
   justify-content: center;
   font-size: 14px;
   text-align: justify;
+  z-index: 3;
+  color: #FFF;
 }
 
-.emailVerified__link {
+.emailVerified__textContainer {
+  width: 400px;
+  padding: 0 20px 20px 25px;
+  background-color: rgba(146, 75, 85, .75);
+}
+
+.emailVerified__link, .emailVerified__text {
+  font-weight: 400;
+  letter-spacing: 4px;
   padding-top: 15px;
-  color: rgba(0, 0, 0, .75);
+  line-height: 1.8;
+  font-size: 14px;
 }
 
 .emailVerified__loader {
   font-size: 75px;
-}
-
-@media (max-width: 800px) {
-  .emailVerified__leftPanel {
-    width: 0vw;
-  }
-  .emailVerified__rightPanel {
-    width: 100vw;
-    background-image: url("./../../img/open.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-  .emailVerified__text {
-    padding: 10%;
-    background-color: rgba(255,255,255,.75);
-  }
 }

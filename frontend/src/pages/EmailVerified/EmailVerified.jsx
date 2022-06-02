@@ -4,12 +4,15 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 import { postEmailVerified } from "./postEmailVerified";
+import { Book } from "../../component/Book/Book";
 
 import "./EmailVerified.css";
 
 export const EmailVerified = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isVerified, setIsVerified] = useState(false);
+  const [randomPageId, setRandomPageId] = useState(false);
+  const [newSongAdded, setNewSongAdded] = useState(false);
   const { t } = useTranslation();
   const params = useParams();
 
@@ -29,21 +32,21 @@ export const EmailVerified = () => {
   }, [emailIsVerified]);
 
   return (
-    <div>
-      <div className="emailVerified__leftPanel"></div>
-      <div className="emailVerified__rightPanel">
-        <div className="emailVerified__container">
+    <>
+      <div className="emailVerified__container">
+        <div className="emailVerified__textContainer">
           {isLoading ? (
             <LoadingOutlined className="emailVerified__loader" />
           ) : isVerified ? (
             <div className="emailVerified__text">
-              <strong>{t("login.emailVerified")}</strong> <br />
-              {t("login.welcomeInOurCommunity")}!<br />
-              {t("login.goAheadAndLogin")}.
+              <strong>Your email have been verified</strong> <br />
+              Thank you and welcome in our community!
+              <br />
+              You can now go ahead and log yourself in.
               <br />
               <br />
               <div className="emailVerified__link">
-                {t("login.redirectedToThe")}{" "}
+                You will be redirected to the{" "}
                 <span
                   className="link"
                   onClick={() => {
@@ -51,20 +54,21 @@ export const EmailVerified = () => {
                   }}
                 >
                   {" "}
-                  {t("login.loginPage")}.
+                  login page.
                 </span>
                 .
               </div>
             </div>
           ) : (
             <div className="emailVerified__text">
-              <strong>{t("login.emailNotVerified")}!</strong>
+              <strong>Your email could not be verified!</strong>
               <br />
               <br />
-              {t("login.somethingWrongEmail")}!
+              Something went wrong in the verification of the email linked to
+              your account!
               <br />
               <div className="emailVerified__link">
-                {t("login.whatCanYouDo")}
+                What can you do? Go back to the
                 <span
                   className="link"
                   onClick={() => {
@@ -72,15 +76,26 @@ export const EmailVerified = () => {
                   }}
                 >
                   {" "}
-                  {t("login.loginPage")}
+                  login page.
                 </span>
                 {", "}
-                {t("login.requestNewLink")}.
+                sign in, and follow the infos on how to request a new
+                verification link.
               </div>
             </div>
           )}
         </div>
       </div>
-    </div>
+
+      <div className="emailVerified__blury">
+        <Book
+          searchValue={null}
+          newSongAdded={null}
+          setNewSongAdded={setNewSongAdded}
+          randomPageId={null}
+          setRandomPageId={setRandomPageId}
+        />
+      </div>
+    </>
   );
 };
