@@ -5,15 +5,16 @@ import { observer } from "mobx-react";
 import axios from "axios";
 
 import { authStore } from "../../../../stores/authStore";
+
 import "./CheckAdd.css";
 
 const CheckAdd = observer((props) => {
   const [isChecked, setIsChecked] = useState(props.checked);
   const [isLoading, setIsLoading] = useState(false);
-  //const isVisitor = props.isVisitor;
 
   const handlerMarkAsChecked = (value) => {
     setIsLoading(true);
+
     async function patchEntry(value) {
       const response = await axios({
         url: process.env.API_URL + "/song/" + props.id,
@@ -26,6 +27,7 @@ const CheckAdd = observer((props) => {
       const patchResult = await response.data;
       return patchResult;
     }
+
     // fetch Entries
     patchEntry(value)
       .then(() => {
@@ -44,23 +46,23 @@ const CheckAdd = observer((props) => {
       {isLoading ? (
         <LoadingOutlined className="CheckAdd__ico clickable grey_check" />
       ) : (
-        authStore.hasAccess &&
-        (isChecked ? (
-          <Tooltip placement="top" title="Click to mark this song as unknown.">
-            <CheckOutlined
-              onClick={() => handlerMarkAsChecked(false)}
-              className="CheckAdd__ico clickable"
-            />
-          </Tooltip>
-        ) : (
-          <Tooltip placement="top" title="Click to mark this song as known.">
-            <CheckOutlined
-              onClick={() => handlerMarkAsChecked(true)}
-              className="CheckAdd__ico clickable grey_check"
-            />
-          </Tooltip>
-        ))
-      )}
+          authStore.hasAccess &&
+          (isChecked ? (
+            <Tooltip placement="top" title="Click to mark this song as unknown.">
+              <CheckOutlined
+                onClick={() => handlerMarkAsChecked(false)}
+                className="CheckAdd__ico clickable"
+              />
+            </Tooltip>
+          ) : (
+              <Tooltip placement="top" title="Click to mark this song as known.">
+                <CheckOutlined
+                  onClick={() => handlerMarkAsChecked(true)}
+                  className="CheckAdd__ico clickable grey_check"
+                />
+              </Tooltip>
+            ))
+        )}
     </div>
   );
 });
