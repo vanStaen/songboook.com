@@ -57,7 +57,7 @@ const Bookmark = observer((props) => {
           ></img>
         </Tooltip>
       ) : (
-        authStore.token != null && (
+        authStore.hasAccess && (
           <Tooltip placement="right" title="Bookmark this.">
             <img
               onClick={() => handlerBookmarking(true)}

@@ -151,7 +151,7 @@ const Links = observer((props) => {
               <LinkOutlined />
               &nbsp;&nbsp;
               {returnCropedText(tabs, maxTagWidth)}
-              {authStore.token && (
+              {authStore.hasAccess && (
                 <EditOutlined
                   onClick={(e) => {
                     setEditInputValue(tabs);
@@ -188,7 +188,7 @@ const Links = observer((props) => {
               <LinkOutlined />
               &nbsp;&nbsp;
               {returnCropedText(video, maxTagWidth)}
-              {authStore.token && (
+              {authStore.hasAccess && (
                 <EditOutlined
                   onClick={(e) => {
                     setEditInputValue(video);
@@ -203,7 +203,7 @@ const Links = observer((props) => {
         )}
       </div>
 
-      {authStore.token && (
+      {authStore.hasAccess && (
         <div className="link__container">
           <div className="link__ref">Pic:</div>
           {isPicEditMode ? (

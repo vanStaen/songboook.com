@@ -132,7 +132,7 @@ const Tags = observer((props) => {
           <Tag
             className="edit-tag"
             key={index}
-            closable={authStore.token ? true : false}
+            closable={authStore.hasAccess}
             onClose={() => handlerDeleteTag(index)}
           >
             <span
@@ -164,7 +164,7 @@ const Tags = observer((props) => {
           onPressEnter={handleInputConfirm}
         />
       )}
-      {!inputVisible && authStore.token && (
+      {!inputVisible && authStore.hasAccess && (
         <Tag className="site-tag-plus" onClick={showInput}>
           <PlusOutlined /> Add Tag
         </Tag>

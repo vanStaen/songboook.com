@@ -46,26 +46,27 @@ export const Login = () => {
           remember
         );
       }
-      console.log(error)
+
       if (error) {
         if (error === "Error: Email is not verified!") {
           const errorMessage = (
             <>
-              <strong>Your email is not verified yet!</strong>{" "}
-              Please check your email postbox for the verification link.
+              <strong>Your email is not verified yet!</strong> Please check your
+              email postbox for the verification link.
               <div
                 className="login__verifyEmailLink"
                 onClick={() => {
                   postVerifyEmailLink(isEmail.current);
                   notification.success({
                     duration: 0,
-                    message: "Please check your email postbox for the verification link!",
+                    message:
+                      "Please check your email postbox for the verification link!",
                     placement: "topLeft",
                   });
                 }}
               >
-                <LinkOutlined /> Click here to have us send you a brand new link to{" "}
-                <span className="link">verify your email</span>.
+                <LinkOutlined /> Click here to have us send you a brand new link
+                to <span className="link">verify your email</span>.
               </div>
             </>
           );
@@ -81,8 +82,8 @@ export const Login = () => {
               Please check your password or use the{" "}
               <span className="link" onClick={() => setIsRecovery(!isRecovery)}>
                 recover password
-              </span>
-              {" "}feature.
+              </span>{" "}
+              feature.
             </>
           );
           notification.error({
@@ -101,7 +102,6 @@ export const Login = () => {
     }
     setIsLoading(false);
   };
-
 
   return (
     <div className="login__full">
@@ -168,11 +168,7 @@ export const Login = () => {
               htmlType="submit"
               className="login__formbutton"
             >
-              {isLoading ? (
-                <LoadingOutlined />
-              ) :
-                "Log in"
-              }
+              {isLoading ? <LoadingOutlined /> : "Log in"}
             </Button>
             {/* <div className="login__switchmode">
               Or&nbsp;

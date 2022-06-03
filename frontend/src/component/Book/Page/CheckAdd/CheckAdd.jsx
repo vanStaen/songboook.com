@@ -44,7 +44,7 @@ const CheckAdd = observer((props) => {
       {isLoading ? (
         <LoadingOutlined className="CheckAdd__ico clickable grey_check" />
       ) : (
-        authStore.token &&
+        authStore.hasAccess &&
         (isChecked ? (
           <Tooltip placement="top" title="Click to mark this song as unknown.">
             <CheckOutlined

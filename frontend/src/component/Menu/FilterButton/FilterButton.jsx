@@ -76,7 +76,7 @@ export const FilterButton = observer((props) => {
     if (!props.showFilters) {
       return { width: "2.7em" };
     }
-    if (authStore.token !== null) {
+    if (authStore.hasAccess) {
       return { width: "16.8em" };
     }
     return { width: "12.3em" };
@@ -184,7 +184,7 @@ export const FilterButton = observer((props) => {
               <img width="17" height="17" src={guitar} alt="guitar"></img>
             </Tooltip>
           </div>
-          {authStore.token !== null && (
+          {authStore.hasAccess && (
             <>
               |
               <Tooltip placement="bottom" title={toolTipFlagKnow()}>

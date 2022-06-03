@@ -126,10 +126,10 @@ const InfoDrawer = observer((props) => {
       <Divider orientation="left" plain>
         <span className="Page-drawer__diviser">Lyrics</span>
       </Divider>
-      
+
       <Lyrics id={props.page.id} lyrics={props.page.lyrics} />
 
-      {authStore.token !== null && (
+      {authStore.hasAccess && (
         <>
           <Divider orientation="left" plain>
             <span className="Page-drawer__diviser">Extras</span>

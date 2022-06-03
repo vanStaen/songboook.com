@@ -88,7 +88,7 @@ const Title = observer((props) => {
         <div
           className="Page__title"
           onDoubleClick={() => {
-            authStore.token != null && handleEditMode();
+            authStore.hasAccess && handleEditMode();
           }}
         >
           {title}

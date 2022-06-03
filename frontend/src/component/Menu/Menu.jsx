@@ -21,7 +21,7 @@ export const Menu = observer((props) => {
   return (
     <div className="Menu__container">
       <div className="Menu__top">
-        {!authStore.token ? (
+        {!authStore.hasAccess ? (
           <LoginButton
             showLoginForm={props.showLoginForm}
             setShowLoginForm={props.setShowLoginForm}
@@ -34,7 +34,7 @@ export const Menu = observer((props) => {
         )}
         {displayStore.showPage === "book" && (
           <>
-            {authStore.token && (
+            {authStore.hasAccess && (
               <AddSongButton
                 setShowAddForm={props.setShowAddForm}
                 showAddForm={props.showAddForm}
