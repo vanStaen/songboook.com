@@ -21,7 +21,7 @@ export const EmailVerified = () => {
     if (success) {
       setIsVerified(true);
       setTimeout(() => {
-        document.location.href = "/";
+        navigate("/");
       }, 10000);
     }
     setIsLoading(false);
@@ -53,7 +53,7 @@ export const EmailVerified = () => {
                 <span
                   className="link"
                   onClick={() => {
-                    document.location.href = "/";
+                    navigate("/");
                   }}
                 >
                   start page
