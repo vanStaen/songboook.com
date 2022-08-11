@@ -1,7 +1,7 @@
 {
   "short_name": "Songboook",
   "name": "Songboook",
-  "description" : "Songboook | All your songs",
+  "description" : "Songboook | All your songs",
   "icons": [
     {
       "src": "songbook_logo_24.png",

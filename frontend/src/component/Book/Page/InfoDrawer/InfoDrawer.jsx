@@ -22,6 +22,7 @@ const initialDrawerSize = () => {
   }
   return initialDrawerSize;
 };
+
 const InfoDrawer = observer((props) => {
   const [widthDrawer, setWidthDrawer] = useState(initialDrawerSize());
   const [isDrawerFold, setIsDrawerFold] = useState(true);
