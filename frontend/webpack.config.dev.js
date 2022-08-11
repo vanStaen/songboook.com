@@ -26,7 +26,6 @@ module.exports = {
       patterns: [
         { from: "public/songbook_logo_24.png" },
         { from: "public/songbook_logo_128.png" },
-        { from: "public/songbook_logo_512.png" },
         { from: "public/manifest.webmanifest" },
       ],
     }),
