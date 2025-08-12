@@ -30,8 +30,8 @@ router.get("/:id", async (req, res) => {
           /*const updateLyrics = `UPDATE songbook set lyrics='${sqlEscape(
               lyrics
             )}' WHERE id=${req.params.id}`;
-            client.query(updateLyrics);*/
-          console.log("lyrics", lyrics);
+            client.query(updateLyrics);
+          console.log("lyrics", lyrics);*/
           res.status(201).json({ lyrics: lyrics });
         } catch (error) {
           //console.log(error)

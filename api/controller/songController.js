@@ -86,7 +86,7 @@ router.patch("/:id", async (req, res) => {
     return;
   }
   try {
-    const updatedSong = await songService.updateSong(req.params.id, req.body.songInput);
+    const updatedSong = await songService.updateSong(req.params.id, req.body);
     res.status(201).json(updatedSong);
   } catch (err) {
     res.status(400).json({
