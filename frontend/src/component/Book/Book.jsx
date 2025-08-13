@@ -229,7 +229,7 @@ export const Book = observer((props) => {
       displayStore.setSizeListview(window.innerWidth - 60);
       setPositionHeader(80);
     } else {
-      const widthOfAPageInPixel = 362;
+      const widthOfAPageInPixel = 332;
       const marginLeftOfAPageInPixel = 15;
       const widthOfBookInPixel =
         document.getElementById("bookContainer").clientWidth;
