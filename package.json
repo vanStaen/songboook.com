@@ -10,11 +10,10 @@
     "dev": "npm i; nodemon index",
     "version": "heroku --version; git --version",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
-    "deploy": "npm i;npm run backup; npm run buildfe; heroku git:remote -a songbook-cvs; git push heroku main; npm run openprodurl;",
+    "deploy": "npm i;npm run backup; npm run buildfe; heroku git:remote -a songbook-cvs; git push heroku main",
     "log": "heroku logs --tail",
     "kill5002": "kill $(lsof -t -i:5002)",
-    "backup": "cd helpers/; node createDatabaseBackUpFile.js; cd ../; git add -A; git commit -a -m \"database backup\"; git push;",
-    "openprodurl": "open https://www.songboook.com"
+    "backup": "cd helpers/; node createDatabaseBackUpFile.js; cd ../; git add -A; git commit -a -m \"database backup\"; git push;"
   },
   "repository": {
     "type": "git",
