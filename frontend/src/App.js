@@ -11,6 +11,7 @@ import { Footer } from "./component/Footer/Footer";
 import { authStore } from "./stores/authStore";
 import { userStore } from "./stores/userStore";
 import { archiveAccount } from "./stores/actions/archiveAccount";
+import { consoleGreetings } from "./helpers/consoleGreetings";
 
 import "./App.css";
 
@@ -40,6 +41,10 @@ const App = observer(() => {
       });
     }
   }, [userStore.archived]);
+
+  useEffect(() => {
+    consoleGreetings();
+  }, []);
 
   return (
     <BrowserRouter>
