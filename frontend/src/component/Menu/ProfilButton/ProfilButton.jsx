@@ -33,7 +33,7 @@ export const ProfilButton = observer(() => {
         </div>
       ) : userStore.picUrl ? (
         <div
-          className="ProfilButton__float"
+          className=""
           style={{
             backgroundImage: `url(${userStore.picUrl})`,
             backgroundSize: "cover",

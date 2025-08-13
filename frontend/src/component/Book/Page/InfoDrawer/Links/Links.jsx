@@ -150,7 +150,7 @@ const Links = observer((props) => {
             <Tag className="links__tag" key="tabs">
               <LinkOutlined />
               &nbsp;&nbsp;
-              {returnCropedText(tabs, maxTagWidth)}
+              {tabs &&  returnCropedText(tabs, maxTagWidth)}
               {authStore.hasAccess && (
                 <EditOutlined
                   onClick={(e) => {
@@ -187,7 +187,7 @@ const Links = observer((props) => {
             <Tag className="links__tag" key="video">
               <LinkOutlined />
               &nbsp;&nbsp;
-              {returnCropedText(video, maxTagWidth)}
+              {video && returnCropedText(video, maxTagWidth)}
               {authStore.hasAccess && (
                 <EditOutlined
                   onClick={(e) => {
@@ -231,7 +231,7 @@ const Links = observer((props) => {
             >
               <LinkOutlined />
               &nbsp;&nbsp;
-              {returnCropedText(pic, maxTagWidth)}
+              {pic && returnCropedText(pic, maxTagWidth)}
               <EditOutlined
                 onClick={(e) => {
                   setEditInputValue(pic);

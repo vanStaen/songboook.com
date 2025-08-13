@@ -1,6 +1,7 @@
 const req = require("express/lib/request");
 const { Song } = require("../../models/Song");
 const getfirstResultGoogleSearch = require("../../helpers/getfirstResultGoogleSearch");
+const { link } = require("../controller/songController");
 
 exports.songService = {
   async getAllSong() {
@@ -38,19 +39,25 @@ exports.songService = {
       "lyrics",
       "genius",
     ]);
+    const tags = input.artist.split(" ").concat(input.song.split(" "));
     try {
       const song = new Song({
         artist: input.artist,
-        title: title,
         song: input.song,
+        title: title,
         geniusurl: geniusurl,
         createdBy: userId,
+        tags: tags,
+        videourl: input.videourl,
+        picurl: input.picurl,
+        link: input.link,
         added: Date.now(),
       });
       return await song.save();
     } catch (err) {
       console.log(err);
     }
+   return input
   },
 
   async updateSong(songId, data) {

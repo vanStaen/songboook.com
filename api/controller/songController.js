@@ -62,13 +62,13 @@ router.post("/", async (req, res) => {
     return;
   }
   try {
-    if (!req.body.songInput.artist) {
+    if (!req.body.artist) {
       throw new Error(`No artist name was provided!`);
     }
-    if (!req.body.songInput.song) {
+    if (!req.body.song) {
       throw new Error(`No song title was provided!`);
     }
-    await songService.addSong(req.body.songInput, req.userId);
+    await songService.addSong(req.body, req.userId);
     res.status(201).json({ message: "Success! Song has been created." });
   } catch (err) {
     res.status(400).json({
