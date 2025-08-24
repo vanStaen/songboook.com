@@ -86,7 +86,7 @@ const Title = observer((props) => {
         />
       ) : (
         <div
-          className="Page__title"
+          className={`Page__title ${props.lowkey && 'Page__titleLowkey'}`}
           onDoubleClick={() => {
             authStore.hasAccess && handleEditMode();
           }}

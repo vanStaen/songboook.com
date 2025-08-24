@@ -71,18 +71,13 @@ const Page = observer((props) => {
     }
   };
 
-  const hasHalo = props.randomPageId !== null;
-  const isHalo = props.randomPageId === props.page.id;
-  const classNamePage = hasHalo
-    ? isHalo
+  const hasRandom = props.randomPageId !== null;
+  const isRandom = props.randomPageId === props.page.id;
+  const classNamePage = hasRandom
+    ? isRandom
       ? "Page__main Page__halo Page__main__white"
       : "Page__main Page__main__transparent"
     : "Page__main Page__main__white";
-  const classNameList = hasHalo
-    ? isHalo
-      ? "List__main Page__halo Page__main__white"
-      : "List__main Page__main__transparent"
-    : "List__main Page__main__white";
 
   return (
     <>
@@ -98,13 +93,12 @@ const Page = observer((props) => {
         setIsBass={setIsBass}
         setPageHasChanged={props.setPageHasChanged}
       />
-      {!displayStore.displayedAsList ? (
         <div className={classNamePage} id={`pageId${props.page.id}`} key={`pageId${props.page.id}`}>
-          {(missing || hasHalo) && (
+          {(missing || hasRandom) && (
             <div className="Page__notab" onClick={handlerOpenDrawer}>
               <div
                 className={
-                  hasHalo
+                  hasRandom
                     ? "Page__notab-text Page__notabnotselected-textcolor"
                     : "Page__notab-text"
                 }
@@ -114,7 +108,7 @@ const Page = observer((props) => {
               {missing && (
                 <div className="Page__notab Page__notab-background"></div>
               )}
-              {hasHalo && !isHalo && (
+              {hasRandom && !isRandom && (
                 <div className="Page__notab Page__notselected-background"></div>
               )}
             </div>
@@ -128,69 +122,31 @@ const Page = observer((props) => {
             ></img>
           </div>
 
-          <Bookmark
-            id={props.page.id}
-            setIsBookmarked={setIsBookmarked}
-            isBookmarked={isBookmarked}
-            setPageHasChanged={props.setPageHasChanged}
-          />
-
-          <div className="Page__icons">
-            <Piano isPiano={isPiano} />
-            <Bass isBass={isBass} />
-          </div>
-
-          <div className="Page__actionicon">
-            <CheckAdd
-              isVisitor={false}
-              checked={props.page.checked}
-              id={props.page.id}
-              setPageHasChanged={props.setPageHasChanged}
-            />
-          </div>
-
-          <Title title={props.page.title} id={props.page.id} />
+          { hasRandom && !isRandom ? null :
+            <>
+              <Bookmark
+                id={props.page.id}
+                setIsBookmarked={setIsBookmarked}
+                isBookmarked={isBookmarked}
+                setPageHasChanged={props.setPageHasChanged}
+              />
+              <div className="Page__icons">
+                <Piano isPiano={isPiano} />
+                <Bass isBass={isBass} />
+              </div>
+              <div className="Page__actionicon">
+                <CheckAdd
+                  isVisitor={false}
+                  checked={props.page.checked}
+                  id={props.page.id}
+                  setPageHasChanged={props.setPageHasChanged}
+                />
+              </div>
+            </>
+          }
+          
+          <Title title={props.page.title} id={props.page.id} lowkey={hasRandom && !isRandom} />
         </div>
-      ) : (
-        <div
-          className={classNameList}
-          style={{ width: displayStore.sizeListview }}
-        >
-          <div className="List__artworkContainer" onClick={handlerOpenDrawer}>
-            <img
-              src={props.page.picurl}
-              alt="pic_missing"
-              className="List__artwork"
-            ></img>
-          </div>
-          <div className="List__left">
-            <div onClick={handlerOpenDrawer}>
-              <b>{props.page.artist}</b> - {props.page.song}
-            </div>
-          </div>
-          <div className="List__leftInstr">
-            {isBass && <Bass isBass={isBass} />}
-            {isPiano && <Piano isPiano={isPiano} />}
-          </div>
-          <div className="List__bookmark">
-          <Bookmark
-            id={props.page.id}
-            setIsBookmarked={setIsBookmarked}
-            isBookmarked={isBookmarked}
-            setPageHasChanged={props.setPageHasChanged}
-            displayedAsList={true}
-          />
-          </div>
-          <div className="List__check">
-            <CheckAdd
-              isVisitor={false}
-              checked={props.page.checked}
-              id={props.page.id}
-              setPageHasChanged={props.setPageHasChanged}
-            />
-          </div>
-        </div>
-      )}
     </>
   );
 });
