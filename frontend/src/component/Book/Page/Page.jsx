@@ -99,7 +99,7 @@ const Page = observer((props) => {
         setPageHasChanged={props.setPageHasChanged}
       />
       {!displayStore.displayedAsList ? (
-        <div className={classNamePage} key={props.page.id}>
+        <div className={classNamePage} id={`pageId${props.page.id}`} key={`pageId${props.page.id}`}>
           {(missing || hasHalo) && (
             <div className="Page__notab" onClick={handlerOpenDrawer}>
               <div

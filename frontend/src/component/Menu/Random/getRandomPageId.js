@@ -1,13 +1,13 @@
 
 import axios from 'axios';
 
-export const getRandomized = async (checked) => {
+export const getRandomPageId = async (checked) => {
     let option = "";
     if (checked !== undefined) {
         option = `/${checked}`;
     }
     const response = await axios({
-        url: process.env.API_URL + "/randomized" + option,
+        url: process.env.API_URL + "/random" + option,
         method: "GET",
     });
     if ((response.status !== 200) & (response.status !== 201)) {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Tooltip } from "antd";
 
 import { displayStore } from "../../../stores/displayStore";
-import { getRandomized } from "./getRandomized";
+import { getRandomPageId } from "./getRandomPageId";
 import Dice from "../../../images/dice.svg";
 
 import "./Random.css";
@@ -25,8 +25,8 @@ export const Random = (props) => {
       option = true;
     }
     try {
-      const randomPage = await getRandomized(option);
-      props.setRandomPageId(randomPage.id);
+      const randomPageId = await getRandomPageId(option);
+      props.setRandomPageId(randomPageId);
     } catch (error) {
       console.log(error);
     }

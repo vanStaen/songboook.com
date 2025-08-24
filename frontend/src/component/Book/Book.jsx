@@ -153,23 +153,26 @@ export const Book = observer((props) => {
   });
 
   useLayoutEffect(() => {
-    if (props.randomPageId !== null) {
-      const randomlySelectedPage = document.getElementById(props.randomPageId);
-      const randomlySelectedPageTop =
-        randomlySelectedPage.getBoundingClientRect().top;
-      const heightScreen = window.innerHeight;
-      const offSetScreen = (heightScreen - 330) / 2;
-      const heightPosition = window.scrollY;
-      const scrolltarget =
-        randomlySelectedPageTop < 0
-          ? randomlySelectedPageTop + heightPosition
-          : heightPosition + randomlySelectedPageTop;
-      window.scrollTo({
-        top: scrolltarget - offSetScreen,
-        left: 0,
-        behavior: "smooth",
-      });
-    }
+      try {
+        console.log("Scrolling to  page id", props.randomPageId);
+        const randomlySelectedPage = document.getElementById(`pageId${props.randomPageId}`);
+        const randomlySelectedPageTop =
+          randomlySelectedPage.getBoundingClientRect().top;
+        const heightScreen = window.innerHeight;
+        const offSetScreen = (heightScreen - 330) / 2;
+        const heightPosition = window.scrollY;
+        const scrolltarget =
+          randomlySelectedPageTop < 0
+            ? randomlySelectedPageTop + heightPosition
+            : heightPosition + randomlySelectedPageTop;
+        window.scrollTo({
+          top: scrolltarget - offSetScreen,
+          left: 0,
+          behavior: "smooth",
+        });
+      } catch (error) {
+        console.log(error);
+      }
   }, [props.randomPageId]);
 
   const listOfFilter = () => {

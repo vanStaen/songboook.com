@@ -1,10 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const { Song } = require("../../models/Song");
 
 // GET and randowm row result
 router.get("/", async (req, res) => {
   try {
-    const randomized = await client.query(`SELECT * FROM songbook WHERE randomized=false`);
+    const neverPickedUpSong = await Song.findAll({
+      where: {
+        randomized: false,
+      },
+    });
+    const rowChosen = await getRandomNumber(neverPickedUpSong.length - 1);
+    const randomSong = await Song.findOne({
+      where: {
+        id: 182,
+      },
+    });
+
+    res.status(201).json(neverPickedUpSong[rowChosen].id);
+
+    /*const randomized = await client.query(`SELECT * FROM songbook WHERE randomized=false`);
     if (randomized.rows.length === 0) {
       await setAllRandomizedToFalse();
       const randomizedNew = await client.query(`SELECT * FROM songbook WHERE randomized=false`);
@@ -18,7 +33,7 @@ router.get("/", async (req, res) => {
       const rowChosen = getRandomNumber(randomized.rows.length - 1);
       await setSongToRandomizedTrue(randomized.rows[rowChosen].id);
       res.status(201).json(randomized.rows[rowChosen]);
-    }
+    } */
   } catch (err) {
     res.status(400).json({
       error: `${err}`,
