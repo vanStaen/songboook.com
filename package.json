@@ -7,8 +7,8 @@
     "test": "cd frontend; jest; cd ../;",
     "start": "node index.js",
     "dev": "run-p dev:frontend dev:backend",
-    "dev:frontend": "cd frontend/; npm i; npm start; cd ../;",
-    "dev:backend": "npm i; nodemon index",
+    "dev:frontend": "cd frontend/; npm start; cd ../;",
+    "dev:backend": "nodemon index",
     "version": "heroku --version; git --version",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
     "deploy": "npm i; npm run buildfe; heroku git:remote -a songbook-cvs; git push heroku main; npm run openprodurl;",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "lint": "^1.1.2",
-    "nodemon": "^2.0.4",
+    "nodemon": "^3.1.10",
     "prettier": "^2.1.1"
   }
 }
